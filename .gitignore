@@ -71,6 +71,7 @@ managed/
 .gemini/
 .claude
 .midnight-expert
+.mcp.json
 tome.json
 
 # Generated deployment artifacts

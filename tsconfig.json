@@ -16,7 +16,8 @@
     "rootDir": "."
   },
   "include": [
-    "src/**/*.ts",
+    "app/**/*.ts",
+    "test/**/*.ts",
     "contract/**/*.ts",
     "scripts/**/*.ts",
     "utils/crypto.ts",

@@ -17,7 +17,7 @@ Verification combines the protocol guarantees defined by:
 - `commitments.md`
 - `merkle-tree.md`
 - `witnesses.md`; and
-- `proofs.md` 
+- `proofs.md`
 
 The purpose of verification is to establish a precise statement about a credential without requiring the verifier to obtain the credential's private contents.
 
@@ -27,6 +27,7 @@ A JustProof verifier evaluates a proof against authoritative public protocol sta
 
 Conceptually:
 
+```text
                     Private Credential
                            │
                            ▼
@@ -47,6 +48,7 @@ Conceptually:
                            │
                            ▼
                     VALID / INVALID
+```
 
 The verifier MUST NOT require disclosure of the private credential merely to determine whether the proof is valid.
 
@@ -221,7 +223,7 @@ If a proof is generated in response to a verification request, the proof MUST be
 
 Conceptually:
 
-```
+```text
              Verification Request
                       │
                       ▼
@@ -764,7 +766,6 @@ For example:
 ```text
 metadata says:
 "Certified Midnight Builder"
-
 ```
 
 does not establish that:

@@ -28,7 +28,7 @@ export function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span className="mono">BUILT WITH MIDNIGHT</span>
+        <span className="mono">BUILT ON MIDNIGHT</span>
         <span className="mono">
           &copy; {new Date().getFullYear()} JustProof
         </span>

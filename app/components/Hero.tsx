@@ -25,12 +25,25 @@
         </div>
       </div>
       <div className="hero-visual">
-        {/* Abstract cryptographic visual */}
-        <div className="abstract-proof">
-          <div className="proof-layer layer-1"></div>
-          <div className="proof-layer layer-2"></div>
-          <div className="proof-layer layer-3"></div>
-          <div className="proof-core"></div>
+        <div className="abstract-proof-visual">
+          <div className="visual-credential">
+            <div className="cred-header"></div>
+            <div className="cred-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div className="cred-mask"></div>
+          </div>
+          <div className="visual-transformation">
+            <div className="transform-path"></div>
+            <div className="transform-node"></div>
+            <div className="transform-path"></div>
+          </div>
+          <div className="visual-claim">
+            <div className="claim-icon"></div>
+            <div className="claim-bar"></div>
+          </div>
         </div>
       </div>
     </section>

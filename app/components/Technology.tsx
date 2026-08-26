@@ -6,12 +6,13 @@
           Privacy isn't an add-on. It's the foundation.
         </h2>
         <p className="tech-desc">
-          JustProof uses Midnight's privacy-preserving smart contract
-          infrastructure and zero-knowledge proofs to enable verification
-          without unnecessary disclosure.
+          JustProof leverages Midnight's data protection smart contracts and
+          zero-knowledge cryptography. This ensures that verification is
+          cryptographically guaranteed, without relying on exposing your
+          underlying personal data to a transparent ledger.
         </p>
         <div className="built-with">
-          <span className="mono">BUILT WITH MIDNIGHT</span>
+          <span className="mono">BUILT ON MIDNIGHT</span>
         </div>
       </div>
     </section>

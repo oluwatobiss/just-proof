@@ -1,700 +1,658 @@
 # JustProof Commitment Protocol
 
-- **Status:** Draft
-- **Protocol:** JustProof Credential Protocol v1
-- **Namespace:** `JP:CREDENTIAL:V1`
+- **Status:** Frozen
+- **Protocol:** JustProof Credential Protocol V1
+- **Specification revision:** `1.0.0`
+- **Frozen on:** `2026-08-31`
+- **Compact language:** `0.23`
+- **Compact toolchain:** `0.31.0`
+- **Compact runtime:** `0.16.0`
 
 ## 1. Purpose
 
-This document specifies the commitment scheme used by the JustProof Credential Protocol to bind on-chain verification state to a credential without publishing the credential itself.
+This document defines the security, randomness, privacy, opening, implementation, and testing requirements for the two persistent commitments used by JustProof V1:
 
-A commitment allows the protocol to establish that a private credential corresponds to a previously published on-chain value while keeping the credential contents private.
+1. the holder-binding `subjectCommitment`; and
+2. the statement-hiding `credentialCommitment`
 
-This specification defines:
+The exact committed values and field order are frozen in `01-credential.md` and reproduced here without modification.
 
-- the commitment input
-- commitment construction
-- domain separation
-- encoding requirements
-- binding requirements
-- hiding requirements
-- credential-to-commitment relationships
-- on-chain representation
-- verification requirements
+A JustProof commitment establishes a binding between a typed private value, a private 32-byte opening, and a 32-byte commitment output. It does not by itself establish issuer authorization, issuer signature validity, credential-registry membership, holder control, current non-revocation, expiration validity, or satisfaction of a proof request.
 
-This document does not define the complete credential schema, issuer registry, revocation protocol, or zero-knowledge proof circuits. Those concerns are specified separately.
+## 2. Normative Language
 
-## 2. Commitment Model
+The terms **MUST**, **MUST NOT**, **REQUIRED**, **SHOULD**, **SHOULD NOT**, and **MAY** are normative.
 
-A commitment is a cryptographic value derived from credential data.
+Where a conceptual record is shown, its field names, field order, and Compact types are normative unless the text explicitly says otherwise.
 
-Conceptually:
+## 3. Freeze Scope
 
-```text
-credential
-    │
-    ▼
-canonicalization
-    │
-    ▼
-commitment input
-    │
-    ▼
-cryptographic hash
-    │
-    ▼
-credential commitment
+This specification freezes the following V1 decisions:
+
+- V1 uses `persistentCommit<T>`, not a plain hash, for both commitment constructions
+- the `subjectSecret` is the mandatory opening of the subject commitment
+- the `credentialOpening` is the mandatory opening of the credential commitment
+- both openings are fresh, independently generated, unpredictable, nonzero `Bytes<32>` values
+- commitment openings are never reused across credentials or commitment purposes
+- Compact typed values, not manually serialized bytes or JSON, enter the commitment primitive
+- the two commitment purposes use distinct frozen domain tags
+- neither commitment is required to be a standalone public ledger field
+- commitment verification is performed by rederivation and equality constraints inside the proof circuit; and
+- credential registration, signature, revocation, and presentation operations do not mutate either commitment
+
+Changing the primitive, committed type, field name, field order, domain tag, opening type, opening ownership, freshness rule, privacy boundary, or semantic meaning defined here requires a new protocol version. Editorial clarification that does not change behavior MAY retain V1.
+
+## 4. Compact V1 Baseline
+
+The V1 contract implementation MUST begin with:
+
+```compact
+pragma language_version 0.23;
 ```
 
-The resulting commitment is suitable for publication on the Midnight ledger.
+The implementation MUST import `persistentCommit` and any required types from `CompactStandardLibrary`.
 
-The credential itself remains private.
+The normative primitive is:
 
-A holder can subsequently provide the credential as a private witness and demonstrate that it produces the same commitment recorded on-chain.
-
-## 3. Terminology
-
-| Term                         | Definition                                                                                                  |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| **Credential**               | The canonical structured qualification credential defined by the credential protocol.                       |
-| **Commitment**               | A cryptographic value binding a private credential to an on-chain representation.                           |
-| **Commitment input**         | The canonical byte sequence supplied to the commitment function.                                            |
-| **Domain separator**         | A protocol-specific constant identifying the cryptographic purpose of a hash.                               |
-| **Canonical representation** | The deterministic representation of protocol data used for cryptographic operations.                        |
-| **Opening**                  | The private credential data that can be used to demonstrate correspondence with a commitment.               |
-| **Binding**                  | The property that prevents a commitment from being validly associated with two different credential states. |
-| **Hiding**                   | The property that prevents the commitment from revealing the committed credential.                          |
-
-## 4. Commitment Requirements
-
-A Version 1 credential commitment MUST satisfy the following properties.
-
-### 4.1 Determinism
-
-The same canonical credential MUST always produce the same commitment.
-
-```text
-Commit(C) = Commit(C)
+```compact
+circuit persistentCommit<T>(value: T, rand: Bytes<32>): Bytes<32>;
 ```
 
-An implementation MUST NOT introduce nondeterministic values into commitment construction.
+JustProof calls the `rand` argument the **commitment opening**. For the two V1 constructions, the concrete openings are `subjectSecret` and `credentialOpening`.
 
-### 4.2 Binding
+`persistentCommit` is selected because its `Bytes<32>` result is persistent across upgrades and its sufficiently random opening provides hiding protection for private committed inputs. `transientCommit` MUST NOT replace it because transient outputs are not guaranteed to remain stable across upgrades.
 
-A commitment MUST cryptographically bind the commitment to the credential contents.
+`persistentHash` MUST NOT replace either V1 commitment. A hash is appropriate for persistent identifiers and authentication digests, but it does not supply the same hiding treatment or disclosure behavior as a commitment with a secret random opening.
 
-An attacker SHOULD NOT be able to construct two materially different credentials `C1` and `C2` such that:
+## 5. Terminology
+
+| Term                   | Definition                                                                                                                |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **Committed value**    | The typed first argument to `persistentCommit<T>`.                                                                        |
+| **Opening**            | The private `Bytes<32>` second argument to `persistentCommit<T>`.                                                         |
+| **Commitment output**  | The resulting `Bytes<32>` value.                                                                                          |
+| **Open a commitment**  | Rederive it from the exact typed value and opening and assert equality with the expected commitment.                      |
+| **Subject secret**     | The holder-generated opening of the subject commitment and the secret whose knowledge establishes credential control.     |
+| **Credential opening** | The issuer-generated opening of the credential commitment.                                                                |
+| **Binding**            | The property preventing a commitment from being opened to a different committed value except with negligible probability. |
+| **Hiding**             | The property preventing observers from learning or testing the committed value without the unpredictable opening.         |
+| **Domain tag**         | A frozen public `Bytes<32>` value included in the typed committed value to separate protocol purposes.                    |
+| **Opening reuse**      | Using the same opening for more than one commitment. It is forbidden in V1.                                               |
+
+The term **salt** is not used normatively in JustProof. A salt is often public, while a V1 commitment opening MUST remain private. The domain tag is public and is not a salt, blinding secret, or substitute for randomness.
+
+## 6. Primitive Types
+
+| Value                 | Compact type            |
+| --------------------- | ----------------------- |
+| Protocol version      | `Uint<16>`              |
+| Domain tag            | `Bytes<32>`             |
+| Credential ID         | `Bytes<32>`             |
+| Subject secret        | `Bytes<32>`             |
+| Subject commitment    | `Bytes<32>`             |
+| Credential opening    | `Bytes<32>`             |
+| Credential commitment | `Bytes<32>`             |
+| Credential statement  | `CredentialStatementV1` |
+
+The V1 protocol version value is:
 
 ```text
-Commit(C1) = Commit(C2)
+1
 ```
 
-except with negligible probability under the security assumptions of the selected cryptographic primitive.
+All byte strings in application storage or transport MUST use a documented encoding. Lowercase hexadecimal without a `0x` prefix is RECOMMENDED. Transport encoding MUST NOT change the Compact value entering `persistentCommit`.
 
-### 4.3 Hiding
+## 7. Commitment Domain Tags
 
-The commitment MUST NOT expose the credential contents to an observer who only has access to the public commitment.
+Each domain tag is the 32-byte SHA-256 digest of the exact UTF-8 label shown below.
 
-The commitment MUST therefore be computationally infeasible to reverse into the underlying credential.
+| Purpose               | UTF-8 label                   | `Bytes<32>` hexadecimal                                            |
+| --------------------- | ----------------------------- | ------------------------------------------------------------------ |
+| Subject commitment    | `JP:SUBJECT:COMMITMENT:V1`    | `d0f8ef87f028847a80da0f254686e455ee2548625ca7d6f0fc030246c12cb5b2` |
+| Credential commitment | `JP:CREDENTIAL:COMMITMENT:V1` | `c1d6eaac074956c51c0cd0c751db4f42a100c8040e73c45cbe8f50fe4a34ae82` |
 
-However, this property depends on the entropy of the committed data.
+Implementations MUST embed or deterministically reproduce the exact 32-byte values. They MUST NOT pass the variable-length labels directly where a `Bytes<32>` domain field is required.
 
-A commitment constructed only from a small, publicly predictable value is susceptible to dictionary attacks.
+The domain is included as a field of the committed typed value. It is not prepended through string concatenation and is not passed as the commitment opening.
 
-Consequently, sensitive or low-entropy private values MUST NOT be committed directly without an appropriate secret or other entropy source.
+The two domains MUST NOT be interchanged or reused for identifiers, signatures, Merkle leaves, Merkle nodes, registry approvals, revocation messages, or future commitment purposes.
 
-### 4.4 Domain Separation
+## 8. Compact Typed Representation
 
-Commitment hashing MUST use a domain separator distinct from all other protocol hash operations.
+V1 commits directly to typed Compact values. It does not define or require a separate canonical byte-serialization format.
 
-Version 1 uses:
+Field names, field order, nested record structure, and Compact types are part of each construction. Implementations MUST NOT replace the typed input with:
+
+- JSON or canonical JSON
+- JavaScript object serialization or property insertion order
+- delimiter-based strings
+- UTF-8 concatenation of displayed field values
+- hexadecimal text
+- database rows
+- CBOR, MessagePack, or protocol buffers
+- a PDF, image, QR code, or human-readable certificate; or
+- a hash of any of those representations
+
+TypeScript code MUST use Compact-compatible generated bindings or runtime behavior that reproduces the exact typed Compact result. A frontend-computed value is not conformant merely because its displayed hexadecimal length is correct.
+
+## 9. Commitment Semantics
+
+For a typed value `v` and opening `r`, define:
 
 ```text
-JP:CREDENTIAL:V1:COMMITMENT
+CommitV1<T>(v, r) = persistentCommit<T>(v, r)
 ```
 
-The commitment domain MUST NOT be reused for:
-
-- credential identifiers
-- issuer identifiers
-- subject identifiers
-- signatures
-- unrelated application hashes
-
-## 5. Commitment Primitive
-
-Version 1 defines the commitment function as:
+Opening verification is:
 
 ```text
-Commit(m) = H(
-    encode("JP:CREDENTIAL:V1:COMMITMENT") ||
-    encode(m)
-)
+OpenV1<T>(expected, v, r) =
+    (persistentCommit<T>(v, r) == expected)
 ```
 
-Where:
+There is no separate decommitment token or reveal operation. The opening relation is proved by rederivation and equality.
 
-- `H` is the protocol's selected cryptographic hash function
-- `encode(...)` is the canonical byte encoding defined by this specification
-- `m` is the canonical commitment input
-
-The exact hash primitive MUST be frozen before Version 1 contract implementation.
-
-## 6. Credential Commitment
-
-The primary commitment used by JustProof is the credential commitment.
-
-Conceptually:
+The primitive is deterministic for the complete pair `(v, r)`:
 
 ```text
-C = canonicalCredential
+CommitV1(v, r) == CommitV1(v, r)
 ```
 
-and:
+It is not deterministic for `v` alone. With independently sampled openings `r1` and `r2`:
 
 ```text
-credentialCommitment =
-    H(
-        "JP:CREDENTIAL:V1:COMMITMENT" ||
-        C
-    )
-```
+r1 != r2
 
-The credential commitment MUST cover every credential field whose alteration would change the semantic identity of the credential.
-
-Consequently:
-
-```text
-C1 ≠ C2
-```
-
-MUST result in distinct commitments except with negligible probability.
-
-## 7. Credential Identifier vs Commitment
-
-The credential identifier and credential commitment serve different purposes.
-
-The **credential identifier** identifies a credential.
-
-The **credential commitment** binds private credential data to public verification state.
-
-They MUST NOT be treated as interchangeable.
-
-Conceptually:
-
-```text
-Credential
-    │
-    ├──► Credential ID
-    │
-    └──► Credential Commitment
-```
-
-Version 1 uses separate domain separators for these operations:
-
-```text
-JP:CREDENTIAL:V1:ID
-JP:CREDENTIAL:V1:COMMITMENT
-```
-
-Therefore:
-
-```text
-CredentialId(C)
-```
-
-and:
-
-```text
-Commit(C)
-```
-
-are cryptographically distinct operations even when they use the same underlying hash primitive.
-
-## 8. Commitment Input
-
-The commitment MUST operate on the canonical credential representation rather than an implementation-specific object representation.
-
-The following MUST NOT be used as commitment inputs:
-
-- JavaScript object serialization
-- arbitrary JSON serialization
-- language-specific object representations
-- pretty-printed JSON
-- human-readable certificate files
-- PDF files
-- image files
-- frontend-generated strings
-
-The commitment input MUST be deterministic across compatible implementations.
-
-## 9. Canonical Encoding
-
-Version 1 requires a canonical encoding function:
-
-```text
-encode(Credential)
-```
-
-The encoding MUST uniquely represent the credential.
-
-The encoding rules MUST define:
-
-- field ordering
-- field names
-- string encoding
-- integer encoding
-- byte encoding
-- boolean encoding
-- optional values
-- array ordering
-- nested structures
-
-Two implementations MUST produce identical commitment inputs for semantically identical credentials.
-
-For textual values, Version 1 uses UTF-8.
-
-For binary values, Version 1 uses the protocol's canonical byte representation rather than textual hexadecimal unless explicitly specified otherwise.
-
-## 10. Field Ordering
-
-Credential fields MUST appear in the protocol-defined order.
-
-Field order MUST NOT depend on:
-
-- insertion order in a JavaScript object
-- database column order
-- JSON property ordering
-- frontend state ordering
-
-The canonical order is:
-
-```text
-version
-issuerId
-subject
-qualification
-issuedAt
-expiresAt
-claims
-```
-
-The derived `credentialId` MUST NOT be included as an input to its own derivation.
-
-Likewise, the issuer signature MUST NOT be included in the unsigned credential representation used to calculate the credential commitment unless explicitly specified by the finalized protocol.
-
-## 11. Signature Relationship
-
-The credential commitment and issuer signature authenticate related but distinct protocol objects.
-
-The issuer signature authenticates the issuer's assertion about the credential.
-
-The commitment binds the credential to public on-chain state.
-
-Conceptually:
-
-```text
-canonicalCredential
-       │
-       ├──────────────► issuer signature
-       │
-       └──────────────► credential commitment
-```
-
-The protocol MUST define both operations over deterministic representations.
-
-A verifier MUST NOT assume that a valid commitment implies a valid issuer signature.
-
-Likewise, a valid issuer signature MUST NOT be interpreted as proof that a credential commitment exists on-chain.
-
-Both relationships must be established during verification.
-
-## 12. Commitment Publication
-
-The credential commitment is suitable for publication as public ledger state.
-
-Conceptually:
-
-```text
-Holder / Issuer
-       │
-       │ credential commitment
-       ▼
-Midnight Contract
-       │
-       ▼
-Public Ledger State
-```
-
-The ledger MUST NOT require publication of the credential itself to store the commitment.
-
-The public commitment SHOULD be sufficient for the contract to determine whether a submitted proof refers to the expected credential state.
-
-## 13. Commitment Verification
-
-A proof verifier MUST establish that the private credential used by the prover corresponds to the expected commitment.
-
-Conceptually:
-
-```text
-private credential
-       │
-       ▼
-canonicalization
-       │
-       ▼
-Commit(privateCredential)
-       │
-       ▼
-expected commitment
-```
-
-The resulting value MUST equal the commitment referenced by the public verification state.
-
-Formally:
-
-```text
-Commit(C_private) = C_public
-```
-
-A proof MUST NOT be accepted when this equality does not hold.
-
-## 14. Commitment and Revocation
-
-Credential revocation operates on credential-specific public state.
-
-The commitment MAY be used as the primary lookup key for credential state, provided the resulting contract representation permits unambiguous identification of the credential.
-
-If Version 1 uses `credentialId` rather than the commitment as the revocation key, the relationship MUST remain deterministic:
-
-```text
-credential
-    │
-    ├──► credentialId
-    │
-    └──► commitment
-```
-
-The contract MUST NOT infer revocation state from the mere existence of a commitment.
-
-Authenticity, existence, and revocation are separate protocol properties.
-
-## 15. Commitment Privacy
-
-Publishing a commitment does not constitute publishing the credential.
-
-An observer of the ledger MUST receive no direct access to the committed credential contents from the commitment itself.
-
-However, the protocol does not guarantee privacy against an observer who can enumerate a small credential space.
-
-For example, if the committed message can only have a small number of possible values:
-
-```text
-"Midnight Builder"
-"JavaScript Developer"
-"Rust Developer"
-```
-
-an observer may calculate commitments for each candidate and compare them.
-
-Therefore, Version 1 implementations MUST carefully distinguish:
-
-- commitment to high-entropy private data
-- commitment to publicly enumerable data
-
-Where necessary, a secret nonce or holder-controlled randomness MUST be incorporated into the commitment input.
-
-## 16. Salt / Blinding Value
-
-If a credential contains low-entropy or publicly guessable values that must remain private, Version 1 MAY incorporate a holder-controlled blinding value.
-
-Conceptually:
-
-```text
-commitment =
-    H(
-        "JP:CREDENTIAL:V1:COMMITMENT" ||
-        canonicalCredential ||
-        blindingSecret
-    )
-```
-
-The blinding value MUST:
-
-- remain private
-- have sufficient entropy
-- be included consistently during proof generation
-- never be published merely to enable commitment verification
-
-If a blinding value is required by the finalized Version 1 construction, its encoding and generation requirements MUST be frozen before implementation.
-
-The protocol MUST NOT use an implicit or implementation-specific blinding value.
-
-## 17. Commitment Immutability
-
-Once a credential commitment has been published, the commitment MUST be treated as immutable.
-
-A change to any committed credential field produces a different commitment.
-
-For example:
-
-```text
-C = Commit(credential)
-```
-
-and:
-
-```text
-C' = Commit(modifiedCredential)
-```
-
-MUST satisfy:
-
-```text
-C ≠ C'
+CommitV1(v, r1) != CommitV1(v, r2)
 ```
 
 except with negligible probability.
 
-A corrected credential therefore requires a new credential commitment.
+The draft rule that identical credentials always produce identical commitments is not part of V1. Fresh openings are mandatory.
 
-The protocol MUST NOT mutate the meaning of an existing commitment.
+## 10. Required Security Properties
 
-## 18. Duplicate Credentials
+### 10.1 Binding
 
-Two credentials with identical canonical contents produce the same deterministic commitment.
+A prover MUST NOT be able to open one commitment to two different committed values except with negligible probability under the security assumptions of `persistentCommit`.
 
-This means that the commitment alone MUST NOT be interpreted as proof that two independently issued credential events occurred.
+Binding depends on the complete typed input. Changing a field value, type, order, nested structure, protocol version, domain tag, or opening MUST change the resulting commitment except with negligible probability.
 
-If issuance uniqueness is required, the credential MUST contain an issuer-controlled or protocol-defined unique value before commitment construction.
+### 10.2 Hiding
 
-Examples include:
+An observer who does not know the opening SHOULD NOT be able to determine or enumerate the committed value from the commitment output.
 
-- issuance nonce
-- credential sequence number
-- unique issuance identifier
+Hiding requires an unpredictable opening. Domain separation alone does not hide low-entropy values. A timestamp, counter, UUID, name, email address, credential ID, issuer ID, wallet address, or public hash is not an acceptable substitute for a fresh random opening.
 
-Such a value MUST be part of the canonical credential and therefore part of the commitment.
+### 10.3 Purpose separation
 
-## 19. Commitment Collision Requirements
+A value committed for holder binding MUST NOT be accepted as a credential-statement commitment, or vice versa. The distinct typed values and domain tags enforce this separation.
 
-The security of the commitment's binding property depends on the collision resistance of the selected hash function.
+### 10.4 Persistence
 
-An implementation MUST NOT truncate the commitment below the security level required by the protocol without an explicit protocol decision.
+The same typed value and opening MUST reproduce the same `Bytes<32>` commitment across conforming V1 implementations and supported upgrades. This persistence is why `persistentCommit` is required for protocol state derivation.
 
-Any truncation, serialization, or field-size conversion MUST be specified as part of Version 1.
+## 11. Randomness Requirements
 
-The Compact representation of the commitment MUST preserve the protocol-defined cryptographic security properties.
+Every `subjectSecret` and `credentialOpening` MUST:
 
-## 20. Commitment Domain Separation Rules
+- contain 32 bytes sampled from a cryptographically secure random source
+- be freshly generated for exactly one credential and one commitment purpose
+- be unpredictable to every party that is not intended to know it
+- be nonzero
+- remain private; and
+- be stored and transported without truncation, normalization, or text-to-byte ambiguity
 
-All Version 1 commitment operations MUST use the exact domain separator:
+If a CSPRNG returns 32 zero bytes, the implementation MUST discard the value and resample.
 
-```text
-JP:CREDENTIAL:V1:COMMITMENT
-```
+The implementation MUST NOT generate an opening from:
 
-The domain separator MUST be encoded according to the canonical encoding rules.
+- `Math.random()` or another non-cryptographic pseudorandom generator
+- the current time, block height, transaction ID, or sequential counter
+- a UUID without an explicit 256-bit CSPRNG guarantee
+- a holder or issuer name, email, password, PIN, wallet address, or device identifier
+- a wallet seed or wallet private key
+- an issuance nonce, credential ID, issuer ID, or another protocol secret; or
+- a deterministic application default
 
-Implementations MUST NOT:
+`issuanceNonce`, `subjectSecret`, and `credentialOpening` MUST be independently sampled values. They MUST NOT be equal, copied, or derived from one another. Sampling them from the same correctly seeded operating-system CSPRNG is permitted; protocol-level reuse or derivation is not.
 
-- abbreviate the domain separator
-- change its capitalization
-- omit the protocol version
-- replace it with an application-specific string
-- concatenate it without the defined encoding rules
+## 12. Opening Ownership and Delivery
 
-For example, these values are distinct protocol domains:
+| Opening             | Generator | Required recipients                                                         | Forbidden recipients by default                             |
+| ------------------- | --------- | --------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| `subjectSecret`     | Holder    | Holder only                                                                 | Issuer, verifier, registry provider, analytics, logs        |
+| `credentialOpening` | Issuer    | Issuer during creation; holder through a confidential authenticated channel | Verifier, public ledger, registry provider, analytics, logs |
 
-```text
-JP:CREDENTIAL:V1:ID
-JP:CREDENTIAL:V1:COMMITMENT
-JP:CREDENTIAL:V1:SIGNATURE
-```
+The holder MUST generate `subjectSecret` locally before sending `subjectCommitment` to the issuer. The holder sends the commitment output, not the opening.
 
-## 21. Security Properties
+The issuer MUST generate `credentialOpening` while creating the credential and MUST deliver it as part of the private credential package. If the holder does not receive the exact opening, the credential cannot be opened in a proof and is unusable.
 
-Assuming the selected cryptographic primitive is secure, the Version 1 commitment scheme provides:
+The issuer MAY retain the credential opening according to its private issuance and recovery policy, but retention MUST NOT make it public. V1 does not provide issuer recovery of a lost holder subject secret.
 
-### Binding
+## 13. Subject Commitment
 
-A malicious party cannot feasibly create two different valid credential openings for the same commitment.
+The subject commitment provides credential-specific holder binding.
 
-### Hiding
-
-A commitment does not feasibly reveal the committed credential when the commitment input contains sufficient entropy.
-
-### Domain separation
-
-Commitments cannot accidentally be interpreted as other protocol hash constructions.
-
-### Determinism
-
-The same credential produces the same commitment.
-
-### Verifiability
-
-A verifier can establish that private credential data corresponds to a known public commitment.
-
-## 22. What the Commitment Does Not Prove
-
-A commitment alone does **not** prove that:
-
-- the credential was issued by an authorized issuer
-- the issuer signature is valid
-- the credential holder is the subject
-- the credential has not expired
-- the credential has not been revoked
-- a particular qualification claim is true
-- the credential was issued legitimately
-- the holder is entitled to use the credential
-
-These properties require additional protocol verification.
-
-The commitment establishes only the cryptographic binding between private credential data and the committed public value.
-
-## 23. Protocol Invariants
-
-Every Version 1 implementation MUST preserve the following invariants:
-
-1. Identical canonical credentials produce identical commitments.
-2. Materially different credentials produce different commitments except with negligible probability.
-3. Commitment construction uses the `JP:CREDENTIAL:V1:COMMITMENT` domain separator.
-4. Commitment construction uses the protocol's canonical encoding.
-5. The credential commitment does not include the credential identifier as an input to its own derivation.
-6. The commitment does not depend on presentation artifacts.
-7. The commitment does not depend on frontend implementation details.
-8. A proof must bind its private credential to the expected public commitment.
-9. Public ledger state must not require publication of the complete credential.
-10. Changes to committed credential contents require a new commitment.
-11. Commitment construction must be deterministic across implementations.
-12. The selected cryptographic primitive and encoding rules must be frozen before Version 1 implementation is considered complete.
-
-## 24. Test Vectors
-
-Before the commitment protocol is frozen, Version 1 MUST define normative test vectors.
-
-Each test vector SHOULD include:
+The normative committed value is:
 
 ```text
-canonical credential
-canonical encoded bytes
-domain separator
-commitment input
-expected commitment
+SubjectCommitmentValueV1 {
+    domain: Bytes<32>
+    protocolVersion: Uint<16>
+    credentialId: Bytes<32>
+}
 ```
 
-At minimum, test vectors MUST cover:
-
-- a minimal valid credential
-- a credential with multiple claims
-- a credential containing optional fields
-- a credential containing non-ASCII text
-- a credential with the maximum supported integer values
-- a modified credential
-- identical credentials serialized independently
-- domain-separation failures
-- invalid encoding
-- incorrect field ordering
-
-The contract tests and TypeScript implementation tests MUST use the same normative vectors.
-
-## 25. Primitive Freeze
-
-Before implementing the commitment circuit, the following values MUST be finalized:
-
-| Parameter                            | Status                        |
-| ------------------------------------ | ----------------------------- |
-| Hash primitive                       | TBD                           |
-| Hash output size                     | TBD                           |
-| Domain separator                     | `JP:CREDENTIAL:V1:COMMITMENT` |
-| Canonical encoding                   | TBD                           |
-| Field ordering                       | Defined                       |
-| Blinding strategy                    | TBD                           |
-| Commitment representation in Compact | TBD                           |
-| Commitment test vectors              | TBD                           |
-
-Once these values are frozen, changing any of them constitutes a cryptographic protocol change and SHOULD require a new protocol version.
-
-## 26. Reference Commitment Flow
-
-The complete Version 1 commitment flow is:
+The field order is normative. Construction is:
 
 ```text
-                 PRIVATE
-                    │
-                    ▼
-             Credential data
-                    │
-                    ▼
-          Canonical representation
-                    │
-                    ▼
-        +-------------------------+
-        | JP:CREDENTIAL:V1:       |
-        | COMMITMENT              |
-        +-------------------------+
-                    │
-                    ▼
-              Hash function
-                    │
-                    ▼
-          Credential commitment
-                    │
-                    ▼
-              PUBLIC STATE
-                    │
-                    ▼
-             Midnight Ledger
+subjectCommitment =
+    persistentCommit<SubjectCommitmentValueV1>(
+        {
+            domain: DOMAIN_SUBJECT_COMMITMENT_V1,
+            protocolVersion: 1,
+            credentialId
+        },
+        subjectSecret
+    )
 ```
 
-During proof generation:
+The circuit MUST assert:
 
 ```text
-Private credential
-       │
-       ▼
-Commit(credential)
-       │
-       ▼
-Compare against
-public commitment
-       │
-       ▼
-Zero-knowledge proof
-       │
-       ▼
-On-chain verification
+subjectSecret != default<Bytes<32>>
 ```
 
-The protocol therefore establishes the following relationship:
+`subjectSecret` is the opening, not a field inside `SubjectCommitmentValueV1`. The phrase “commitment to the subject secret” means a holder-binding commitment opened by that secret; it does not mean that the secret is redundantly included as both value and opening.
+
+Including `credentialId` in the committed value makes the binding credential-specific. Even if an implementation violated the no-reuse rule, the committed value would still differ across credentials with different IDs. This defense in depth does not permit opening reuse.
+
+The subject commitment does not contain a holder name, email, wallet address, decentralized identifier, government identifier, or reusable subject identifier.
+
+## 14. Subject-Commitment Verification
+
+A holder-control proof MUST privately supply the exact `subjectSecret` and credential ID and constrain:
 
 ```text
-private credential
-        ║
-        ║ cryptographically bound
-        ║
-        ▼
-public commitment
-        ║
-        ║ verified through ZK proof
-        ║
-        ▼
-public verification result
+expectedSubjectCommitment ==
+    persistentCommit<SubjectCommitmentValueV1>(
+        {
+            domain: DOMAIN_SUBJECT_COMMITMENT_V1,
+            protocolVersion: 1,
+            credentialId
+        },
+        subjectSecret
+    )
 ```
 
-## 27. Final Protocol Principle
+The `expectedSubjectCommitment` MUST be the value contained in the same private `CredentialStatementV1` used by the proof. A caller-supplied commitment not bound to that statement is insufficient.
 
-The commitment layer exists to make one statement possible:
+Successful opening proves knowledge of the credential-specific subject secret. It does not prove the holder's civil identity, legal ownership, non-transferability, physical presence, or exclusive knowledge of the secret.
 
-> **This private credential is the credential represented by this public verification state.**
+## 15. Credential Commitment
 
-It does not reveal the credential.
+The credential commitment hides and binds the complete V1 credential statement.
 
-It does not establish issuer authority.
+The normative committed value is:
 
-It does not establish qualification validity by itself.
+```text
+CredentialCommitmentValueV1 {
+    domain: Bytes<32>
+    statement: CredentialStatementV1
+}
+```
 
-Those properties are established by the other layers of the JustProof protocol.
+The field order is normative. Construction is:
 
-The commitment layer provides the cryptographic binding that connects the private credential to the public proof system.
+```text
+credentialCommitment =
+    persistentCommit<CredentialCommitmentValueV1>(
+        {
+            domain: DOMAIN_CREDENTIAL_COMMITMENT_V1,
+            statement
+        },
+        credentialOpening
+    )
+```
+
+The circuit MUST assert:
+
+```text
+credentialOpening != default<Bytes<32>>
+```
+
+`CredentialStatementV1`, including its exact field order, types, qualification constants, and timestamp semantics, is frozen in `01-credential.md`.
+
+The credential commitment binds:
+
+- protocol version
+- credential ID
+- issuer ID
+- subject commitment
+- qualification type
+- qualification schema version
+- issuance time; and
+- expiration time
+
+It does not directly contain the issuance nonce, subject secret, credential opening, issuer signature, issuer verification key, Merkle position, Merkle path, registry root, revocation state, revocation time, presentation request, or human-readable certificate metadata.
+
+## 16. Credential-Commitment Verification
+
+A credential proof MUST privately supply the exact statement and credential opening and constrain:
+
+```text
+expectedCredentialCommitment ==
+    persistentCommit<CredentialCommitmentValueV1>(
+        {
+            domain: DOMAIN_CREDENTIAL_COMMITMENT_V1,
+            statement
+        },
+        credentialOpening
+    )
+```
+
+The expected commitment MUST be the same value used by both:
+
+- the credential-registry leaf authenticated against the current credential root; and
+- the issuer signature message authenticated under the registered issuer key.
+
+A prover MUST NOT combine one statement's opening, another credential's registry leaf, and a third credential's issuer signature.
+
+## 17. Nested Binding and Construction Order
+
+V1 uses the following dependency order:
+
+```text
+issuerId
+    -> credentialId
+    -> subjectCommitment
+    -> CredentialStatementV1
+    -> credentialCommitment
+    -> issuerSignatureMessage
+    -> issuerSignature
+```
+
+The dependencies are deliberate:
+
+1. `credentialId` binds the issuer ID and private issuance nonce.
+2. `subjectCommitment` binds the credential ID and is opened by the holder's subject secret.
+3. `CredentialStatementV1` includes the credential ID, issuer ID, and subject commitment.
+4. `credentialCommitment` binds and hides the complete statement.
+5. the issuer signature message binds the credential ID and credential commitment.
+
+This order prevents circular construction. Neither commitment contains its own output, and the issuer signature is not inside the credential statement or credential commitment.
+
+## 18. Hashes Are Not Commitments
+
+V1 uses `persistentHash` and `persistentCommit` for different purposes.
+
+| Protocol object           | Primitive          | Reason                                                                |
+| ------------------------- | ------------------ | --------------------------------------------------------------------- |
+| Credential ID             | `persistentHash`   | Stable issuance identifier derived with a private high-entropy nonce. |
+| Subject commitment        | `persistentCommit` | Credential-specific holder binding with a private opening.            |
+| Credential commitment     | `persistentCommit` | Long-term hiding and binding of the private statement.                |
+| Issuer signature message  | `persistentHash`   | Stable digest authenticated by the issuer signature.                  |
+| Issuer ID and issuer leaf | `persistentHash`   | Persistent registry identity and authenticated-tree state.            |
+| Merkle leaves and nodes   | `persistentHash`   | Persistent authenticated-state derivation.                            |
+
+Domain separation does not convert `persistentHash` into a hiding commitment. Adding a secret as an ordinary hash field is not the frozen V1 commitment construction.
+
+An implementation MUST NOT use:
+
+```text
+persistentHash(statement)
+persistentHash(statement, credentialOpening)
+persistentHash(subjectSecret)
+persistentHash(credentialId, subjectSecret)
+```
+
+as a substitute for either exact `persistentCommit` construction.
+
+## 19. Privacy and Disclosure Boundary
+
+The following values are private by default:
+
+- subject secret
+- subject commitment
+- credential statement
+- credential opening
+- credential commitment; and
+- the Merkle leaves and authentication paths that contain or authenticate commitment-derived values
+
+The issuer necessarily receives the subject commitment during issuance and creates the credential commitment. This protocol sharing does not make either value public ledger state.
+
+The public credential root authenticates the credential registry. V1 does not require individual credential IDs, subject commitments, credential commitments, or credential leaves to appear as standalone ledger fields or exported circuit outputs.
+
+`persistentCommit` permits its result to cross a Compact disclosure boundary without revealing the private value when the opening is sufficiently random. That cryptographic property does not require the application to publish the result. Keeping commitment outputs private by default prevents them from becoming stable correlation handles across requests, logs, or presentations.
+
+A proof request MAY explicitly disclose a commitment only when its verification semantics require that exact value. Such disclosure MUST be documented in the proof statement and MUST NOT also disclose its opening.
+
+Implementations MUST NOT place openings or private commitments in:
+
+- ledger fields or events not required by a frozen specification
+- circuit return values
+- URLs, query strings, QR codes, or browser history
+- application, proof-server, analytics, or crash logs
+- screenshots or human-readable certificates
+- unencrypted local storage or backups; or
+- verifier responses
+
+## 20. Commitment Linkability
+
+A commitment output is stable for one exact value/opening pair. If the same commitment is disclosed more than once, observers can link those disclosures even though they cannot open the commitment.
+
+Fresh openings prevent two independently issued credentials with otherwise identical statements from receiving the same credential commitment. The credential ID and subject commitment also differ because each issuance uses fresh independent secret material.
+
+V1 does not rerandomize a credential commitment for each presentation. Presentation unlinkability therefore depends on keeping the credential commitment private inside the zero-knowledge proof unless a proof statement intentionally exposes it.
+
+Creating a presentation-specific hash of the credential commitment does not automatically prevent correlation and is not part of V1.
+
+## 21. Opening Reuse and Compromise
+
+An opening MUST NOT be reused:
+
+- for two subject commitments
+- for two credential commitments
+- once as a subject secret and once as a credential opening
+- between JustProof and another protocol; or
+- after a failed, abandoned, corrected, or reissued credential flow
+
+Reusing an opening can link otherwise unrelated commitments and increases the impact of an opening compromise.
+
+If `subjectSecret` is disclosed, the recipient can satisfy the holder-control relation for that credential when it also has the remaining private credential package and witness data. The holder SHOULD treat the credential as compromised.
+
+If `credentialOpening` is disclosed, an observer who also obtains the credential commitment can test candidate statements. Disclosure of the credential opening alone does not prove holder control because `subjectSecret` remains separate.
+
+If either opening is lost, V1 provides no cryptographic recovery. The affected credential cannot satisfy every required proof constraint. Recovery requires a new issuance with a fresh issuance nonce, subject secret, credential opening, credential ID, and commitment outputs.
+
+## 22. Commitment Immutability and Reissuance
+
+After issuance, `subjectCommitment` and `credentialCommitment` are immutable.
+
+Credential registration MUST NOT change either value. Revocation MUST NOT change or delete either value. Expiration is derived from the immutable statement and current block time; it does not mutate a commitment.
+
+A correction, replacement, recovery, or reissuance MUST create a new credential instance with:
+
+- a fresh issuance nonce
+- a new credential ID
+- a fresh subject secret
+- a new subject commitment
+- a fresh credential opening; and
+- a new credential commitment
+
+The prior credential remains immutable and MAY be revoked according to the revocation specification.
+
+An implementation MUST NOT reuse the prior subject secret or credential opening merely because some semantic statement fields remain unchanged.
+
+## 23. Commitment Relationship to Registry State
+
+The credential registry authenticates the pair:
+
+```text
+credentialId
+credentialCommitment
+```
+
+using the credential-leaf construction frozen by the Merkle-tree specification.
+
+The credential commitment is not itself the registry root, credential ID, leaf, index, or path. A matching commitment does not prove registration; the proof must also authenticate the corresponding credential leaf against the authoritative current credential root.
+
+The issuer registry uses persistent hashes and Merkle membership to authenticate issuer records. It does not use either commitment defined here and MUST NOT treat a commitment as issuer authorization.
+
+## 24. Signature and Revocation Relationships
+
+The issuer signs a domain-separated `persistentHash` message containing exactly:
+
+```text
+protocolVersion
+credentialId
+credentialCommitment
+```
+
+plus the signature-message domain frozen in `01-credential.md`.
+
+The signature authenticates the commitment output; it does not open the commitment. The credential commitment authenticates the statement when correctly opened; it does not authenticate the issuer. A V1 proof requires both relations.
+
+Credential revocation is keyed to credential-specific registry state defined by the revocation specification. Revocation does not alter the statement or commitment, and an unrevoked result does not prove that a commitment is correctly opened.
+
+## 25. Failure Conditions
+
+Commitment verification MUST fail closed if any of the following holds:
+
+- the protocol version is not `1`
+- a domain tag differs from the frozen value
+- a field name, field order, Compact type, or nested structure differs from V1
+- the subject secret or credential opening is all zero
+- the supplied opening is incorrect
+- the credential ID used for holder binding differs from the statement's credential ID
+- the expected subject commitment differs from the statement's subject commitment
+- the expected credential commitment differs from the registry and signature value
+- any credential-statement field is changed
+- a hash or transient commitment substitutes for `persistentCommit`
+- JSON, strings, presentation media, or application serialization substitutes for the typed input; or
+- private material from different credentials is mixed
+
+Randomness generation MUST fail closed if a CSPRNG is unavailable or returns an invalid-length value. An implementation MUST NOT silently fall back to a weaker source.
+
+## 26. Security Properties and Limitations
+
+Assuming secure independent openings and the security of `persistentCommit`, V1 provides:
+
+- **Statement binding:** the credential commitment binds every frozen statement field
+- **Statement hiding:** the credential opening prevents enumeration of a private statement from its commitment
+- **Credential-specific holder binding:** the subject commitment binds the credential ID to the holder's subject secret
+- **Purpose separation:** distinct domains and types prevent commitment substitution
+- **Issuance unlinkability at the commitment layer:** fresh openings prevent equal semantic values from producing equal commitments; and
+- **Persistent verification:** commitments can be rederived consistently across conforming implementations and upgrades
+
+The commitment layer does not prevent:
+
+- an authorized issuer from committing to a false statement
+- the issuer from knowing the statement or credential opening it created
+- a holder from transferring its subject secret and private credential package
+- linkability when a stable commitment is intentionally disclosed repeatedly
+- compromise through logs, storage, backups, remote proof services, or application metadata
+- loss of use when an opening is lost; or
+- a malicious implementation from using weak randomness outside the proof relation
+
+Randomness quality cannot generally be proven from a commitment output. Conformance therefore depends on secure application-side generation, code review, testing, and operational controls.
+
+## 27. Normative Invariants
+
+Every conforming V1 implementation MUST preserve these invariants:
+
+1. Both V1 commitments use `persistentCommit<T>` and return `Bytes<32>`.
+2. The subject commitment uses exactly `SubjectCommitmentValueV1` and `subjectSecret`.
+3. The credential commitment uses exactly `CredentialCommitmentValueV1` and `credentialOpening`.
+4. The committed records preserve their frozen field names, order, nested types, domains, and protocol version.
+5. The subject commitment uses the subject-commitment domain and no other domain.
+6. The credential commitment uses the credential-commitment domain and no other domain.
+7. Both openings are fresh, independently sampled, unpredictable, nonzero 32-byte values.
+8. An opening is never reused across credentials, purposes, or protocols.
+9. The subject secret is generated and retained by the holder and is not sent to the issuer.
+10. The credential opening is generated by the issuer and confidentially delivered to the holder.
+11. `issuanceNonce`, `subjectSecret`, and `credentialOpening` remain distinct.
+12. Commitment inputs use Compact typed representation, not application serialization.
+13. The subject commitment in the statement is opened using the same statement credential ID.
+14. The credential commitment binds the complete same statement used by every other proof constraint.
+15. The same credential commitment is bound into both the credential leaf and issuer signature message.
+16. A commitment output is not treated as proof of issuer authorization, signature validity, registration, holder control, non-revocation, expiration validity, or qualification satisfaction.
+17. Registration, revocation, expiration, and presentation do not mutate commitments.
+18. Reissuance uses fresh values for all three private randomness roles and produces new commitment outputs.
+19. Openings never enter public ledger state, events, exported outputs, logs, analytics, URLs, or presentation artifacts.
+20. Commitment outputs remain private unless a frozen proof statement explicitly discloses them.
+21. Verification fails closed on an incorrect opening, typed value, domain, version, or cross-credential mix.
+
+## 28. Required Test Vectors and Tests
+
+Before a V1 implementation is considered conformant, it MUST include Compact/TypeScript cross-runtime vectors for:
+
+- both domain-tag constants
+- `SubjectCommitmentValueV1` with a fixed credential ID and subject secret
+- `CredentialCommitmentValueV1` with a complete fixed `CredentialStatementV1` and credential opening
+- repeated derivation using the same typed value and opening
+- the same typed value with two different openings
+- every credential-statement field changed independently
+- subject and credential commitment domain substitution
+- wrong protocol versions
+- all-zero and one-bit-different openings; and
+- the complete dependency chain from credential ID through issuer signature message
+
+The suite MUST also test:
+
+- generation of 32-byte subject secrets and credential openings from the selected CSPRNG
+- rejection or resampling of all-zero openings
+- application prevention of intentional opening reuse
+- correct holder-only handling of the subject secret
+- confidential delivery and exact recovery of the credential opening
+- failure with an incorrect subject secret
+- failure with an incorrect credential opening
+- failure when subject secret and credential opening are swapped
+- failure when the subject commitment comes from another statement
+- failure when the credential commitment comes from another registry leaf
+- failure when the issuer signature authenticates another commitment
+- failure for JSON, field-order, byte-order, and string-concatenation substitutes
+- immutability through registration and revocation
+- complete regeneration during reissuance; and
+- absence of openings and private commitments from ledger state, events, outputs, logs, analytics, URLs, browser history, and presentation artifacts
+
+A changed cryptographic vector is a protocol change, not an ordinary regression update.
+
+## 29. Specification Ownership and Dependencies
+
+`01-credential.md` is authoritative for:
+
+- `CredentialStatementV1`
+- `SubjectCommitmentValueV1` and subject-commitment construction
+- `CredentialCommitmentValueV1` and credential-commitment construction
+- ownership of `subjectSecret` and `credentialOpening`; and
+- the credential ID and issuer signature message surrounding the commitments
+
+This document is authoritative for:
+
+- commitment security interpretation
+- randomness quality, independence, nonzero, and non-reuse requirements
+- opening handling, compromise, loss, and delivery rules
+- typed-representation implementation constraints
+- commitment privacy and disclosure boundaries
+- commitment linkability analysis; and
+- commitment-specific conformance tests
+
+`06-merkle-tree.md` MUST bind the exact credential ID and credential commitment into the credential leaf without changing either value.
+
+`07-witnesses.md` MUST deliver openings and private statement data without treating witness results as trusted. Proof circuits MUST constrain them using the exact equality relations defined here.
+
+`08-proofs.md` and `09-verification.md` MUST keep commitments private unless an explicit frozen proof statement requires disclosure, and MUST distinguish a correctly opened commitment from issuer authorization, registry membership, and current validity.
+
+The revocation specification MUST NOT mutate a credential commitment or infer non-revocation from successful commitment opening.
+
+## 30. Final Protocol Principle
+
+The commitment layer establishes two narrow statements:
+
+> The prover knows the credential-specific subject secret that opens the subject commitment in this credential statement.
+
+> This private credential statement and credential opening reproduce the credential commitment authenticated by the registry and issuer signature.
+
+Neither statement is sufficient alone. JustProof V1 combines them with issuer membership, issuer-signature verification, credential membership, current non-revocation, time validity, qualification constraints, and request binding to produce a valid qualification proof.

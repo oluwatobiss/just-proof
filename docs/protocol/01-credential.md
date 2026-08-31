@@ -1,751 +1,763 @@
 # JustProof Credential Protocol
 
-- **Status:** Draft
-- **Protocol:** JustProof Credential Protocol v1
-- **Version:** `V1`
-- **Namespace:** `JP:CREDENTIAL:V1`
+- **Status:** Frozen
+- **Protocol:** JustProof Credential Protocol V1
+- **Specification revision:** `1.0.1`
+- **Frozen on:** `2026-08-31`
+- **Compact language:** `0.23`
+- **Compact toolchain:** `0.31.0`
+- **Compact runtime:** `0.16.0`
 
 ## 1. Purpose
 
-The JustProof Credential Protocol defines a privacy-preserving format for issuing, holding, and proving qualifications.
+This document defines the normative JustProof V1 qualification credential: its semantic fields, private opening material, holder binding, identifier, commitment, issuer-authentication message, lifecycle, and privacy boundary.
 
-The protocol allows an issuer to create a cryptographically authenticated credential describing a qualification awarded to a subject. A credential holder can subsequently prove selected properties of that credential without publishing the underlying credential or exposing unnecessary personal information.
+JustProof allows a holder to prove that a privately held qualification credential satisfies a verifier's request without sending the underlying credential to the verifier or publishing it on the Midnight ledger.
 
-The protocol separates three concerns:
+The protocol separates five properties that MUST NOT be conflated:
 
-1. **Credential issuance:** an authorized issuer creates and signs a credential.
-2. **Credential publication:** a cryptographic commitment to the credential is recorded on Midnight.
-3. **Credential proof:** a holder proves that a credential satisfies specified conditions without revealing the credential itself.
+1. **Credential identity:** which credential instance is referenced.
+2. **Holder control:** whether the prover knows the credential-specific subject secret.
+3. **Issuer authenticity:** whether the registered issuer signed the credential commitment.
+4. **Registry membership:** whether the credential is represented in authoritative credential-registry state.
+5. **Current validity:** whether the credential is unexpired and unrevoked under current authoritative state.
 
-The protocol does not require the human-readable representation of a credential, such as a PDF or image, to be stored on-chain.
+No single identifier, commitment, signature, Merkle root, or proof establishes all five properties by itself.
 
-## 2. Design Goals
+## 2. Normative Language
 
-Version 1 has the following goals:
+The terms **MUST**, **MUST NOT**, **REQUIRED**, **SHOULD**, **SHOULD NOT**, and **MAY** are normative.
 
-- provide a deterministic representation of a qualification credential
-- allow credentials to be cryptographically authenticated by their issuer
-- provide a stable credential identifier
-- allow credential commitments to be verified on-chain
-- allow holders to prove credential properties privately
-- prevent unnecessary disclosure of the holder's credential data
-- separate issuer identity from individual credential data
-- support credential revocation without exposing the credential contents
-- make the cryptographic protocol independent of the frontend
-- make protocol behavior testable independently of the Midnight UI
+Where a conceptual record is shown, its field names, field order, and Compact types are normative unless the text explicitly says otherwise.
 
-The protocol intentionally does **not** attempt to define:
+## 3. Freeze Scope
 
-- a visual certificate design
-- a particular frontend framework
-- a particular wallet implementation
-- an issuer's internal database
-- a universal identity system for credential subjects
+This specification freezes the following V1 decisions:
 
-## 3. Terminology
+- the base credential schema
+- the credential-ID construction
+- credential-specific holder binding
+- the credential-commitment construction
+- the issuer signature message and signature scheme
+- timestamp and expiration semantics
+- the private/public credential boundary
+- the relationship between a credential and the issuer, credential, and revocation registries
 
-| Term                      | Definition                                                                               |
-| ------------------------- | ---------------------------------------------------------------------------------------- |
-| **Issuer**                | An entity authorized to issue JustProof credentials.                                     |
-| **Holder**                | The entity possessing a credential and its associated private data.                      |
-| **Verifier**              | An entity requesting or validating a proof.                                              |
-| **Credential**            | The canonical structured representation of a qualification.                              |
-| **Credential ID**         | A deterministic identifier derived from the credential.                                  |
-| **Credential commitment** | A cryptographic commitment to a credential.                                              |
-| **Issuer signature**      | A digital signature authenticating the credential as issued by an issuer.                |
-| **Proof**                 | A zero-knowledge proof demonstrating that specified credential conditions are satisfied. |
-| **Issuer registry**       | The on-chain registry used to determine whether an issuer is authorized.                 |
-| **Revocation**            | The process of invalidating an otherwise authentic credential.                           |
-| **Claim**                 | A machine-readable statement contained in a credential.                                  |
+The following are defined by their own frozen specifications and MUST conform to this document:
 
-## 4. Protocol Versioning
+- issuer-registry leaf and root construction
+- credential Merkle-leaf and internal-node construction
+- revocation-tree construction
+- witness interfaces
+- proof requests and public proof inputs
+- verification result semantics
 
-All cryptographic domain-separated values include the protocol version.
+Changing a field, field type, field order, domain tag, hash or commitment construction, signature scheme, temporal boundary, or semantic meaning defined here requires a new protocol version. Editorial clarification that does not change behavior MAY retain V1.
 
-The version namespace for this specification is:
+## 4. Compact V1 Baseline
 
-```text
-JP:CREDENTIAL:V1
+The V1 contract implementation MUST begin with:
+
+```compact
+pragma language_version 0.23;
 ```
 
-A protocol implementation MUST NOT silently interpret a credential created under another protocol version as a Version 1 credential.
+V1 uses Compact's typed representation for every value participating in a protocol hash or commitment. JSON, JavaScript object serialization, property insertion order, delimiter-based string concatenation, and human-readable certificate files are not cryptographic encodings.
 
-Changes to any of the following require a new protocol version:
+The protocol uses:
 
-- credential serialization
-- hash construction
-- signature construction
-- field semantics
-- identifier derivation
-- commitment construction
-- proof semantics
+- `persistentHash<T>` for persistent identifiers and message digests
+- `persistentCommit<T>` for persistent hiding commitments
+- `secp256k1EcdsaVerify` for in-circuit issuer-signature verification
+- `blockTimeGte` and `blockTimeLt` for current on-chain temporal checks
 
-Implementations MAY support multiple protocol versions simultaneously, but each credential MUST explicitly identify the protocol version under which it was created.
+The Compact implementation MUST import the required native types and circuits from `CompactStandardLibrary`.
 
-## 5. Credential Model
+## 5. Terminology
 
-A credential consists of two conceptual layers:
+| Term | Definition |
+| --- | --- |
+| **Credential statement** | The fixed typed record containing the semantic V1 qualification assertion. |
+| **Private credential package** | The credential statement plus the private opening material and issuer signature delivered to the holder. |
+| **Credential ID** | A stable pseudonymous identifier for one issuance. |
+| **Issuance nonce** | A fresh issuer-generated 32-byte value used to derive the credential ID. |
+| **Subject secret** | A fresh holder-generated 32-byte secret proving control of the credential. |
+| **Subject commitment** | A credential-specific commitment to the subject secret. |
+| **Credential opening** | A fresh 32-byte opening used by `persistentCommit` to hide the credential statement. |
+| **Credential commitment** | The persistent commitment to the complete credential statement. |
+| **Issuer signature** | The issuer's secp256k1 ECDSA signature authenticating the credential ID and commitment. |
+| **Presentation artifact** | A PDF, image, JSON envelope, or UI representation that is not itself an authoritative protocol object. |
 
-1. **Public protocol metadata**
-2. **Credential claims**
+## 6. Primitive Types
 
-The credential is represented as a canonical structured object before cryptographic processing.
+V1 uses the following protocol types:
 
-A Version 1 credential has the following logical structure:
+| Value | Compact type |
+| --- | --- |
+| Protocol version | `Uint<16>` |
+| Qualification schema version | `Uint<16>` |
+| Timestamp | `Uint<64>` |
+| Issuer ID | `Bytes<32>` |
+| Credential ID | `Bytes<32>` |
+| Issuance nonce | `Bytes<32>` |
+| Subject secret | `Bytes<32>` |
+| Subject commitment | `Bytes<32>` |
+| Credential opening | `Bytes<32>` |
+| Credential commitment | `Bytes<32>` |
+| Qualification type | `Bytes<32>` |
+| Domain tag | `Bytes<32>` |
+| Issuer verification key | `Secp256k1Point` |
+| Issuer signature | `Secp256k1EcdsaSignature` |
+
+The V1 protocol version value is:
 
 ```text
-Credential {
-    version
-    credentialId
-    issuerId
-    subject
-    qualification
-    issuedAt
-    expiresAt
-    claims
-    signature
+1
+```
+
+All byte strings in application storage or transport MUST use an explicitly documented encoding. Lowercase hexadecimal without a `0x` prefix is RECOMMENDED. Transport encoding MUST NOT change the Compact value that enters a protocol construction.
+
+## 7. Domain Tags
+
+Each domain tag is the 32-byte SHA-256 digest of the exact UTF-8 label shown below.
+
+| Purpose | UTF-8 label | `Bytes<32>` hexadecimal |
+| --- | --- | --- |
+| Credential ID | `JP:CREDENTIAL:ID:V1` | `623c528860cfbea80c5c278171c7fee117e356b12ee5a2d8002d60522e56371b` |
+| Subject commitment | `JP:SUBJECT:COMMITMENT:V1` | `d0f8ef87f028847a80da0f254686e455ee2548625ca7d6f0fc030246c12cb5b2` |
+| Credential commitment | `JP:CREDENTIAL:COMMITMENT:V1` | `c1d6eaac074956c51c0cd0c751db4f42a100c8040e73c45cbe8f50fe4a34ae82` |
+| Issuer signature message | `JP:CREDENTIAL:SIGNATURE:V1` | `1406fcb965bc2d002c2da6a691a39e1dcf9c2b062e75d0eeaa88f01821eb5ea6` |
+
+Implementations MUST embed or deterministically reproduce the exact 32-byte values. They MUST NOT pass the variable-length labels directly where a `Bytes<32>` domain field is required.
+
+## 8. Founding Qualification Schema
+
+JustProof V1 supports one protocol qualification schema:
+
+```text
+JustProof Midnight Builder Demonstration Credential
+```
+
+Its qualification type is the SHA-256 digest of the exact UTF-8 label:
+
+```text
+JP:QUALIFICATION:MIDNIGHT-BUILDER-DEMO:V1
+```
+
+The resulting value is:
+
+```text
+3216c2bb7727244e256fe3a7f6e89d148b3636d31b525dbd436d97ca922a3db7
+```
+
+Its qualification schema version is:
+
+```text
+1
+```
+
+The qualification is a demonstration credential. It MUST NOT be presented as an official Midnight Academy credential or as evidence that JustProof represents Midnight Academy.
+
+V1 does not support an arbitrary claims map. Free-form claims, dynamic claim names, scores, grades, and generalized predicates are outside the frozen V1 schema. A new cryptographically provable claim requires an explicit schema extension and protocol-version decision; it MUST NOT be smuggled into presentation metadata.
+
+This restriction is deliberate. Compact circuits require fixed, typed proof semantics, and the V1 product scope requires one qualification proof rather than a generalized credential framework.
+
+## 9. Credential Statement
+
+The normative semantic credential is:
+
+```text
+CredentialStatementV1 {
+    protocolVersion: Uint<16>
+    credentialId: Bytes<32>
+    issuerId: Bytes<32>
+    subjectCommitment: Bytes<32>
+    qualificationType: Bytes<32>
+    qualificationVersion: Uint<16>
+    issuedAt: Uint<64>
+    expiresAt: Uint<64>
 }
 ```
 
-The exact serialized representation MUST be deterministic.
+The field order is normative.
 
-Two semantically identical credentials MUST produce identical canonical representations and therefore identical cryptographic identifiers.
+The statement contains no holder name, email address, wallet address, certificate image, issuer display name, issuer verification key, signature, revocation flag, or Merkle position.
 
-## 6. Credential Fields
-
-### 6.1 `version`
-
-Identifies the protocol version.
-
-For Version 1:
+The statement MUST satisfy:
 
 ```text
-version = V1
+protocolVersion == 1
+qualificationType == 3216c2bb7727244e256fe3a7f6e89d148b3636d31b525dbd436d97ca922a3db7
+qualificationVersion == 1
+issuedAt > 0
+expiresAt == 0 OR expiresAt > issuedAt
 ```
 
-The version MUST be included in all credential-domain cryptographic operations.
+## 10. Credential ID
 
-### 6.2 `credentialId`
+Each issuance MUST have a fresh credential ID.
 
-Uniquely identifies the credential.
+The issuer MUST generate a fresh, unpredictable 32-byte `issuanceNonce` using a cryptographically secure random source. It MUST NOT intentionally reuse the same nonce with the same issuer ID.
 
-The identifier is derived from the canonical credential contents rather than being an arbitrary issuer-assigned value.
-
-The credential identifier MUST be deterministic.
-
-Conceptually:
+The normative input is:
 
 ```text
-credentialId = H("JP:CREDENTIAL:V1:ID" || canonicalCredential)
-```
-
-The exact encoding of the input components is defined by the canonical serialization rules in this specification.
-
-The credential identifier MUST NOT depend on:
-
-- the credential's human-readable PDF
-- the filename of a certificate
-- the frontend
-- the blockchain transaction identifier
-
-### 6.3 `issuerId`
-
-Identifies the issuer responsible for issuing the credential.
-
-The issuer identifier MUST resolve to an issuer registered with the JustProof issuer registry.
-
-The credential itself does not establish issuer authorization.
-
-Issuer authorization is established by resolving `issuerId` against the issuer registry.
-
-### 6.4 `subject`
-
-Identifies the credential subject.
-
-Version 1 SHOULD avoid requiring a plaintext personal identifier.
-
-A subject MAY instead be represented using a holder-controlled identifier or commitment.
-
-The protocol MUST NOT require a verifier to learn the subject's underlying personal identity merely to establish that a qualification is authentic.
-
-### 6.5 `qualification`
-
-Identifies the qualification awarded by the issuer.
-
-Examples include:
-
-```text
-Midnight Builder
-Certified JavaScript Developer
-Blockchain Security Specialist
-```
-
-The qualification name is a semantic claim and MUST be represented canonically.
-
-Where a qualification requires additional structured information, that information MUST be represented as explicit claims rather than encoded into a free-form string.
-
-### 6.6 `issuedAt`
-
-The timestamp at which the issuer issued the credential.
-
-The timestamp MUST use a deterministic representation.
-
-Version 1 uses Unix time in seconds:
-
-```text
-issuedAt: uint64
-```
-
-### 6.7 `expiresAt`
-
-Defines when the credential expires.
-
-A credential that does not expire MAY use an agreed sentinel value.
-
-The sentinel value MUST be defined by the implementation rather than inferred from an omitted field.
-
-### 6.8 `claims`
-
-Contains the machine-readable qualification claims.
-
-Claims MUST have deterministic names and values.
-
-For example:
-
-```text
-claims = {
-    level: "professional",
-    score: 92,
-    course: "Midnight Academy"
+CredentialIdInputV1 {
+    domain: Bytes<32>
+    protocolVersion: Uint<16>
+    issuerId: Bytes<32>
+    issuanceNonce: Bytes<32>
 }
 ```
 
-A verifier MUST be able to prove a property of a claim without necessarily revealing the claim's value.
-
-For example, a proof may establish:
+The field order is normative. Construction is:
 
 ```text
-score >= 80
+credentialId =
+    persistentHash<CredentialIdInputV1>({
+        domain: DOMAIN_CREDENTIAL_ID_V1,
+        protocolVersion: 1,
+        issuerId,
+        issuanceNonce
+    })
 ```
 
-without revealing:
+The credential ID identifies an issuance instance. It is not a commitment to the complete credential and is not evidence of issuer authorization, holder control, registry membership, or current validity.
+
+The credential ID MUST NOT depend on the subject commitment, qualification, timestamps, credential commitment, issuer verification key, Merkle position, Merkle root, revocation state, transaction ID, or presentation artifact.
+
+The credential ID is immutable. A corrected, replaced, or reissued credential MUST use a fresh issuance nonce and therefore a new credential ID.
+
+The issuance nonce is part of the private credential package so that a proof circuit can rederive and constrain the credential ID. The nonce is not required to be disclosed to a verifier or stored on the public ledger.
+
+## 11. Holder Binding
+
+Each credential MUST bind to a fresh credential-specific secret controlled by the holder.
+
+The holder MUST generate a fresh, unpredictable 32-byte `subjectSecret` using a cryptographically secure random source. The secret MUST NOT be derived from a name, email address, phone number, government identifier, wallet seed, wallet private key, or other low-entropy or reusable identity value.
+
+The holder MUST NOT intentionally reuse a subject secret across credentials.
+
+The subject commitment value is:
 
 ```text
-score = 92
+SubjectCommitmentValueV1 {
+    domain: Bytes<32>
+    protocolVersion: Uint<16>
+    credentialId: Bytes<32>
+}
 ```
 
-### 6.9 `signature`
-
-Contains the issuer's cryptographic signature over the canonical unsigned credential.
-
-The signature MUST NOT be calculated over itself.
-
-Conceptually:
+Construction is:
 
 ```text
-signature = Sign(
-    issuerPrivateKey,
-    credentialSigningMessage
+subjectCommitment =
+    persistentCommit<SubjectCommitmentValueV1>(
+        {
+            domain: DOMAIN_SUBJECT_COMMITMENT_V1,
+            protocolVersion: 1,
+            credentialId
+        },
+        subjectSecret
+    )
+```
+
+The subject commitment is credential-specific because the committed value includes `credentialId`.
+
+The holder sends `subjectCommitment`, not `subjectSecret`, to the issuer. The issuer MUST NOT require the subject secret during normal issuance.
+
+A valid holder-possession proof MUST rederive the subject commitment from the private subject secret and the credential ID and constrain it to the value in the credential statement.
+
+Knowledge of the subject secret proves control of the credential-bound secret. It does not prove the holder's legal identity, prevent voluntary credential sharing, or provide recovery if the secret is lost.
+
+## 12. Credential Commitment
+
+The credential commitment is a persistent hiding commitment to the complete credential statement.
+
+The issuer MUST generate a fresh, unpredictable 32-byte `credentialOpening` for every issuance. The opening MUST be generated with a cryptographically secure random source and securely delivered with the private credential package.
+
+The normative committed value is:
+
+```text
+CredentialCommitmentValueV1 {
+    domain: Bytes<32>
+    statement: CredentialStatementV1
+}
+```
+
+Construction is:
+
+```text
+credentialCommitment =
+    persistentCommit<CredentialCommitmentValueV1>(
+        {
+            domain: DOMAIN_CREDENTIAL_COMMITMENT_V1,
+            statement
+        },
+        credentialOpening
+    )
+```
+
+The credential commitment therefore binds:
+
+- protocol version
+- credential ID
+- issuer ID
+- subject commitment
+- qualification type
+- qualification version
+- issuance time; and
+- expiration time
+
+The credential opening, issuance nonce, subject secret, issuer signature, presentation metadata, Merkle position, and revocation state MUST NOT be fields inside the committed statement.
+
+The credential commitment is immutable. Changing any credential-statement field or the credential opening produces a different commitment except with negligible probability.
+
+The credential commitment is distinct from the credential ID:
+
+```text
+credentialId
+    = identity of one issuance
+
+credentialCommitment
+    = hiding commitment to that issuance's semantic statement
+```
+
+An implementation MUST NOT replace `persistentCommit` with `persistentHash` for this construction. The mandatory random opening is part of the V1 privacy design, not an optional application salt.
+
+## 13. Issuer Authentication
+
+V1 uses ECDSA over secp256k1 because Compact language version 0.23 exposes `Secp256k1Point`, `Secp256k1EcdsaSignature`, and `secp256k1EcdsaVerify` for in-circuit verification.
+
+Ed25519 is not the V1 JustProof credential-signature scheme and MUST NOT be used as a drop-in substitute.
+
+The normative signature-message input is:
+
+```text
+IssuerSignatureMessageV1 {
+    domain: Bytes<32>
+    protocolVersion: Uint<16>
+    credentialId: Bytes<32>
+    credentialCommitment: Bytes<32>
+}
+```
+
+Construction is:
+
+```text
+signatureMessage =
+    persistentHash<IssuerSignatureMessageV1>({
+        domain: DOMAIN_CREDENTIAL_SIGNATURE_V1,
+        protocolVersion: 1,
+        credentialId,
+        credentialCommitment
+    })
+```
+
+The issuer signs the resulting `Bytes<32>` message digest with the private key corresponding to its registered secp256k1 verification key:
+
+```text
+issuerSignature = Secp256k1EcdsaSign(
+    issuerSigningKey,
+    signatureMessage
 )
 ```
 
-The corresponding issuer public key is obtained through the issuer registry.
-
-## 7. Canonical Credential Representation
-
-Cryptographic operations MUST operate on a canonical representation.
-
-The protocol MUST NOT hash or sign:
-
-- JSON with arbitrary property ordering
-- JSON containing insignificant whitespace
-- language-specific object serialization
-- a human-readable certificate
-- a JavaScript object directly
-
-The canonical representation MUST define:
-
-- field ordering
-- field names
-- integer encoding
-- string encoding
-- optional-field behavior
-- array ordering
-- boolean representation
-- null representation
-- byte encoding
-
-An implementation MUST produce exactly the same canonical representation for the same logical credential.
-
-For Version 1, UTF-8 is used for textual values.
-
-## 8. Cryptographic Domain Separation
-
-All protocol hashes MUST use explicit domain separation.
-
-The Version 1 credential namespace is:
+Verification MUST constrain:
 
 ```text
-JP:CREDENTIAL:V1
+secp256k1EcdsaVerify(
+    signatureMessage,
+    issuerSignature,
+    registeredIssuerVerificationKey
+) == true
 ```
 
-Different cryptographic purposes MUST use different domain-separated labels.
+The verification key MUST come from an issuer leaf authenticated against the authoritative V1 issuer root. A key supplied only by the prover is not authoritative.
 
-For example:
-
-```text
-JP:CREDENTIAL:V1:ID
-JP:CREDENTIAL:V1:COMMITMENT
-JP:CREDENTIAL:V1:SIGNATURE
-JP:CREDENTIAL:V1:SUBJECT
-```
-
-A hash used for one purpose MUST NOT be reused for another purpose merely because the underlying input is identical.
-
-This prevents structurally different protocol operations from unintentionally sharing the same cryptographic domain.
-
-## 9. Credential Identifier
-
-The credential identifier provides a stable cryptographic identifier for a credential.
-
-Conceptually:
+The signature is not part of the credential statement or credential commitment. This prevents a circular construction:
 
 ```text
-CREDENTIAL_ID =
-    H(
-        "JP:CREDENTIAL:V1:ID" ||
-        canonicalCredential
-    )
-```
-
-The identifier MUST be derived from all fields whose modification would constitute a materially different credential.
-
-Consequently, changing any credential claim MUST produce a different credential identifier.
-
-The identifier is not itself proof of authenticity.
-
-Authenticity requires successful verification of the issuer signature and issuer authorization.
-
-## 10. Credential Commitment
-
-The credential commitment is the value published to the Midnight ledger.
-
-Conceptually:
-
-```text
-COMMITMENT =
-    H(
-        "JP:CREDENTIAL:V1:COMMITMENT" ||
-        canonicalCredential
-    )
-```
-
-The commitment provides a cryptographic binding between the on-chain record and the credential held privately by the holder.
-
-A verifier MUST NOT infer credential contents from the commitment.
-
-The commitment MUST be computationally infeasible to invert under the security assumptions of the selected hash primitive.
-
-## 11. Issuer Authentication
-
-An issuer MUST possess an issuer signing key.
-
-The corresponding issuer identity MUST be registered before credentials issued by that identity are considered valid by the JustProof protocol.
-
-The issuance flow is:
-
-```text
-Issuer
-  │
-  ├── constructs credential
-  │
-  ├── canonicalizes credential
-  │
-  ├── computes signing message
-  │
-  ├── signs credential
-  │
-  └── gives credential to holder
-```
-
-The issuer signature authenticates the credential's contents.
-
-A valid signature alone does not establish that the issuer is currently authorized.
-
-A verifier MUST therefore establish both:
-
-1. the issuer signature is valid; and
-2. the issuer is authorized by the issuer registry
-
-## 12. Issuer Registry
-
-The issuer registry is the authoritative source for issuer authorization.
-
-An issuer registry entry associates an issuer identifier with the cryptographic material required to authenticate credentials issued by that issuer.
-
-Conceptually:
-
-```text
-IssuerRecord {
-    issuerId
-    publicKey
-    status
-}
-```
-
-Where:
-
-```text
-status ∈ {
-    active,
-    revoked
-}
-```
-
-An issuer MUST be in the `active` state for a newly verified credential to be considered valid.
-
-The registry is separate from the credential.
-
-This allows issuer authorization to change without modifying previously issued credential data.
-
-## 13. Credential Lifecycle
-
-A credential progresses through the following lifecycle:
-
-```text
-ISSUED
-   │
-   ▼
-PUBLISHED
-   │
-   ├──────────────► REVOKED
-   │
-   ▼
-PROVABLE
-```
-
-### Issued
-
-The issuer has created and signed the credential.
-
-### Published
-
-The credential commitment has been recorded on Midnight.
-
-### Provable
-
-The holder possesses sufficient private information to generate a valid zero-knowledge proof.
-
-### Revoked
-
-The credential has been invalidated by the issuer according to the revocation rules.
-
-A credential MUST NOT be considered valid merely because its commitment exists on-chain.
-
-## 14. Revocation
-
-Credential validity is distinct from credential authenticity.
-
-A credential may have:
-
-- a valid issuer signature
-- a valid credential commitment
-
-and nevertheless be revoked.
-
-The protocol therefore treats revocation as an independent state.
-
-The revocation mechanism MUST allow a verifier to determine whether the credential is currently revoked without requiring publication of the credential itself.
-
-Version 1 uses credential-level revocation identified by `credentialId`.
-
-## 15. Proof
-
-A proof allows a holder to demonstrate that a private credential satisfies specified verification conditions.
-
-The holder supplies the credential and any required private values to the local proving environment.
-
-The prover generates a zero-knowledge proof demonstrating the required statements.
-
-Conceptually:
-
-```text
-private:
-    credential
-    issuerSignature
-    subject data
-    claim values
-
-public:
-    credentialId
-    issuerId
-    requested qualification
-    verification parameters
-```
-
-The proof MUST reveal only the information required by the verification policy.
-
-For example, a verifier MAY request proof that:
-
-```text
-qualification == "Midnight Builder"
-```
-
-without learning:
-
-- the holder's complete credential
-- unrelated claims
-- private subject information
-- other credential metadata
-
-## 16. Proof Soundness Requirements
-
-A verifier MUST accept a proof only if the proof establishes all required protocol conditions.
-
-At minimum, Version 1 verification SHOULD establish:
-
-1. the credential conforms to the expected protocol version
-2. the credential commitment corresponds to the credential used by the prover
-3. the credential identifier is correct
-4. the issuer signature is valid
-5. the issuer is authorized
-6. the credential has not been revoked
-7. the requested qualification conditions are satisfied
-8. any required temporal conditions are satisfied
-
-The verifier MUST NOT accept a proof merely because the prover knows a credential-shaped value.
-
-## 17. Privacy Requirements
-
-The protocol is designed around data minimization.
-
-A verifier SHOULD receive only:
-
-- the proof
-- public verification inputs
-- information intentionally disclosed by the holder
-
-The verifier SHOULD NOT receive the complete credential unless the holder explicitly chooses to disclose it.
-
-The Midnight ledger MUST NOT contain:
-
-- the holder's complete credential
-- plaintext personal information
-- private claim values
-- issuer private keys
-- holder private state
-
-The ledger may contain cryptographic commitments, issuer registry information, revocation information, and other public verification state required by the protocol.
-
-## 18. Human-Readable Credentials
-
-A human-readable certificate MAY be generated from the structured credential.
-
-Examples include:
-
-- PDF certificates
-- images
-- printable certificates
-- web-based credential views
-
-These representations are presentation artifacts and are not authoritative protocol objects.
-
-The authoritative credential is the canonical structured credential.
-
-A visual certificate MUST NOT be treated as proof of authenticity merely because it contains:
-
-- a logo
-- a QR code
-- a certificate number
-- an issuer name
-- a signature image
-
-Authenticity is established through the cryptographic protocol.
-
-## 19. Credential Publication
-
-Publishing a credential does not require publishing the credential contents.
-
-The holder or issuer publishes the cryptographic information required to establish the credential's existence and later verify proofs.
-
-Conceptually:
-
-```text
-credential
-    │
-    ▼
-canonicalization
-    │
-    ▼
+credential statement
+        ↓
 credential commitment
-    │
-    ▼
-Midnight contract
-    │
-    ▼
-on-chain verification state
+        ↓
+signature message
+        ↓
+issuer signature
 ```
 
-The published state MUST be sufficient for a verifier to determine whether a proof refers to an authentic and currently valid credential.
+A valid signature proves only that the holder of the issuer signing key authenticated the credential ID and commitment. It does not by itself prove that the issuer is registered, the credential is registered, the prover knows the subject secret, or the credential is currently valid.
 
-## 20. Separation of Private and Public State
+## 14. Private Credential Package
 
-The protocol distinguishes between private credential data and public verification state.
-
-### Private state
-
-Examples:
-
-- complete credential
-- private claims
-- subject information
-- issuer signature
-- holder secrets required by the proving protocol
-
-### Public state
-
-Examples:
-
-- issuer registry entries
-- credential commitments
-- credential identifiers
-- revocation state
-- other values explicitly designated as public protocol inputs
-
-Private state MUST NOT be published to the ledger.
-
-## 21. Threat Model
-
-Version 1 assumes:
-
-- cryptographic primitives are secure
-- issuer private keys remain secret
-- the issuer registry correctly represents issuer authorization
-- canonicalization is implemented deterministically
-- the Midnight ledger provides the expected integrity guarantees
-- the zero-knowledge proving system provides computational soundness and zero-knowledge under its documented assumptions
-
-The protocol does not protect against an issuer intentionally issuing a false credential.
-
-It also does not establish the real-world identity or trustworthiness of an issuer beyond the issuer registration process.
-
-## 22. Non-Goals
-
-Version 1 does not attempt to provide:
-
-- decentralized identity
-- anonymous issuer registration
-- universal interoperability with W3C Verifiable Credentials
-- biometric identity verification
-- recovery of lost credentials
-- encrypted on-chain credential storage
-- decentralized certificate design
-- automatic trust in arbitrary issuers
-
-These concerns may be addressed by future protocol versions or application-layer extensions.
-
-## 23. Implementation Boundary
-
-The protocol specification defines **what must be true**.
-
-The Compact contract defines **how public verification state is maintained and verified on Midnight**.
-
-The witnesses define **how private credential information is supplied to Compact circuits**.
-
-The TypeScript application defines **how credentials, proofs, wallets, and user interactions are orchestrated**.
-
-The frontend defines **how the protocol is presented to users**.
-
-The implementation MUST NOT introduce semantics that contradict this specification.
-
-## 24. Version 1 Cryptographic Primitives
-
-The following primitives are protocol-level parameters and MUST be frozen before contract implementation.
-
-| Purpose               | Primitive                       |
-| --------------------- | ------------------------------- |
-| Hashing               | TBD                             |
-| Digital signatures    | TBD                             |
-| Credential identifier | Version 1 domain-separated hash |
-| Credential commitment | Version 1 domain-separated hash |
-| Zero-knowledge proofs | Midnight Compact proving system |
-| Canonical encoding    | TBD                             |
-
-The selected primitives MUST be compatible with the Midnight Compact environment and its supported cryptographic types.
-
-Once finalized, changing a primitive requires a new protocol version.
-
-## 25. Normative Invariants
-
-The following invariants MUST hold for every valid Version 1 credential:
-
-1. A credential MUST identify its protocol version.
-2. A credential MUST identify its issuer.
-3. The issuer MUST be registered before the credential can be considered authorized.
-4. The credential MUST have a deterministic canonical representation.
-5. The credential identifier MUST be deterministically derived from the canonical credential.
-6. The credential commitment MUST be deterministically derived from the canonical credential.
-7. The issuer signature MUST authenticate the canonical unsigned credential.
-8. A credential commitment MUST NOT reveal the credential contents.
-9. A valid proof MUST bind to the credential commitment being verified.
-10. A verifier MUST be able to distinguish an authentic credential from a forged credential.
-11. A verifier MUST be able to distinguish a valid credential from a revoked credential.
-12. Private credential information MUST NOT be required to be published on-chain.
-13. Human-readable certificate representations MUST NOT be authoritative.
-14. Protocol semantics MUST NOT depend on frontend implementation details.
-
-## 26. Reference Verification Flow
-
-A verifier requesting proof of a qualification follows this conceptual flow:
+The issuer delivers a private credential package to the holder:
 
 ```text
-Verifier
-   │
-   │ requests proof
-   ▼
-Holder
-   │
-   │ selects credential privately
-   ▼
-Local prover
-   │
-   ├── validates credential structure
-   ├── validates issuer signature
-   ├── derives credential identifier
-   ├── derives credential commitment
-   ├── checks required claims
-   └── generates zero-knowledge proof
-   │
-   ▼
-Midnight verification
-   │
-   ├── checks proof
-   ├── checks issuer authorization
-   ├── checks credential state
-   └── checks requested qualification
-   │
-   ▼
-Verifier receives result
+PrivateCredentialPackageV1 {
+    statement: CredentialStatementV1
+    issuanceNonce: Bytes<32>
+    credentialOpening: Bytes<32>
+    issuerSignature: Secp256k1EcdsaSignature
+}
 ```
 
-At no point does the verifier need to receive the holder's complete credential.
+The holder stores the package together with the independently generated `subjectSecret`.
 
-## 27. Protocol Status
+The holder's complete private credential state is conceptually:
 
-This document defines the intended semantics of JustProof Credential Protocol Version 1.
+```text
+HolderCredentialStateV1 {
+    credentialPackage: PrivateCredentialPackageV1
+    subjectSecret: Bytes<32>
+    credentialIndex: Uint<32>
+    credentialMerklePath
+    revocationMerklePath
+}
+```
 
-Before the Compact contract is considered protocol-complete, the following MUST be frozen:
+`credentialIndex` and the Merkle paths are registry witness material, not immutable fields of the credential. Paths MAY be refreshed as authenticated registry roots change.
 
-- canonical serialization
-- hash function
-- signature scheme
-- public-key representation
-- credential identifier construction
-- commitment construction
-- issuer identifier construction
-- issuer registry semantics
-- revocation semantics
-- credential validity rules
-- exact public and private circuit inputs
+The application MAY wrap the package in JSON, CBOR, an encrypted file, or another transport format. That wrapper is not the cryptographic representation and MUST NOT be hashed or signed in place of the typed constructions in this specification.
 
-Contract implementation and protocol tests MUST subsequently conform to these frozen definitions.
+The holder SHOULD encrypt the private package and subject secret at rest. Logs, analytics, crash reports, URLs, browser-rendered markup, and public transaction metadata MUST NOT contain them.
+
+## 15. Issuance Protocol
+
+The V1 issuance sequence is:
+
+1. The issuer obtains its registered `issuerId`.
+2. The issuer generates a fresh `issuanceNonce`.
+3. The issuer derives `credentialId`.
+4. The holder generates a fresh `subjectSecret` locally.
+5. The holder derives `subjectCommitment` and sends only the commitment to the issuer.
+6. The issuer constructs and validates `CredentialStatementV1`.
+7. The issuer generates a fresh `credentialOpening`.
+8. The issuer derives `credentialCommitment` with `persistentCommit`.
+9. The issuer derives `signatureMessage` and signs it with the registered issuer key.
+10. The issuer delivers the private credential package to the holder through an authenticated confidential channel.
+11. The credential registration circuit validates the applicable constructions and appends the credential leaf to the credential registry.
+12. After finalization, the issuer retains the private `IssuerRevocationRecordV1`, including the exact issuance nonce and assigned credential index, and the holder records the index and obtains the registry witness data required for later proofs.
+
+The issuer MUST NOT issue a package whose credential statement, commitment, and signature disagree.
+
+An issued but unregistered package is an issuer-authenticated artifact, but it is not a registered JustProof credential and MUST NOT satisfy a proof requiring registry membership.
+
+## 16. Registration Relationship
+
+The credential registry MUST derive its leaf from exactly:
+
+```text
+credentialId
+credentialCommitment
+```
+
+using the frozen credential-leaf construction defined by the Merkle specification.
+
+The complete credential, subject secret, issuance nonce, credential opening, and issuer signature MUST NOT be stored in the credential leaf.
+
+The public ledger is required to expose the authoritative credential root and registry counter. This specification does not require individual credential IDs, commitments, or leaves to be exposed as standalone public ledger fields.
+
+Registration MUST NOT change the credential statement, credential ID, subject commitment, credential commitment, or issuer signature.
+
+## 17. Revocation Relationship
+
+Revocation is separate from the credential and credential registry.
+
+V1 revocation is:
+
+- credential-level
+- current-state
+- monotonic; and
+- irreversible
+
+The only transition is:
+
+```text
+NOT_REVOKED → REVOKED
+```
+
+Revocation MUST NOT modify or delete the credential statement, credential ID, subject commitment, credential commitment, issuer signature, credential leaf, or credential-registry membership.
+
+V1 does not support unrevocation, scheduled revocation, historical validity proofs, or revocation timestamps as part of the credential schema. If a credential is revoked in error, the issuer MUST issue a new credential with a new issuance nonce and credential ID.
+
+The revocation specification defines how the current revocation root authenticates the revocation state at the credential's immutable registry index.
+
+Issuer-authorized revocation MUST rederive the credential ID from the current authenticated issuer ID and the exact issuance nonce retained in `IssuerRevocationRecordV1`. This issuer-side binding does not require the holder's subject secret, credential opening, complete statement, or participation.
+
+## 18. Temporal Semantics
+
+All V1 timestamps are Unix time in seconds from `1970-01-01T00:00:00Z` and use `Uint<64>`.
+
+`issuedAt` is inclusive. `expiresAt` is exclusive.
+
+For current block time `T`, the expiration condition is:
+
+```text
+issuedAt <= T
+AND
+(expiresAt == 0 OR T < expiresAt)
+```
+
+An `expiresAt` value of `0` means that the credential does not expire. No actual expiration timestamp may use `0`.
+
+For on-chain current-validity verification, the Compact circuit MUST express the boundary with the standard-library block-time comparison circuits rather than accepting a prover-selected clock:
+
+```text
+blockTimeGte(issuedAt)
+AND
+(expiresAt == 0 OR blockTimeLt(expiresAt))
+```
+
+V1 verification is current-state verification. Historical verification at an arbitrary supplied timestamp is outside scope.
+
+## 19. Credential Lifecycle
+
+The V1 lifecycle is:
+
+```text
+UNISSUED
+    ↓ issuer creates and signs package
+ISSUED
+    ↓ authorized registration
+REGISTERED
+    ├── current and unexpired → PROVABLE
+    ├── current time reaches expiresAt → EXPIRED
+    └── authorized revocation → REVOKED
+```
+
+`PROVABLE` describes a holder who possesses the required private state and current registry witnesses. It is not a permanent on-chain status.
+
+`EXPIRED` is derived from the current block time and immutable credential fields. `REVOKED` is derived from the current revocation registry. Neither state mutates the credential.
+
+## 20. Current Qualification Proof Requirements
+
+A valid V1 qualification proof MUST jointly establish:
+
+1. `protocolVersion == 1`
+2. the credential ID is correctly derived from the issuer ID and private issuance nonce
+3. the subject commitment is correctly opened with the private subject secret
+4. the credential commitment is correctly opened with the private credential statement and credential opening
+5. the issuer signature message is correctly derived
+6. the issuer signature verifies under the registered issuer verification key
+7. the issuer leaf is a member of the authoritative current issuer root
+8. the credential leaf binds the same credential ID and credential commitment
+9. the credential leaf is a member of the authoritative current credential root
+10. the corresponding current revocation position is unrevoked
+11. the qualification type and version satisfy the exact proof request
+12. the current block time satisfies the issuance and expiration rules; and
+13. the proof is bound to the public request parameters required by the verification protocol
+
+Every private component MUST refer to the same credential. A prover MUST NOT be able to combine one credential's statement, another credential's signature, a third credential's Merkle path, or an unrelated subject secret.
+
+## 21. Private and Public Boundary
+
+The following values are private by default:
+
+- the complete credential statement
+- issuance nonce
+- subject secret
+- credential opening
+- issuer signature
+- credential ID
+- credential commitment
+- credential and revocation Merkle paths
+- credential registry index; and
+- any presentation metadata identifying the holder
+
+The following values are authoritative public state:
+
+- protocol deployment and contract address
+- issuer root and next issuer index
+- credential root and next credential index
+- revocation root; and
+- circuit verifier keys and other network-required contract metadata
+
+A particular proof request MAY intentionally disclose the issuer ID or qualification type. Such disclosure MUST be explicit in the proof statement.
+
+The protocol MUST NOT assume that a value remains private merely because the frontend does not display it. Transaction arguments, disclosed circuit values, returned exported-circuit values, emitted events, and public ledger fields are public.
+
+When a Compact circuit moves witness-derived information into public state, the implementation MUST use `disclose` only at the smallest intentional boundary. An implementation MUST NOT wrap an entire private credential or compound private object in `disclose` when only a derived root or explicitly public value is required.
+
+## 22. Human-Readable Credentials
+
+A holder MAY receive a PDF, image, web view, or other human-readable certificate generated from the private credential package.
+
+Presentation artifacts are non-authoritative. They MUST NOT be treated as proof merely because they contain a logo, certificate number, QR code, signature image, or issuer name.
+
+Human-readable fields such as a holder name MAY appear in a private presentation artifact without becoming V1 cryptographic fields. If such a field is not in `CredentialStatementV1`, a JustProof V1 proof does not authenticate it.
+
+A QR code MAY initiate a JustProof verification flow or encode non-sensitive routing metadata. It MUST NOT require embedding the private credential package, subject secret, credential opening, or issuer signature in a publicly scannable artifact.
+
+OCR of a presentation artifact is not an authoritative credential-import path in V1. A structured private credential package is required for proof generation.
+
+## 23. Security Properties
+
+Assuming secure randomness and the security of the Compact primitives, V1 provides:
+
+- **Instance separation:** fresh issuance nonces produce distinct credential IDs.
+- **Holder binding:** a proof requires knowledge of a credential-specific subject secret.
+- **Credential hiding:** `persistentCommit` hides the credential statement using a fresh 32-byte opening.
+- **Credential binding:** changing the committed statement invalidates the commitment opening.
+- **Issuer authenticity:** the issuer signature authenticates the credential ID and commitment.
+- **Registry binding:** Merkle membership binds the credential to authoritative issuer and credential roots.
+- **Current-state invalidation:** the current revocation root can invalidate an otherwise authentic registered credential.
+- **Selective verification:** the verifier can learn the requested qualification result without receiving the complete credential.
+
+## 24. Threat Model and Limitations
+
+V1 assumes:
+
+- the issuer and holder use cryptographically secure random sources
+- the issuer protects its signing key and retained private revocation record, including the issuance nonce
+- the holder protects the subject secret, credential opening, issuance nonce, and private package
+- the registry authority follows the frozen issuer-registration rules
+- the Compact compiler, runtime, proof system, and network satisfy their documented security assumptions; and
+- application-side representations match Compact through cross-runtime test vectors
+
+V1 does not prevent:
+
+- an authorized issuer from issuing a false or misleading credential
+- a holder from voluntarily transferring the private package and subject secret
+- loss of access when the holder loses required private state
+- correlation through information intentionally disclosed by a proof request
+- compromise of private data by a remote or untrusted proof service; or
+- metadata leakage outside the cryptographic protocol
+
+The proof server processes witness data during proof generation. Production deployments SHOULD keep proof generation and the proof server within a holder-controlled or explicitly trusted environment.
+
+## 25. Non-Goals
+
+V1 does not provide:
+
+- a decentralized identity system
+- real-world identity proof
+- wallet-address binding
+- arbitrary credential schemas or claims
+- W3C Verifiable Credentials interoperability
+- issuer key rotation or issuer lifecycle status
+- credential modification or deletion
+- unrevocation or historical verification
+- nullifiers or one-time presentations
+- recovery of lost holder secrets
+- encrypted on-chain credential storage; or
+- authoritative verification from a PDF, image, or OCR result
+
+## 26. Normative Invariants
+
+Every conforming V1 implementation MUST preserve these invariants:
+
+1. The credential statement has exactly the frozen fields, types, order, and semantics.
+2. Protocol version, qualification type, and qualification version equal their frozen V1 values.
+3. Every issuance uses a fresh issuance nonce, subject secret, and credential opening.
+4. Credential ID derivation uses the frozen typed input and domain tag.
+5. Subject commitment derivation uses `persistentCommit` with the frozen value, domain tag, and subject secret.
+6. Credential commitment derivation uses `persistentCommit` with the frozen value, domain tag, and credential opening.
+7. The issuer signature message uses the frozen typed input and domain tag.
+8. Issuer signatures use secp256k1 ECDSA and are verified in-circuit against a registry-authenticated `Secp256k1Point`.
+9. No cryptographic construction hashes or signs arbitrary JSON or a presentation artifact.
+10. Credential ID, subject commitment, credential commitment, and issuer signature are immutable after issuance.
+11. Credential registration and revocation do not mutate the credential.
+12. Revocation does not remove credential-registry membership.
+13. A reissued credential receives a new credential ID.
+14. Current validity uses current authoritative registry state and Compact block time.
+15. A valid signature is not treated as issuer registration.
+16. Credential membership is not treated as current validity.
+17. Holder-secret knowledge is not treated as real-world identity proof.
+18. Private credential material is not stored as public ledger state.
+19. Presentation metadata is not treated as a cryptographic credential field.
+20. The verifier learns only the public statement and any values intentionally disclosed by that statement.
+21. Issuer-authorized revocation rederives the credential ID from the authenticated issuer ID and the retained issuance nonce.
+
+## 27. Required Test Vectors and Tests
+
+Before the V1 implementation is considered conformant, it MUST include cross-runtime vectors that match Compact and TypeScript for:
+
+- all four domain-tag constants
+- the founding qualification-type constant
+- credential ID derivation
+- subject commitment opening
+- credential commitment opening
+- issuer signature-message derivation; and
+- secp256k1 ECDSA verification
+
+The suite MUST also test:
+
+- the `expiresAt == 0` sentinel
+- the exact `issuedAt` inclusive boundary
+- the exact `expiresAt` exclusive boundary
+- modified credential fields
+- incorrect issuance nonce
+- incorrect subject secret
+- incorrect credential opening
+- signature from another issuer
+- unregistered issuer
+- incorrect credential path or root
+- revoked credential
+- wrong issuer/nonce/credential-ID binding during revocation
+- wrong qualification request
+- proof input mixing across credentials; and
+- absence of private values from ledger state, events, exported outputs, logs, and analytics
+
+A changed cryptographic vector is a protocol change, not an ordinary regression update.
+
+## 28. Specification Ownership
+
+To prevent future drift, this document is authoritative for:
+
+- `CredentialStatementV1`
+- credential ID construction
+- subject commitment construction
+- credential commitment construction
+- issuer signature-message construction
+- the secp256k1 ECDSA credential-signature choice; and
+- expiration boundaries
+
+Other protocol documents MUST reference these definitions rather than restating incompatible alternatives.
+
+The issuer-registry specification is authoritative for issuer-ID, issuer-leaf, registry-authority, root, and membership rules.
+
+The commitments specification is authoritative for the security analysis and implementation constraints of the commitment constructions, but MUST use the exact constructions frozen here.
+
+The Merkle specification is authoritative for credential-leaf, internal-node, empty-tree, path, root, depth, and index rules.
+
+The revocation specification is authoritative for current revocation state and transitions.
+
+The witness, proof, and verification specifications are authoritative for how these frozen credential values enter and are constrained by a proof.
+
+## 29. Reference Flow
+
+```text
+Issuer                     Holder                     Midnight
+  │                           │                           │
+  │ generate nonce            │                           │
+  │ derive credential ID      │                           │
+  │ ─── issuance context ───► │                           │
+  │                           │ generate subject secret   │
+  │ ◄── subject commitment ── │                           │
+  │ build statement           │                           │
+  │ commit statement          │                           │
+  │ sign commitment           │                           │
+  │ ── private package ─────► │                           │
+  │                           │                           │
+  │ register credential ───────────────────────────────► │
+  │                           │ ◄── index/path/state ─── │
+  │                           │                           │
+  │                           │ generate private proof    │
+  │                           │ ───── proof only ───────► │
+  │                           │                           │ verify current
+  │                           │                           │ qualification
+```
+
+The protocol's central guarantee is:
+
+> A holder can prove control of a currently valid, registered, issuer-authenticated V1 qualification credential without giving the verifier the credential itself.
+
+## 30. Implementation References
+
+This specification is aligned with the official Midnight documentation for the pinned toolchain:
+
+- [Compact toolchain 0.31.0 release notes](https://docs.midnight.network/relnotes/compact/toolchain-0.31.0)
+- [Compact standard-library API](https://docs.midnight.network/compact/standard-library/exports)
+
+These references are informative. The frozen constants and protocol semantics in this document are normative for JustProof V1.

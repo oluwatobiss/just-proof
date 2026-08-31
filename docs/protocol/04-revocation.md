@@ -1,1305 +1,879 @@
 # JustProof Credential Revocation Protocol
 
-- **Status:** Draft
-- **Protocol:** JustProof Credential Protocol v1
-- **Namespace:** `JP:CREDENTIAL:V1`
+- **Status:** Frozen
+- **Protocol:** JustProof Credential Protocol V1
+- **Specification revision:** `1.0.1`
+- **Frozen on:** `2026-08-31`
+- **Compact language:** `0.23`
+- **Compact toolchain:** `0.31.0`
+- **Compact runtime:** `0.16.0`
 
 ## 1. Purpose
 
-This document specifies credential revocation for the JustProof Credential Protocol.
+This document defines JustProof V1 credential revocation: the revocation authority, authorization message, authenticated state, Merkle leaves and root, irreversible state transition, private non-revocation proof, current-state semantics, and privacy boundary.
 
-Revocation allows an authorized issuer to invalidate a previously issued credential without requiring the credential itself to be publicly disclosed.
+The revocation registry answers one narrow question:
 
-The revocation system establishes whether a specific credential remains valid under the applicable verification policy.
+> Is the credential registered at this immutable credential index unrevoked in the current authoritative JustProof state?
 
-The revocation protocol is intentionally separate from issuer authorization.
+Revocation does not modify or delete the credential, credential commitment, credential signature, or credential-registry membership.
 
-The issuer registry answers:
+## 2. Normative Language
 
-> Is this issuer authorized to issue credentials?
+The terms **MUST**, **MUST NOT**, **REQUIRED**, **SHOULD**, **SHOULD NOT**, and **MAY** are normative.
 
-The revocation registry answers:
+Where a conceptual record is shown, its field names, field order, and Compact types are normative unless the text explicitly says otherwise.
 
-> Is this particular credential still valid?
+## 3. Freeze Scope
 
-Together they establish issuer and credential status.
+This specification freezes the following V1 decisions:
 
-## 2. Scope
+- revocation is credential-level, current-state, monotonic, and irreversible
+- the credential's registered issuer is the sole revocation authority
+- revocation uses the same registered secp256k1 key that authenticated the credential
+- the circuit rederives the credential ID from that authenticated issuer ID and the issuer-retained private issuance nonce
+- authorization requires both the original credential signature and a new revocation signature
+- the revocation tree has depth 16 and shares indices with the credential tree
+- an empty revocation leaf means `NOT_REVOKED`
+- a credential-bound revoked leaf means `REVOKED`
+- the only transition is empty leaf to revoked leaf at the same credential index
+- the public contract stores the current revocation root, not a public revoked-ID set
+- private non-revocation is proved by authenticating the empty leaf at the credential's index
+- V1 records no protocol revocation timestamp or reason; and
+- V1 has no unrevocation, scheduled revocation, historical root verification, delegated authority, or batch revocation
 
-This specification defines:
+Changing the authority, signature scheme, authorization message, leaf construction, tree depth, index relationship, node construction, transition, timestamp policy, privacy boundary, or validity semantics defined here requires a new protocol version. Editorial clarification that does not change behavior MAY retain V1.
 
-- credential revocation
-- credential identifiers
-- revocation state
-- revocation authority
-- revocation operations
-- revocation verification
-- proof interaction
-- historical revocation state
-- unrevocation policy
-- privacy requirements
-- contract requirements
-- verification semantics
-- failure conditions
+## 4. Compact V1 Baseline
 
-This specification does not define:
+The V1 contract implementation MUST begin with:
 
-- the complete credential schema
-- issuer registration
-- credential commitments
-- the credential Merkle tree
-- zero-knowledge proof construction
-- issuer signature construction
+```compact
+pragma language_version 0.23;
+```
 
-Those concerns are defined by the corresponding protocol specifications.
+The implementation MUST import the required native types and circuits from `CompactStandardLibrary`.
 
-## 3. Revocation Model
+V1 uses:
 
-A credential may transition from valid to revoked after issuance.
+- `persistentHash<T>` for revocation leaves, Merkle nodes, and signed-message digests;
+- `Secp256k1Point` for issuer verification keys;
+- `Secp256k1EcdsaSignature` for original credential and revocation-authorization signatures; and
+- `secp256k1EcdsaVerify` for in-circuit verification of both signatures.
 
-Conceptually:
+Every signature digest MUST be derived and constrained from its exact typed message in the same circuit that verifies the signature. A caller-supplied digest is not authoritative.
+
+Witness results, authentication paths, signatures, indices, credential identifiers, and commitments are untrusted circuit inputs until the circuit constrains them to authoritative ledger roots and frozen cryptographic constructions.
+
+## 5. Terms and Roles
+
+| Term | Definition |
+| --- | --- |
+| **Revocation authority** | The registered issuer whose key originally authenticated the credential. |
+| **Credential index** | The immutable position assigned when the credential is appended to the credential registry. |
+| **Revocation position** | The revocation-tree position equal to the credential index. |
+| **Empty revocation leaf** | The canonical V1 leaf representing `NOT_REVOKED`. |
+| **Revoked credential leaf** | The canonical V1 leaf binding the revoked credential ID and commitment. |
+| **Revocation root** | The authoritative current root of the V1 revocation tree. |
+| **Revocation authorization** | The issuer's secp256k1 signature approving the irreversible transition for one exact credential and deployment. |
+| **Non-revocation proof** | A proof that the empty revocation leaf occupies the same current index as an authenticated registered credential. |
+| **Revocation-state provider** | An off-chain service maintaining private revocation-tree data and paths. It is an availability service, not an authority. |
+
+Issuer authorization and credential revocation are separate. A registered issuer may have both revoked and unrevoked credentials. Revoking one credential does not modify issuer-registry state or another credential.
+
+## 6. Primitive Types and Constants
+
+| Value | Compact type or value |
+| --- | --- |
+| Protocol version | `Uint<16>` |
+| Protocol version value | `1` |
+| Issuance nonce | `Bytes<32>` |
+| Credential ID | `Bytes<32>` |
+| Credential commitment | `Bytes<32>` |
+| Issuer ID | `Bytes<32>` |
+| Issuer verification key | `Secp256k1Point` |
+| Credential signature | `Secp256k1EcdsaSignature` |
+| Revocation signature | `Secp256k1EcdsaSignature` |
+| Credential and revocation index | `Uint<32>` |
+| Revocation root, leaf, node, or sibling | `Bytes<32>` |
+| Revocation authentication path | `Vector<16, Bytes<32>>` |
+| Tree depth | `16` |
+| Tree capacity | `65,536` |
+| Registry contract | `ContractAddress` |
+| Registry context | `Bytes<32>` |
+
+Indices use `Uint<32>` so the surrounding registry can represent both valid indices `0..65,535` and the full-tree counter sentinel `65,536`.
+
+All byte strings in application storage or transport MUST use a documented encoding. Lowercase hexadecimal without a `0x` prefix is RECOMMENDED. Transport encoding MUST NOT change the Compact value entering a hash or signature circuit.
+
+## 7. Domain Tags
+
+Each domain tag is the 32-byte SHA-256 digest of the exact UTF-8 label shown below.
+
+| Purpose | UTF-8 label | `Bytes<32>` hexadecimal |
+| --- | --- | --- |
+| Empty revocation leaf | `JP:REVOCATION:EMPTY:V1` | `ab6b939fe6f80e9b6fdf836cbd14becb49e1c743b739597ec3d89e8abfff0d66` |
+| Revoked credential leaf | `JP:REVOCATION:REVOKED:V1` | `e8619ec6bc693ad50f00e5dacc6b7b32f58d343b78609c27caf3774504bf6371` |
+| Revocation authorization | `JP:REVOCATION:AUTHORIZATION:V1` | `df04900884c49e6c7917d37ddb0b163fba730acce4119bd3efa9885819bb8f6a` |
+| Shared Merkle node | `JP:MERKLE:NODE:V1` | `ac80b146f1c63367493a75e4184b1125ebcb768858d1cbf71d9b0adb9a171e86` |
+
+Implementations MUST embed or deterministically reproduce the exact 32-byte values. They MUST NOT pass the variable-length labels directly where a `Bytes<32>` domain field is required.
+
+The displayed labels define domain constants only. A typed `persistentHash` is not equivalent to hashing a delimiter-based concatenation of the displayed fields.
+
+## 8. Revocation Semantics
+
+The only V1 revocation transition is:
 
 ```text
-                 Credential Issuance
-                         │
-                         ▼
-                      VALID
-                         │
-                         │ revoke
-                         ▼
-                     REVOKED
+NOT_REVOKED -> REVOKED
 ```
 
-The protocol MUST distinguish:
+The transition is:
+
+- credential-specific
+- issuer-authorized
+- effective in current state
+- irreversible
+- non-repeatable; and
+- independent of credential expiration and issuer registration
+
+The contract MUST reject:
 
 ```text
-VALID
+REVOKED -> NOT_REVOKED
+REVOKED -> REVOKED
 ```
 
-from:
+The second revocation attempt is rejected rather than treated as an idempotent success. No exported circuit may reset or overwrite a revoked position.
+
+## 9. Current-State Effect and No Timestamp
+
+V1 does not include `revokedAt` in a credential, revoked leaf, authorization message, public input, or validity rule.
+
+A revocation becomes effective when the state transition containing the new `revocationRoot` becomes authoritative ledger state. Every later current-state verification MUST use that root or a later current root and reject the revoked credential.
+
+Transaction ordering, block metadata, indexer timestamps, and application timestamps MAY be retained as operational metadata. They are not V1 cryptographic fields and MUST NOT support claims such as:
+
+> The credential was valid at historical time T.
+
+V1 does not support future-effective or scheduled revocation, backdated revocation, grace periods, historical validity, or arbitrary verifier-supplied revocation time.
+
+Credential issuance and expiration continue to use the current block-time semantics frozen in `01-credential.md`. Revocation itself requires no block-time circuit.
+
+## 10. Credential and Revocation Index Relationship
+
+The revocation tree has the same depth and capacity as the V1 credential registry:
 
 ```text
-REVOKED
+depth    = 16
+capacity = 2^16 = 65,536 positions
 ```
 
-A revoked credential MUST NOT satisfy a verification policy that requires a currently valid credential.
-
-## 4. Revocation and Issuer Authorization
-
-Issuer authorization and credential revocation are independent properties.
-
-An issuer MAY be authorized while a credential issued by that issuer is revoked.
-
-Likewise, an issuer MAY later become unauthorized while previously issued credentials remain represented in historical registry state.
-
-Conceptually:
+For every registered credential:
 
 ```text
-             Issuer Registry
-                   │
-                   ▼
-          Issuer authorized?
-                   │
-                   │
-             Credential
-                   │
-                   ▼
-         Revocation Registry
-                   │
-                   ▼
-          Credential revoked?
+revocationIndex == credentialIndex
 ```
 
-A verification policy MAY require both conditions.
+There is no separate revocation identifier, insertion order, next-revocation counter, or revocation index assignment.
 
-## 5. Credential Identity
+Credential registration at index `i` does not update the revocation root. Every unused or newly allocated position already contains the canonical empty revocation leaf.
 
-Every revocable credential MUST have a stable protocol identifier.
-
-The identifier MUST uniquely identify the credential whose validity is being tracked.
-
-The identifier MUST NOT depend on mutable presentation metadata.
-
-Conceptually:
-
-```
-Credential
-    │
-    ▼
-credentialId
-```
-
-The exact credential identifier construction MUST be frozen as part of Version 1.
-
-## 6. Credential Identifier Construction
-
-The recommended Version 1 construction is to derive the credential identifier from the canonical credential representation.
-
-Conceptually:
+A revocation or non-revocation proof MUST establish:
 
 ```text
-credentialId =
-    H(
-        "JP:CREDENTIAL:V1:ID" ||
-        canonicalCredential
-    )
+credentialIndex < nextCredentialIndex
+credentialIndex < 65,536
 ```
 
-The exact encoding and hashing rules MUST follow the canonical serialization rules defined by the credential and commitment specifications.
+and MUST use the same index for credential membership and revocation state.
 
-An implementation MUST NOT derive a credential identifier from:
+## 11. Empty Revocation Leaf
 
-- display names
-- certificate filenames
-- URLs
-- database IDs
-- mutable issuer metadata
-- frontend-generated identifiers
-
-## 7. Relationship Between Credential ID and Commitment
-
-The credential identifier and credential commitment serve different purposes.
-
-The credential identifier establishes:
-
-> Which credential is being referenced by revocation state.
-
-The commitment establishes:
-
-> A cryptographic binding to the credential contents.
-
-Conceptually:
+The normative input is:
 
 ```text
-Credential
-   │
-   ├──────────► credentialId
-   │
-   └──────────► credentialCommitment
+RevocationEmptyLeafInputV1 {
+    domain: Bytes<32>
+    protocolVersion: Uint<16>
+}
 ```
 
-They MAY be derived from the same canonical credential, but they MUST NOT be treated as interchangeable unless the protocol explicitly defines them as equivalent.
-
-## 8. Recommended V1 Identifier
-
-For Version 1, the protocol SHOULD use a deterministic credential identifier derived from the credential commitment.
-
-Conceptually:
+The field order is normative. Construction is:
 
 ```text
-credentialId =
-    H(
-        "JP:CREDENTIAL:V1:REVOCATION" ||
+emptyRevocationLeaf =
+    persistentHash<RevocationEmptyLeafInputV1>({
+        domain: DOMAIN_REVOCATION_EMPTY_V1,
+        protocolVersion: 1
+    })
+```
+
+`emptyRevocationLeaf` represents `NOT_REVOKED`. It MUST NOT be replaced by `default<Bytes<32>>`, an all-zero leaf, a missing map entry, or an application Boolean.
+
+An empty leaf at an unregistered index has no validity meaning. Non-revocation is established only when credential membership proves that the same index contains a registered credential.
+
+## 12. Revoked Credential Leaf
+
+The normative input is:
+
+```text
+RevokedCredentialLeafInputV1 {
+    domain: Bytes<32>
+    protocolVersion: Uint<16>
+    credentialId: Bytes<32>
+    credentialCommitment: Bytes<32>
+}
+```
+
+The field order is normative. Construction is:
+
+```text
+revokedCredentialLeaf =
+    persistentHash<RevokedCredentialLeafInputV1>({
+        domain: DOMAIN_REVOCATION_REVOKED_V1,
+        protocolVersion: 1,
+        credentialId,
         credentialCommitment
-    )
+    })
 ```
 
-This has several advantages:
+The revoked leaf binds the same credential ID and commitment authenticated by the credential registry and original issuer signature.
 
-- the identifier is deterministic
-- the identifier does not require publishing the credential
-- the identifier is cryptographically bound to the credential
-- the same credential produces the same identifier
-- the revocation registry does not need to store private credential data
+The leaf contains no issuer ID, credential index, timestamp, reason, status enum, issuer signature, revocation signature, holder secret, credential opening, or private statement.
 
-The exact construction MUST be frozen before contract implementation.
+Binding the high-entropy credential ID and hiding commitment into the leaf avoids a globally constant revoked leaf and reduces trivial enumeration of the changed position from public root transitions. It does not make `persistentHash` a general-purpose hiding commitment.
 
-## 9. Revocation Registry
+## 13. Merkle Node and Empty Root
 
-The revocation registry is public protocol state recording the revocation status of credentials.
-
-Conceptually:
+Revocation internal nodes use the shared V1 construction frozen in `02-issuer-registry.md`:
 
 ```text
-Revocation Registry
-│
-├── credential A → VALID
-├── credential B → REVOKED
-├── credential C → VALID
-└── credential D → REVOKED
-```
-
-The registry MUST NOT contain the private credential itself.
-
-## 10. Minimal Revocation State
-
-Version 1 SHOULD use the smallest state necessary to determine whether a credential has been revoked.
-
-Conceptually:
-
-```text
-RevocationRecord {
-    credentialId
-    revoked
+MerkleNodeInputV1 {
+    domain: Bytes<32>
+    protocolVersion: Uint<16>
+    left: Bytes<32>
+    right: Bytes<32>
 }
 ```
 
-An implementation MAY represent this more efficiently using:
+```text
+merkleNodeV1(left, right) =
+    persistentHash<MerkleNodeInputV1>({
+        domain: DOMAIN_MERKLE_NODE_V1,
+        protocolVersion: 1,
+        left,
+        right
+    })
+```
 
-- a set of revoked identifiers
-- a map
-- a sparse Merkle tree
-- another authenticated data structure
+Left and right order is significant. Children MUST NOT be sorted.
 
-The representation MUST preserve the protocol semantics defined here.
-
-## 11. Recommended V1 Representation
-
-For the initial MVP, a simple authenticated set of revoked credential identifiers is recommended.
-
-Conceptually:
+The initial empty-tree values are:
 
 ```text
-RevokedCredentials = {
-    credentialIdA,
-    credentialIdB,
-    credentialIdC
+emptyRevocationNode[0] = emptyRevocationLeaf
+
+for level in 0..15:
+    emptyRevocationNode[level + 1] =
+        merkleNodeV1(
+            emptyRevocationNode[level],
+            emptyRevocationNode[level]
+        )
+
+initialRevocationRoot = emptyRevocationNode[16]
+```
+
+Every V1 deployment MUST initialize the revocation root to `initialRevocationRoot`, not an arbitrary zero value.
+
+## 14. Revocation Authentication Path
+
+The path type is:
+
+```text
+RevocationMerklePathV1 {
+    siblings: Vector<16, Bytes<32>>
 }
 ```
 
-Membership means:
+Siblings are ordered from leaf level to root level. Direction bits are derived from the credential index and MUST NOT be separately supplied.
+
+For `index < 65,536`, root reconstruction is:
 
 ```text
-credentialId ∈ RevokedCredentials
+node = leaf
+
+for level in 0..15:
+    sibling = siblings[level]
+    bit = (index >> level) & 1
+
+    if bit == 0:
+        node = merkleNodeV1(node, sibling)
+    else:
+        node = merkleNodeV1(sibling, node)
+
+return node
 ```
 
-Therefore:
+The least-significant index bit is used at the leaf level.
 
-```text
-Revoked(credentialId)
-    =
-credentialId ∈ RevokedCredentials
+## 15. Authoritative Contract State
+
+The V1 revocation ledger state is conceptually:
+
+```compact
+export ledger revocationRoot: Bytes<32>;
 ```
 
-This keeps the initial protocol significantly simpler than introducing a dedicated revocation Merkle tree.
-
-## 12. Revocation State
-
-A credential is considered revoked when its identifier is present in authoritative revocation state.
-
-Conceptually:
+The constructor MUST set:
 
 ```text
-credentialId
-    │
-    ▼
-Revocation State
-    │
-    ├── present → REVOKED
-    └── absent  → NOT REVOKED
+revocationRoot = initialRevocationRoot
 ```
 
-The absence of a credential identifier MUST mean only:
+The contract MUST NOT expose a generic revocation-root setter, leaf deletion operation, reset operation, public revoked-ID set, mutable revocation record, or independent frontend revocation flag.
 
-> No revocation record currently exists.
+The current ledger `revocationRoot` is the sole revocation trust anchor. Off-chain tree data, cached roots, indexer state, frontend state, and API responses are not authoritative.
 
-It MUST NOT independently establish every other validity property of the credential.
+## 16. Revocation Authority
 
-## 13. Revocation Authority
+The revocation authority for a credential is the exact V1 issuer key that originally authenticated that credential.
 
-Only an authorized party MAY revoke a credential.
+The circuit MUST obtain the issuer ID and `Secp256k1Point` from an `IssuerRecordV1` authenticated against the current issuer root under `02-issuer-registry.md`.
 
-For Version 1, the credential issuer SHOULD be the revocation authority for credentials it issued.
+No separate revocation key, registry-authority key, contract administrator, holder key, wallet address, frontend session, API credential, or path provider may authorize revocation.
 
-Conceptually:
+The same entity may operationally control multiple issuer keys, but each revocation is authorized only under the key bound to the affected credential.
 
-```text
-             Issuer
-               │
-               │ revoke
-               ▼
-         Revocation State
-```
+Because V1 issuer registration is append-only and has no deactivation, a registered issuer key remains a revocation authority for the life of the deployment. This is a deliberate V1 limitation.
 
-The issuer MUST NOT be able to revoke credentials issued by another issuer.
+## 17. Issuer Revocation Record
 
-## 14. Issuer Binding
-
-A revocation request MUST establish that the revoking party is authorized to revoke the specified credential.
-
-Conceptually:
+To revoke without holder cooperation, the issuer MUST retain a private operational record containing:
 
 ```text
-credentialId
-     │
-     ▼
-credential
-     │
-     ▼
-issuerId
-     │
-     ▼
-Issuer Registry
-     │
-     ▼
-Authorized Issuer
-```
-
-The revocation mechanism MUST prevent:
-
-```text
-Issuer A
-    │
-    └── revoke Credential B
-                     │
-                     └── issued by Issuer B
-```
-
-unless an explicit protocol rule grants Issuer A that authority.
-
-## 15. Revocation Authorization
-
-The revocation operation MUST authenticate the revoking issuer.
-
-Conceptually:
-
-```text
-revoke(
-    credentialId,
-    authorization
-)
-```
-
-The authorization MAY be established through:
-
-- the issuer's registered signing key
-- an issuer-controlled authorization circuit
-- another protocol-defined authority mechanism
-
-The exact mechanism MUST be frozen for Version 1.
-
-## 16. Revocation Operation
-
-A Version 1 revocation operation SHOULD conceptually perform:
-
-1. Authenticate the caller.
-2. Establish the caller's issuer identity.
-3. Establish that the issuer is authorized.
-4. Establish that the credential belongs to that issuer.
-5. Mark the credential as revoked.
-6. Prevent unauthorized modification of the revocation state.
-
-The operation MUST be atomic with respect to the resulting revocation state.
-
-## 17. Revocation by Credential ID
-
-The issuer SHOULD revoke a credential using its canonical `credentialId`.
-
-Conceptually:
-
-```text
-revokeCredential(credentialId)
-```
-
-The issuer MUST NOT need to publish the complete credential merely to revoke it.
-
-This preserves the privacy properties of the protocol.
-
-## 18. Revocation by Commitment
-
-If the Version 1 credential identifier is derived from the credential commitment, an issuer MAY derive the revocation identifier from the commitment.
-
-Conceptually:
-
-```text
-credential
-    │
-    ▼
-commitment
-    │
-    ▼
-credentialId
-    │
-    ▼
-revocation state
-```
-
-The issuer does not need to publish the credential contents.
-
-## 19. Revocation and Credential Privacy
-
-Revocation MUST NOT require publication of private credential fields.
-
-The revocation state SHOULD reveal only:
-
-```text
-credentialId
-+
-revocation state
-```
-
-It SHOULD NOT reveal:
-
-```text
-name
-address
-email
-date of birth
-qualification details
-private claims
-```
-
-unless those values are already intentionally public protocol data.
-
-## 20. Privacy Considerations
-
-Although the credential itself remains private, a public revocation registry containing stable credential identifiers may introduce linkability.
-
-Therefore Version 1 MUST explicitly consider whether:
-
-```text
-credentialId
-```
-
-is itself privacy-sensitive.
-
-If the credential identifier is derived from a publicly known credential commitment, repeated use of that identifier may allow observers to correlate verification activity.
-
-The Version 1 privacy model SHOULD therefore avoid unnecessarily exposing credential identifiers in application-level presentation.
-
-## 21. Revocation and Zero-Knowledge Proofs
-
-A qualification proof MAY establish non-revocation without revealing the credential identifier to the verifier.
-
-Conceptually:
-
-```text
-Private:
-    credential
-    credentialId
-
-Public:
-    revocation state
-
-        │
-        ▼
-    ZK Circuit
-        │
-        ▼
-Proof of non-revocation
-```
-
-The circuit establishes:
-
-```text
-credentialId ∉ RevokedCredentials
-```
-
-without requiring the credential identifier to become part of the public proof statement.
-
-## 22. Public vs Private Revocation Checking
-
-There are two possible Version 1 approaches.
-
-### Public identifier verification
-
-The credential identifier is supplied publicly and the verifier checks:
-
-```text
-credentialId ∉ RevokedCredentials
-```
-
-### Zero-knowledge non-revocation
-
-The credential identifier remains private and the proof establishes:
-
-```text
-credentialId ∉ RevokedCredentials
-```
-
-The second approach provides stronger privacy.
-
-Version 1 SHOULD prefer zero-knowledge non-revocation when the chosen Compact architecture can support it without disproportionate complexity.
-
-## 23. Revocation State and Merkle Trees
-
-If the revocation registry later becomes large, a dedicated authenticated data structure MAY be introduced.
-
-For example:
-
-```text
-Revocation Entries
-      │
-      ▼
-Revocation Merkle Tree
-      │
-      ▼
-Revocation Root
-```
-
-A verifier could then verify non-membership against an authenticated revocation root.
-
-However, Version 1 SHOULD NOT introduce a second Merkle-tree construction unless required by scale or proof efficiency.
-
-The credential Merkle tree and revocation structure serve different purposes.
-
-## 24. Credential Merkle Tree vs Revocation State
-
-The credential Merkle tree establishes:
-
-> The credential is represented in the authoritative credential state.
-
-The revocation registry establishes:
-
-> The credential has not been invalidated.
-
-Conceptually:
-
-```text
-Credential
-    │
-    ├──► Credential Merkle Tree
-    │         │
-    │         └── membership
-    │
-    └──► Revocation Registry
-              │
-              └── non-revocation
-```
-
-Both may be required for a valid qualification proof.
-
-## 25. Revocation and Issuance
-
-Issuance and revocation are separate lifecycle operations.
-
-Conceptually:
-
-```text
-ISSUE
-  │
-  ▼
-ACTIVE
-  │
-  │ revoke
-  ▼
-REVOKED
-```
-
-A credential MUST NOT be considered revoked merely because it has never been verified.
-
-Likewise, a credential MUST NOT be considered valid merely because it was once issued.
-
-## 26. Revocation Irreversibility
-
-Version 1 SHOULD make revocation irreversible.
-
-Once:
-
-```text
-credentialId ∈ RevokedCredentials
-```
-
-becomes true, the protocol SHOULD NOT allow the identifier to be removed.
-
-This provides a simple and auditable state transition:
-
-```text
-NOT REVOKED → REVOKED
-```
-
-rather than:
-
-```text
-NOT REVOKED ⇄ REVOKED
-```
-
-Irreversible revocation is recommended for the MVP unless the product requirements explicitly require reinstatement.
-
-## 27. Unrevocation
-
-Version 1 SHOULD NOT support unrevocation.
-
-If an issuer needs to restore a qualification after revocation, the preferred mechanism SHOULD be:
-
-```text
-revoke Credential A
-        │
-        ▼
-issue Credential B
-```
-
-Credential B represents a new credential lifecycle.
-
-This avoids ambiguity about whether a previously revoked credential should become valid again.
-
-## 28. Reissuance
-
-Reissuance MUST produce a distinct credential identity.
-
-Conceptually:
-
-```text
-Credential A
-    │
-    ▼
-  REVOKED
-    │
-    ▼
-New issuance
-    │
-    ▼
-Credential B
-```
-
-Credential B MUST NOT reuse Credential A's `credentialId`.
-
-This preserves an unambiguous credential history.
-
-## 29. Revocation Timestamp
-
-The registry MAY record when a credential was revoked.
-
-Conceptually:
-
-```text
-RevocationRecord {
-    credentialId
-    revokedAt
+IssuerRevocationRecordV1 {
+    issuerId: Bytes<32>
+    issuanceNonce: Bytes<32>
+    credentialId: Bytes<32>
+    credentialCommitment: Bytes<32>
+    credentialIndex: Uint<32>
+    issuerSignature: Secp256k1EcdsaSignature
 }
 ```
 
-The timestamp is useful for historical verification.
+This record contains the minimum immutable values needed to bind the registered credential to its original issuer and authorize revocation without holder cooperation.
 
-However, Version 1 MAY omit the timestamp if the ledger transaction itself provides an authoritative ordering or timestamp sufficient for the application's requirements.
+The issuer MUST retain the exact private `issuanceNonce` used to derive the credential ID. The revocation operation does not require the holder's `subjectSecret`, the credential opening, the complete credential statement, credential Merkle leaf preimage beyond its frozen ID/commitment fields, or holder participation.
 
-If `revokedAt` is included, its semantic meaning MUST be explicitly defined.
+The operational record and signing key MUST be stored securely. Loss of the record can prevent the issuer from constructing a revocation proof even while the credential remains provable by the holder.
 
-## 30. Historical Verification
+## 18. Credential-ID and Original-Signature Binding
 
-Historical verification distinguishes between:
+The revocation circuit MUST first rederive the credential ID using the exact construction frozen in `01-credential.md`:
 
-> Was the credential valid at time T?
+```text
+expectedCredentialId =
+    persistentHash<CredentialIdInputV1>({
+        domain: DOMAIN_CREDENTIAL_ID_V1,
+        protocolVersion: 1,
+        issuerId: issuerRecord.issuerId,
+        issuanceNonce
+    })
+```
+
+It MUST assert `expectedCredentialId == credentialId` before using that ID in a signature, leaf, authorization message, or root transition.
+
+The revocation circuit MUST rederive the exact original issuer-signature message frozen in `01-credential.md`:
+
+```text
+IssuerSignatureMessageV1 {
+    domain: Bytes<32>
+    protocolVersion: Uint<16>
+    credentialId: Bytes<32>
+    credentialCommitment: Bytes<32>
+}
+```
+
+It MUST verify the retained `issuerSignature` under the verification key from the current authenticated issuer record:
+
+```text
+secp256k1EcdsaVerify(
+    issuerSignatureMessage,
+    issuerSignature,
+    issuerRecord.verificationKey
+) == true
+```
+
+Together, the nonce derivation and signature check prove that the credential ID belongs to the authenticated issuer's namespace and that the same registered issuer key authenticated the exact credential ID and commitment being revoked. The original signature alone is insufficient because a different registered issuer could sign a learned ID/commitment pair. Credential membership alone also does not identify the issuer. Both constraints are REQUIRED.
+
+## 19. Revocation Authorization Message
+
+The normative message input is:
+
+```text
+RevocationAuthorizationMessageV1 {
+    domain: Bytes<32>
+    protocolVersion: Uint<16>
+    registryContract: ContractAddress
+    registryContext: Bytes<32>
+    issuerId: Bytes<32>
+    credentialId: Bytes<32>
+    credentialCommitment: Bytes<32>
+    credentialIndex: Uint<32>
+}
+```
+
+The field order is normative. Construction is:
+
+```text
+revocationAuthorizationMessage =
+    persistentHash<RevocationAuthorizationMessageV1>({
+        domain: DOMAIN_REVOCATION_AUTHORIZATION_V1,
+        protocolVersion: 1,
+        registryContract: kernel.self(),
+        registryContext,
+        issuerId: issuerRecord.issuerId,
+        credentialId,
+        credentialCommitment,
+        credentialIndex
+    })
+```
+
+The issuer signs this `Bytes<32>` digest with the private key corresponding to `issuerRecord.verificationKey`. The circuit MUST assert:
+
+```text
+secp256k1EcdsaVerify(
+    revocationAuthorizationMessage,
+    revocationAuthorizationSignature,
+    issuerRecord.verificationKey
+) == true
+```
+
+The contract address and unique `registryContext` bind authorization to one deployment. The credential ID, commitment, and index bind it to one registered credential position.
+
+The message intentionally omits current roots. Monotonic empty-leaf verification makes replay against an already revoked position fail, while omitting roots prevents unrelated concurrent registry updates from invalidating a valid authorization.
+
+The signature is a transferable authorization for this exact transition; any relayer MAY submit it with the required private witness data.
+
+## 20. Revocation Circuit Inputs
+
+The exported operation is conceptually:
+
+```text
+revokeCredentialV1(
+    issuerRecord: IssuerRecordV1,
+    issuerIndex: Uint<32>,
+    issuerPath: Vector<16, Bytes<32>>,
+    issuanceNonce: Bytes<32>,
+    credentialId: Bytes<32>,
+    credentialCommitment: Bytes<32>,
+    credentialIndex: Uint<32>,
+    issuerSignature: Secp256k1EcdsaSignature,
+    credentialPath: Vector<16, Bytes<32>>,
+    revocationPath: Vector<16, Bytes<32>>,
+    revocationAuthorizationSignature: Secp256k1EcdsaSignature
+) -> []
+```
+
+The implementation MAY use a structurally equivalent Compact interface, including witness-returned compound records, but MUST preserve every input constraint and state effect defined below.
+
+All listed inputs are private by default. The circuit MUST NOT return or emit an issuance nonce, credential ID, commitment, index, issuer signature, revocation signature, or authentication path.
+
+## 21. Revocation Checks and State Transition
+
+For a revocation request, the circuit MUST:
+
+1. assert `credentialIndex < nextCredentialIndex` and `credentialIndex < 65,536`
+2. validate `issuerRecord` and authenticate its canonical issuer leaf at `issuerIndex` against the current issuer root
+3. rederive `credentialId` from `issuerRecord.issuerId` and `issuanceNonce`, and require exact equality with the retained credential ID
+4. derive the original issuer-signature message from that credential ID and `credentialCommitment`
+5. verify `issuerSignature` under `issuerRecord.verificationKey`
+6. derive the canonical credential leaf from the same `credentialId` and `credentialCommitment`
+7. authenticate that credential leaf at `credentialIndex` against the current credential root
+8. derive and verify the revocation-authorization message under the same issuer key
+9. reconstruct a root from `emptyRevocationLeaf`, `credentialIndex`, and `revocationPath`
+10. assert that the reconstructed root equals the current `revocationRoot`
+11. derive `revokedCredentialLeaf` from the same credential ID and commitment
+12. reconstruct `newRevocationRoot` from the revoked leaf, the same index, and the same path; and
+13. atomically write `revocationRoot = newRevocationRoot`
+
+No ledger write may occur if any assertion fails.
+
+The transaction MUST leave unchanged:
+
+- issuer root and next issuer index
+- credential root and next credential index
+- every issuer and credential leaf
+- credential ID and commitment
+- subject commitment and subject secret
+- credential statement and opening
+- original issuer signature; and
+- every other revocation position
+
+The implementation MUST NOT introduce a checkpoint that permits partial revocation state to commit.
+
+## 22. Monotonicity and Duplicate Revocation
+
+The old-root check begins from `emptyRevocationLeaf`. Therefore, a request can succeed only if the target position is currently unrevoked.
+
+After success, the position contains `revokedCredentialLeaf`. A repeated request beginning from the empty leaf cannot reconstruct the current root and MUST fail.
+
+V1 rejects duplicate revocation. It MUST NOT silently report a second request as a newly successful transition, replace the revoked leaf, modify a reason or timestamp, or reset the leaf to empty.
+
+The only recovery from erroneous revocation is a new credential issuance with a new credential ID and index.
+
+## 23. Private Non-Revocation Proof
+
+A current V1 qualification proof MUST establish non-revocation by proving membership of `emptyRevocationLeaf` at the same private index used for credential membership.
+
+The proof MUST constrain:
+
+```text
+credentialIndex < nextCredentialIndex
+
+credentialRootFrom(
+    credentialLeafV1(credentialId, credentialCommitment),
+    credentialIndex,
+    credentialPath
+) == currentCredentialRoot
+
+revocationRootFrom(
+    emptyRevocationLeaf,
+    credentialIndex,
+    revocationPath
+) == currentRevocationRoot
+```
+
+The credential ID, commitment, index, credential path, and revocation path MAY remain private. The two membership relations MUST use the exact same index and credential instance.
+
+An empty revocation leaf without credential membership proves nothing about a credential. An unregistered position is empty by construction.
+
+A revoked credential cannot authenticate the empty leaf against the current revocation root at its credential index.
+
+## 24. Current Root and Proof Freshness
+
+V1 accepts only the current authoritative revocation root.
+
+A proof generated before a revocation may remain mathematically valid against the old root, but it MUST NOT satisfy a verification that requires current validity after the ledger root changes.
+
+On-chain verification MUST constrain the proof to the contract's current `revocationRoot`. Off-chain verification MUST obtain the current root from authoritative contract state and reject a proof bound only to a stale or caller-supplied root.
+
+If current revocation state cannot be obtained or safely interpreted, verification MUST fail closed. Unavailable or stale state MUST NOT be treated as `NOT_REVOKED`.
+
+V1 defines no root-age tolerance, cached-root grace period, historical root allowlist, or proof lifetime independent of current state.
+
+## 25. Privacy Boundary
+
+The following values are authoritative public contract state:
+
+- current revocation root;
+- current credential root and next credential index; and
+- current issuer root and the issuer-registry configuration required by other frozen specifications.
+
+The following revocation values are private by default:
+
+- issuance nonce
+- credential ID and commitment
+- credential and issuer indices
+- issuer record within the proof
+- original issuer signature
+- revocation authorization signature
+- credential, issuer, and revocation authentication paths
+- revoked credential leaf; and
+- the mapping from a revocation-root transition to a credential or holder
+
+The root transition publicly reveals that revocation state changed and may reveal transaction-level timing or submitter metadata. It MUST NOT intentionally reveal the credential ID, commitment, index, issuer, holder, qualification, reason, or private statement.
+
+V1 MUST NOT emit a credential-specific public revocation event. An implementation MAY emit a payload-free state-change event only if it adds operational value and does not disclose or index private data.
+
+Because `persistentHash` is not a hiding commitment, privacy depends on the high-entropy credential ID and hiding credential commitment, the zero-knowledge proof boundary, and avoidance of auxiliary metadata leaks.
+
+## 26. Revocation-State Availability
+
+The root-only design requires an off-chain revocation-state provider to maintain the private revoked leaves and tree paths needed by issuers and holders.
+
+The provider MUST:
+
+- apply every successful root transition to its canonical tree replica
+- retain the credential-bound revoked leaf privately
+- serve current 16-sibling paths for credential indices
+- verify that its reconstructed root equals the on-chain root
+- maintain encrypted, tested backups sufficient to recover the tree; and
+- avoid logging unnecessary credential or holder metadata
+
+An incorrect path cannot create a false proof because the circuit checks the current root. The provider is therefore trusted for availability and privacy, not correctness.
+
+If the provider loses the private tree data or fails to supply a current path, affected proofs MUST fail closed until the state is recovered. Public roots alone are not sufficient to reconstruct private leaves and paths.
+
+Path requests can reveal a credential index to the provider. Production clients SHOULD use authenticated confidential transport, minimize retention, and keep proof generation within a holder-controlled or explicitly trusted environment.
+
+## 27. Relationship to Credential and Commitment State
+
+Revocation MUST NOT modify:
+
+- `CredentialStatementV1`
+- issuance nonce or credential ID
+- subject secret or subject commitment
+- credential opening or credential commitment
+- issuer signature or signature message
+- credential leaf, credential root, or credential index; or
+- any human-readable presentation artifact
+
+The credential commitment is opened and authenticated independently. The revocation tree adds current validity state at the corresponding index.
+
+A credential may simultaneously satisfy:
+
+```text
+credential membership == true
+issuer signature valid == true
+revoked == true
+```
+
+Such a credential is authentic and registered but not currently valid.
+
+## 28. Relationship to Issuer State
+
+The issuer registry proves which verification key is authoritative for both the original credential signature and revocation authorization.
+
+The same authenticated issuer record and key MUST verify both signatures. A registered issuer MUST NOT revoke a credential originally signed by another issuer key.
+
+The registry-authority key defined in `02-issuer-registry.md` admits issuers but does not revoke credentials. Likewise, a frontend administrator or contract deployer has no implicit revocation power.
+
+Issuer registration is not credential revocation, and credential revocation does not suspend or remove an issuer.
+
+## 29. Expiration and Revocation
+
+Expiration and revocation are independent current-validity conditions.
+
+For current block time `T`, a credential must satisfy both:
+
+```text
+issuedAt <= T
+AND
+(expiresAt == 0 OR T < expiresAt)
+```
 
 and:
 
-> Is the credential valid now?
-
-These are different statements.
-
-If Version 1 supports historical verification, the verifier MUST evaluate revocation state relative to the relevant historical point.
-
-Conceptually:
-
 ```text
-Verification Time
-      │
-      ▼
-Revocation State
-      │
-      ▼
-Valid at T?
+emptyRevocationLeaf is authenticated at credentialIndex
+against currentRevocationRoot
 ```
 
-If historical verification is not supported, the verifier MUST use current authoritative revocation state.
+Expiration does not update the revocation tree. Revocation does not modify `issuedAt` or `expiresAt`.
 
-## 31. Current Verification
+An issuer MAY revoke an expired credential. The operation remains an irreversible current-state update, but the credential was already invalid under the expiration rule.
 
-The default Version 1 verification policy SHOULD be current-state verification.
+## 30. Reissuance After Revocation
 
-A credential is currently valid with respect to revocation when:
+If a credential is revoked in error or needs replacement, the issuer MUST issue a new credential instance.
 
-```text
-credentialId ∉ CurrentRevocationState
-```
+The new issuance MUST use:
 
-subject to all other verification requirements.
+- a fresh issuance nonce and new credential ID
+- a fresh subject secret and subject commitment
+- a fresh credential opening and credential commitment
+- a new issuer signature
+- a new credential-registry index; and
+- a new initially empty revocation position at that index
 
-Therefore:
+The revoked credential remains immutable and revoked. Its index and revoked leaf MUST NOT be reused.
 
-```text
-ValidNow(credential)
-    =
-AuthorizedIssuer
-&&
-ValidSignature
-&&
-CredentialMembership
-&&
-NotRevoked
-&&
-QualificationSatisfied
-```
+## 31. Failure Conditions and Errors
 
-## 32. Revocation and Proof Lifetime
+Revocation MUST fail closed if any of the following holds:
 
-A zero-knowledge proof may remain cryptographically valid after the underlying credential is revoked.
+- the credential index is outside `0..nextCredentialIndex - 1` or tree capacity
+- the issuer record, issuer ID, key, index, path, or current issuer root is invalid
+- the issuance nonce and authenticated issuer ID do not rederive the retained credential ID
+- the original issuer signature does not verify under the registry-authenticated key
+- the credential ID or commitment differs between the signature, leaf, and authorization message
+- credential membership does not authenticate at the supplied index and current credential root
+- the revocation authorization signature is invalid or belongs to another issuer
+- the authorization names another contract or registry context
+- the revocation path does not authenticate the empty leaf at the same index
+- the credential is already revoked
+- a domain, type, field order, or protocol version differs from V1
+- state is stale or unavailable; or
+- the root update cannot complete atomically
 
-Therefore:
+Qualification verification MUST fail if current non-revocation cannot be proved.
 
-```text
-CryptographicallyValid(proof)
-```
-
-does NOT necessarily imply:
-
-```text
-CurrentlyValid(credential)
-```
-
-The verifier MUST evaluate current revocation state whenever the verification policy requires current validity.
-
-This distinction is critical.
-
-## 33. Proofs Generated Before Revocation
-
-Suppose:
+Applications MAY map failures to machine-readable categories such as:
 
 ```text
-T1 = proof generated
-T2 = credential revoked
-T3 = proof verified
+UNKNOWN_CREDENTIAL
+UNAUTHORIZED_REVOCATION
+INVALID_ORIGINAL_ISSUER_SIGNATURE
+INVALID_CREDENTIAL_ID_BINDING
+INVALID_REVOCATION_AUTHORIZATION
+ALREADY_REVOKED
+STALE_REGISTRY_STATE
+REVOCATION_STATE_UNAVAILABLE
+REVOKED_CREDENTIAL
 ```
 
-A proof generated at `T1` MAY still be cryptographically valid at `T3`.
+Error messages MUST NOT reveal private credential values, paths, signatures, or whether a guessed private identifier was close to a valid value.
+
+## 32. Security Properties and Limitations
+
+Assuming the security of the frozen hashes, signatures, roots, and private-state handling, V1 provides:
+
+- **Issuer-controlled invalidation:** only the original registered issuer key can authorize revocation
+- **Original-issuer binding:** the authenticated issuer ID and retained issuance nonce must rederive the credential ID before either issuer signature can authorize the transition
+- **Credential binding:** both signatures, credential membership, and the revoked leaf use the same credential ID and commitment
+- **Position binding:** credential and revocation proofs use the same immutable index
+- **Monotonicity:** the current root can transition only from the authenticated empty leaf to the credential-bound revoked leaf
+- **Private non-revocation:** a holder can prove the current empty state without revealing the credential or index
+- **Current-state invalidation:** a root update invalidates proofs that depend on the old non-revoked state; and
+- **Credential immutability:** revocation leaves the original credential, commitment, signature, and membership unchanged
+
+V1 assumes:
+
+- issuers protect their signing keys and private revocation records
+- the revocation-state provider preserves current private tree data and paths
+- credential registration assigned the canonical immutable index
+- verifiers use authoritative current roots; and
+- Compact and TypeScript implementations match through cross-runtime vectors
+
+V1 does not prevent:
+
+- a dishonest issuer from revoking a legitimately earned credential
+- a compromised issuer key from authorizing malicious revocations
+- revocation timing or transaction metadata leakage
+- denial of service by a path provider
+- proof failure after loss of private tree state
+- holder-to-issuer or holder-to-path-provider correlation outside the circuit; or
+- a holder from retaining the immutable revoked credential as a historical artifact
+
+Because V1 cannot deactivate an issuer key, issuer-key compromise requires deployment migration and operational response beyond this revocation protocol.
+
+## 33. Non-Goals
+
+V1 does not provide:
+
+- holder-initiated, registry-authority, administrator, or third-party revocation
+- issuer suspension or key rotation
+- unrevocation, reinstatement, or leaf replacement
+- scheduled, delayed, expiring, or backdated revocation
+- revocation timestamps, reasons, evidence, or reason codes in cryptographic state
+- historical revocation roots or verification at an arbitrary past time
+- batch revocation or issuer-wide mass invalidation
+- a public revoked-ID list or public credential-specific revocation event
+- revocation by credential commitment alone without credential and issuer authentication
+- removal from the credential registry; or
+- recovery of lost issuer records, holder secrets, openings, or private path state
+
+## 34. Normative Invariants
+
+Every conforming V1 implementation MUST preserve these invariants:
+
+1. Revocation is credential-level, current-state, monotonic, and irreversible.
+2. The revocation tree has depth 16 and exactly shares credential-registry indices.
+3. Credential and revocation indices use `Uint<32>`.
+4. The empty and revoked leaves use the exact frozen typed inputs and distinct domains.
+5. Internal nodes use the exact shared ordered V1 node construction.
+6. The initial root is derived from 65,536 canonical empty positions and is not arbitrary zero.
+7. The current public `revocationRoot` is the sole revocation trust anchor.
+8. V1 stores no protocol revocation timestamp, reason, or mutable status record.
+9. The revocation authority is the registered issuer key that authenticated the original credential.
+10. The authenticated issuer ID and retained private issuance nonce rederive the exact credential ID.
+11. The original credential signature and new revocation authorization verify under the same authenticated key.
+12. Revocation authorization binds the deployment, issuer ID, credential ID, credential commitment, and credential index.
+13. The credential leaf authenticates the same credential ID and commitment at the same index.
+14. The old revocation root authenticates the empty leaf at that index before update.
+15. A successful operation replaces exactly that empty leaf with the credential-bound revoked leaf.
+16. Revocation changes only the revocation root and commits atomically.
+17. Duplicate revocation and every revoked-to-empty or revoked-to-revoked transition fail.
+18. Non-revocation proves the empty leaf at the same index as a registered credential.
+19. Qualification verification accepts only current authoritative revocation state.
+20. Stale or unavailable revocation state never produces a valid current result.
+21. Revocation does not require the holder's subject secret, credential opening, complete statement, or participation.
+22. Revocation never mutates the issuance nonce, credential, commitment, issuer signature, or credential membership.
+23. Credential-specific revocation values and paths remain private unless a later protocol version explicitly changes the boundary.
+24. Reissuance uses a new credential ID, commitment, signature, and index.
+25. Verification fails closed on every mismatched credential, issuer, nonce, index, path, root, signature, domain, or version.
+
+## 35. Required Test Vectors and Tests
+
+Before a V1 implementation is considered conformant, it MUST include Compact/TypeScript cross-runtime vectors for:
+
+- all four domain-tag constants
+- empty revocation leaf
+- revoked credential leaf for fixed credential ID and commitment values
+- all 16 empty-node levels and `initialRevocationRoot`
+- internal-node left/right ordering
+- root reconstruction at index `0`
+- root reconstruction at an index containing both zero and one bits
+- credential ID rederivation from a fixed authenticated issuer ID and issuance nonce
+- original issuer-signature message derivation and verification
+- revocation-authorization message derivation and verification; and
+- a complete empty-to-revoked root transition
+
+The contract suite MUST test:
+
+- constructor initialization to the exact empty root
+- successful revocation of a registered unrevoked credential
+- root change with issuer and credential roots and counters unchanged
+- rejection of an out-of-range or unregistered credential index
+- rejection of a wrong issuance nonce or issuer/nonce/credential-ID combination
+- rejection of a wrong credential ID, commitment, leaf, index, path, or root
+- rejection of a credential signature from another issuer
+- rejection of revocation authorization from another issuer
+- rejection of signatures for another contract or registry context
+- rejection when the issuer-membership path is invalid or stale
+- rejection when the credential-membership path is invalid or stale
+- rejection when the revocation path is invalid or stale
+- rejection of duplicate revocation
+- rejection of every attempt to restore or replace a revoked leaf
+- current non-revocation success before revocation
+- current non-revocation failure after revocation
+- continued non-revocation of unrelated credentials after path refresh
+- failure of a proof generated against a stale pre-revocation root
+- failure closed when current revocation state or paths are unavailable
+- reissuance at a new credential index while the prior index remains revoked
+- atomic rollback on every failed revocation path
+- operation without the holder's subject secret, statement, credential opening, or participation; and
+- absence of credential IDs, commitments, indices, signatures, paths, reasons, timestamps, and private statements from ledger fields, events, exported outputs, logs, analytics, URLs, and presentation artifacts
 
-However, if the verification policy requires current credential validity, the verifier MUST reject the proof at `T3`.
+A changed cryptographic vector is a protocol change, not an ordinary regression update.
 
-Conceptually:
+## 36. Specification Ownership and Dependencies
 
-```text
-T1                    T2                    T3
-│                     │                     │
-│ generate proof      │ revoke              │ verify
-│                     │                     │
-▼                     ▼                     ▼
-VALID ───────────────► REVOKED ───────────► INVALID
-```
+This document is authoritative for:
 
-This prevents previously generated proofs from indefinitely bypassing revocation.
+- revocation authority and authorization message
+- revocation leaf and empty-tree construction
+- revocation-tree depth, root, path, index binding, and state transition
+- current-state non-revocation semantics
+- duplicate revocation and reissuance behavior
+- revocation privacy and availability boundaries; and
+- revocation-specific conformance tests
 
-## 34. Proofs Bound to Historical State
+`01-credential.md` is authoritative for credential identity, the credential statement, original issuer-signature message, current expiration semantics, and credential immutability.
 
-If Version 1 supports historical verification, a proof MAY instead establish:
+`02-issuer-registry.md` is authoritative for issuer records, issuer-ID and leaf construction, registry context, issuer membership, and the registered secp256k1 key.
 
-> The credential was not revoked at a specified historical state.
+`03-commitments.md` is authoritative for credential-commitment opening, hiding, binding, privacy, and immutability. The revocation circuit does not need to open the commitment because the original issuer signature and credential leaf authenticate the exact commitment value.
 
-Such a proof MUST be explicitly bound to:
+`05-ledgers.md` MUST expose the exact current roots and counters required here and MUST NOT add an independent revocation authority or mutable revoked-ID store.
 
-- the relevant revocation state
-- the relevant state identifier or root
-- the historical verification point
+`06-merkle-tree.md` is authoritative for the credential-leaf construction and reusable path algorithm. It MUST use the same depth, index type, and internal-node construction frozen here and in `02-issuer-registry.md`.
 
-A historical non-revocation proof MUST NOT automatically imply current non-revocation.
+`07-witnesses.md` MUST provide private issuer, credential, and revocation paths without treating provider output as authoritative.
 
-## 35. Revocation State Freshness
+`08-proofs.md` and `09-verification.md` MUST constrain qualification proofs to the current revocation root and fail closed on a stale, unavailable, or revoked state.
 
-When current validity is required, the verifier MUST use sufficiently current revocation state.
+## 37. Final Protocol Principle
 
-A stale revocation snapshot MUST NOT be presented as authoritative current state.
+JustProof V1 revocation establishes:
 
-If the verifier cannot obtain sufficiently current revocation state, it MUST NOT return `VALID` for a policy requiring current revocation status.
+> The registered issuer that originally authenticated this registered credential has irreversibly changed its current revocation position from unrevoked to revoked.
 
-## 36. Revocation Registry Authority
+A current qualification proof must establish the opposite state for the same credential index:
 
-The revocation registry MUST be authoritative.
+> The canonical unrevoked leaf remains authenticated at this registered credential's position under the current revocation root.
 
-The frontend MUST NOT maintain an independent revocation list and treat it as authoritative.
-
-For example:
-
-```text
-    Frontend state
-        │
-        └── revoked = false
-
-does not override:
-
-    Ledger state
-        │
-        └── credentialId = REVOKED
-```
-
-The authoritative contract state determines protocol validity.
-
-## 37. Duplicate Revocation
-
-Revoking an already revoked credential SHOULD be idempotent.
-
-Conceptually:
-
-```text
-    revoke(A)
-    revoke(A)
-```
-
-SHOULD result in:
-
-```text
-    A = REVOKED
-```
-
-without creating contradictory state.
-
-The implementation MAY reject the second operation instead, but it MUST NOT produce a state in which the credential becomes valid again.
-
-## 38. Unknown Credential Revocation
-
-An issuer MUST NOT revoke an arbitrary identifier unless the protocol can establish that the identifier corresponds to a credential issued by that issuer.
-
-This prevents:
-
-```text
-    Issuer A
-        │
-        ▼
-    arbitrary identifier
-        │
-        ▼
-    unauthorized revocation
-```
-
-The revocation circuit MUST establish the issuer-to-credential relationship.
-
-## 39. Revocation Authorization and Issuer Registry
-
-The issuer registry provides the authorization root for issuer-controlled revocation.
-
-Conceptually:
-
-```text
-    Revocation Request
-          │
-          ▼
-    Revoking Issuer
-          │
-          ▼
-    Issuer Registry
-          │
-          ▼
-    Authorized?
-          │
-          ▼
-    Credential Ownership
-          │
-          ▼
-    Revoke
-```
-
-An issuer whose registry authorization does not satisfy the applicable policy MUST NOT be able to perform issuer-controlled revocation.
-
-## 40. Revocation and Credential Ownership
-
-The protocol MUST establish that the issuer performing a revocation is the issuer associated with the credential.
-
-Conceptually:
-
-```text
-    credential.issuerId
-            │
-            ▼
-      Issuer Registry
-            │
-            ▼
-    revoking issuer identity
-```
-
-These identities MUST match.
-
-This prevents one authorized issuer from revoking another issuer's credentials.
-
-## 41. Revocation and Signatures
-
-Revocation MUST NOT modify the original credential signature.
-
-The original credential remains a historical artifact representing what the issuer signed at issuance.
-
-Revocation changes the credential's validity state.
-
-Conceptually:
-
-```text
-    Credential
-       │
-       ├── signature → "This credential was issued by me."
-       │
-       └── revocation → "This credential is no longer valid."
-```
-
-These are separate statements.
-
-## 42. Revocation and Commitment
-
-Revocation MUST NOT modify the credential commitment.
-
-The commitment remains bound to the original credential.
-
-Revocation state is additional public state associated with the credential identifier.
-
-Conceptually:
-
-```text
-    Credential
-       │
-       ├──► Commitment
-       │
-       └──► Credential ID
-                  │
-                  ▼
-            Revocation State
-```
-
-Changing revocation state MUST NOT change the credential commitment.
-
-## 43. Revocation and Merkle Membership
-
-Revocation MUST NOT require removing the credential from the credential Merkle tree.
-
-A revoked credential may remain a valid member of historical credential state while simultaneously being invalid for current verification.
-
-Conceptually:
-
-```text
-    Credential
-       │
-       ├── Merkle membership = TRUE
-       │
-       └── Revoked = TRUE
-```
-
-Therefore:
-
-```text
-    Membership ≠ Current Validity
-```
-
-## 44. Verification Algorithm
-
-For a current-state qualification proof, the verifier SHOULD conceptually perform:
-
-1. Validate proof structure.
-2. Validate protocol version.
-3. Validate proof type.
-4. Validate public inputs.
-5. Resolve issuer registry state.
-6. Verify issuer authorization.
-7. Verify issuer authentication.
-8. Verify credential commitment.
-9. Verify credential Merkle membership.
-10. Verify credential non-revocation.
-11. Verify the zero-knowledge proof.
-12. Evaluate the requested qualification.
-13. Return VALID.
-
-The exact implementation order MAY differ.
-
-All required conditions MUST be enforced.
-
-## 45. Revocation Verification
-
-For current-state verification:
-
-```text
-    NotRevoked(credentialId)
-        =
-    credentialId ∉ CurrentRevocationState
-```
-
-If the credential identifier remains private, the proof circuit MUST establish non-membership without revealing the identifier where the chosen revocation construction supports that privacy model.
-
-## 46. Verification Failure
-
-Verification MUST fail closed when revocation state cannot be established.
-
-For example:
-
-```text
-    Revocation Registry unavailable
-            │
-            ▼
-    Cannot establish non-revocation
-            │
-            ▼
-    NOT VALID
-```
-
-The verifier MUST NOT interpret:
-
-```text
-    "revocation state unavailable"
-```
-
-as:
-
-```text
-    "credential is not revoked."
-```
-
-## 47. Revocation Error Categories
-
-The implementation MAY expose machine-readable errors such as:
-
-```text
-    UNKNOWN_CREDENTIAL
-    UNAUTHORIZED_REVOCATION
-    ALREADY_REVOKED
-    INVALID_REVOCATION_AUTHORIZATION
-    REVOCATION_STATE_UNAVAILABLE
-    REVOKED_CREDENTIAL
-    STALE_REVOCATION_STATE
-```
-
-The final error taxonomy MUST be frozen before the Version 1 verifier API is finalized.
-
-## 48. Contract Requirements
-
-The Compact contract implementing revocation MUST ensure:
-
-1. only authorized issuers can revoke credentials
-2. an issuer can revoke only its own credentials
-3. revocation state is publicly verifiable
-4. revocation cannot be bypassed through frontend logic
-5. revoked credentials cannot be treated as currently valid when current validity is required
-6. revocation state cannot be arbitrarily overwritten
-7. revocation does not alter the underlying credential commitment
-8. revocation does not alter the original credential signature
-
-## 49. Test Requirements
-
-The contract test suite MUST cover at least:
-
-### Revocation
-
-- revoke valid credential
-- verify credential becomes revoked
-- revoke already revoked credential
-- reject unauthorized revocation
-- reject revocation by another issuer
-- reject malformed credential identifiers
-
-### Verification
-
-- valid non-revoked credential succeeds
-- revoked credential fails
-- unknown credential fails where appropriate
-- unavailable revocation state does not produce `VALID`
-
-### Integration
-
-- issuer registry + revocation
-- credential commitment + revocation
-- Merkle membership + revocation
-- zero-knowledge proof + non-revocation
-
-## 50. Negative Tests
-
-The test suite MUST explicitly verify that the following combinations fail:
-
-```text
-    Authorized Issuer
-    +
-    Valid Credential
-    +
-    Valid Merkle Membership
-    +
-    Revoked Credential
-```
-
-MUST NOT produce:
-
-```text
-    VALID
-```
-
-Likewise:
-
-```text
-    Revoked Credential
-    +
-    Previously Generated Valid Proof
-```
-
-MUST NOT produce:
-
-```text
-    VALID
-```
-
-when current validity is required.
-
-## 51. Privacy Tests
-
-Tests MUST verify that revocation does not unnecessarily expose private credential information.
-
-At minimum, tests SHOULD verify that:
-
-- credential contents are not stored in revocation state
-- private claims are not emitted by revocation circuits
-- revocation transactions do not contain unnecessary credential fields
-- zero-knowledge non-revocation does not expose the credential identifier when private non-revocation is required
-
-## 52. Protocol Invariants
-
-Every Version 1 implementation MUST preserve the following invariants:
-
-1. Credential revocation is distinct from issuer authorization.
-2. Every revocable credential has a stable credential identifier.
-3. Revocation state MUST NOT require publication of private credential contents.
-4. Only an authorized party may revoke a credential.
-5. An issuer MUST NOT revoke another issuer's credential.
-6. Revocation MUST NOT modify the original credential.
-7. Revocation MUST NOT modify the original credential signature.
-8. Revocation MUST NOT modify the credential commitment.
-9. Revocation MUST NOT require removing a credential from the credential Merkle tree.
-10. A credential MAY be a valid Merkle member while being revoked.
-11. A cryptographically valid proof MAY correspond to a revoked credential.
-12. Current verification MUST check current revocation state when required.
-13. Historical non-revocation MUST NOT be interpreted as current non-revocation.
-14. Verification MUST fail closed when required revocation state cannot be established.
-15. Revocation SHOULD be irreversible in Version 1.
-16. Reissued credentials MUST receive distinct credential identifiers.
-17. Revocation state MUST be authoritative.
-18. Frontend state MUST NOT override authoritative revocation state.
-19. Revocation MUST NOT expose unnecessary private credential information.
-20. Changes to the meaning of credential validity constitute a protocol change.
-
-## 53. Reference Credential Lifecycle
-
-The complete Version 1 credential lifecycle is:
-
-```text
-                 Issuance
-                    │
-                    ▼
-              ┌──────────┐
-              │  ACTIVE  │
-              └────┬─────┘
-                   │
-                   │ revoke
-                   ▼
-              ┌──────────┐
-              │ REVOKED  │
-              └──────────┘
-```
-
-A revoked credential MUST remain distinguishable from a credential that was never issued.
-
-A new qualification SHOULD be represented by a newly issued credential rather than restoring a revoked credential.
-
-## 54. Reference Verification Model
-
-A current qualification proof SHOULD establish:
-
-```text
-    AuthorizedIssuer
-        &&
-    ValidSignature
-        &&
-    ValidCommitment
-        &&
-    CredentialMembership
-        &&
-    NotRevoked
-        &&
-    QualificationSatisfied
-```
-
-Conceptually:
-
-```text
-                    ┌────────────────────┐
-                    │   Issuer Registry  │
-                    └─────────┬──────────┘
-                              │
-                              ▼
-                       Issuer Authorized
-                              │
-                              ▼
-    Private Credential ──► Issuer Signature
-             │                    │
-             ▼                    ▼
-        Commitment          Authentication
-             │
-             ▼
-       Merkle Membership
-             │
-             ▼
-       Non-Revocation
-             │
-             ▼
-     Qualification Predicate
-             │
-             ▼
-             ZK Proof
-             │
-             ▼
-          VALID
-```
-
-Every required condition contributes to the final verification result.
-
-## 55. Version 1 Decisions
-
-The following decisions are recommended for the initial JustProof MVP:
-
-| Decision                             | Version 1                          |
-| ------------------------------------ | ---------------------------------- |
-| Credential revocation                | Supported                          |
-| Revocation authority                 | Credential issuer                  |
-| Revocation state                     | Public authenticated state         |
-| Credential contents in registry      | Never                              |
-| Revocation identifier                | Derived from credential commitment |
-| Revocation                           | Irreversible                       |
-| Unrevocation                         | Not supported                      |
-| Reissuance                           | New credential                     |
-| Revocation timestamp                 | Optional / TBD                     |
-| Current verification                 | Supported                          |
-| Historical verification              | Deferred unless required           |
-| Private non-revocation proof         | Preferred                          |
-| Dedicated revocation Merkle tree     | Deferred                           |
-| Revocation modifies credential       | No                                 |
-| Revocation modifies commitment       | No                                 |
-| Revocation removes Merkle membership | No                                 |
-
-## 56. Open Protocol Decisions
-
-Before Version 1 is frozen, the following MUST be resolved:
-
-1. Exact credential identifier derivation.
-2. Exact revocation-state representation in Compact.
-3. Exact authorization mechanism for issuer revocation.
-4. Whether the revocation identifier is public or private during verification.
-5. Exact zero-knowledge non-revocation construction.
-6. Whether Version 1 requires a dedicated authenticated revocation structure.
-7. Whether revocation timestamps are required.
-8. Whether historical verification is supported.
-9. Exact freshness requirements for revocation state.
-10. Exact revocation error taxonomy.
-
-Until these decisions are frozen, this document remains a protocol draft.
-
-## 57. Final Protocol Principle
-
-Credential issuance and credential validity are different events.
-
-An issuer signature establishes:
-
-> **This issuer issued this credential.**
-
-Credential membership establishes:
-
-> **This credential is represented in the authoritative credential state.**
-
-Revocation establishes:
-
-> **This credential has not been invalidated.**
-
-A current qualification proof therefore establishes the conjunction:
-
-```text
-    Issuer Authorized
-          &&
-    Credential Authenticated
-          &&
-    Credential Registered
-          &&
-    Credential Not Revoked
-          &&
-    Qualification Satisfied
-```
-
-The verifier does not need the private credential itself to establish these properties.
-
-This separation allows JustProof to provide a credential system in which:
-
-> **Credentials can be issued, privately proven, publicly verified, and explicitly invalidated without exposing the credential itself.**
+Issuer membership, issuer signatures, credential membership, commitment opening, holder control, expiration, non-revocation, qualification constraints, and request binding remain separate proof obligations. Current validity requires all of them.

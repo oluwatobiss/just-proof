@@ -85,7 +85,7 @@ To develop and test the project locally, install:
 
 ```bash
 git clone https://github.com/oluwatobiss/just-proof.git
-cd quote-otd
+cd just-proof
 ```
 
 ### 2. Install Dependencies

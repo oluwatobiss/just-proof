@@ -26,9 +26,17 @@ JustProof is a privacy-preserving qualification verification application built o
 
 | Network | Contract Address                                                   |
 | ------- | ------------------------------------------------------------------ |
-| Preview | `c68f314ffcf61644323c13ec6fa420a10b81bc45f569137bfa775bfd73bf8153` |
+| Preview | `98f55ca86e33635d1998b29d2a44865b778e58faf94b4776578f7164ab1913ed` |
 
 The application currently uses the Midnight Preview network.
+
+## What This Product Does
+
+Qualifications are often verified by asking people to share their certificates directly. That can expose considerably more information than a verifier actually needs, including personal details, credential identifiers, grades, signatures, and other certificate metadata. JustProof is designed to let people prove the qualification that matters without handing over the underlying certificate.
+
+Credential holders use JustProof to generate privacy-preserving proofs for verifiers such as employers, organizations, course providers, and event organizers. Issuers provide credentials that can later be proven through the protocol, while verifiers receive cryptographic evidence that the requested qualification is valid rather than receiving the holder's complete credential.
+
+JustProof uses Midnight because qualification verification is a natural selective-disclosure problem. Midnight's zero-knowledge capabilities make it possible to combine public protocol state—such as credential, issuer, and revocation commitments—with private holder data so that a verifier can validate a claim without requiring the private credential itself to become public.
 
 ## How it works
 
@@ -40,33 +48,25 @@ The application currently uses the Midnight Preview network.
 
 Midnight provides the privacy-preserving infrastructure that allows the proof to be generated and verified without exposing the underlying credential data.
 
-## What This Product Does
-
-Qualifications are often verified by asking people to share their certificates directly. That can expose considerably more information than a verifier actually needs, including personal details, credential identifiers, grades, signatures, and other certificate metadata. JustProof is designed to let people prove the qualification that matters without handing over the underlying certificate.
-
-Credential holders use JustProof to generate privacy-preserving proofs for verifiers such as employers, organizations, course providers, and event organizers. Issuers provide credentials that can later be proven through the protocol, while verifiers receive cryptographic evidence that the requested qualification is valid rather than receiving the holder's complete credential.
-
-JustProof uses Midnight because qualification verification is a natural selective-disclosure problem. Midnight's zero-knowledge capabilities make it possible to combine public protocol state—such as credential, issuer, and revocation commitments—with private holder data so that a verifier can validate a claim without requiring the private credential itself to become public.
-
 ## Privacy Model
 
 JustProof separates the public information required for protocol verification from the private information required to construct a proof.
 
-* **PUBLIC — on-chain, anyone can see:** protocol state required to establish recognized issuers, credential registration, and revocation state, represented through cryptographic commitments and roots rather than publication of the underlying private credential.
-* **PRIVATE — private witness, never on-chain:** the holder's underlying credential data and private values used to demonstrate possession of and claims about that credential.
-* **PROVED WITHOUT REVEALING:** that the holder possesses a credential satisfying the requested qualification requirements, that it is associated with a recognized issuer and registered credential state, and that it has not been revoked—without revealing the underlying certificate or unrelated private credential fields.
+- **PUBLIC — on-chain, anyone can see:** protocol state required to establish recognized issuers, credential registration, and revocation state, represented through cryptographic commitments and roots rather than publication of the underlying private credential.
+- **PRIVATE — private witness, never on-chain:** the holder's underlying credential data and private values used to demonstrate possession of and claims about that credential.
+- **PROVED WITHOUT REVEALING:** that the holder possesses a credential satisfying the requested qualification requirements, that it is associated with a recognized issuer and registered credential state, and that it has not been revoked—without revealing the underlying certificate or unrelated private credential fields.
 
 The protocol follows a minimal-disclosure principle: **prove the fact a verifier needs, not the document containing it.**
 
 ## Tech Stack
 
-* **Smart Contracts:** Compact `0.23`, Midnight's domain-specific language for privacy-preserving smart contracts and zero-knowledge logic.
-* **Blockchain:** Midnight Network.
-* **Frontend:** React and TypeScript.
-* **Backend Infrastructure:** Node.js and Express.js for issuer workflows, API routing, and required off-chain infrastructure.
-* **Testing:** Vitest and TypeScript-based contract/integration tests.
-* **Deployment:** Netlify for the web application.
-* **Development Environment:** Midnight Compact toolchain and proof infrastructure.
+- **Smart Contracts:** Compact `0.23`, Midnight's domain-specific language for privacy-preserving smart contracts and zero-knowledge logic.
+- **Blockchain:** Midnight Network.
+- **Frontend:** React and TypeScript.
+- **Backend Infrastructure:** Node.js and Express.js for issuer workflows, API routing, and required off-chain infrastructure.
+- **Testing:** Vitest and TypeScript-based contract/integration tests.
+- **Deployment:** Netlify for the web application.
+- **Development Environment:** Midnight Compact toolchain and proof infrastructure.
 
 The architecture intentionally favors a small, maintainable stack and avoids unnecessary framework or dependency complexity.
 

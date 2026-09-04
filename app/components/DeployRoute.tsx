@@ -1,4 +1,4 @@
-﻿import { useState, useCallback } from "react";
+﻿import { useState } from "react";
 import type {
   ConnectedAPI,
   InitialAPI,
@@ -37,10 +37,6 @@ function buildDeployedContractData(
     network,
     createdAt: new Date().toISOString(),
   };
-}
-
-function serializeDeployedContractData(data: DeployedContractData): string {
-  return JSON.stringify(data, null, 2);
 }
 
 export function DeployRoute() {
@@ -89,7 +85,7 @@ export function DeployRoute() {
     }
   }
 
-  const performDeployment = useCallback(async () => {
+  async function performDeployment() {
     if (!wallet || isDeploying) return;
 
     setIsDeploying(true);
@@ -134,8 +130,7 @@ export function DeployRoute() {
         config.networkId,
       );
 
-      const contractDataJson =
-        serializeDeployedContractData(deployedContractData);
+      const contractDataJson = JSON.stringify(deployedContractData, null, 2);
       const blob = new Blob([contractDataJson], { type: "application/json" });
 
       setDeploymentResult({
@@ -151,7 +146,7 @@ export function DeployRoute() {
     } finally {
       setIsDeploying(false);
     }
-  }, [wallet, isDeploying, config]);
+  }
 
   function downloadContractData() {
     if (!deploymentResult) return;
@@ -173,7 +168,6 @@ export function DeployRoute() {
             This is a local operational route for deploying the JustProof
             placeholder contract to the {config.networkId} Midnight network.
           </p>
-
           <div className="deploy-notice">
             <p>
               <strong>Proving:</strong> Deployment proofs are generated using
@@ -186,13 +180,11 @@ export function DeployRoute() {
               and submission to Midnight {config.networkId}.
             </p>
           </div>
-
           {errorMessage && (
             <div className="deploy-status--error">
               <p>{errorMessage}</p>
             </div>
           )}
-
           {!wallet ? (
             <button
               onClick={openWalletPicker}
@@ -206,11 +198,9 @@ export function DeployRoute() {
               <div className="status-valid">
                 <span>Contract Deployed</span>
               </div>
-
               <div className="deploy-address-box mono">
                 {deploymentResult.contractAddress}
               </div>
-
               <div className="deploy-info-banner">
                 <strong>Important:</strong> Download your deployment record. It
                 contains your contract address and network ID.
@@ -221,7 +211,6 @@ export function DeployRoute() {
                   Creator Identity.
                 </em>
               </div>
-
               <button
                 onClick={downloadContractData}
                 className="btn btn-primary btn-full"
@@ -238,7 +227,6 @@ export function DeployRoute() {
               >
                 {isDeploying ? "Deploying..." : "Deploy Contract"}
               </button>
-
               {isDeploying && (
                 <div className="deploy-status">
                   {txState === "preparing" && "Validating environment..."}
@@ -250,7 +238,6 @@ export function DeployRoute() {
           )}
         </div>
       </div>
-
       <WalletPicker
         isOpen={isWalletPickerOpen}
         wallets={availableWallets}

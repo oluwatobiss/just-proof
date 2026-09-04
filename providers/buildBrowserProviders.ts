@@ -66,25 +66,14 @@ export class DappConnectorWalletProvider
   }
 }
 
-export async function buildBrowserProviders(
-  wallet?: ConnectedAPI,
-  creatorId?: CreatorIdentity | null,
-): Promise<{
+export async function buildBrowserProviders(wallet?: ConnectedAPI): Promise<{
   providers: MidnightProviders<any>;
   stateProvider?: PrivateStateProvider<string, JustProofPrivateState>;
 }> {
-  const createPrivateState = (creatorId: CreatorIdentity) =>
-    createJustProofPrivateState(new Uint8Array(creatorId.secretKey));
-
   const privateStateProvider = inMemoryPrivateStateProvider<
     string,
     JustProofPrivateState
   >();
-
-  if (creatorId) {
-    privateStateProvider.setContractAddress(creatorId.contractAddress);
-    privateStateProvider.set(PRIVATE_STATE_ID, createPrivateState(creatorId));
-  }
 
   const walletProvider = wallet
     ? new DappConnectorWalletProvider(wallet)

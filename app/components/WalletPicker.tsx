@@ -4,14 +4,14 @@ import type { InitialAPI } from "@midnight-ntwrk/dapp-connector-api";
 interface WalletPickerProps {
   isOpen: boolean;
   wallets: InitialAPI[];
-  onSelect: (wallet: InitialAPI) => void;
+  connectWallet: (wallet: InitialAPI) => void;
   closeWalletPicker: () => void;
 }
 
 export function WalletPicker({
   isOpen,
   wallets,
-  onSelect,
+  connectWallet,
   closeWalletPicker,
 }: WalletPickerProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -56,7 +56,7 @@ export function WalletPicker({
               <button
                 key={wallet.name}
                 className="wallet-option"
-                onClick={() => onSelect(wallet)}
+                onClick={() => connectWallet(wallet)}
                 aria-label={`Connect with ${wallet.name}`}
               >
                 <div className="wallet-icon">

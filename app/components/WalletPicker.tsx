@@ -5,14 +5,14 @@ interface WalletPickerProps {
   isOpen: boolean;
   wallets: InitialAPI[];
   onSelect: (wallet: InitialAPI) => void;
-  onClose: () => void;
+  closeWalletPicker: () => void;
 }
 
 export function WalletPicker({
   isOpen,
   wallets,
   onSelect,
-  onClose,
+  closeWalletPicker,
 }: WalletPickerProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -27,14 +27,10 @@ export function WalletPicker({
     }
   }, [isOpen]);
 
-  const handleClose = () => {
-    onClose();
-  };
-
   return (
     <dialog
       ref={dialogRef}
-      onClose={handleClose}
+      onClose={closeWalletPicker}
       aria-labelledby="wallet-picker-title"
       className="wallet-dialog"
     >
@@ -80,7 +76,7 @@ export function WalletPicker({
         )}
 
         <div className="wallet-dialog-actions">
-          <button className="btn btn-secondary" onClick={handleClose}>
+          <button className="btn btn-secondary" onClick={closeWalletPicker}>
             Cancel
           </button>
         </div>

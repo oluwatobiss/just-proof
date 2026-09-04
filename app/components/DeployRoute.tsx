@@ -242,7 +242,7 @@ export function DeployRoute() {
         isOpen={isWalletPickerOpen}
         wallets={availableWallets}
         onSelect={connectWallet}
-        onClose={() => setIsWalletPickerOpen(false)}
+        closeWalletPicker={() => setIsWalletPickerOpen(false)}
       />
     </section>
   );

@@ -1,11 +1,11 @@
-﻿import { configLinks } from "../config/links";
+import { configLinks } from "../config/links";
 
 export function Header() {
   return (
     <header className="header">
       <div className="header-container">
         <div className="logo">
-          <span className="logo-text">JustProof</span>
+          <a href="/" className="logo-text">JustProof</a>
           <div className="status-indicator">
             <span className="status-dot"></span>
             <span className="status-text">IN ACTIVE DEVELOPMENT</span>

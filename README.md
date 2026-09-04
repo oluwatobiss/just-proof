@@ -22,13 +22,13 @@ JustProof is a privacy-preserving qualification verification application built o
 
 ## Contract Address
 
-### Preview Network
+### Network
 
 | Network | Contract Address                                                   |
 | ------- | ------------------------------------------------------------------ |
-| Preview | `98f55ca86e33635d1998b29d2a44865b778e58faf94b4776578f7164ab1913ed` |
+| Preprod | `8cb701a837f068181ad63fc1f458ff09a453ac6276adef246e95687b5a9c7d29` |
 
-The application currently uses the Midnight Preview network.
+The application currently uses the Midnight Preprod network.
 
 ## What This Product Does
 
@@ -232,7 +232,7 @@ The pipeline performs the project's required quality checks, including:
 4. Building the application.
 5. Running the project's validation/test workflow where applicable.
 6. Running security/scanning checks.
-7. Building the production/preview frontend used for deployment.
+7. Building the production frontend used for deployment.
 
 This means a pull request is checked automatically rather than relying solely on manual local testing. The CI workflow helps detect:
 

@@ -1,4 +1,4 @@
-import type { ConnectedAPI } from "@midnight-ntwrk/dapp-connector-api";
+﻿import type { ConnectedAPI } from "@midnight-ntwrk/dapp-connector-api";
 import { FetchZkConfigProvider } from "@midnight-ntwrk/midnight-js-fetch-zk-config-provider";
 import { httpClientProofProvider } from "@midnight-ntwrk/midnight-js-http-client-proof-provider";
 import { indexerPublicDataProvider } from "@midnight-ntwrk/midnight-js-indexer-public-data-provider";
@@ -112,6 +112,16 @@ export async function buildBrowserProviders(
   );
   const config = getConfig();
 
+  const proofServerUrl = new URL(config.proofServer);
+  if (
+    proofServerUrl.hostname !== "127.0.0.1" &&
+    proofServerUrl.hostname !== "localhost"
+  ) {
+    throw new Error(
+      `Privacy violation: Proof server must be a local loopback address. Found: ${config.proofServer}`,
+    );
+  }
+
   setNetworkId(config.networkId);
   return {
     providers: {
@@ -122,7 +132,7 @@ export async function buildBrowserProviders(
       ),
       zkConfigProvider: zkConfigProvider as any,
       proofProvider: httpClientProofProvider(
-        config.proofServer,
+        config.proofServer, // Enforced to be loopback
         zkConfigProvider as any,
       ),
       walletProvider: walletProvider

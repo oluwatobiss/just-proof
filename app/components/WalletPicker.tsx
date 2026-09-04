@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+﻿import { useEffect, useRef } from "react";
 import type { InitialAPI } from "@midnight-ntwrk/dapp-connector-api";
 
 interface WalletPickerProps {
@@ -14,72 +14,77 @@ export function WalletPicker({
   onSelect,
   onClose,
 }: WalletPickerProps) {
-  useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape" && isOpen) onClose();
-    }
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose]);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    if (isOpen && !dialog.open) {
+      dialog.showModal();
+    } else if (!isOpen && dialog.open) {
+      dialog.close();
+    }
+  }, [isOpen]);
+
+  const handleClose = () => {
+    onClose();
+  };
 
   return (
-    <div
-      className="modal-overlay"
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
+    <dialog
+      ref={dialogRef}
+      onClose={handleClose}
       aria-labelledby="wallet-picker-title"
+      className="wallet-dialog"
     >
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <h2 id="wallet-picker-title">Connect Wallet</h2>
-        <p className="text-sm opacity-70 mb-6">
-          Select a wallet to securely connect to Quote of the Day.
+      <div className="wallet-dialog-content">
+        <h2 id="wallet-picker-title" className="wallet-dialog-title">
+          Connect Wallet
+        </h2>
+        <p className="wallet-dialog-desc">
+          Select a wallet to securely connect to JustProof.
         </p>
 
         {wallets.length === 0 ? (
-          <div
-            className="text-center p-4 bg-code border border-border"
-            style={{ borderRadius: "0.5rem" }}
-          >
-            <p className="text-sm">No Midnight wallets detected.</p>
-            <p className="text-xs opacity-50 mt-2">
+          <div className="wallet-empty">
+            <p className="wallet-empty-title">No Midnight wallets detected.</p>
+            <p className="wallet-empty-desc">
               Please install a Midnight compatible extension (e.g. 1AM) to
               continue.
             </p>
           </div>
         ) : (
-          <div className="flex-col">
+          <div className="wallet-options">
             {wallets.map((wallet) => (
               <button
                 key={wallet.name}
-                className="wallet-option w-full"
+                className="wallet-option"
                 onClick={() => onSelect(wallet)}
                 aria-label={`Connect with ${wallet.name}`}
               >
-                {wallet.icon ? (
-                  <img src={wallet.icon} alt="" className="wallet-icon" />
-                ) : (
-                  <div className="wallet-icon flex items-center justify-center bg-code border border-border">
-                    <span className="text-xs">W</span>
-                  </div>
-                )}
-                <div className="flex-col" style={{ alignItems: "flex-start" }}>
+                <div className="wallet-icon">
+                  {wallet.icon ? (
+                    <img src={wallet.icon} alt="" />
+                  ) : (
+                    <span className="mono">W</span>
+                  )}
+                </div>
+                <div className="wallet-info">
                   <span className="wallet-name">{wallet.name}</span>
-                  <span className="wallet-caption">Installed</span>
+                  <span className="wallet-status">Installed</span>
                 </div>
               </button>
             ))}
           </div>
         )}
 
-        <div className="mt-6 text-center">
-          <button className="btn btn-ghost btn-sm" onClick={onClose}>
+        <div className="wallet-dialog-actions">
+          <button className="btn btn-secondary" onClick={handleClose}>
             Cancel
           </button>
         </div>
       </div>
-    </div>
+    </dialog>
   );
 }

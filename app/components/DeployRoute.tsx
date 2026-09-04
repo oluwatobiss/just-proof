@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState, useCallback } from "react";
 import type {
   ConnectedAPI,
   InitialAPI,
@@ -10,7 +10,15 @@ import { buildBrowserProviders } from "../../providers/buildBrowserProviders";
 import { getConfig, PRIVATE_STATE_ID } from "../../utils/config";
 import { connectBrowserWallet, listWallets } from "../../utils/wallet";
 
-type TxState = "idle" | "proving" | "submitting" | "success" | "error";
+type TxState =
+  | "idle"
+  | "preparing"
+  | "proving"
+  | "balancing"
+  | "signing"
+  | "submitting"
+  | "success"
+  | "error";
 
 interface DeployedContractData {
   version: number;
@@ -42,6 +50,9 @@ export function DeployRoute() {
   const [isConnecting, setIsConnecting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  // Guard for concurrent deployments
+  const [isDeploying, setIsDeploying] = useState(false);
+
   const [txState, setTxState] = useState<TxState>("idle");
   const [deploymentResult, setDeploymentResult] = useState<{
     contractAddress: string;
@@ -61,6 +72,9 @@ export function DeployRoute() {
       setIsWalletPickerOpen(false);
       setIsConnecting(true);
       setErrorMessage(null);
+      // Reset stale state on new wallet connection
+      setDeploymentResult(null);
+      setTxState("idle");
 
       const connectedWallet = await connectBrowserWallet(selectedWallet);
       setWallet(connectedWallet);
@@ -69,17 +83,20 @@ export function DeployRoute() {
       setErrorMessage(
         "Couldn't connect to your wallet. Please unlock it and try again.",
       );
+      setWallet(null);
     } finally {
       setIsConnecting(false);
     }
   }
 
-  async function performDeployment() {
-    if (!wallet) return;
+  const performDeployment = useCallback(async () => {
+    if (!wallet || isDeploying) return;
+
+    setIsDeploying(true);
+    setErrorMessage(null);
 
     try {
-      setTxState("proving");
-      setErrorMessage(null);
+      setTxState("preparing");
 
       // Network ID validation
       const walletConfig = await wallet.getConfiguration();
@@ -94,19 +111,22 @@ export function DeployRoute() {
         await fetch(config.proofServer, { method: "OPTIONS" });
       } catch {
         throw new Error(
-          "Local proof server unavailable. Start the Midnight proof server on 127.0.0.1:6300 and try again.",
+          "Local proof server unavailable. Start the Midnight proof server on 127.0.0.1:6300 (e.g. via Docker) and try again.",
         );
       }
 
       const { providers } = await buildBrowserProviders(wallet);
 
-      // Deploy Contract (calls proveTx, balanceTx, submitTx)
+      setTxState("proving");
+
+      // Deploy Contract (calls proveTx, balanceTx, submitTx under the hood)
       const deployed = await deployContract(providers, {
         compiledContract: CompiledJustProofContract,
         privateStateId: PRIVATE_STATE_ID,
         initialPrivateState: {}, // Empty initial private state; the contract will initialize it
       });
 
+      setTxState("submitting");
       const contractAddress = deployed.deployTxData.public.contractAddress;
 
       const deployedContractData = buildDeployedContractData(
@@ -128,8 +148,10 @@ export function DeployRoute() {
       const msg = err instanceof Error ? err.message : String(err);
       setErrorMessage(msg);
       setTxState("error");
+    } finally {
+      setIsDeploying(false);
     }
-  }
+  }, [wallet, isDeploying, config]);
 
   function downloadContractData() {
     if (!deploymentResult) return;
@@ -142,71 +164,92 @@ export function DeployRoute() {
   }
 
   return (
-    <div className="card max-w-lg mx-auto">
-      <h2 className="mb-4">Admin Deployment</h2>
-      <p className="mb-6 opacity-80 text-sm">
-        This is a local operational route for deploying the Just Proof contract
-        to the {config.networkId} Midnight network. The deployment process will
-        generate a new contract address, which will be stored in a downloadable
-        file. You can use this file to interact with your deployed contract.
-        Your private inputs will only be sent to the local proof server at{" "}
-        {config.proofServer}.
-      </p>
-
-      {errorMessage && (
-        <div className="bg-error-bg text-error p-4 rounded mb-6">
-          <p>{errorMessage}</p>
-        </div>
-      )}
-
-      {!wallet ? (
-        <button
-          onClick={openWalletPicker}
-          disabled={isConnecting}
-          className="btn btn-primary w-full"
-        >
-          {isConnecting ? "Connecting..." : "Connect 1AM Wallet"}
-        </button>
-      ) : deploymentResult ? (
-        <div className="flex-col gap-4 text-center">
-          <div className="text-success font-bold text-xl mb-2">
-            ✅ Contract Deployed
-          </div>
-          <p className="font-mono text-xs opacity-70 bg-base-200 p-2 rounded">
-            {deploymentResult.contractAddress}
+    <section className="deploy-section">
+      <div className="deploy-container">
+        <div className="deploy-card">
+          <h2 className="deploy-eyebrow">Contract Deployment</h2>
+          <h1 className="deploy-title">Admin Deployment</h1>
+          <p className="deploy-description">
+            This is a local operational route for deploying the JustProof
+            placeholder contract to the {config.networkId} Midnight network.
           </p>
-          <div className="bg-warning-bg text-warning p-4 rounded text-left mt-4 mb-4 text-sm">
-            <strong>🚨 IMPORTANT:</strong> Store your Contract Data securely! It
-            represents ownership of your contract.
-          </div>
-          <button
-            onClick={downloadContractData}
-            className="btn btn-primary w-full"
-          >
-            Download Contract Data
-          </button>
-        </div>
-      ) : (
-        <div className="flex-col gap-4 text-center">
-          <button
-            onClick={performDeployment}
-            disabled={txState === "proving" || txState === "submitting"}
-            className="btn btn-primary w-full"
-          >
-            {txState === "proving" || txState === "submitting"
-              ? "Deploying..."
-              : "Deploy Contract"}
-          </button>
 
-          {(txState === "proving" || txState === "submitting") && (
-            <p className="opacity-70 text-sm mt-2">
-              {txState === "proving"
-                ? "Generating ZK Proof locally..."
-                : "Balancing & Submitting..."}
+          <div className="deploy-notice">
+            <p>
+              <strong>Proving:</strong> Deployment proofs are generated using
+              the proof server running locally on your computer at{" "}
+              {config.proofServer}.
             </p>
+            <p>
+              <strong>Transactions:</strong> The connected wallet handles
+              transaction balancing, signing, DUST sponsorship where available,
+              and submission to Midnight {config.networkId}.
+            </p>
+          </div>
+
+          {errorMessage && (
+            <div className="deploy-status--error">
+              <p>{errorMessage}</p>
+            </div>
+          )}
+
+          {!wallet ? (
+            <button
+              onClick={openWalletPicker}
+              disabled={isConnecting}
+              className="btn btn-primary btn-full"
+            >
+              {isConnecting ? "Connecting..." : "Connect 1AM Wallet"}
+            </button>
+          ) : deploymentResult ? (
+            <div className="deploy-result">
+              <div className="status-valid">
+                <span>Contract Deployed</span>
+              </div>
+
+              <div className="deploy-address-box mono">
+                {deploymentResult.contractAddress}
+              </div>
+
+              <div className="deploy-info-banner">
+                <strong>Important:</strong> Download your deployment record. It
+                contains your contract address and network ID.
+                <br />
+                <br />
+                <em>
+                  Note: This placeholder contract does not export a private
+                  Creator Identity.
+                </em>
+              </div>
+
+              <button
+                onClick={downloadContractData}
+                className="btn btn-primary btn-full"
+              >
+                Download Contract Data
+              </button>
+            </div>
+          ) : (
+            <div>
+              <button
+                onClick={performDeployment}
+                disabled={isDeploying}
+                className="btn btn-primary btn-full"
+              >
+                {isDeploying ? "Deploying..." : "Deploy Contract"}
+              </button>
+
+              {isDeploying && (
+                <div className="deploy-status">
+                  {txState === "preparing" && "Validating environment..."}
+                  {txState === "proving" && "Generating ZK Proof locally..."}
+                  {txState === "submitting" && "Balancing & Submitting..."}
+                </div>
+              )}
+            </div>
           )}
         </div>
-      )}
+      </div>
 
       <WalletPicker
         isOpen={isWalletPickerOpen}
@@ -214,6 +257,6 @@ export function DeployRoute() {
         onSelect={connectWallet}
         onClose={() => setIsWalletPickerOpen(false)}
       />
-    </div>
+    </section>
   );
 }

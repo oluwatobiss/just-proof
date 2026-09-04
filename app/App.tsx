@@ -7,10 +7,30 @@ import { Issuers } from "./components/Issuers";
 import { Technology } from "./components/Technology";
 import { Progress } from "./components/Progress";
 import { Footer } from "./components/Footer";
-// @ts-expect-error - allow side-effect CSS import without type declarations
 import "./App.css";
 
+// The /deploy route is a local operational route, only available when the
+// app is started with VITE_ENABLE_DEPLOY_ROUTE=true (e.g. `npm run dev:deploy`).
+// It is intentionally absent from standard production builds.
+import { DeployRoute } from "./components/DeployRoute";
+
+const DEPLOY_ROUTE_ENABLED =
+  import.meta.env.VITE_ENABLE_DEPLOY_ROUTE === "true";
+const IS_DEPLOY_PATH = window.location.pathname === "/deploy";
+
 function App() {
+  if (DEPLOY_ROUTE_ENABLED && IS_DEPLOY_PATH) {
+    return (
+      <div className="just-proof-app">
+        <Header />
+        <main>
+          <DeployRoute />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="just-proof-app">
       <Header />

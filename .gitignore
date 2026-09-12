@@ -68,8 +68,9 @@ managed/
 
 # AI assistant local configuration
 .agent/
+.claude/
+.codex/
 .gemini/
-.claude
 .midnight-expert
 .mcp.json
 tome.json

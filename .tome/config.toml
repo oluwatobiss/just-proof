@@ -1,2 +1,2 @@
 workspace = "midnight"
-harnesses = ["antigravity", "copilot-cli", "gemini", "claude-code"]
+harnesses = ["antigravity", "copilot-cli", "gemini", "claude-code", "codex"]

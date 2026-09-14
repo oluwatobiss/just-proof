@@ -1,0 +1,16 @@
+// CANDIDATE constants, awaiting Phase 2 user review.
+// Separately assembled TS/generated Compact paths share the runtime trust base.
+// issuer: e9e09e4fa4cbf338a1b9ccef8cf3bfef63a11b7369c9279f902fb5014af0d3ad
+circuit candidateIssuerRootV2(): Bytes<32> {
+  return [233, 224, 158, 79, 164, 203, 243, 56, 161, 185, 204, 239, 140, 243, 191, 239, 99, 161, 27, 115, 105, 201, 39, 159, 144, 47, 181, 1, 74, 240, 211, 173] as Bytes<32>;
+}
+
+// credential: fa151b227368f61e42bbbd5c7d2b0ea295a1fe142dd4e916142745b9ff75d656
+circuit candidateCredentialRootV2(): Bytes<32> {
+  return [250, 21, 27, 34, 115, 104, 246, 30, 66, 187, 189, 92, 125, 43, 14, 162, 149, 161, 254, 20, 45, 212, 233, 22, 20, 39, 69, 185, 255, 117, 214, 86] as Bytes<32>;
+}
+
+// revocation: 67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8
+circuit candidateRevocationRootV2(): Bytes<32> {
+  return [103, 204, 25, 135, 225, 180, 26, 62, 1, 20, 120, 72, 72, 97, 180, 151, 227, 4, 170, 10, 138, 6, 153, 41, 123, 152, 190, 50, 238, 249, 119, 200] as Bytes<32>;
+}

@@ -1,0 +1,72 @@
+// Internal typed derivations only. Lifecycle validation is deliberately absent in Phase 2.
+circuit authorityControlV2(context: Bytes<32>, secret: Bytes<32>): Bytes<32> {
+  return persistentHash<RegistryAuthorityControlInputV2>(RegistryAuthorityControlInputV2 {
+    domain: DOMAIN_REGISTRY_AUTHORITY_CONTROL_V2(), protocolVersion: 2, registryContext: context, registryAuthoritySecret: secret
+  });
+}
+circuit issuerControlV2(context: Bytes<32>, secret: Bytes<32>): Bytes<32> {
+  return persistentHash<IssuerControlInputV2>(IssuerControlInputV2 {
+    domain: DOMAIN_ISSUER_CONTROL_V2(), protocolVersion: 2, registryContext: context, issuerSecret: secret
+  });
+}
+circuit issuerIdV2(context: Bytes<32>, control: Bytes<32>): Bytes<32> {
+  return persistentHash<IssuerIdInputV2>(IssuerIdInputV2 {
+    domain: DOMAIN_ISSUER_ID_V2(), protocolVersion: 2, registryContext: context, issuerControlCommitment: control
+  });
+}
+circuit issuerLeafV2(record: IssuerRecordV2): Bytes<32> {
+  return persistentHash<IssuerLeafInputV2>(IssuerLeafInputV2 { domain: DOMAIN_ISSUER_LEAF_V2(), record: record });
+}
+circuit credentialIdV2(issuerId: Bytes<32>, nonce: Bytes<32>): Bytes<32> {
+  return persistentHash<CredentialIdInputV2>(CredentialIdInputV2 {
+    domain: DOMAIN_CREDENTIAL_ID_V2(), protocolVersion: 2, issuerId: issuerId, issuanceNonce: nonce
+  });
+}
+circuit subjectCommitmentV2(credentialId: Bytes<32>, opening: Bytes<32>): Bytes<32> {
+  return persistentCommit<SubjectCommitmentValueV2>(SubjectCommitmentValueV2 {
+    domain: DOMAIN_SUBJECT_COMMITMENT_V2(), protocolVersion: 2, credentialId: credentialId
+  }, opening);
+}
+circuit credentialCommitmentV2(statement: CredentialStatementV2, opening: Bytes<32>): Bytes<32> {
+  return persistentCommit<CredentialCommitmentValueV2>(CredentialCommitmentValueV2 {
+    domain: DOMAIN_CREDENTIAL_COMMITMENT_V2(), statement: statement
+  }, opening);
+}
+circuit credentialLeafV2(id: Bytes<32>, commitment: Bytes<32>): Bytes<32> {
+  return persistentHash<CredentialLeafInputV2>(CredentialLeafInputV2 {
+    domain: DOMAIN_CREDENTIAL_LEAF_V2(), protocolVersion: 2, credentialId: id, credentialCommitment: commitment
+  });
+}
+circuit registrationNullifierV2(address: ContractAddress, context: Bytes<32>, id: Bytes<32>): Bytes<32> {
+  return persistentHash<CredentialRegistrationNullifierInputV2>(CredentialRegistrationNullifierInputV2 {
+    domain: DOMAIN_CREDENTIAL_REGISTRATION_NULLIFIER_V2(), protocolVersion: 2,
+    registryContract: address, registryContext: context, credentialId: id
+  });
+}
+circuit issuerEmptyV2(): Bytes<32> {
+  return persistentHash<IssuerEmptyLeafInputV2>(IssuerEmptyLeafInputV2 { domain: DOMAIN_ISSUER_EMPTY_V2(), protocolVersion: 2 });
+}
+circuit credentialEmptyV2(): Bytes<32> {
+  return persistentHash<CredentialEmptyLeafInputV2>(CredentialEmptyLeafInputV2 { domain: DOMAIN_CREDENTIAL_EMPTY_V2(), protocolVersion: 2 });
+}
+circuit notRevokedV2(): Bytes<32> {
+  return persistentHash<RevocationNotRevokedLeafInputV2>(RevocationNotRevokedLeafInputV2 { domain: DOMAIN_REVOCATION_NOT_REVOKED_V2(), protocolVersion: 2 });
+}
+circuit revokedLeafV2(id: Bytes<32>, commitment: Bytes<32>): Bytes<32> {
+  return persistentHash<RevokedCredentialLeafInputV2>(RevokedCredentialLeafInputV2 {
+    domain: DOMAIN_REVOCATION_REVOKED_V2(), protocolVersion: 2, credentialId: id, credentialCommitment: commitment
+  });
+}
+circuit nodeV2(domain: Bytes<32>, left: Bytes<32>, right: Bytes<32>): Bytes<32> {
+  return persistentHash<MerkleNodeInputV2>(MerkleNodeInputV2 { domain: domain, protocolVersion: 2, left: left, right: right });
+}
+circuit requestDigestV2(request: QualificationRequestV2): Bytes<32> {
+  return persistentHash<QualificationRequestDigestInputV2>(QualificationRequestDigestInputV2 {
+    domain: DOMAIN_PROOF_REQUEST_V2(), request: request
+  });
+}
+circuit stateDigestV2(state: QualificationVerificationStateV2): Bytes<32> {
+  return persistentHash<QualificationVerificationStateDigestInputV2>(QualificationVerificationStateDigestInputV2 {
+    domain: DOMAIN_PROOF_STATE_V2(), state: state
+  });
+}

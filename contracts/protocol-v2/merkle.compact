@@ -1,0 +1,31 @@
+// Internal fixed-depth helpers. Expected roots/counters must come from ledger reads in Phase 3.
+struct IndexBitsV2 { remaining: Uint<16>, bits: Vector<16, Boolean> }
+circuit directionsV2(index: Uint<16>): Vector<16, Boolean> {
+  const s = fold((s: IndexBitsV2, power: Uint<16>): IndexBitsV2 => {
+    const bit = s.remaining >= power;
+    return IndexBitsV2 {
+      remaining: (s.remaining - (bit ? power : 0)) as Uint<16>,
+      bits: [bit, s.bits[0], s.bits[1], s.bits[2], s.bits[3], s.bits[4], s.bits[5], s.bits[6], s.bits[7],
+        s.bits[8], s.bits[9], s.bits[10], s.bits[11], s.bits[12], s.bits[13], s.bits[14]]
+    };
+  }, IndexBitsV2 { remaining: index, bits: default<Vector<16, Boolean>> },
+  [32768,16384,8192,4096,2048,1024,512,256,128,64,32,16,8,4,2,1] as Vector<16, Uint<16>>);
+  assert(s.remaining == 0, "index decomposition");
+  return s.bits;
+}
+circuit rootFromV2(domain: Bytes<32>, leaf: Bytes<32>, index: Uint<16>, path: Vector<16, Bytes<32>>): Bytes<32> {
+  const entries = map((bit: Boolean, sibling: Bytes<32>): [Boolean, Bytes<32>] => [bit,sibling], directionsV2(index), path);
+  return fold((h: Bytes<32>, entry: [Boolean, Bytes<32>]): Bytes<32> => {
+    return nodeV2(domain, entry[0] ? entry[1] : h, entry[0] ? h : entry[1]);
+  }, leaf, entries);
+}
+circuit membershipV2(domain: Bytes<32>, leaf: Bytes<32>, index: Uint<16>, count: Uint<32>, path: Vector<16, Bytes<32>>, root: Bytes<32>): [] {
+  assert(count <= 65536, "invalid allocation counter");
+  assert(index < count, "unallocated index");
+  assert(rootFromV2(domain, leaf, index, path) == root, "membership root");
+}
+circuit emptySlotV2(domain: Bytes<32>, empty: Bytes<32>, index: Uint<16>, nextIndex: Uint<32>, path: Vector<16, Bytes<32>>, root: Bytes<32>): [] {
+  assert(nextIndex < 65536, "tree full");
+  assert(index == nextIndex, "append index");
+  assert(rootFromV2(domain, empty, index, path) == root, "empty slot root");
+}

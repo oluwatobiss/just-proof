@@ -1,0 +1,52 @@
+pragma language_version 0.23;
+import CompactStandardLibrary;
+include "../../contracts/protocol-v2/types";
+include "../../contracts/protocol-v2/domains";
+include "../../contracts/protocol-v2/derivations";
+include "../../contracts/protocol-v2/merkle";
+
+// TEST ONLY. These exports must never be included by the production contract.
+export pure circuit bits(index: Uint<16>): Vector<16, Boolean> { return directionsV2(index); }
+export pure circuit root(domain: Bytes<32>, leaf: Bytes<32>, index: Uint<16>, path: Vector<16, Bytes<32>>): Bytes<32> {
+  return rootFromV2(domain,leaf,index,path);
+}
+export pure circuit member(domain: Bytes<32>, leaf: Bytes<32>, index: Uint<16>, count: Uint<32>, path: Vector<16, Bytes<32>>, expected: Bytes<32>): [] {
+  membershipV2(domain,leaf,index,count,path,expected);
+}
+export pure circuit emptySlot(domain: Bytes<32>, empty: Bytes<32>, index: Uint<16>, count: Uint<32>, path: Vector<16, Bytes<32>>, expected: Bytes<32>): [] {
+  emptySlotV2(domain,empty,index,count,path,expected);
+}
+
+export pure circuit diagnose_authorityControlV2(context: Bytes<32>, secret: Bytes<32>): Bytes<32> { return authorityControlV2(context,secret); }
+export pure circuit diagnose_issuerControlV2(context: Bytes<32>, secret: Bytes<32>): Bytes<32> { return issuerControlV2(context,secret); }
+export pure circuit diagnose_issuerIdV2(context: Bytes<32>, control: Bytes<32>): Bytes<32> { return issuerIdV2(context,control); }
+export pure circuit diagnose_issuerLeafV2(record: IssuerRecordV2): Bytes<32> { return issuerLeafV2(record); }
+export pure circuit diagnose_credentialIdV2(issuerId: Bytes<32>, nonce: Bytes<32>): Bytes<32> { return credentialIdV2(issuerId,nonce); }
+export pure circuit diagnose_subjectCommitmentV2(credentialId: Bytes<32>, opening: Bytes<32>): Bytes<32> { return subjectCommitmentV2(credentialId,opening); }
+export pure circuit diagnose_credentialCommitmentV2(statement: CredentialStatementV2, opening: Bytes<32>): Bytes<32> { return credentialCommitmentV2(statement,opening); }
+export pure circuit diagnose_credentialLeafV2(id: Bytes<32>, commitment: Bytes<32>): Bytes<32> { return credentialLeafV2(id,commitment); }
+export pure circuit diagnose_registrationNullifierV2(address: ContractAddress, context: Bytes<32>, id: Bytes<32>): Bytes<32> { return registrationNullifierV2(address,context,id); }
+export pure circuit diagnose_issuerEmptyV2(): Bytes<32> { return issuerEmptyV2(); }
+export pure circuit diagnose_credentialEmptyV2(): Bytes<32> { return credentialEmptyV2(); }
+export pure circuit diagnose_notRevokedV2(): Bytes<32> { return notRevokedV2(); }
+export pure circuit diagnose_revokedLeafV2(id: Bytes<32>, commitment: Bytes<32>): Bytes<32> { return revokedLeafV2(id,commitment); }
+export pure circuit diagnose_nodeV2(domain: Bytes<32>, left: Bytes<32>, right: Bytes<32>): Bytes<32> { return nodeV2(domain,left,right); }
+export pure circuit diagnose_requestDigestV2(request: QualificationRequestV2): Bytes<32> { return requestDigestV2(request); }
+export pure circuit diagnose_stateDigestV2(state: QualificationVerificationStateV2): Bytes<32> { return stateDigestV2(state); }
+export pure circuit raw_RegistryAuthorityControlInputV2(value: RegistryAuthorityControlInputV2): Bytes<32> { return persistentHash<RegistryAuthorityControlInputV2>(value); }
+export pure circuit raw_IssuerControlInputV2(value: IssuerControlInputV2): Bytes<32> { return persistentHash<IssuerControlInputV2>(value); }
+export pure circuit raw_IssuerIdInputV2(value: IssuerIdInputV2): Bytes<32> { return persistentHash<IssuerIdInputV2>(value); }
+export pure circuit raw_IssuerLeafInputV2(value: IssuerLeafInputV2): Bytes<32> { return persistentHash<IssuerLeafInputV2>(value); }
+export pure circuit raw_CredentialIdInputV2(value: CredentialIdInputV2): Bytes<32> { return persistentHash<CredentialIdInputV2>(value); }
+export pure circuit raw_SubjectCommitmentValueV2(value: SubjectCommitmentValueV2, opening: Bytes<32>): Bytes<32> { return persistentCommit<SubjectCommitmentValueV2>(value, opening); }
+export pure circuit raw_CredentialCommitmentValueV2(value: CredentialCommitmentValueV2, opening: Bytes<32>): Bytes<32> { return persistentCommit<CredentialCommitmentValueV2>(value, opening); }
+export pure circuit raw_CredentialLeafInputV2(value: CredentialLeafInputV2): Bytes<32> { return persistentHash<CredentialLeafInputV2>(value); }
+export pure circuit raw_CredentialRegistrationNullifierInputV2(value: CredentialRegistrationNullifierInputV2): Bytes<32> { return persistentHash<CredentialRegistrationNullifierInputV2>(value); }
+export pure circuit raw_IssuerEmptyLeafInputV2(value: IssuerEmptyLeafInputV2): Bytes<32> { return persistentHash<IssuerEmptyLeafInputV2>(value); }
+export pure circuit raw_CredentialEmptyLeafInputV2(value: CredentialEmptyLeafInputV2): Bytes<32> { return persistentHash<CredentialEmptyLeafInputV2>(value); }
+export pure circuit raw_RevocationNotRevokedLeafInputV2(value: RevocationNotRevokedLeafInputV2): Bytes<32> { return persistentHash<RevocationNotRevokedLeafInputV2>(value); }
+export pure circuit raw_RevokedCredentialLeafInputV2(value: RevokedCredentialLeafInputV2): Bytes<32> { return persistentHash<RevokedCredentialLeafInputV2>(value); }
+export pure circuit raw_MerkleNodeInputV2(value: MerkleNodeInputV2): Bytes<32> { return persistentHash<MerkleNodeInputV2>(value); }
+export pure circuit raw_QualificationRequestDigestInputV2(value: QualificationRequestDigestInputV2): Bytes<32> { return persistentHash<QualificationRequestDigestInputV2>(value); }
+export pure circuit raw_QualificationVerificationStateDigestInputV2(value: QualificationVerificationStateDigestInputV2): Bytes<32> { return persistentHash<QualificationVerificationStateDigestInputV2>(value); }
+export pure circuit domains(): Vector<18, Bytes<32>> { return [DOMAIN_REGISTRY_AUTHORITY_CONTROL_V2(),DOMAIN_ISSUER_CONTROL_V2(),DOMAIN_ISSUER_ID_V2(),DOMAIN_ISSUER_LEAF_V2(),DOMAIN_CREDENTIAL_ID_V2(),DOMAIN_SUBJECT_COMMITMENT_V2(),DOMAIN_CREDENTIAL_COMMITMENT_V2(),DOMAIN_CREDENTIAL_LEAF_V2(),DOMAIN_CREDENTIAL_REGISTRATION_NULLIFIER_V2(),DOMAIN_ISSUER_EMPTY_V2(),DOMAIN_CREDENTIAL_EMPTY_V2(),DOMAIN_REVOCATION_NOT_REVOKED_V2(),DOMAIN_REVOCATION_REVOKED_V2(),DOMAIN_ISSUER_MERKLE_NODE_V2(),DOMAIN_CREDENTIAL_MERKLE_NODE_V2(),DOMAIN_REVOCATION_MERKLE_NODE_V2(),DOMAIN_PROOF_REQUEST_V2(),DOMAIN_PROOF_STATE_V2()]; }

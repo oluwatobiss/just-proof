@@ -1,0 +1,34 @@
+pragma language_version 0.23;
+import CompactStandardLibrary;
+include "../../contracts/protocol-v2/types";
+include "../../contracts/protocol-v2/domains";
+include "../../contracts/protocol-v2/derivations";
+include "../../contracts/protocol-v2/merkle";
+
+// SYNTHETIC RESOURCE PROBE ONLY. Not a lifecycle or deployable production contract.
+struct ResourceInput {
+  context: Bytes<32>, issuerSecret: Bytes<32>, nonce: Bytes<32>, subjectOpening: Bytes<32>, credentialOpening: Bytes<32>,
+  statement: CredentialStatementV2, issuerIndex: Uint<16>, credentialIndex: Uint<16>,
+  issuerPath: Vector<16, Bytes<32>>, credentialPath: Vector<16, Bytes<32>>, revocationPath: Vector<16, Bytes<32>>
+}
+witness resourceInput(): ResourceInput;
+export ledger issuerRoot: Bytes<32>;
+export ledger credentialRoot: Bytes<32>;
+export ledger revocationRoot: Bytes<32>;
+export circuit resourceProbe(): [] {
+  const w = resourceInput();
+  const control = issuerControlV2(w.context,w.issuerSecret);
+  const id = issuerIdV2(w.context,control);
+  const issuerLeaf = issuerLeafV2(IssuerRecordV2 { protocolVersion: 2, issuerId: id, issuerControlCommitment: control });
+  assert(rootFromV2(DOMAIN_ISSUER_MERKLE_NODE_V2(),issuerLeaf,w.issuerIndex,w.issuerPath) == issuerRoot, "issuer root");
+  const credentialId = credentialIdV2(id,w.nonce);
+  assert(w.statement.credentialId == credentialId, "credential id");
+  assert(w.statement.issuerId == id, "issuer id");
+  assert(subjectCommitmentV2(credentialId,w.subjectOpening) == w.statement.subjectCommitment, "subject commitment");
+  const commitment = credentialCommitmentV2(w.statement,w.credentialOpening);
+  const leaf = credentialLeafV2(credentialId,commitment);
+  assert(rootFromV2(DOMAIN_CREDENTIAL_MERKLE_NODE_V2(),leaf,w.credentialIndex,w.credentialPath) == credentialRoot, "credential root");
+  assert(rootFromV2(DOMAIN_REVOCATION_MERKLE_NODE_V2(),notRevokedV2(),w.credentialIndex,w.revocationPath) == revocationRoot, "old revocation root");
+  // Only the final new root is an intended public effect in this synthetic probe.
+  revocationRoot = disclose(rootFromV2(DOMAIN_REVOCATION_MERKLE_NODE_V2(),revokedLeafV2(credentialId,commitment),w.credentialIndex,w.revocationPath));
+}

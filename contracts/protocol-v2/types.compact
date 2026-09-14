@@ -1,0 +1,58 @@
+// Protocol V2 draft schemas. Field order is cryptographically normative.
+export struct RegistryAuthorityControlInputV2 {
+  domain: Bytes<32>, protocolVersion: Uint<16>, registryContext: Bytes<32>, registryAuthoritySecret: Bytes<32>
+}
+export struct IssuerControlInputV2 {
+  domain: Bytes<32>, protocolVersion: Uint<16>, registryContext: Bytes<32>, issuerSecret: Bytes<32>
+}
+export struct IssuerIdInputV2 {
+  domain: Bytes<32>, protocolVersion: Uint<16>, registryContext: Bytes<32>, issuerControlCommitment: Bytes<32>
+}
+export struct IssuerRecordV2 {
+  protocolVersion: Uint<16>, issuerId: Bytes<32>, issuerControlCommitment: Bytes<32>
+}
+export struct IssuerLeafInputV2 { domain: Bytes<32>, record: IssuerRecordV2 }
+export struct CredentialStatementV2 {
+  protocolVersion: Uint<16>, credentialId: Bytes<32>, issuerId: Bytes<32>, subjectCommitment: Bytes<32>,
+  qualificationType: Bytes<32>, qualificationVersion: Uint<16>, issuedAt: Uint<64>, expiresAt: Uint<64>
+}
+export struct PrivateCredentialPackageV2 {
+  statement: CredentialStatementV2, issuanceNonce: Bytes<32>, credentialOpening: Bytes<32>
+}
+export struct CredentialIdInputV2 {
+  domain: Bytes<32>, protocolVersion: Uint<16>, issuerId: Bytes<32>, issuanceNonce: Bytes<32>
+}
+export struct SubjectCommitmentValueV2 {
+  domain: Bytes<32>, protocolVersion: Uint<16>, credentialId: Bytes<32>
+}
+export struct CredentialCommitmentValueV2 { domain: Bytes<32>, statement: CredentialStatementV2 }
+export struct CredentialLeafInputV2 {
+  domain: Bytes<32>, protocolVersion: Uint<16>, credentialId: Bytes<32>, credentialCommitment: Bytes<32>
+}
+export struct CredentialRegistrationNullifierInputV2 {
+  domain: Bytes<32>, protocolVersion: Uint<16>, registryContract: ContractAddress, registryContext: Bytes<32>, credentialId: Bytes<32>
+}
+export struct IssuerEmptyLeafInputV2 { domain: Bytes<32>, protocolVersion: Uint<16> }
+export struct CredentialEmptyLeafInputV2 { domain: Bytes<32>, protocolVersion: Uint<16> }
+export struct RevocationNotRevokedLeafInputV2 { domain: Bytes<32>, protocolVersion: Uint<16> }
+export struct RevokedCredentialLeafInputV2 {
+  domain: Bytes<32>, protocolVersion: Uint<16>, credentialId: Bytes<32>, credentialCommitment: Bytes<32>
+}
+export struct MerkleNodeInputV2 {
+  domain: Bytes<32>, protocolVersion: Uint<16>, left: Bytes<32>, right: Bytes<32>
+}
+export struct IssuerMerklePathV2 { siblings: Vector<16, Bytes<32>> }
+export struct CredentialMerklePathV2 { siblings: Vector<16, Bytes<32>> }
+export struct RevocationMerklePathV2 { siblings: Vector<16, Bytes<32>> }
+export struct QualificationRequestV2 {
+  protocolVersion: Uint<16>, proofType: Uint<8>, registryContract: ContractAddress, registryContext: Bytes<32>,
+  qualificationType: Bytes<32>, qualificationVersion: Uint<16>, verifierContext: Bytes<32>, challenge: Bytes<32>,
+  requestIssuedAt: Uint<64>, requestExpiresAt: Uint<64>
+}
+export struct QualificationRequestDigestInputV2 { domain: Bytes<32>, request: QualificationRequestV2 }
+export struct QualificationVerificationStateV2 {
+  protocolVersion: Uint<16>, registryContract: ContractAddress, registryContext: Bytes<32>, issuerRoot: Bytes<32>,
+  nextIssuerIndex: Uint<32>, credentialRoot: Bytes<32>, nextCredentialIndex: Uint<32>, revocationRoot: Bytes<32>
+}
+export struct QualificationVerificationStateDigestInputV2 { domain: Bytes<32>, state: QualificationVerificationStateV2 }
+export struct QualificationProofPublicOutputV2 { requestDigest: Bytes<32>, stateDigest: Bytes<32> }

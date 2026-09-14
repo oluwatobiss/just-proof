@@ -1,0 +1,7 @@
+// TEST ONLY: include the exact production constructor, adding a diagnostic check.
+include "../../contracts/just-proof";
+export circuit checkAuthorityKnowledge(): [] {
+  const secret = registryAuthoritySecretWitness();
+  assert(secret != default<Bytes<32>>, "authority secret zero");
+  assert(authorityControlV2(registryContext,secret) == registryAuthorityControlCommitment, "authority control mismatch");
+}

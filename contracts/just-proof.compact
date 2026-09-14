@@ -1,7 +1,63 @@
 pragma language_version 0.23;
+import CompactStandardLibrary;
+include "protocol-v2/types";
+include "protocol-v2/domains";
+include "protocol-v2/derivations";
+include "protocol-v2/merkle";
+include "protocol-v2/candidate-roots";
 
-export ledger message: Opaque<"string">;
+// Phase 3A: constructor, nine fields, and issuer registration only.
+export sealed ledger registryAuthorityControlCommitment: Bytes<32>;
+export sealed ledger registryContext: Bytes<32>;
+export ledger issuerRoot: Bytes<32>;
+export ledger nextIssuerIndex: Uint<32>;
+export ledger registeredIssuerLeaves: Set<Bytes<32>>;
+export ledger credentialRoot: Bytes<32>;
+export ledger nextCredentialIndex: Uint<32>;
+export ledger registeredCredentialNullifiers: Set<Bytes<32>>;
+export ledger revocationRoot: Bytes<32>;
 
-export circuit storeMessage(newMessage: Opaque<"string">): [] {
-  message = disclose(newMessage);
+witness registryAuthoritySecretWitness(): Bytes<32>;
+export struct IssuerRegistrationWitnessV2 {
+  registryAuthoritySecret: Bytes<32>,
+  insertionPath: IssuerMerklePathV2
+}
+witness issuerRegistrationWitnessV2(): IssuerRegistrationWitnessV2;
+constructor(deploymentRegistryContext: Bytes<32>) {
+  assert(deploymentRegistryContext != default<Bytes<32>>, "registry context zero");
+  const secret = registryAuthoritySecretWitness();
+  assert(secret != default<Bytes<32>>, "authority secret zero");
+  // Context is ledger-public configuration. Only the final control hash is disclosed.
+  registryContext = disclose(deploymentRegistryContext);
+  registryAuthorityControlCommitment = disclose(authorityControlV2(deploymentRegistryContext,secret));
+  issuerRoot = candidateIssuerRootV2();
+  nextIssuerIndex = 0;
+  credentialRoot = candidateCredentialRootV2();
+  nextCredentialIndex = 0;
+  revocationRoot = candidateRevocationRootV2();
+  // Sets have canonical empty initial state; no initial entries or extra state.
+}
+
+export circuit registerIssuerV2(issuerControlCommitment: Bytes<32>): [] {
+  const context = registryContext;
+  const authority = registryAuthorityControlCommitment;
+  assert(issuerControlCommitment != default<Bytes<32>>, "issuer control zero");
+  const w = issuerRegistrationWitnessV2();
+  assert(w.registryAuthoritySecret != default<Bytes<32>>, "authority secret zero");
+  assert(authorityControlV2(context,w.registryAuthoritySecret) == authority, "authority control mismatch");
+  const next = nextIssuerIndex;
+  assert(next < 65536, "tree full");
+  const index = next as Uint<16>;
+  const id = issuerIdV2(context,issuerControlCommitment);
+  const record = IssuerRecordV2 { protocolVersion: 2, issuerId: id, issuerControlCommitment: issuerControlCommitment };
+  // Final leaf is public in the duplicate Set; no secret or raw commitment disclosure.
+  const leaf = disclose(issuerLeafV2(record));
+  assert(!registeredIssuerLeaves.member(leaf), "duplicate issuer leaf");
+  emptySlotV2(DOMAIN_ISSUER_MERKLE_NODE_V2(),issuerEmptyV2(),index,next,w.insertionPath.siblings,issuerRoot);
+  const newRoot = rootFromV2(DOMAIN_ISSUER_MERKLE_NODE_V2(),leaf,index,w.insertionPath.siblings);
+  const incremented = (next + 1) as Uint<32>;
+  // Only the final tree root is disclosed for the public root write.
+  issuerRoot = disclose(newRoot);
+  nextIssuerIndex = incremented;
+  registeredIssuerLeaves.insert(leaf);
 }

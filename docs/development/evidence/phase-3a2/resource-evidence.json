@@ -1,0 +1,189 @@
+{
+  "result": {
+    "command": [
+      "compact",
+      "compile",
+      "+0.31.1",
+      "contracts/just-proof.compact",
+      "/tmp/justproof-phase3a2/register-issuer-full-20260914"
+    ],
+    "environmentOverrides": {
+      "RAYON_NUM_THREADS": "2",
+      "XDG_CACHE_HOME": "/home/oluwatobiss/.cache"
+    },
+    "output": "/tmp/justproof-phase3a2/register-issuer-full-20260914",
+    "compilerExit": 0,
+    "elapsedSeconds": 321.49927456099977,
+    "stopReason": null,
+    "timeout": false,
+    "sampledPeakAggregateRssKiB": 2584768,
+    "waitedChildMaxRssKiB": 2387536,
+    "minimumSystemAvailableKiB": 2343040,
+    "maximumSystemSwapUsedKiB": 6960,
+    "sampleCount": 591,
+    "processNames": [
+      "compact",
+      "compactc.bin",
+      "zkir"
+    ],
+    "reportedParameterNames": [],
+    "newCacheFiles": [
+      "bls_midnight_2p18"
+    ],
+    "expectedHost": "midnight-s3-fileshare-dev-eu-west-1.s3.eu-west-1.amazonaws.com",
+    "systemAfterKiB": {
+      "MemTotal": 8050764,
+      "MemAvailable": 4927600,
+      "SwapTotal": 2097152,
+      "SwapFree": 2090192
+    }
+  },
+  "artifacts": {
+    "artifacts": [
+      {
+        "path": "compiler/contract-info.json",
+        "bytes": 3411,
+        "sha256": "92d3cae646e709824faa5cfc00cc045766d5c343f7a4c8faccd31cfbd1ebbdcb"
+      },
+      {
+        "path": "contract/index.d.ts",
+        "bytes": 9455,
+        "sha256": "5ba30f01f19a6fd4661e44bf442d8cb5941076925dce1e161217de9aa7605561"
+      },
+      {
+        "path": "contract/index.js",
+        "bytes": 82685,
+        "sha256": "c5166146f78904abe31c345c515d94ca56e77ca5d3e35d64724b54461a4433cc"
+      },
+      {
+        "path": "contract/index.js.map",
+        "bytes": 4339,
+        "sha256": "43e88a2b80bde1678441f9955f88340f5d1cf2ef8b4c78c451e16bc0bfa349ca"
+      },
+      {
+        "path": "keys/registerIssuerV2.prover",
+        "bytes": 76490158,
+        "sha256": "9c136a8ce811aedd13ad2e364005b1d3454f76fd7e29cd6edaff5b5a99dcca28"
+      },
+      {
+        "path": "keys/registerIssuerV2.verifier",
+        "bytes": 2119,
+        "sha256": "b6c78daa6b3964912d9cbf2bd783365de7c18521ca26efffbee5b37e410e1a9a"
+      },
+      {
+        "path": "zkir/registerIssuerV2.bzkir",
+        "bytes": 3056,
+        "sha256": "be21a00eda843b8ec88fb8e19f9a9645fe81659ed9354f8515d651991f3bab56"
+      },
+      {
+        "path": "zkir/registerIssuerV2.zkir",
+        "bytes": 37980,
+        "sha256": "ce061c319bdbdf15fad9fd53cdfb9f5602f66cc5fd1da745388e0b7ca978b699"
+      }
+    ],
+    "newParameter": {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p18",
+      "bytes": 50332036,
+      "sha256": "e8436dc5d8b598f169c127c745135d889744007e6d384ff126df8d1332522f86"
+    },
+    "existingCacheUnchanged": true,
+    "peakSample": {
+      "elapsedSeconds": 194.562,
+      "aggregateRssKiB": 2584768,
+      "processes": [
+        {
+          "pid": 16019,
+          "ppid": 16007,
+          "pgrp": 16019,
+          "name": "compact",
+          "rssKiB": 3632,
+          "hwmKiB": 3672
+        },
+        {
+          "pid": 16029,
+          "ppid": 16019,
+          "pgrp": 16019,
+          "name": "compactc.bin",
+          "rssKiB": 193600,
+          "hwmKiB": 221848
+        },
+        {
+          "pid": 16049,
+          "ppid": 16029,
+          "pgrp": 16019,
+          "name": "zkir",
+          "rssKiB": 2387536,
+          "hwmKiB": 2387536
+        }
+      ],
+      "systemKiB": {
+        "MemTotal": 8050764,
+        "MemAvailable": 2354348,
+        "SwapTotal": 2097152,
+        "SwapFree": 2090192
+      }
+    },
+    "maxSampleGapSeconds": 0.9170000000000016
+  },
+  "keyCheck": {
+    "verifierKeyRuntimeDecodeRoundTrip": true,
+    "verifierBytes": 2119,
+    "proofGenerated": false
+  },
+  "integrity": {
+    "phaseModifiedExistingFiles": [
+      "docs/development/phase-3a-register-issuer-report.md",
+      "docs/protocol/v2/00-decisions.md",
+      "docs/protocol/v2/02-issuer-registry.md",
+      "docs/protocol/v2/07-witnesses-and-disclosures.md",
+      "docs/protocol/v2/10-specification.md",
+      "docs/protocol/v2/requirements.md",
+      "test/contract/v3a-register-issuer.test.ts"
+    ],
+    "frozenV1HashesMatch": {
+      "PROPOSAL.md": true,
+      "docs/USAGE.md": true,
+      "docs/protocol/01-credential.md": true,
+      "docs/protocol/02-issuer-registry.md": true,
+      "docs/protocol/03-commitments.md": true,
+      "docs/protocol/04-revocation.md": true,
+      "docs/protocol/05-ledgers.md": true,
+      "docs/protocol/06-merkle-tree.md": true,
+      "docs/protocol/07-witnesses.md": true,
+      "docs/protocol/08-proofs.md": true,
+      "docs/protocol/09-verification.md": true,
+      "docs/protocol/10-specification.md": true
+    },
+    "managedFilesUnchanged": 14,
+    "historicalPhase3aBodyUnchanged": true,
+    "sourceSha256": "f27b2a13e71c68a85f70e6083b2457c3f4273475a15f6e061c39c9ba81e7a6db"
+  },
+  "tests": {
+    "files": 7,
+    "passed": 268,
+    "failed": 0,
+    "exit": 0,
+    "durationSeconds": 11.0,
+    "typecheckExit": 0
+  },
+  "d5": {
+    "reviewedBoundarySatisfied": true,
+    "rawChainExposure": false,
+    "rawLocations": {
+      "callerArguments": [
+        "$[0]"
+      ],
+      "generatedInput": [
+        "$.value[0]"
+      ],
+      "privateWitnessOutputs": [],
+      "publicQueryTranscript": [],
+      "guaranteed": [],
+      "fallible": [],
+      "effects": [],
+      "ledger": [],
+      "output": []
+    }
+  },
+  "snapshotPairs": 21
+}

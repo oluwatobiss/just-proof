@@ -1,0 +1,25 @@
+{
+  "provenance": "Recorded completed Phase 3D command exits, corroborated by saved test JSON, compiler log and typecheck output. No validation command is rerun by this record creation.",
+  "skipCompileExit": 0,
+  "fullFocusedSuiteExit": 0,
+  "fullFocusedSuiteCases": 460,
+  "fullFocusedSuiteFiles": 13,
+  "finalQualificationSuiteExit": 0,
+  "finalQualificationCases": 89,
+  "focusedStrictTypecheckExit": 0,
+  "publicSurfacePassed": true,
+  "fullKeyGenerationAttempted": false,
+  "proofGenerationAttempted": false,
+  "proofVerificationAttempted": false,
+  "ledgerNetworkExecutionAttempted": false,
+  "initialFocusedStrictTypecheck": {
+    "commandKey": "initialStrictTypecheck",
+    "output": "typecheck-1.txt",
+    "exitCode": 0,
+    "diagnostics": [],
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "provenance": "Earlier completed expanded focused strict TypeScript invocation, recorded in the Phase 3D session history before the complete focused suite. Exit 0 was recorded in that history; the empty output alone does not establish the exit code. Retained unchanged; no rerun during evidence clarification.",
+    "relationshipToFinal": "Initial successful capture; final strictTypecheck was run later after the strengthened qualification assertion. No failed-typecheck correction is associated with this file."
+  }
+}

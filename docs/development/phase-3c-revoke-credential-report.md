@@ -330,3 +330,7 @@ Final `git status --short` (ignored compiler files are included above, not in th
 ```
 
 Final `git diff --check` passed. All 12 frozen V1 references, earlier evidence and the original registration circuit bodies remain unchanged against the durable baseline. No staged files, commit, push, publish, dependency installation, real proof, wallet operation or deployment occurred. The full resource attempt was not repeated. **Stop for user review.**
+
+## Phase 3C acceptance — 2026-09-15
+
+Accepted as a development checkpoint for source, compiled simulation, atomicity, public-surface evidence and accurate safe-stop reporting, including the evidence-hardening repair. Compiler exit −15 and unusable revocation key placeholders do not establish full key generation or proof/ledger/release readiness. R61 remains open. Phase 3D permits qualification source and local simulation only; no full key generation or parameter retrieval is authorized.

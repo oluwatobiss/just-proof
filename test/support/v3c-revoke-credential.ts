@@ -24,6 +24,7 @@ export function setup(){
     registryAuthoritySecretWitness:()=>{throw new Error("revocation must not request authority");},
     issuerRegistrationWitnessV2:()=>{throw new Error("revocation must not request issuer registration");},
     credentialRegistrationWitnessV2:()=>{throw new Error("revocation must not request credential package");},
+    qualificationWitnessV2:()=>{throw new Error("earlier endpoint must not request qualification witness");},
     credentialRevocationWitnessV2:({privateState})=>{calls++;last=freezeSnapshot(structuredClone(privateState.revocation));return [privateState,last];}
   };
   const contract=new Contract(witnesses);

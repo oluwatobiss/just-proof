@@ -7,8 +7,8 @@ import {ledger} from "../../contracts/managed/just-proof/contract/index.js";
 import {setup} from "../support/v3b-register-credential.js";
 import {p,partition,locations,overrideState} from "../support/v3a-register-issuer.js";
 import {hex,u8,u16,u64} from "../support/v2-reference.js";
-it("exact three-endpoint ABI and ordered generated witness/nested schemas",()=>{
-  const f=setup(),names=["registerIssuerV2","registerCredentialV2","revokeCredentialV2"];
+it("exact four-endpoint ABI and ordered generated witness/nested schemas",()=>{
+  const f=setup(),names=["registerIssuerV2","registerCredentialV2","revokeCredentialV2","proveQualificationV2"];
   for(const endpoints of [f.contract.circuits,f.contract.impureCircuits,f.contract.provableCircuits])expect(Object.keys(endpoints)).toEqual(names);
   const meta=JSON.parse(readFileSync("contracts/managed/just-proof/compiler/contract-info.json","utf8"));
   expect(meta.circuits.map((x:{name:string})=>x.name)).toEqual(names);

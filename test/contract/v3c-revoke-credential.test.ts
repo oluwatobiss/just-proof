@@ -93,4 +93,4 @@ describe("revokeCredentialV2 compiled contract logic",()=>{
     const f=setup(),w=f.witness(),t=new ReferenceTree("credential");w.credentialCommitment=new Uint8Array(32);t.setSyntheticLeaf(0,p.diagnose_credentialLeafV2(w.credentialId,w.credentialCommitment));w.credentialMembership.path.siblings=t.path(0);success(f,w,overrideState(f.state,new Map([[5,t.root()]])));
   });
 });
-afterAll(()=>writeFileSync("docs/development/evidence/phase-3c/snapshots.json",JSON.stringify(evidence,null,2)));
+afterAll(()=>writeFileSync("docs/development/evidence/phase-3d/retained-3c-snapshots.json",JSON.stringify(evidence,null,2)));

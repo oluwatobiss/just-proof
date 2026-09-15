@@ -8,7 +8,8 @@ import { schemas, emptyLevels, hex } from "../support/v2-reference.js";
 import { syntheticInputs } from "../support/v2-vectors.js";
 
 type PrivateState={secret:Uint8Array};
-const witnesses:Witnesses<PrivateState>={credentialRevocationWitnessV2:()=>{throw new Error("earlier endpoint must not request revocation witness");},
+const witnesses:Witnesses<PrivateState>={qualificationWitnessV2:()=>{throw new Error("earlier endpoint must not request qualification witness");},
+    credentialRevocationWitnessV2:()=>{throw new Error("earlier endpoint must not request revocation witness");},
     credentialRegistrationWitnessV2:()=>{throw new Error("constructor test must not request credential witness");},registryAuthoritySecretWitness:({privateState})=>[privateState,privateState.secret],issuerRegistrationWitnessV2:()=>{throw new Error("constructor test must not request registration witness");}};
 const keys=["registryAuthorityControlCommitment","registryContext","issuerRoot","nextIssuerIndex","registeredIssuerLeaves","credentialRoot","nextCredentialIndex","registeredCredentialNullifiers","revocationRoot"];
 function initialize(secret=syntheticInputs().authority,context=syntheticInputs().context) {
@@ -30,7 +31,7 @@ describe("Phase 2 compiled constructor and diagnostic knowledge check",()=>{
     expect(l.nextIssuerIndex).toBe(0n);expect(l.nextCredentialIndex).toBe(0n);
     expect(l.registeredIssuerLeaves.isEmpty()).toBe(true);expect(l.registeredIssuerLeaves.size()).toBe(0n);
     expect(l.registeredCredentialNullifiers.isEmpty()).toBe(true);expect(l.registeredCredentialNullifiers.size()).toBe(0n);
-    expect(Object.keys(contract.circuits)).toEqual(["registerIssuerV2","registerCredentialV2","revokeCredentialV2"]);expect(Object.keys(contract.provableCircuits)).toEqual(["registerIssuerV2","registerCredentialV2","revokeCredentialV2"]);
+    expect(Object.keys(contract.circuits)).toEqual(["registerIssuerV2","registerCredentialV2","revokeCredentialV2","proveQualificationV2"]);expect(Object.keys(contract.provableCircuits)).toEqual(["registerIssuerV2","registerCredentialV2","revokeCredentialV2","proveQualificationV2"]);
   });
   it("rejects zero context and zero secret without mutating private input",()=>{
     const f=syntheticInputs(),ps={secret:f.authority};const saved=hex(ps.secret);
@@ -75,15 +76,15 @@ describe("Phase 2 compiled constructor and diagnostic knowledge check",()=>{
     expect(contains(out.proofData.privateTranscriptOutputs)).toBe(true);
     expect(out.proofData.input.value).toHaveLength(0);expect(out.proofData.output.value).toHaveLength(0);
   });
-  it("source retains two constructor disclosures and sealed configuration; Phase 3C exports only the three approved lifecycle endpoints",()=>{
+  it("source retains two constructor disclosures and sealed configuration; Phase 3D exports only the four approved lifecycle endpoints",()=>{
     const source=readFileSync("contracts/just-proof.compact","utf8");
     expect(source.split("export circuit registerIssuerV2")[0].match(/disclose\(/g)).toHaveLength(2);
     expect(source).toContain("disclose(deploymentRegistryContext)");
     expect(source).toContain("disclose(authorityControlV2(deploymentRegistryContext,secret))");
     expect(source.match(/export sealed ledger/g)).toHaveLength(2);
-    expect(source.match(/export (?:pure )?circuit/g)).toHaveLength(3);
+    expect(source.match(/export (?:pure )?circuit/g)).toHaveLength(4);
     const metadata=JSON.parse(readFileSync("contracts/managed/just-proof/compiler/contract-info.json","utf8"));
-    expect(metadata["compiler-version"]).toBe("0.31.1");expect(metadata.circuits.map((c:{name:string})=>c.name)).toEqual(["registerIssuerV2","registerCredentialV2","revokeCredentialV2"]);
+    expect(metadata["compiler-version"]).toBe("0.31.1");expect(metadata.circuits.map((c:{name:string})=>c.name)).toEqual(["registerIssuerV2","registerCredentialV2","revokeCredentialV2","proveQualificationV2"]);
   });
 });
 import { domain } from "../support/v2-reference.js";

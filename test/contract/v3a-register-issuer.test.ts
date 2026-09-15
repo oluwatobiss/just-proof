@@ -101,11 +101,11 @@ describe("registerIssuerV2 compiled contract logic",()=>{
     expect(Object.keys(ctx.currentPrivateState.registration)).toEqual(["registryAuthoritySecret","insertionPath"]);
     expect(Object.isFrozen(ctx.currentPrivateState)).toBe(true);
   });
-  it("incremental ABI exports only the three approved lifecycle circuits and retains issuer witness fields",()=>{
-    const f=fixture();expect(Object.keys(f.contract.circuits)).toEqual(["registerIssuerV2","registerCredentialV2","revokeCredentialV2"]);
-    expect(Object.keys(f.contract.provableCircuits)).toEqual(["registerIssuerV2","registerCredentialV2","revokeCredentialV2"]);
+  it("incremental ABI exports only the four approved lifecycle circuits and retains issuer witness fields",()=>{
+    const f=fixture();expect(Object.keys(f.contract.circuits)).toEqual(["registerIssuerV2","registerCredentialV2","revokeCredentialV2","proveQualificationV2"]);
+    expect(Object.keys(f.contract.provableCircuits)).toEqual(["registerIssuerV2","registerCredentialV2","revokeCredentialV2","proveQualificationV2"]);
     const source=readFileSync("contracts/just-proof.compact","utf8");
-    expect(source.match(/export circuit/g)).toHaveLength(3);
+    expect(source.match(/export circuit/g)).toHaveLength(4);
     expect(source.split("export circuit registerCredentialV2")[0].match(/disclose\(/g)).toHaveLength(4);
     expect(source).not.toContain("disclose(issuerControlCommitment)");
     expect(source.indexOf("const incremented")).toBeLessThan(source.indexOf("issuerRoot = disclose(newRoot)"));

@@ -1,0 +1,22 @@
+
+> just-proof@0.1.0 test:local
+> MIDNIGHT_NETWORK=local npm run test test/contract/v3d-public-surface.test.ts
+
+
+> just-proof@0.1.0 test
+> NODE_OPTIONS='--experimental-vm-modules' vitest run test/contract/v3d-public-surface.test.ts
+
+
+ RUN  v4.1.11 /home/oluwatobiss/projects/midnight/risein/just-proof
+
+Sourcemap for "/home/oluwatobiss/projects/midnight/risein/just-proof/contracts/managed/just-proof/contract/index.js" points to missing source files
+Sourcemap for "/home/oluwatobiss/projects/midnight/risein/just-proof/test/fixtures/managed/phase2-primitives/contract/index.js" points to missing source files
+ ✓ test/contract/v3d-public-surface.test.ts (2 tests) 2231ms
+   ✓ exact four-endpoint ABI and qualification/request/state/output/witness field order  957ms
+   ✓ runtime structural privacy gate and invariant public time bounds across private timestamp changes  1270ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  20:04:50
+   Duration  4.96s (transform 1.08s, setup 0ms, import 2.25s, tests 2.23s, environment 0ms)
+

@@ -1,0 +1,373 @@
+{
+  "baselineHead": "70bc1df509141ec401c852416e080a789bf6abec",
+  "currentHead": "70bc1df509141ec401c852416e080a789bf6abec",
+  "sourceSha256": "9ffa12d0570659ec703479ffb35c5ab2e1248f668abff6f9fbd91f344ef62ecf",
+  "changedBaselineFiles": [
+    {
+      "path": "contracts/just-proof.compact",
+      "beforeSha256": "4010eed928402850684930b2adb921153690a410fd5a88fcf52bd02847e87974",
+      "afterSha256": "9ffa12d0570659ec703479ffb35c5ab2e1248f668abff6f9fbd91f344ef62ecf"
+    },
+    {
+      "path": "contracts/managed/just-proof/compiler/contract-info.json",
+      "beforeSha256": "ce7cdf4f44ae441be9283e15bc91c0101e1ecbb554354b3e3eefb2601fca7a1f",
+      "afterSha256": "868cca4e3cc858d9cb0cb63ce93e81808509a2eaa60d9ff65c32b54bd3a4902d"
+    },
+    {
+      "path": "contracts/managed/just-proof/contract/index.d.ts",
+      "beforeSha256": "3b42e8779489892dbca466bcafd5637c4e99be6301f666b7a6a0ac15d8a82f98",
+      "afterSha256": "0139fd7406b87a3498b5141ff2bdce2dcef9193753597326af99aa9e738b0d08"
+    },
+    {
+      "path": "contracts/managed/just-proof/contract/index.js",
+      "beforeSha256": "bcea498b4be47b28bcade3a2f41298f77c519f882c230f0266d2d8e62b4da934",
+      "afterSha256": "b7396f8c593c99104aeb7ae0bf2f4fe4341beadf525ab841deeb5a064addaeef"
+    },
+    {
+      "path": "contracts/managed/just-proof/contract/index.js.map",
+      "beforeSha256": "a4c8b67be104dad7f17464985bfbf97d2ca1f40300a9f3af1cd60b9b4671530a",
+      "afterSha256": "2ff2c49f300b2843a8cbf7d365a4b4f739d1addd1da9f476a6cf7e8ad81ebe78"
+    },
+    {
+      "path": "docs/development/phase-3c-revoke-credential-report.md",
+      "beforeSha256": "5a089b0bc964308e954f92dd42e714116f752a07cf035d6532909f46acce899e",
+      "afterSha256": "a0763ca206e169642b3e52945882da502defc4cb52d0f5b29389ba236aaeefce"
+    },
+    {
+      "path": "docs/protocol/v2/07-witnesses-and-disclosures.md",
+      "beforeSha256": "13f831efad31b0a449a5f056f611166dbb2ee613adca0ac54dc025ca9eaabdd5",
+      "afterSha256": "35367f2a510e8fe9bccd51234d9a8d64bb440eaa6d54fbe5d01d851e65a385e4"
+    },
+    {
+      "path": "docs/protocol/v2/08-proofs.md",
+      "beforeSha256": "386a4afdc906159a38e7360d43aa41f513af27c1f5b34ab792b7420bd4b0d6f3",
+      "afterSha256": "a72fcff8beb203d4d65fbb694fc0b2ed40d37556c43c3d8d0d41be4ea019876f"
+    },
+    {
+      "path": "docs/protocol/v2/10-specification.md",
+      "beforeSha256": "f6569e65027b3a5efc337a3115818818a2d0ae8e397bb360b692396f026df8ed",
+      "afterSha256": "e99e307d33825b12cf1f2e7b35b65d459a353019a21f6bac9622383b02ac53ef"
+    },
+    {
+      "path": "docs/protocol/v2/requirements.md",
+      "beforeSha256": "a012b272f4d54f9df12da1efa00f4cfdf580c11adbacef8e362d6d5ef1282055",
+      "afterSha256": "5dda88a6b99a302e89346e2d04c22ec56375ba214221a7413c8f3296b0b749a2"
+    },
+    {
+      "path": "test/contract/v2-constructor.test.ts",
+      "beforeSha256": "4126b5b8ec78adf14e454255e3678215c919565edef51f9f8e9b5f00ce147e86",
+      "afterSha256": "e6960155838f9116e87c986180974e080fc5e739bb8b6853e512f8eb9a986604"
+    },
+    {
+      "path": "test/contract/v3a-register-issuer.test.ts",
+      "beforeSha256": "c52a7c41efd371e43f572e68854e2a4c149fb68914a17e4499242b1d5d48bed9",
+      "afterSha256": "77b748239f59e68f60a15165a0b246ec67c6ee51b47bf8c010f11e730ad911a2"
+    },
+    {
+      "path": "test/contract/v3b-public-surface.test.ts",
+      "beforeSha256": "9af260d2e9efb5544858fb735a2ab85f6f9527cd9862e7bf287112b8aadd59c0",
+      "afterSha256": "d610258dc747a8023241006c1b44b23cd161eb601c8a6cbbd8291b6c41f2db5e"
+    },
+    {
+      "path": "test/contract/v3c-public-surface.test.ts",
+      "beforeSha256": "6839cb1d0cec96336011bbbc204da68ffb403756ce7d14d9b48ed1854fb699e5",
+      "afterSha256": "b5b541274fce9c5bf72065b3ffbc12324262d71a94c5c3f33d0f1a8390946bb4"
+    },
+    {
+      "path": "test/contract/v3c-revoke-credential.test.ts",
+      "beforeSha256": "410bc314656b996afa450a611c5b8240ba8c19c06dbc2753008a6759d0c279f4",
+      "afterSha256": "d5c3e463dd441634576ee103f8152e2c7864074269591ac1d482f9b41ffc8316"
+    },
+    {
+      "path": "test/support/v3a-register-issuer.ts",
+      "beforeSha256": "933bb20d93dbb20983952e51eccbffbbf58dc257395d43daeefaf3df97d8f762",
+      "afterSha256": "7648b1cff7b7716d536a5cc2732935d0491c2e5dda742ae707eab76533eb8e41"
+    },
+    {
+      "path": "test/support/v3b-register-credential.ts",
+      "beforeSha256": "eb2d1791b91c4d89158848ecb67a66825b2682c925127699a8d82a338cb10836",
+      "afterSha256": "b140ff6472992cc8d32ebe77bb558f64044616f9ddc44c69ba1059b0dc7d08e0"
+    },
+    {
+      "path": "test/support/v3c-revoke-credential.ts",
+      "beforeSha256": "aaad9e8a4772c34fae17f46168e43f70f1402b7fd3f0bb2b3f0467dc7f674c9b",
+      "afterSha256": "24ad8ca8af777f43d6f02baa46e31d18cb1de48e3ac43d061c013d3d34dd9c20"
+    }
+  ],
+  "createdFiles": [
+    "contracts/managed/just-proof/zkir/proveQualificationV2.zkir",
+    "docs/development/evidence/phase-3d/artifacts.json",
+    "docs/development/evidence/phase-3d/baseline.json",
+    "docs/development/evidence/phase-3d/capture-integrity.py",
+    "docs/development/evidence/phase-3d/commands.json",
+    "docs/development/evidence/phase-3d/compile-1.txt",
+    "docs/development/evidence/phase-3d/environment.json",
+    "docs/development/evidence/phase-3d/integrity.json",
+    "docs/development/evidence/phase-3d/public-surface.json",
+    "docs/development/evidence/phase-3d/retained-3c-public-surface.json",
+    "docs/development/evidence/phase-3d/retained-3c-snapshots.json",
+    "docs/development/evidence/phase-3d/snapshots.json",
+    "docs/development/evidence/phase-3d/surface-initial.txt",
+    "docs/development/evidence/phase-3d/tests-all.txt",
+    "docs/development/evidence/phase-3d/tests-initial.txt",
+    "docs/development/evidence/phase-3d/tests-qualification-final.json",
+    "docs/development/evidence/phase-3d/tests-qualification-final.txt",
+    "docs/development/evidence/phase-3d/tests.json",
+    "docs/development/evidence/phase-3d/typecheck-1.txt",
+    "docs/development/evidence/phase-3d/typecheck.txt",
+    "docs/development/evidence/phase-3d/validation.json",
+    "docs/development/phase-3d-prove-qualification-report.md",
+    "test/contract/v3d-prove-qualification.test.ts",
+    "test/contract/v3d-public-surface.test.ts",
+    "test/support/v3d-prove-qualification.ts"
+  ],
+  "phaseOnlyFiles": [
+    "contracts/just-proof.compact",
+    "contracts/managed/just-proof/compiler/contract-info.json",
+    "contracts/managed/just-proof/contract/index.d.ts",
+    "contracts/managed/just-proof/contract/index.js",
+    "contracts/managed/just-proof/contract/index.js.map",
+    "contracts/managed/just-proof/zkir/proveQualificationV2.zkir",
+    "docs/development/evidence/phase-3d/artifacts.json",
+    "docs/development/evidence/phase-3d/baseline.json",
+    "docs/development/evidence/phase-3d/capture-integrity.py",
+    "docs/development/evidence/phase-3d/commands.json",
+    "docs/development/evidence/phase-3d/compile-1.txt",
+    "docs/development/evidence/phase-3d/environment.json",
+    "docs/development/evidence/phase-3d/integrity.json",
+    "docs/development/evidence/phase-3d/public-surface.json",
+    "docs/development/evidence/phase-3d/retained-3c-public-surface.json",
+    "docs/development/evidence/phase-3d/retained-3c-snapshots.json",
+    "docs/development/evidence/phase-3d/snapshots.json",
+    "docs/development/evidence/phase-3d/surface-initial.txt",
+    "docs/development/evidence/phase-3d/tests-all.txt",
+    "docs/development/evidence/phase-3d/tests-initial.txt",
+    "docs/development/evidence/phase-3d/tests-qualification-final.json",
+    "docs/development/evidence/phase-3d/tests-qualification-final.txt",
+    "docs/development/evidence/phase-3d/tests.json",
+    "docs/development/evidence/phase-3d/typecheck-1.txt",
+    "docs/development/evidence/phase-3d/typecheck.txt",
+    "docs/development/evidence/phase-3d/validation.json",
+    "docs/development/phase-3c-revoke-credential-report.md",
+    "docs/development/phase-3d-prove-qualification-report.md",
+    "docs/protocol/v2/07-witnesses-and-disclosures.md",
+    "docs/protocol/v2/08-proofs.md",
+    "docs/protocol/v2/10-specification.md",
+    "docs/protocol/v2/requirements.md",
+    "test/contract/v2-constructor.test.ts",
+    "test/contract/v3a-register-issuer.test.ts",
+    "test/contract/v3b-public-surface.test.ts",
+    "test/contract/v3c-public-surface.test.ts",
+    "test/contract/v3c-revoke-credential.test.ts",
+    "test/contract/v3d-prove-qualification.test.ts",
+    "test/contract/v3d-public-surface.test.ts",
+    "test/support/v3a-register-issuer.ts",
+    "test/support/v3b-register-credential.ts",
+    "test/support/v3c-revoke-credential.ts",
+    "test/support/v3d-prove-qualification.ts"
+  ],
+  "unexpectedFiles": [],
+  "frozenV1": [
+    {
+      "path": "PROPOSAL.md",
+      "sha256": "7a94d94ce6aa876ec0823bd48fb22bb23d611098b22a6375e51c1c2e6ae9d4a2",
+      "unchanged": true
+    },
+    {
+      "path": "docs/USAGE.md",
+      "sha256": "62cd11c18708cec304e4f9796a66f342a31be61c9f5f71bb7a4f2627449807a7",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/01-credential.md",
+      "sha256": "117fbca7711675b9612eba220d1e8b774b2b7fccda1fb41787981f550c49f539",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/02-issuer-registry.md",
+      "sha256": "5460dbb9fca37bd68f3215e71da87fed655618a4c72c843def83cc70a45a5a4f",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/03-commitments.md",
+      "sha256": "2342f8a268294e5af25f03d5d80cc4ae88fa3ef7b4fa66b9f5ac838a9cbaa9f9",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/04-revocation.md",
+      "sha256": "bc74505866a2d766d92ad1045480703ecd7f78f7f0eb8f0251e55bd03da140ee",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/05-ledgers.md",
+      "sha256": "9b7a972042babece3752737f5f6b726fd739a88faa2fe69d7ba4fc19cb2e7dd7",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/06-merkle-tree.md",
+      "sha256": "b4d04677588ee891e7d5af9b61e0a789ff524bad15c895aeb314bdcc3e89a8c9",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/07-witnesses.md",
+      "sha256": "0c1d1154a535d8be9188e69fdca3ec6af01507cc6d096ccaa984386d2804ed74",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/08-proofs.md",
+      "sha256": "ec1cd4252b9580e601758f297f2fcd8dc101b7834f1d87245ecb48b9ef5a96c9",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/09-verification.md",
+      "sha256": "2b3d6f3b92de61fc0ec4b40e26b9ea1f35fbd58eb681dbc5a4ba3c85196848d4",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/10-specification.md",
+      "sha256": "0fa343641677a5ac9ebf55f656541d54b81f608adc5764887677b0e17d705bb4",
+      "unchanged": true
+    }
+  ],
+  "historicalEvidenceUnchanged": true,
+  "priorReportBodyPreserved": true,
+  "constructorAndEarlierLifecycleBodiesUnchanged": true,
+  "earlierZkirUnchanged": true,
+  "reportLinkedEvidence": [
+    {
+      "path": "docs/development/evidence/phase-3d/artifacts.json",
+      "bytes": 1784,
+      "sha256": "7a06f39ba87f9ff010a7bd0c139105e2062e486d76401bff0541a4354e1d2bce",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/baseline.json",
+      "bytes": 33124,
+      "sha256": "372244242a3ae1448a3db500bb25f6efb5056655bd1a8dc58546c412faef84fd",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/capture-integrity.py",
+      "bytes": 5018,
+      "sha256": "836faf346276ea170ca8da37603d776fafb90e90b9e035573d45d92a63736e2c",
+      "validation": "Python syntax parsed, not executed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/commands.json",
+      "bytes": 2227,
+      "sha256": "2f8818b445f57d567e00ada8f96e12bb8381cd814b5ae123477acbf6a760a0c8",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/compile-1.txt",
+      "bytes": 38,
+      "sha256": "b9d80f5ba3a56f4be6b65675f078cffcb521e7136216981df7ccd4dee2607d6e",
+      "validation": "UTF-8 text",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/environment.json",
+      "bytes": 2056,
+      "sha256": "410f3cd8181dbd51009c3b02f206d1a27841d9c3ba5d47837c987c6121148fe0",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/public-surface.json",
+      "bytes": 99088,
+      "sha256": "1cbcebea0915b83e8ae2791f69953ea1dac7ebc303c1857b3ca57b12b4d9ed65",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/retained-3c-public-surface.json",
+      "bytes": 18719,
+      "sha256": "99996770183f70c8259098d2fa5b8b8762e6afe279603445cfcc9c657e38d550",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/retained-3c-snapshots.json",
+      "bytes": 118230,
+      "sha256": "641782fa6436b4dde6edf38b6b4d9d2c780c16919742e6eff3cad31c8492624d",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/snapshots.json",
+      "bytes": 223460,
+      "sha256": "287d8f2191a0d2dc7235c2db645caa455c02fb617047c3df8b06876f637ebc73",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/surface-initial.txt",
+      "bytes": 1050,
+      "sha256": "c5c1b59f83cb554702c6cc423cedb51219f41627e3f93bb8564d15e6c1e898c8",
+      "validation": "UTF-8 text",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/tests-all.txt",
+      "bytes": 16904,
+      "sha256": "e7c94bec27d589f6ba06f507eff60645cdbc05ce4789dceb6df1dd5993973519",
+      "validation": "UTF-8 text",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/tests-initial.txt",
+      "bytes": 5389,
+      "sha256": "014bcd092ab02e5bffd626afaff964c65736b6b30635846d7c50cfe40e83bacd",
+      "validation": "UTF-8 text",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/tests-qualification-final.json",
+      "bytes": 28772,
+      "sha256": "431e0c8e908116ef69caefd98246f0cdfc85a4995a0308d55ceb3daeca5d6f0f",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/tests-qualification-final.txt",
+      "bytes": 6650,
+      "sha256": "b7b0baf15724f0cebcc5b68df5a94765c95ecaf0b5d0af5080fb9fb0157500cf",
+      "validation": "UTF-8 text",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/tests.json",
+      "bytes": 145755,
+      "sha256": "526d8af413581b4fa7775b9af1ee9d0dde05865919bcd28b86a759677fbb64ab",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/typecheck-1.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation": "UTF-8 text",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/typecheck.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation": "UTF-8 text",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3d/validation.json",
+      "bytes": 1376,
+      "sha256": "1399ada483acb44fdb7d6f1af7abb286ef7666b680657310878d3c018005e8bd",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    }
+  ],
+  "gitStatusShort": "M  contracts/just-proof.compact\nA  docs/development/evidence/phase-3d/artifacts.json\nA  docs/development/evidence/phase-3d/baseline.json\nA  docs/development/evidence/phase-3d/capture-integrity.py\nA  docs/development/evidence/phase-3d/commands.json\nA  docs/development/evidence/phase-3d/compile-1.txt\nA  docs/development/evidence/phase-3d/environment.json\nA  docs/development/evidence/phase-3d/integrity.json\nA  docs/development/evidence/phase-3d/public-surface.json\nA  docs/development/evidence/phase-3d/retained-3c-public-surface.json\nA  docs/development/evidence/phase-3d/retained-3c-snapshots.json\nA  docs/development/evidence/phase-3d/snapshots.json\nA  docs/development/evidence/phase-3d/surface-initial.txt\nA  docs/development/evidence/phase-3d/tests-all.txt\nA  docs/development/evidence/phase-3d/tests-initial.txt\nA  docs/development/evidence/phase-3d/tests-qualification-final.json\nA  docs/development/evidence/phase-3d/tests-qualification-final.txt\nA  docs/development/evidence/phase-3d/tests.json\nA  docs/development/evidence/phase-3d/typecheck-1.txt\nA  docs/development/evidence/phase-3d/typecheck.txt\nA  docs/development/evidence/phase-3d/validation.json\nM  docs/development/phase-3c-revoke-credential-report.md\nAM docs/development/phase-3d-prove-qualification-report.md\nM  docs/protocol/v2/07-witnesses-and-disclosures.md\nM  docs/protocol/v2/08-proofs.md\nM  docs/protocol/v2/10-specification.md\nM  docs/protocol/v2/requirements.md\nM  test/contract/v2-constructor.test.ts\nM  test/contract/v3a-register-issuer.test.ts\nM  test/contract/v3b-public-surface.test.ts\nM  test/contract/v3c-public-surface.test.ts\nM  test/contract/v3c-revoke-credential.test.ts\nA  test/contract/v3d-prove-qualification.test.ts\nA  test/contract/v3d-public-surface.test.ts\nM  test/support/v3a-register-issuer.ts\nM  test/support/v3b-register-credential.ts\nM  test/support/v3c-revoke-credential.ts\nA  test/support/v3d-prove-qualification.ts\n",
+  "notes": "Integrity file is validated after serialization; its own hash is excluded to avoid recursion. New phase paths include every nonignored evidence file."
+}

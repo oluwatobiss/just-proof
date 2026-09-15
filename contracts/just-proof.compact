@@ -6,7 +6,7 @@ include "protocol-v2/derivations";
 include "protocol-v2/merkle";
 include "protocol-v2/candidate-roots";
 
-// Phase 3C: constructor, nine fields, registration and revocation only.
+// Phase 3D: nine fields and all four lifecycle endpoints; local simulation only.
 export sealed ledger registryAuthorityControlCommitment: Bytes<32>;
 export sealed ledger registryContext: Bytes<32>;
 export ledger issuerRoot: Bytes<32>;
@@ -49,6 +49,14 @@ export struct CredentialRevocationWitnessV2 {
   revocationPath: RevocationMerklePathV2
 }
 witness credentialRevocationWitnessV2(): CredentialRevocationWitnessV2;
+export struct QualificationWitnessV2 {
+  credential: PrivateCredentialPackageV2,
+  subjectSecret: Bytes<32>,
+  issuerMembership: IssuerMembershipWitnessV2,
+  credentialMembership: CredentialMembershipWitnessV2,
+  revocationPath: RevocationMerklePathV2
+}
+witness qualificationWitnessV2(): QualificationWitnessV2;
 // Retained demo schema identifier: SHA-256 of JP:QUALIFICATION:MIDNIGHT-BUILDER-DEMO:V1.
 circuit demoQualificationV2(): Bytes<32> {
   return [50,22,194,187,119,39,36,78,37,111,227,167,246,232,157,20,139,54,54,211,27,82,93,189,67,109,151,202,146,42,61,183] as Bytes<32>;
@@ -164,4 +172,64 @@ export circuit revokeCredentialV2(): [] {
   const newRoot = rootFromV2(DOMAIN_REVOCATION_MERKLE_NODE_V2(),revoked,index,w.revocationPath.siblings);
   // Only the final root is disclosed; the credential-bound leaf remains private.
   revocationRoot = disclose(newRoot);
+}
+
+export circuit proveQualificationV2(request: QualificationRequestV2): QualificationProofPublicOutputV2 {
+  const address = kernel.self();
+  const context = registryContext;
+  assert(request.protocolVersion == 2, "request protocol version");
+  assert(request.proofType == 1, "proof type");
+  assert(request.registryContract == address, "request contract");
+  assert(request.registryContext == context, "request context");
+  assert(request.qualificationType == demoQualificationV2(), "request qualification type");
+  assert(request.qualificationVersion == 1, "request qualification version");
+  assert(request.verifierContext != default<Bytes<32>>, "verifier context zero");
+  assert(request.challenge != default<Bytes<32>>, "challenge zero");
+  const issuerCount = nextIssuerIndex;
+  const currentIssuerRoot = issuerRoot;
+  const credentialCount = nextCredentialIndex;
+  const currentCredentialRoot = credentialRoot;
+  const currentRevocationRoot = revocationRoot;
+  const w = qualificationWitnessV2();
+  assert(issuerCount <= 65536, "invalid issuer counter");
+  const record = w.issuerMembership.record;
+  assert(record.protocolVersion == 2, "issuer protocol version");
+  assert(record.issuerControlCommitment != default<Bytes<32>>, "issuer control zero");
+  const issuerId = issuerIdV2(context,record.issuerControlCommitment);
+  assert(issuerId == record.issuerId, "noncanonical issuer id");
+  membershipV2(DOMAIN_ISSUER_MERKLE_NODE_V2(),issuerLeafV2(record),w.issuerMembership.issuerIndex,issuerCount,w.issuerMembership.path.siblings,currentIssuerRoot);
+  const statement = w.credential.statement;
+  assert(statement.protocolVersion == 2, "credential protocol version");
+  assert(statement.qualificationType == demoQualificationV2(), "qualification type");
+  assert(statement.qualificationVersion == 1, "qualification version");
+  assert(w.credential.issuanceNonce != default<Bytes<32>>, "issuance nonce zero");
+  assert(w.credential.credentialOpening != default<Bytes<32>>, "credential opening zero");
+  assert(statement.subjectCommitment != default<Bytes<32>>, "subject commitment zero");
+  assert(statement.issuerId == issuerId, "credential issuer mismatch");
+  const id = credentialIdV2(issuerId,w.credential.issuanceNonce);
+  assert(id == statement.credentialId, "credential id mismatch");
+  const commitment = credentialCommitmentV2(statement,w.credential.credentialOpening);
+  const leaf = credentialLeafV2(id,commitment);
+  assert(w.subjectSecret != default<Bytes<32>>, "subject secret zero");
+  assert(subjectCommitmentV2(id,w.subjectSecret) == statement.subjectCommitment, "subject commitment mismatch");
+  assert(credentialCount <= 65536, "invalid credential counter");
+  const index = w.credentialMembership.credentialIndex;
+  membershipV2(DOMAIN_CREDENTIAL_MERKLE_NODE_V2(),leaf,index,credentialCount,w.credentialMembership.path.siblings,currentCredentialRoot);
+  assert(rootFromV2(DOMAIN_REVOCATION_MERKLE_NODE_V2(),notRevokedV2(),index,w.revocationPath.siblings) == currentRevocationRoot, "not revoked root");
+  assert(request.requestIssuedAt > 0, "request issuance zero");
+  assert(request.requestIssuedAt < request.requestExpiresAt, "request interval");
+  // Only protocol-public request metadata enters transaction-time comparisons.
+  assert(blockTimeGte(disclose(request.requestIssuedAt)), "request not started");
+  assert(blockTimeLt(disclose(request.requestExpiresAt)), "request expired");
+  assert(statement.issuedAt > 0, "credential issuance zero");
+  assert(statement.expiresAt == 0 || statement.expiresAt > statement.issuedAt, "credential interval");
+  assert(statement.issuedAt <= request.requestIssuedAt, "credential not issued at request");
+  assert(statement.expiresAt == 0 || request.requestExpiresAt <= statement.expiresAt, "credential expires before request");
+  const state = QualificationVerificationStateV2 {
+    protocolVersion: 2, registryContract: address, registryContext: context,
+    issuerRoot: currentIssuerRoot, nextIssuerIndex: issuerCount,
+    credentialRoot: currentCredentialRoot, nextCredentialIndex: credentialCount,
+    revocationRoot: currentRevocationRoot
+  };
+  return QualificationProofPublicOutputV2 { requestDigest: requestDigestV2(request), stateDigest: stateDigestV2(state) };
 }

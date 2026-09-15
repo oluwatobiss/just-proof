@@ -1,0 +1,2243 @@
+[
+  {
+    "name": "success index 0",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "56deab8496b47c6e2e0060c1d13b7cd5faf532aa7ecbef952d268c82ba9a7810"
+    },
+    "changed": [
+      "revocationRoot"
+    ],
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "success index 1",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "56deab8496b47c6e2e0060c1d13b7cd5faf532aa7ecbef952d268c82ba9a7810"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "f03555179e29b301aefacb6cd03ea352be448d4c5ced61621993bc18d7b38c5a"
+    },
+    "changed": [
+      "revocationRoot"
+    ],
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "success index 2",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "f03555179e29b301aefacb6cd03ea352be448d4c5ced61621993bc18d7b38c5a"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "7ad679c03f2a765c3b5bff139238271c1586386840573801973b3118aaa04662"
+    },
+    "changed": [
+      "revocationRoot"
+    ],
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "success index 65535",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "855f72c31ffea7f90d346d09712dfa69df7f741ccb0c8a89e5cb9ce326836efd",
+      "nextCredentialIndex": "65536",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "855f72c31ffea7f90d346d09712dfa69df7f741ccb0c8a89e5cb9ce326836efd",
+      "nextCredentialIndex": "65536",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "488937921b2c0b362d6ec9b1fac98ac3a2f7c34b5b79a988c35857d143af4c72"
+    },
+    "changed": [
+      "revocationRoot"
+    ],
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "success index 0",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "65536",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "65536",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "56deab8496b47c6e2e0060c1d13b7cd5faf532aa7ecbef952d268c82ba9a7810"
+    },
+    "changed": [
+      "revocationRoot"
+    ],
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "zero secret",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "wrong secret",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "authority secret",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "holder secret",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "issuer record version",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "zero control",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "noncanonical issuer ID",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "unallocated issuer index",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "corrupt issuer path",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "wrong issuer index",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "cross-tree issuer path",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "other issuer path",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "zero nonce",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "changed nonce",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "changed retained ID",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "another issuer credential",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "changed commitment",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "unallocated credential index",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "corrupt credential path",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "wrong credential index",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "cross-tree credential path",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "other credential path",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "corrupt revocation path",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "credential path as revocation path",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "issuer counter",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "65537",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "65537",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "credential counter",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "65537",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "65537",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "stale issuer",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "other record wrong secret",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "other authorized issuer",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "control context",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "e8e4ee9469b342e56f0cdd70cf4607a4836fe6e674fb4329070facfa5fca791a",
+      "nextIssuerIndex": "1",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "e8e4ee9469b342e56f0cdd70cf4607a4836fe6e674fb4329070facfa5fca791a",
+      "nextIssuerIndex": "1",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "control version",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "2d938f72b37092857a7bb8567012a9d936658c0f5f5b57be58488716a5db16b5",
+      "nextIssuerIndex": "1",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "2d938f72b37092857a7bb8567012a9d936658c0f5f5b57be58488716a5db16b5",
+      "nextIssuerIndex": "1",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "control domain",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "b81893d1ea2a3e918b4f834b75a4f8cc8b4a2d591185ee81568f370d7d131230",
+      "nextIssuerIndex": "1",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "b81893d1ea2a3e918b4f834b75a4f8cc8b4a2d591185ee81568f370d7d131230",
+      "nextIssuerIndex": "1",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "stale credential",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "unregistered",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "credential index binding",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "success index 0",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "56deab8496b47c6e2e0060c1d13b7cd5faf532aa7ecbef952d268c82ba9a7810"
+    },
+    "changed": [
+      "revocationRoot"
+    ],
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "repeated",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "56deab8496b47c6e2e0060c1d13b7cd5faf532aa7ecbef952d268c82ba9a7810"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "56deab8496b47c6e2e0060c1d13b7cd5faf532aa7ecbef952d268c82ba9a7810"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "success index 0",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "56deab8496b47c6e2e0060c1d13b7cd5faf532aa7ecbef952d268c82ba9a7810"
+    },
+    "changed": [
+      "revocationRoot"
+    ],
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "stale revocation",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "56deab8496b47c6e2e0060c1d13b7cd5faf532aa7ecbef952d268c82ba9a7810"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "56deab8496b47c6e2e0060c1d13b7cd5faf532aa7ecbef952d268c82ba9a7810"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "already revoked",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "56deab8496b47c6e2e0060c1d13b7cd5faf532aa7ecbef952d268c82ba9a7810"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "56deab8496b47c6e2e0060c1d13b7cd5faf532aa7ecbef952d268c82ba9a7810"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "success index 0",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "56deab8496b47c6e2e0060c1d13b7cd5faf532aa7ecbef952d268c82ba9a7810"
+    },
+    "changed": [
+      "revocationRoot"
+    ],
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "revocation index binding",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "56deab8496b47c6e2e0060c1d13b7cd5faf532aa7ecbef952d268c82ba9a7810"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "56deab8496b47c6e2e0060c1d13b7cd5faf532aa7ecbef952d268c82ba9a7810"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "issuer length 15",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "issuer length 17",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "credential length 15",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "credential length 17",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "revocation length 15",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "revocation length 17",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "b337bc03b76c3042ded0b9afe8d6f29b3c2c0a0eb9e9486a8dbf186aa5aa661a",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  },
+  {
+    "name": "success index 0",
+    "before": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "5928820e8a4e3833ec255052f41e3369f8042e5a4d9148915597abb28202405b",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "67cc1987e1b41a3e011478484861b497e304aa0a8a0699297b98be32eef977c8"
+    },
+    "after": {
+      "registryAuthorityControlCommitment": "43e52bf1aeced7373d99be3cde63a2fe868ba37e56404e99f9b77389c73421d3",
+      "registryContext": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c",
+      "issuerRoot": "86db197a2a4f66f3f85553853ec04d44df86225d44a8f9936f284d76eacaae1b",
+      "nextIssuerIndex": "2",
+      "registeredIssuerLeaves": [
+        "92b09fba1de65d75890a1866819e37292260e94fae4cfab11bdb5bc5bc77c0f7",
+        "d151ff4afb4acdcea460fe7d5612f96fc3c50740f4e476843f1250c85717d39e"
+      ],
+      "credentialRoot": "5928820e8a4e3833ec255052f41e3369f8042e5a4d9148915597abb28202405b",
+      "nextCredentialIndex": "3",
+      "registeredCredentialNullifiers": [
+        "29638cb840c9f535e79a005ef6c3adef93380d7710bb0841cd92be314d078354",
+        "2f62af320906816315573d7310be8bdd666d0b0f23e7a663785cc3b481be7687",
+        "e5dccd8d163c933090eb4c28f89c7d859a1752919cb17b82ac82f745230116dc"
+      ],
+      "revocationRoot": "7c4e48d4c63eccc9756f61e996cbb9ded89b42e9284ed3ac454cc821e1ceb848"
+    },
+    "changed": [
+      "revocationRoot"
+    ],
+    "encodedInputPreserved": true,
+    "privateInputPreserved": true
+  }
+]

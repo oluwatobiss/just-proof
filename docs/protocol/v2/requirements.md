@@ -55,13 +55,13 @@ The audit's referenced464-row temporary inventory is no longer present. This mat
 | R25 User §§10,13; D3; V2 04,06 | Original credential membership and exact same revocation index | revokeCredentialV2; membershipV2; rootFromV2 | C matched paths | nonexistent credential/wrong index/correct other-index root | Phase 3C current/same-index membership and atomicity cases | Phase 3C compiled simulation passed |
 | R26 D3; V2 04 | Credential-bound revoked leaf; only empty→revoked | revokedLeafV2 | C first revoke | repeated revoke/constant leaf/unrevocation | ID+commitment leaf vectors | Phase 3C compiled simulation passed |
 | R27 User §13; V2 04,10 | Revocation writes only revocationRoot, needs no holder/statement/opening | revokeCredentialV2 | C minimum witness | forbidden field mutation/holder dependency | exact witness/ledger checks | Phase 3C compiled simulation passed |
-| R28 User §13; V2 08,10 | Proof authenticates issuer+credential+same-index current non-revocation | proveQualificationV2 | I live credential proof | revoked credential/wrong issuer/path/root/index | lifecycle/current-root vectors | Draft |
-| R29 D1; V2 08 | Exact ten-field request and complete request digest | QualificationRequestV2; requestDigestV2 | V digest matches retained request | changed issuance/deadline/challenge/context/digest/order | request vectors | Draft |
-| R30 D1; V2 08 | All8 time constraints; private Uint<64> comparisons; request-only public bounds | proveQualificationV2 time checks | C inclusive issuance/equal deadline/expiry0 | exclusive expiry/invalid intervals/future issuance/short expiry |16 timestamp probe cases | Gate |
-| R31 D1; User §14; V2 07,08 | Neither private timestamp enters public output/ledger/call data/guarantees | time query construction | C invariant public effects | detect credential time disclose | compiled/partitioned transcript equality | Gate |
-| R32 User §13; V2 08 | Proof binds current contract/context/all 3 roots/both counters | stateDigestV2 | V exact snapshot digest | root/counter/address/context mismatch/cross-deployment | eight-field state vectors | Draft |
-| R33 User §13; V2 08,10 | Exactly two outputs, no Boolean/timestamp/nullifier, no proof writes | QualificationProofPublicOutputV2 | C read-only two-field result | extra public output/effect | generated ABI/ledger snapshots | Draft |
-| R34 User §13; V1 09 §§11–14; V2 09 | Nonzero challenge, trusted verifier context, fresh CSPRNG lifecycle | request issuer; proveQualificationV2 | V valid request | zero/reused challenge/context spoof | request/challenge tests | Draft |
+| R28 User §13; V2 08,10 | Proof authenticates issuer+credential+same-index current non-revocation | proveQualificationV2 | I live credential proof | revoked credential/wrong issuer/path/root/index | lifecycle/current-root vectors | Phase 3D compiled simulation passed |
+| R29 D1; V2 08 | Exact ten-field request and complete request digest | QualificationRequestV2; requestDigestV2 | V digest matches retained request | changed issuance/deadline/challenge/context/digest/order | request vectors | Phase 3D compiled simulation passed |
+| R30 D1; V2 08 | All8 time constraints; private Uint<64> comparisons; request-only public bounds | proveQualificationV2 time checks | C inclusive issuance/equal deadline/expiry0 | exclusive expiry/invalid intervals/future issuance/short expiry |16 timestamp probe cases | Phase 3D compiled simulation passed |
+| R31 D1; User §14; V2 07,08 | Neither private timestamp enters public output/ledger/call data/guarantees | time query construction | C invariant public effects | detect credential time disclose | compiled/partitioned transcript equality | Phase 3D compiled simulation passed |
+| R32 User §13; V2 08 | Proof binds current contract/context/all 3 roots/both counters | stateDigestV2 | V exact snapshot digest | root/counter/address/context mismatch/cross-deployment | eight-field state vectors | Phase 3D compiled simulation passed |
+| R33 User §13; V2 08,10 | Exactly two outputs, no Boolean/timestamp/nullifier, no proof writes | QualificationProofPublicOutputV2 | C read-only two-field result | extra public output/effect | generated ABI/ledger snapshots | Phase 3D compiled simulation passed |
+| R34 User §13; V1 09 §§11–14; V2 09 | Nonzero challenge, trusted verifier context, fresh CSPRNG lifecycle | request issuer; proveQualificationV2 | V valid request | zero/reused challenge/context spoof | request/challenge tests | Circuit-side only; verifier lifecycle deferred |
 | R35 D1; V2 09 | Exact stored request and issuance-time equality; trusted interval twice | verifyQualificationV2 | V retained request acceptance | altered public requestIssuedAt/deadline/untrusted clock/expired request; private issuedAt changes belong to R19/R21/R30 | verifier time boundaries | Draft |
 | R36 V1 09 §§30–35; V2 09 | Latest finalized state after crypto verification; race-safe final check | verifyQualificationV2 | V finalized snapshot | stale/provisional state/race/cached state | state-provider tests | Draft |
 | R37 V1 09 §§14,35,38; V2 09 | Atomic single-use CAS, terminal challenges, retry only active requests | consumeChallengeV2 | V one concurrent winner | replay/terminal challenge/expired CAS | concurrency tests | Draft |
@@ -148,3 +148,20 @@ The credential-registration portions of R18–R23 and R40–R43 pass the scoped 
 See [Phase 3C report](../../development/phase-3c-revoke-credential-report.md) and its durable evidence for test counts and resource status. Earlier phase records remain historical.
 
 Phase 3C resource outcome (2026-09-15): the single three-circuit attempt was safely terminated with SIGTERM after 1055.003 seconds when MemAvailable crossed below 768 MiB. Registration keys were nonzero and matched prior fingerprints, but revocation keys remained empty and full bindings were not emitted. R61 remains open/blocked for this resource requirement; no retry, proof or network execution occurred. Durable measurements and partial artifacts are in the Phase 3C report.
+
+## Phase 3D implementation evidence — 2026-09-15
+
+| Requirement | Scoped status |
+|---|---|
+| R28 | Current issuer/credential/same-index NOT_REVOKED checks pass generated simulation, including stale paths and actual revocation rejection. No cryptographic proof verification claim. |
+| R29 | Exact ten-field request and separately typed request digest validated in generated ABI, reference agreement and per-field binding tests. No verifier service implemented. |
+| R30 | All eight time constraints pass local boundary tests, including inclusive issuance, exclusive expiry and request-only block-time bounds. |
+| R31 | Private timestamps/other non-public witness atoms absent from structural public-surface traversal; only request times occur in both time-query operands. |
+| R32 | Exact eight-field authoritative state digest; address/context/root/counter changes exercised. Current-state reads are contract-authoritative, not witness fields. |
+| R33 | Exact two-field output, nine-field/encoded-state preservation on successes/failures, and no write/asset/log/call effects. |
+| R34 | Circuit-side nonzero challenge/verifier context, binding and interval checks only. Repeating a request can succeed in simulation. Trusted verifier configuration/clock, fresh generation and atomic single use remain deferred. |
+| R40–R43 | Applicable immutable snapshot, strict generated typing, disclosure, atomicity and scoped test:local checks pass. Complete proof/network/lifecycle acceptance remains open. |
+| R58 | Existing reviewed D5 clarification retained; no forced raw-value exposure. |
+| R61 | Open: no full build or parameter retrieval in Phase 3D. Requires separately authorized higher-memory four-circuit resource work. Phase 3C compiler −15 remains a failed resource attempt. |
+
+Commands, case counts, preserved fingerprints and durable evidence are in the [Phase 3D report](../../development/phase-3d-prove-qualification-report.md). No further phase is authorized by these observations.

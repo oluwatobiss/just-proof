@@ -17,6 +17,7 @@ export function setup() {
   const witnesses:Witnesses<PS>={
     registryAuthoritySecretWitness:({privateState})=>[privateState,Uint8Array.from(privateState.authority)],
     issuerRegistrationWitnessV2:({privateState})=>[privateState,{registryAuthoritySecret:Uint8Array.from(privateState.authority),insertionPath:{siblings:privateState.issuerPath.map(x=>Uint8Array.from(x))}}],
+    qualificationWitnessV2:()=>{throw new Error("earlier endpoint must not request qualification witness");},
     credentialRevocationWitnessV2:()=>{throw new Error("earlier endpoint must not request revocation witness");},
     credentialRegistrationWitnessV2:({privateState})=>{
       calls++;last=freezeSnapshot(structuredClone(privateState.credential));return [privateState,last];

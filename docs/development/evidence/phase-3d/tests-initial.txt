@@ -1,0 +1,96 @@
+
+> just-proof@0.1.0 test:local
+> MIDNIGHT_NETWORK=local npm run test test/contract/v3d-prove-qualification.test.ts
+
+
+> just-proof@0.1.0 test
+> NODE_OPTIONS='--experimental-vm-modules' vitest run test/contract/v3d-prove-qualification.test.ts
+
+
+ RUN  v4.1.11 /home/oluwatobiss/projects/midnight/risein/just-proof
+
+Sourcemap for "/home/oluwatobiss/projects/midnight/risein/just-proof/contracts/managed/just-proof/contract/index.js" points to missing source files
+Sourcemap for "/home/oluwatobiss/projects/midnight/risein/just-proof/test/fixtures/managed/phase2-primitives/contract/index.js" points to missing source files
+ ✓ test/contract/v3d-prove-qualification.test.ts (79 tests) 54597ms
+     ✓ unbounded and bounded credentials, nonzero index, exact digests and no mutation  1185ms
+     ✓ same request may be executed twice: circuit does not consume challenges  990ms
+     ✓ rejects request protocol before witness access  467ms
+     ✓ rejects request proof type before witness access  469ms
+     ✓ rejects request contract before witness access  588ms
+     ✓ rejects request context before witness access  588ms
+     ✓ rejects request qualification type before witness access  500ms
+     ✓ rejects request qualification version before witness access  498ms
+     ✓ rejects request zero verifier context before witness access  498ms
+     ✓ rejects request zero challenge before witness access  518ms
+     ✓ time boundary: inclusive credential and request issuance equality  481ms
+     ✓ time boundary: last valid second  461ms
+     ✓ time boundary: exclusive request and credential expiry equality  424ms
+     ✓ time boundary: after deadline  408ms
+     ✓ time boundary: before request  442ms
+     ✓ time boundary: zero request issuance  427ms
+     ✓ time boundary: zero request expiry  356ms
+     ✓ time boundary: equal request bounds  397ms
+     ✓ time boundary: reversed request bounds  423ms
+     ✓ time boundary: zero private issuance  524ms
+     ✓ time boundary: equal private bounds  664ms
+     ✓ time boundary: reversed private bounds  479ms
+     ✓ time boundary: credential issued after request but before block  607ms
+     ✓ time boundary: credential expires before deadline  457ms
+     ✓ time boundary: credential expiry equals request deadline  500ms
+     ✓ time boundary: credential expiry after deadline  440ms
+     ✓ time boundary: unbounded expiry  435ms
+     ✓ time boundary: maximum private expiry  436ms
+     ✓ time boundary: maximum Uint64 request expiry  387ms
+     ✓ rejects issuer protocol  322ms
+     ✓ rejects corrupt issuer path  372ms
+     ✓ rejects wrong issuer index  423ms
+     ✓ rejects cross-tree issuer path  441ms
+     ✓ rejects other issuer record with valid path  369ms
+     ✓ rejects credential protocol  382ms
+     ✓ rejects credential qualification type  447ms
+     ✓ rejects credential qualification version  401ms
+     ✓ rejects zero nonce  327ms
+     ✓ rejects zero credential opening  484ms
+     ✓ rejects zero subject commitment  472ms
+     ✓ rejects credential issuer ID  529ms
+     ✓ rejects credential ID  873ms
+     ✓ rejects changed nonce  837ms
+     ✓ rejects changed credential opening  755ms
+     ✓ rejects changed private issuance without new membership  821ms
+     ✓ rejects changed private expiry without new membership  661ms
+     ✓ rejects zero subject secret  648ms
+     ✓ rejects wrong subject secret  730ms
+     ✓ rejects authority secret substituted for subject  1054ms
+     ✓ rejects issuer secret substituted for subject  848ms
+     ✓ rejects changed subject commitment  721ms
+     ✓ rejects unallocated credential index  554ms
+     ✓ rejects wrong credential index  640ms
+     ✓ rejects corrupt credential path  1264ms
+     ✓ rejects cross-tree credential path  1396ms
+     ✓ rejects other credential path  1681ms
+     ✓ rejects corrupt revocation path  1500ms
+     ✓ rejects cross-tree revocation path  871ms
+     ✓ rejects issuer counter above 65536  978ms
+     ✓ allows issuer membership at counter 65536  1213ms
+     ✓ rejects credential counter above 65536  706ms
+     ✓ allows credential membership at counter 65536  1186ms
+     ✓ synthetic credential index 65535 at full sentinel  913ms
+     ✓ rejects stale issuer and credential paths  922ms
+     ✓ revoked credential fails repeatedly; unrelated revocation needs refreshed path and changes state digest  1993ms
+     ✓ revocation path valid only at another index cannot decouple membership  990ms
+     ✓ rejects issuer path length 15  742ms
+     ✓ rejects issuer path length 17  774ms
+     ✓ rejects credential path length 15  825ms
+     ✓ rejects credential path length 17  657ms
+     ✓ rejects revocation path length 15  617ms
+     ✓ rejects revocation path length 17  582ms
+     ✓ one detached immutable witness; no caller bytes or private state modified  681ms
+     ✓ nonzero challenge/verifier and both request times bind the actual output digest  1783ms
+     ✓ cross-contract replay fails; matching new contract binds both digests  923ms
+     ✓ complete ten-field request and eight-field state digests use distinct typed domains  1241ms
+
+ Test Files  1 passed (1)
+      Tests  79 passed (79)
+   Start at  20:01:49
+   Duration  56.77s (transform 783ms, setup 0ms, import 1.33s, tests 54.60s, environment 0ms)
+

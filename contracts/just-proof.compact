@@ -6,7 +6,7 @@ include "protocol-v2/derivations";
 include "protocol-v2/merkle";
 include "protocol-v2/candidate-roots";
 
-// Phase 3B: constructor, nine fields, issuer and credential registration only.
+// Phase 3C: constructor, nine fields, registration and revocation only.
 export sealed ledger registryAuthorityControlCommitment: Bytes<32>;
 export sealed ledger registryContext: Bytes<32>;
 export ledger issuerRoot: Bytes<32>;
@@ -35,6 +35,20 @@ export struct CredentialRegistrationWitnessV2 {
   insertionPath: CredentialMerklePathV2
 }
 witness credentialRegistrationWitnessV2(): CredentialRegistrationWitnessV2;
+export struct CredentialMembershipWitnessV2 {
+  credentialIndex: Uint<16>,
+  path: CredentialMerklePathV2
+}
+export struct CredentialRevocationWitnessV2 {
+  issuerSecret: Bytes<32>,
+  issuerMembership: IssuerMembershipWitnessV2,
+  issuanceNonce: Bytes<32>,
+  credentialId: Bytes<32>,
+  credentialCommitment: Bytes<32>,
+  credentialMembership: CredentialMembershipWitnessV2,
+  revocationPath: RevocationMerklePathV2
+}
+witness credentialRevocationWitnessV2(): CredentialRevocationWitnessV2;
 // Retained demo schema identifier: SHA-256 of JP:QUALIFICATION:MIDNIGHT-BUILDER-DEMO:V1.
 circuit demoQualificationV2(): Bytes<32> {
   return [50,22,194,187,119,39,36,78,37,111,227,167,246,232,157,20,139,54,54,211,27,82,93,189,67,109,151,202,146,42,61,183] as Bytes<32>;
@@ -119,4 +133,35 @@ export circuit registerCredentialV2(): [] {
   credentialRoot = disclose(newRoot);
   nextCredentialIndex = incremented;
   registeredCredentialNullifiers.insert(nullifier);
+}
+
+export circuit revokeCredentialV2(): [] {
+  const w = credentialRevocationWitnessV2();
+  const context = registryContext;
+  const issuerCount = nextIssuerIndex;
+  const currentIssuerRoot = issuerRoot;
+  assert(issuerCount <= 65536, "invalid issuer counter");
+  const record = w.issuerMembership.record;
+  assert(record.protocolVersion == 2, "issuer protocol version");
+  assert(record.issuerControlCommitment != default<Bytes<32>>, "issuer control zero");
+  const issuerId = issuerIdV2(context,record.issuerControlCommitment);
+  assert(issuerId == record.issuerId, "noncanonical issuer id");
+  membershipV2(DOMAIN_ISSUER_MERKLE_NODE_V2(),issuerLeafV2(record),w.issuerMembership.issuerIndex,issuerCount,w.issuerMembership.path.siblings,currentIssuerRoot);
+  assert(w.issuerSecret != default<Bytes<32>>, "issuer secret zero");
+  assert(issuerControlV2(context,w.issuerSecret) == record.issuerControlCommitment, "issuer control mismatch");
+  assert(w.issuanceNonce != default<Bytes<32>>, "issuance nonce zero");
+  const id = credentialIdV2(issuerId,w.issuanceNonce);
+  assert(id == w.credentialId, "credential id mismatch");
+  const leaf = credentialLeafV2(id,w.credentialCommitment);
+  const credentialCount = nextCredentialIndex;
+  const currentCredentialRoot = credentialRoot;
+  assert(credentialCount <= 65536, "invalid credential counter");
+  const index = w.credentialMembership.credentialIndex;
+  membershipV2(DOMAIN_CREDENTIAL_MERKLE_NODE_V2(),leaf,index,credentialCount,w.credentialMembership.path.siblings,currentCredentialRoot);
+  const currentRevocationRoot = revocationRoot;
+  assert(rootFromV2(DOMAIN_REVOCATION_MERKLE_NODE_V2(),notRevokedV2(),index,w.revocationPath.siblings) == currentRevocationRoot, "not revoked root");
+  const revoked = revokedLeafV2(id,w.credentialCommitment);
+  const newRoot = rootFromV2(DOMAIN_REVOCATION_MERKLE_NODE_V2(),revoked,index,w.revocationPath.siblings);
+  // Only the final root is disclosed; the credential-bound leaf remains private.
+  revocationRoot = disclose(newRoot);
 }

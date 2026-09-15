@@ -1,0 +1,71 @@
+{
+  "sourceSha256": "4010eed928402850684930b2adb921153690a410fd5a88fcf52bd02847e87974",
+  "outputDirectory": "/tmp/justproof-phase3c-three-circuits-20260915",
+  "artifacts": [
+    {
+      "path": "compiler/contract-info.json",
+      "bytes": 14470,
+      "sha256": "ce7cdf4f44ae441be9283e15bc91c0101e1ecbb554354b3e3eefb2601fca7a1f"
+    },
+    {
+      "path": "keys/registerCredentialV2.prover",
+      "bytes": 76642841,
+      "sha256": "1722f6f9cf0e818f414639fb179b9a3d7756242102e9fbe1367b5c167b5e263e"
+    },
+    {
+      "path": "keys/registerCredentialV2.verifier",
+      "bytes": 2119,
+      "sha256": "c0abaaf254564c21488f90784d8b29c8b106ae2e273fde89fa6fa392c4610d22"
+    },
+    {
+      "path": "keys/registerIssuerV2.prover",
+      "bytes": 76490158,
+      "sha256": "9c136a8ce811aedd13ad2e364005b1d3454f76fd7e29cd6edaff5b5a99dcca28"
+    },
+    {
+      "path": "keys/registerIssuerV2.verifier",
+      "bytes": 2119,
+      "sha256": "b6c78daa6b3964912d9cbf2bd783365de7c18521ca26efffbee5b37e410e1a9a"
+    },
+    {
+      "path": "keys/revokeCredentialV2.prover",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "keys/revokeCredentialV2.verifier",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "zkir/registerCredentialV2.bzkir",
+      "bytes": 5613,
+      "sha256": "26015eecbe8847ec442d288b3d252189892772e3af6168aa30b7a6b8ab4eedba"
+    },
+    {
+      "path": "zkir/registerCredentialV2.zkir",
+      "bytes": 65083,
+      "sha256": "b04a6e786914be257ab88d09d148ca8918d08b302e970bc81cdaec47efc1227e"
+    },
+    {
+      "path": "zkir/registerIssuerV2.bzkir",
+      "bytes": 3056,
+      "sha256": "be21a00eda843b8ec88fb8e19f9a9645fe81659ed9354f8515d651991f3bab56"
+    },
+    {
+      "path": "zkir/registerIssuerV2.zkir",
+      "bytes": 37980,
+      "sha256": "ce061c319bdbdf15fad9fd53cdfb9f5602f66cc5fd1da745388e0b7ca978b699"
+    },
+    {
+      "path": "zkir/revokeCredentialV2.bzkir",
+      "bytes": 6209,
+      "sha256": "98eedb891db4d2b3220c1306078033f8079cc92b8212e24c0e84bebc59d0d573"
+    },
+    {
+      "path": "zkir/revokeCredentialV2.zkir",
+      "bytes": 71809,
+      "sha256": "e28c864710d6b05da43dc1caa01e6d7e4ca4a66d6a87fe63511bcc0bac3a7c84"
+    }
+  ]
+}

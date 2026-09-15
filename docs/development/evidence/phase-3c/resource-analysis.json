@@ -1,0 +1,106 @@
+{
+  "peakSample": {
+    "elapsedSeconds": 1054.381,
+    "aggregateRssKiB": 4646684,
+    "processes": [
+      {
+        "pid": 14866,
+        "ppid": 14857,
+        "pgrp": 14866,
+        "name": "compact",
+        "rssKiB": 2636,
+        "hwmKiB": 3752
+      },
+      {
+        "pid": 14876,
+        "ppid": 14866,
+        "pgrp": 14866,
+        "name": "compactc.bin",
+        "rssKiB": 183696,
+        "hwmKiB": 221976
+      },
+      {
+        "pid": 14880,
+        "ppid": 14876,
+        "pgrp": 14866,
+        "name": "zkir",
+        "rssKiB": 4460352,
+        "hwmKiB": 4460352
+      }
+    ],
+    "systemKiB": {
+      "MemTotal": 8050760,
+      "MemAvailable": 776132,
+      "SwapTotal": 2097152,
+      "SwapFree": 1533948
+    }
+  },
+  "thresholdTriggerSample": {
+    "elapsedSeconds": 1054.381,
+    "aggregateRssKiB": 4646684,
+    "processes": [
+      {
+        "pid": 14866,
+        "ppid": 14857,
+        "pgrp": 14866,
+        "name": "compact",
+        "rssKiB": 2636,
+        "hwmKiB": 3752
+      },
+      {
+        "pid": 14876,
+        "ppid": 14866,
+        "pgrp": 14866,
+        "name": "compactc.bin",
+        "rssKiB": 183696,
+        "hwmKiB": 221976
+      },
+      {
+        "pid": 14880,
+        "ppid": 14876,
+        "pgrp": 14866,
+        "name": "zkir",
+        "rssKiB": 4460352,
+        "hwmKiB": 4460352
+      }
+    ],
+    "systemKiB": {
+      "MemTotal": 8050760,
+      "MemAvailable": 776132,
+      "SwapTotal": 2097152,
+      "SwapFree": 1533948
+    }
+  },
+  "lastSample": {
+    "elapsedSeconds": 1054.956,
+    "aggregateRssKiB": 0,
+    "processes": [
+      {
+        "pid": 14866,
+        "ppid": 14857,
+        "pgrp": 14866,
+        "name": "compact",
+        "rssKiB": 0,
+        "hwmKiB": 0
+      },
+      {
+        "pid": 14880,
+        "ppid": 300,
+        "pgrp": 14866,
+        "name": "zkir",
+        "rssKiB": 0,
+        "hwmKiB": 0
+      }
+    ],
+    "systemKiB": {
+      "MemTotal": 8050760,
+      "MemAvailable": 2680500,
+      "SwapTotal": 2097152,
+      "SwapFree": 1536508
+    }
+  },
+  "maximumSampleGapSeconds": 1.6850000000001728,
+  "sampleCount": 1935,
+  "cacheUnchanged": true,
+  "rusageLimitation": "waitedChildMaxRssKiB=17336 reflects the waited wrapper in this terminated build; it is not a compiler/zkir or process-tree peak. Use sampled aggregate RSS and per-process RSS/HWM."
+}

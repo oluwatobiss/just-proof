@@ -7,8 +7,8 @@ import {ledger} from "../../contracts/managed/just-proof/contract/index.js";
 import {setup} from "../support/v3b-register-credential.js";
 import {p,partition,locations,overrideState} from "../support/v3a-register-issuer.js";
 import {hex,u8,u16,u64} from "../support/v2-reference.js";
-it("exact two-endpoint ABI and ordered generated witness/nested schemas",()=>{
-  const f=setup(),names=["registerIssuerV2","registerCredentialV2"];
+it("exact three-endpoint ABI and ordered generated witness/nested schemas",()=>{
+  const f=setup(),names=["registerIssuerV2","registerCredentialV2","revokeCredentialV2"];
   for(const endpoints of [f.contract.circuits,f.contract.impureCircuits,f.contract.provableCircuits])expect(Object.keys(endpoints)).toEqual(names);
   const meta=JSON.parse(readFileSync("contracts/managed/just-proof/compiler/contract-info.json","utf8"));
   expect(meta.circuits.map((x:{name:string})=>x.name)).toEqual(names);
@@ -80,7 +80,7 @@ it("structural public-surface gate: only nullifier/root/counters and existing re
   const l=ledger(out.context.currentQueryContext.state),nullifier=p.diagnose_registrationNullifierV2({bytes:rt.encodeContractAddress(rt.dummyContractAddress())},f.f.context,w.credential.statement.credentialId);
   expect(locations(guaranteed,nullifier).length>0).toBe(true);expect(locations(guaranteed,l.credentialRoot).length>0).toBe(true);
   expect(l.registeredCredentialNullifiers.member(nullifier)).toBe(true);
-  const source=readFileSync("contracts/just-proof.compact","utf8").split("export circuit registerCredentialV2")[1];
+  const source=readFileSync("contracts/just-proof.compact","utf8").split("export circuit registerCredentialV2")[1].split("export circuit revokeCredentialV2")[0];
   expect(source.match(/disclose\(/g)).toHaveLength(2);expect(source).toContain("disclose(registrationNullifierV2(kernel.self(),context,id))");expect(source).toContain("disclose(newRoot)");
   const replacer=(_k:string,v:unknown)=>typeof v==="bigint"?v.toString():v instanceof Uint8Array?{bytes:hex(v)}:v instanceof Map?[...v]:v;
   mkdirSync("/tmp/justproof-phase3b",{recursive:true});

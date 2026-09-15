@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "tests": 369,
+  "focusedTypecheckExit": 0,
+  "diffCheckExit": 0,
+  "sourceSha256": "4010eed928402850684930b2adb921153690a410fd5a88fcf52bd02847e87974",
+  "publicSurface": true
+}

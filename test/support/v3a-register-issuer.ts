@@ -21,6 +21,7 @@ export function fixture(secret=syntheticInputs().authority) {
   const f=syntheticInputs(), tree=new ReferenceTree("issuer");
   let calls=0;
   const witnesses:Witnesses<PS>={
+    credentialRevocationWitnessV2:()=>{throw new Error("earlier endpoint must not request revocation witness");},
     credentialRegistrationWitnessV2:()=>{throw new Error("issuer test must not request credential witness");},
     registryAuthoritySecretWitness:({privateState})=>[privateState,Uint8Array.from(privateState.secret)],
     issuerRegistrationWitnessV2:({privateState})=>{

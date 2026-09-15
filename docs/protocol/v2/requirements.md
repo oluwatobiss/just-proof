@@ -51,10 +51,10 @@ The audit's referenced464-row temporary inventory is no longer present. This mat
 | R21 D2; V1 03; V2 01,03 | Credential persistentCommit with independent opening | credentialCommitmentV2 | V open exact statement | changed timestamp/field/opening | commitment vectors | Draft |
 | R22 User §13; V2 03,10 | Nullifier binds address/context/ID; duplicates rejected; no presentation ID | registrationNullifierV2 | C first insert | duplicate ID with changed package/opening; cross deployment | nullifier vectors | Draft |
 | R23 User §13; V2 10 | Credential append exact 3 writes; revocationRoot unchanged | registerCredentialV2 | C root/counter/set update | bad insertion path/stale root/full tree | all-nine-field snapshots | Draft |
-| R24 User §13; D3; V2 04,10 | Revocation authenticates issuer secret and rederived ID+nonce | revokeCredentialV2 | C original issuer revoke | other issuer/changed nonce/wrong secret | retained-record vectors | Draft |
-| R25 User §§10,13; D3; V2 04,06 | Original credential membership and exact same revocation index | revokeCredentialV2; authenticateNotRevokedV2 | C matched paths | nonexistent credential/wrong index/correct other-index root | paired-tree probe7 cases; lifecycle tests pending | Gate |
-| R26 D3; V2 04 | Credential-bound revoked leaf; only empty→revoked | revokedLeafV2 | C first revoke | repeated revoke/constant leaf/unrevocation | ID+commitment leaf vectors | Draft |
-| R27 User §13; V2 04,10 | Revocation writes only revocationRoot, needs no holder/statement/opening | revokeCredentialV2 | C minimum witness | forbidden field mutation/holder dependency | exact witness/ledger checks | Draft |
+| R24 User §13; D3; V2 04,10 | Revocation authenticates issuer secret and rederived ID+nonce | revokeCredentialV2 | C original issuer revoke | other issuer/changed nonce/wrong secret | retained-record vectors | Phase 3C compiled simulation passed |
+| R25 User §§10,13; D3; V2 04,06 | Original credential membership and exact same revocation index | revokeCredentialV2; membershipV2; rootFromV2 | C matched paths | nonexistent credential/wrong index/correct other-index root | Phase 3C current/same-index membership and atomicity cases | Phase 3C compiled simulation passed |
+| R26 D3; V2 04 | Credential-bound revoked leaf; only empty→revoked | revokedLeafV2 | C first revoke | repeated revoke/constant leaf/unrevocation | ID+commitment leaf vectors | Phase 3C compiled simulation passed |
+| R27 User §13; V2 04,10 | Revocation writes only revocationRoot, needs no holder/statement/opening | revokeCredentialV2 | C minimum witness | forbidden field mutation/holder dependency | exact witness/ledger checks | Phase 3C compiled simulation passed |
 | R28 User §13; V2 08,10 | Proof authenticates issuer+credential+same-index current non-revocation | proveQualificationV2 | I live credential proof | revoked credential/wrong issuer/path/root/index | lifecycle/current-root vectors | Draft |
 | R29 D1; V2 08 | Exact ten-field request and complete request digest | QualificationRequestV2; requestDigestV2 | V digest matches retained request | changed issuance/deadline/challenge/context/digest/order | request vectors | Draft |
 | R30 D1; V2 08 | All8 time constraints; private Uint<64> comparisons; request-only public bounds | proveQualificationV2 time checks | C inclusive issuance/equal deadline/expiry0 | exclusive expiry/invalid intervals/future issuance/short expiry |16 timestamp probe cases | Gate |
@@ -132,3 +132,19 @@ Exact commands, tests, snapshots, structural transcript evidence and artifact ha
 ## Phase 3B completion evidence — 2026-09-15
 
 The credential-registration portions of R18–R23 and R40–R43 pass the scoped 317-case simulation/conformance suite and structural disclosure checks. R58 remains resolved by the reviewed D5 clarification. R61 remains open: the prior session recorded successful two-circuit key generation, but its original temporary logs, memory samples and keys are no longer available for durable reinspection. See the [Phase 3B report](../../development/phase-3b-register-credential-report.md) for provenance and remaining evidence limitations. No proof generation, proof verification or ledger execution is established.
+
+## Phase 3C implemented requirements — 2026-09-15
+
+| Requirement | Current scoped evidence |
+|---|---|
+| R24 | Issuer membership/secret and original issuer+nonce ID rederivation; wrong-role, other-issuer, nonce and derivation rejection tests. |
+| R25 | Current allocated credential membership and exact shared revocation index; stale/corrupt/cross-tree/wrong-index, full-counter and nonexistent cases. |
+| R26 | Credential-bound replacement leaf; canonical empty-to-revoked only; repeated/already-revoked failures. |
+| R27 | Exact minimal witness, no holder/statement/opening, unit output and sole revocationRoot mutation. |
+| R40–R43 (applicable revocation portions) | Nine-field/encoded-input/private-state atomicity, exact generated ABI, structural canary partition checks and focused strict typing. Other lifecycle obligations remain open. |
+| R58 | Remains resolved by reviewed D5 clarification; no raw issuer-control exposure added. |
+| R61 | Open whole-protocol/release gate. The distinct three-circuit resource outcome is recorded in the Phase 3C report; no proof or network execution is implied. |
+
+See [Phase 3C report](../../development/phase-3c-revoke-credential-report.md) and its durable evidence for test counts and resource status. Earlier phase records remain historical.
+
+Phase 3C resource outcome (2026-09-15): the single three-circuit attempt was safely terminated with SIGTERM after 1055.003 seconds when MemAvailable crossed below 768 MiB. Registration keys were nonzero and matched prior fingerprints, but revocation keys remained empty and full bindings were not emitted. R61 remains open/blocked for this resource requirement; no retry, proof or network execution occurred. Durable measurements and partial artifacts are in the Phase 3C report.

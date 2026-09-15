@@ -247,3 +247,7 @@ Final `git status --short` (ignored compiler files are separately inventoried):
 ```
 
 `git diff --check` passed. All excluded tracked application/configuration areas and historical reports other than the permitted addendum are unchanged. Frozen V1 preservation is confirmed against HEAD; the missing temporary baseline limitation above remains explicit. Stop for user review; do not begin Phase 3C.
+
+## Phase 3B acceptance — 2026-09-15
+
+Accepted at the reviewed simulation/conformance/atomicity/ABI/public-surface level (317 tests and 51 snapshot pairs). The recovered two-circuit resource record remains historical only; original logs, keys, marker and samples are unavailable. R61 remains open. Phase 3C authorizes revocation only, with a separate conditional three-circuit resource attempt.

@@ -1,0 +1,159 @@
+
+> just-proof@0.1.0 test:local
+> MIDNIGHT_NETWORK=local npm run test -- test/conformance/v2-domains.test.ts test/conformance/v2-derivations.test.ts test/conformance/v2-merkle.test.ts test/conformance/v2-vectors.test.ts test/conformance/v2-generated-types.test.ts test/contract/v2-constructor.test.ts test/contract/v3a-register-issuer.test.ts test/contract/v3b-register-credential.test.ts test/contract/v3b-public-surface.test.ts test/contract/v3c-revoke-credential.test.ts test/contract/v3c-public-surface.test.ts --reporter=default --reporter=json --outputFile=docs/development/evidence/phase-3c/tests.json
+
+
+> just-proof@0.1.0 test
+> NODE_OPTIONS='--experimental-vm-modules' vitest run test/conformance/v2-domains.test.ts test/conformance/v2-derivations.test.ts test/conformance/v2-merkle.test.ts test/conformance/v2-vectors.test.ts test/conformance/v2-generated-types.test.ts test/contract/v2-constructor.test.ts test/contract/v3a-register-issuer.test.ts test/contract/v3b-register-credential.test.ts test/contract/v3b-public-surface.test.ts test/contract/v3c-revoke-credential.test.ts test/contract/v3c-public-surface.test.ts --reporter=default --reporter=json --outputFile=docs/development/evidence/phase-3c/tests.json
+
+
+ RUN  v4.1.11 /home/oluwatobiss/projects/midnight/risein/just-proof
+
+Sourcemap for "/home/oluwatobiss/projects/midnight/risein/just-proof/contracts/managed/just-proof/contract/index.js" points to missing source files
+Sourcemap for "/home/oluwatobiss/projects/midnight/risein/just-proof/test/fixtures/managed/phase2-primitives/contract/index.js" points to missing source files
+Sourcemap for "/home/oluwatobiss/projects/midnight/risein/just-proof/test/fixtures/managed/phase2-constructor/contract/index.js" points to missing source files
+ ✓ test/contract/v2-constructor.test.ts (6 tests) 4157ms
+     ✓ initializes exactly nine fields, both empty sets, zero counters and candidate roots  1237ms
+     ✓ rejects zero context and zero secret without mutating private input  646ms
+     ✓ different nonzero constructor secret creates a different identity, not an invented rejection rule  824ms
+     ✓ diagnostic accepts matching knowledge and rejects wrong/cross-role secrets with unchanged ledger  966ms
+     ✓ secret canary stays out of ledger bytes and diagnostic observable transcript; input/private witness distinguished  425ms
+ ✓ test/conformance/v2-merkle.test.ts (81 tests) 4538ms
+     ✓ binds directions and membership at 0  363ms
+ ✓ test/conformance/v2-derivations.test.ts (122 tests) 1117ms
+ ✓ test/contract/v3b-public-surface.test.ts (2 tests) 4823ms
+   ✓ exact three-endpoint ABI and ordered generated witness/nested schemas  2718ms
+   ✓ structural public-surface gate: only nullifier/root/counters and existing reads; no private atoms or time bounds  2090ms
+ ✓ test/conformance/v2-vectors.test.ts (1 test) 1331ms
+   ✓ reproduces every candidate vector including all 17 levels per tree and boundary paths  1320ms
+ ✓ test/contract/v3c-public-surface.test.ts (2 tests) 6583ms
+   ✓ exact three-circuit ABI, ordered revocation witness and no qualification or diagnostic callback  3467ms
+   ✓ real partition structural gate: only existing reads and final revocation root; no private atoms or extra effects  3106ms
+ ✓ test/conformance/v2-domains.test.ts (19 tests) 274ms
+ ✓ test/conformance/v2-generated-types.test.ts (18 tests) 786ms
+ ✓ test/contract/v3a-register-issuer.test.ts (21 tests) 13566ms
+     ✓ first and consecutive registrations use refreshed paths, unit returns and exactly three writes  2620ms
+     ✓ last valid index 65535 increments to full sentinel 65536  911ms
+     ✓ zero authority rejects with all nine fields unchanged  584ms
+     ✓ wrong authority rejects with all nine fields unchanged  698ms
+     ✓ issuer substitution rejects with all nine fields unchanged  449ms
+     ✓ holder substitution rejects with all nine fields unchanged  597ms
+     ✓ zero commitment rejects before invoking the witness  456ms
+     ✓ wrong authority context derivation rejects atomically  693ms
+     ✓ wrong authority version derivation rejects atomically  623ms
+     ✓ wrong authority domain derivation rejects atomically  582ms
+     ✓ duplicate leaf rejects before late path processing  731ms
+     ✓ stale insertion path rejects after an unrelated registration  1067ms
+     ✓ corrupted sibling rejects atomically  440ms
+     ✓ path valid only for another index rejects  569ms
+     ✓ occupied insertion position rejects  372ms
+     ✓ full counter rejects before narrowing  516ms
+     ✓ generated witness adapter rejects path length 15  435ms
+     ✓ generated witness adapter rejects path length 17  377ms
+     ✓ D5 reviewed boundary keeps raw input private and exposes canonical leaf/root without secret leakage  514ms
+ ✓ test/contract/v3b-register-credential.test.ts (47 tests) 30909ms
+     ✓ first and consecutive refreshed registrations, zero/positive expiry, opaque subject, exact outputs and derivations  3517ms
+     ✓ last credential index 65535 reaches full sentinel  2083ms
+     ✓ full issuer allocation counter still permits allocated membership  1725ms
+     ✓ rejects zero issuer secret  1106ms
+     ✓ rejects wrong issuer secret  1182ms
+     ✓ rejects authority issuer secret  1139ms
+     ✓ rejects holder issuer secret  1104ms
+     ✓ rejects record version  833ms
+     ✓ rejects zero control  669ms
+     ✓ rejects noncanonical issuer ID  553ms
+     ✓ rejects unallocated index  543ms
+     ✓ rejects corrupt issuer sibling  483ms
+     ✓ rejects wrong issuer index  442ms
+     ✓ rejects cross-tree issuer path  503ms
+     ✓ rejects invalid issuer counter above capacity  628ms
+     ✓ rejects stale issuer path after unrelated issuer registration  405ms
+     ✓ rejects another registered issuer record and valid path with wrong secret  495ms
+     ✓ rejects authenticated issuer control using wrong context derivation  415ms
+     ✓ rejects authenticated issuer control using wrong version derivation  466ms
+     ✓ rejects authenticated issuer control using wrong domain derivation  503ms
+     ✓ rejects statement protocol  446ms
+     ✓ rejects qualification type  565ms
+     ✓ rejects qualification version  452ms
+     ✓ rejects zero nonce  379ms
+     ✓ rejects zero opening  367ms
+     ✓ rejects zero subject commitment  451ms
+     ✓ rejects zero issuedAt  348ms
+     ✓ rejects equal expiry  373ms
+     ✓ rejects earlier expiry  371ms
+     ✓ rejects statement issuer mismatch  336ms
+     ✓ rejects credential ID mismatch  360ms
+     ✓ rejects nonce changed  339ms
+     ✓ rejects credential ID field substitution  359ms
+     ✓ rejects credential ID wrong domain  409ms
+     ✓ duplicate ID rejects changed opening before corrupted late path  674ms
+     ✓ duplicate ID rejects changed valid statement before corrupted late path  636ms
+     ✓ rejects stale credential insertion path  508ms
+     ✓ rejects corrupt insertion sibling  320ms
+     ✓ rejects path valid only at another insertion index  362ms
+     ✓ rejects occupied insertion position  416ms
+     ✓ full credential counter rejects before narrowing  327ms
+     ✓ rejects issuer path adapter length 15  328ms
+     ✓ rejects issuer path adapter length 17  333ms
+     ✓ rejects credential path adapter length 15  395ms
+     ✓ rejects credential path adapter length 17  440ms
+     ✓ contract address changes actual nullifier and context changes typed nullifier  1216ms
+     ✓ one detached snapshot, frozen containers, no input mutation or extra witness fields  472ms
+ ✓ test/contract/v3c-revoke-credential.test.ts (50 tests) 45389ms
+     ✓ first and nonzero credentials, refreshed paths, exact unit and sole root mutation  5982ms
+     ✓ synthetic final credential index 65535 with full counter  2366ms
+     ✓ full issuer counter permits allocated membership  2063ms
+     ✓ rejects zero issuer secret  1758ms
+     ✓ rejects wrong issuer secret  1132ms
+     ✓ rejects authority issuer secret  1019ms
+     ✓ rejects holder issuer secret  874ms
+     ✓ rejects issuer record version  695ms
+     ✓ rejects zero control  962ms
+     ✓ rejects noncanonical issuer ID  756ms
+     ✓ rejects unallocated issuer index  691ms
+     ✓ rejects corrupt issuer path  742ms
+     ✓ rejects wrong issuer index  793ms
+     ✓ rejects cross-tree issuer path  796ms
+     ✓ rejects other issuer path  612ms
+     ✓ rejects zero nonce  680ms
+     ✓ rejects changed nonce  640ms
+     ✓ rejects changed retained ID  537ms
+     ✓ rejects another issuer credential  579ms
+     ✓ rejects changed commitment  594ms
+     ✓ rejects unallocated credential index  808ms
+     ✓ rejects corrupt credential path  695ms
+     ✓ rejects wrong credential index  581ms
+     ✓ rejects cross-tree credential path  525ms
+     ✓ rejects other credential path  613ms
+     ✓ rejects corrupt revocation path  517ms
+     ✓ rejects credential path as revocation path  578ms
+     ✓ rejects issuer counter above capacity  688ms
+     ✓ rejects credential counter above capacity  928ms
+     ✓ rejects stale issuer membership  843ms
+     ✓ rejects another valid issuer record/path with wrong secret  555ms
+     ✓ another issuer cannot revoke a learned credential with its own valid secret  537ms
+     ✓ rejects authenticated wrong control context  497ms
+     ✓ rejects authenticated wrong control version  551ms
+     ✓ rejects authenticated wrong control domain  558ms
+     ✓ rejects stale credential path after unrelated registration  466ms
+     ✓ rejects unregistered credential despite valid non-revocation path  439ms
+     ✓ rejects credential root/path valid only at another index  466ms
+     ✓ rejects repeated revocation with refreshed path  614ms
+     ✓ rejects stale revocation path after unrelated revocation  723ms
+     ✓ rejects already revoked synthetic target  782ms
+     ✓ rejects revocation path valid only at another index and location decoupling  1024ms
+     ✓ rejects issuer adapter path length 15  738ms
+     ✓ rejects issuer adapter path length 17  961ms
+     ✓ rejects credential adapter path length 15  1080ms
+     ✓ rejects credential adapter path length 17  958ms
+     ✓ rejects revocation adapter path length 15  1068ms
+     ✓ rejects revocation adapter path length 17  887ms
+     ✓ one detached snapshot freezes structural containers and copies every caller-owned byte array  645ms
+     ✓ no invented nonzero commitment rule: synthetic authenticated zero commitment  711ms
+
+ Test Files  11 passed (11)
+      Tests  369 passed (369)
+   Start at  14:04:39
+   Duration  51.04s (transform 14.33s, setup 0ms, import 39.96s, tests 113.47s, environment 8ms)
+
+JSON report written to /home/oluwatobiss/projects/midnight/risein/just-proof/docs/development/evidence/phase-3c/tests.json

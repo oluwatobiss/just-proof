@@ -1,0 +1,17 @@
+{
+  "systemKiB": {
+    "MemTotal": 8050760,
+    "MemAvailable": 4862772,
+    "SwapTotal": 2097152,
+    "SwapFree": 2097152
+  },
+  "diskFreeBytes": 1005248090112,
+  "sourceSha256": "4010eed928402850684930b2adb921153690a410fd5a88fcf52bd02847e87974",
+  "command": [
+    "compact",
+    "compile",
+    "+0.31.1",
+    "contracts/just-proof.compact",
+    "/tmp/justproof-phase3c-three-circuits-20260915"
+  ]
+}

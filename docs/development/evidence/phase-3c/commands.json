@@ -1,0 +1,8 @@
+{
+  "skipCompile": "/usr/bin/time -f 'elapsed=%e exit=%x maxrss_kib=%M' compact compile +0.31.1 --skip-zk contracts/just-proof.compact contracts/managed/just-proof > docs/development/evidence/phase-3c/compile-1.log 2>&1",
+  "focusedTests": "npm run test:local -- -- test/conformance/v2-domains.test.ts test/conformance/v2-derivations.test.ts test/conformance/v2-merkle.test.ts test/conformance/v2-vectors.test.ts test/conformance/v2-generated-types.test.ts test/contract/v2-constructor.test.ts test/contract/v3a-register-issuer.test.ts test/contract/v3b-register-credential.test.ts test/contract/v3b-public-surface.test.ts test/contract/v3c-revoke-credential.test.ts test/contract/v3c-public-surface.test.ts --reporter=default --reporter=json --outputFile=docs/development/evidence/phase-3c/tests.json > docs/development/evidence/phase-3c/tests-all.log 2>&1",
+  "focusedTypecheck": "node_modules/.bin/tsc --ignoreConfig --noEmit --strict --skipLibCheck --types node --target ES2022 --module ES2022 --moduleResolution bundler test/support/v2-reference.ts test/support/v2-vectors.ts test/fixtures/generate-phase2-vectors.ts test/conformance/v2-*.test.ts test/contract/v2-constructor.test.ts test/contract/v3*.test.ts test/support/v3*.ts > docs/development/evidence/phase-3c/typecheck.log 2>&1",
+  "fullBuildLauncher": "python3 docs/development/evidence/phase-3c/monitor.py",
+  "keyFormatCheck": "node docs/development/evidence/phase-3c/check-keys.mjs",
+  "diffCheck": "git diff --check"
+}

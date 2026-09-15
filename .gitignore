@@ -80,3 +80,9 @@ tome.json
 
 # Local Netlify folder
 .netlify
+
+# Reviewed Phase 3C evidence: retain only these exact historical logs.
+!/docs/development/evidence/phase-3c/build.log
+!/docs/development/evidence/phase-3c/compile-1.log
+!/docs/development/evidence/phase-3c/tests-all.log
+!/docs/development/evidence/phase-3c/typecheck.log

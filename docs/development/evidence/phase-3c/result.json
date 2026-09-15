@@ -1,0 +1,37 @@
+{
+  "command": [
+    "compact",
+    "compile",
+    "+0.31.1",
+    "contracts/just-proof.compact",
+    "/tmp/justproof-phase3c-three-circuits-20260915"
+  ],
+  "environmentOverrides": {
+    "RAYON_NUM_THREADS": "2",
+    "XDG_CACHE_HOME": "/home/oluwatobiss/.cache"
+  },
+  "output": "/tmp/justproof-phase3c-three-circuits-20260915",
+  "compilerExit": -15,
+  "elapsedSeconds": 1055.0031757320003,
+  "stopReason": "safe stop: memory threshold",
+  "timeout": false,
+  "sampledPeakAggregateRssKiB": 4646684,
+  "waitedChildMaxRssKiB": 17336,
+  "minimumSystemAvailableKiB": 776132,
+  "maximumSystemSwapUsedKiB": 563204,
+  "sampleCount": 1935,
+  "processNames": [
+    "compact",
+    "compactc.bin",
+    "zkir"
+  ],
+  "reportedParameterNames": [],
+  "newCacheFiles": [],
+  "expectedHost": "midnight-s3-fileshare-dev-eu-west-1.s3.eu-west-1.amazonaws.com",
+  "systemAfterKiB": {
+    "MemTotal": 8050760,
+    "MemAvailable": 2881552,
+    "SwapTotal": 2097152,
+    "SwapFree": 1536508
+  }
+}

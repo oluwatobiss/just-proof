@@ -1,0 +1,81 @@
+{
+  "complete": false,
+  "rows": [
+    {
+      "circuit": "registerIssuerV2",
+      "proverBytes": 76490158,
+      "verifierBytes": 2119,
+      "verifierRoundTrip": true
+    },
+    {
+      "circuit": "registerCredentialV2",
+      "proverBytes": 76642841,
+      "verifierBytes": 2119,
+      "verifierRoundTrip": true
+    },
+    {
+      "circuit": "revokeCredentialV2",
+      "proverBytes": 0,
+      "verifierBytes": 0,
+      "verifierRoundTrip": false
+    }
+  ],
+  "comparisons": [
+    {
+      "path": "keys/registerCredentialV2.prover",
+      "previousSha256": "1722f6f9cf0e818f414639fb179b9a3d7756242102e9fbe1367b5c167b5e263e",
+      "currentSha256": "1722f6f9cf0e818f414639fb179b9a3d7756242102e9fbe1367b5c167b5e263e",
+      "equal": true,
+      "provenance": "Issuer accepted Phase 3A2; credential historical Phase 3B fingerprint, not recovered old keys."
+    },
+    {
+      "path": "keys/registerCredentialV2.verifier",
+      "previousSha256": "c0abaaf254564c21488f90784d8b29c8b106ae2e273fde89fa6fa392c4610d22",
+      "currentSha256": "c0abaaf254564c21488f90784d8b29c8b106ae2e273fde89fa6fa392c4610d22",
+      "equal": true,
+      "provenance": "Issuer accepted Phase 3A2; credential historical Phase 3B fingerprint, not recovered old keys."
+    },
+    {
+      "path": "keys/registerIssuerV2.prover",
+      "previousSha256": "9c136a8ce811aedd13ad2e364005b1d3454f76fd7e29cd6edaff5b5a99dcca28",
+      "currentSha256": "9c136a8ce811aedd13ad2e364005b1d3454f76fd7e29cd6edaff5b5a99dcca28",
+      "equal": true,
+      "provenance": "Issuer accepted Phase 3A2; credential historical Phase 3B fingerprint, not recovered old keys."
+    },
+    {
+      "path": "keys/registerIssuerV2.verifier",
+      "previousSha256": "b6c78daa6b3964912d9cbf2bd783365de7c18521ca26efffbee5b37e410e1a9a",
+      "currentSha256": "b6c78daa6b3964912d9cbf2bd783365de7c18521ca26efffbee5b37e410e1a9a",
+      "equal": true,
+      "provenance": "Issuer accepted Phase 3A2; credential historical Phase 3B fingerprint, not recovered old keys."
+    },
+    {
+      "path": "zkir/registerCredentialV2.bzkir",
+      "previousSha256": "26015eecbe8847ec442d288b3d252189892772e3af6168aa30b7a6b8ab4eedba",
+      "currentSha256": "26015eecbe8847ec442d288b3d252189892772e3af6168aa30b7a6b8ab4eedba",
+      "equal": true,
+      "provenance": "Issuer accepted Phase 3A2; credential historical Phase 3B fingerprint, not recovered old keys."
+    },
+    {
+      "path": "zkir/registerCredentialV2.zkir",
+      "previousSha256": "b04a6e786914be257ab88d09d148ca8918d08b302e970bc81cdaec47efc1227e",
+      "currentSha256": "b04a6e786914be257ab88d09d148ca8918d08b302e970bc81cdaec47efc1227e",
+      "equal": true,
+      "provenance": "Issuer accepted Phase 3A2; credential historical Phase 3B fingerprint, not recovered old keys."
+    },
+    {
+      "path": "zkir/registerIssuerV2.bzkir",
+      "previousSha256": "be21a00eda843b8ec88fb8e19f9a9645fe81659ed9354f8515d651991f3bab56",
+      "currentSha256": "be21a00eda843b8ec88fb8e19f9a9645fe81659ed9354f8515d651991f3bab56",
+      "equal": true,
+      "provenance": "Issuer accepted Phase 3A2; credential historical Phase 3B fingerprint, not recovered old keys."
+    },
+    {
+      "path": "zkir/registerIssuerV2.zkir",
+      "previousSha256": "ce061c319bdbdf15fad9fd53cdfb9f5602f66cc5fd1da745388e0b7ca978b699",
+      "currentSha256": "ce061c319bdbdf15fad9fd53cdfb9f5602f66cc5fd1da745388e0b7ca978b699",
+      "equal": true,
+      "provenance": "Issuer accepted Phase 3A2; credential historical Phase 3B fingerprint, not recovered old keys."
+    }
+  ]
+}

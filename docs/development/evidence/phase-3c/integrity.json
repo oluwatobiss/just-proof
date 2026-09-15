@@ -1,0 +1,381 @@
+{
+  "baselineHead": "00c785ef110c3efa17bc063475e54d60d44c8603",
+  "currentHead": "00c785ef110c3efa17bc063475e54d60d44c8603",
+  "sourceSha256": "4010eed928402850684930b2adb921153690a410fd5a88fcf52bd02847e87974",
+  "changedBaselineFiles": [
+    {
+      "path": ".gitignore",
+      "beforeSha256": "7f0812b3058353030d23a0482662a34f7393f0060209ea668269e1a2244023c7",
+      "afterSha256": "39f5ab52fc5f5dc35b03d3011543eb0541f76576dc6f48be7eee423b83c7d680"
+    },
+    {
+      "path": "contracts/just-proof.compact",
+      "beforeSha256": "8b021b83b9c28e6e63cdeb01f2a8af50e23272e401bd9be8fb1e8147eb57955b",
+      "afterSha256": "4010eed928402850684930b2adb921153690a410fd5a88fcf52bd02847e87974"
+    },
+    {
+      "path": "contracts/managed/just-proof/compiler/contract-info.json",
+      "beforeSha256": "ee63080db5e7efbf186d49561a7fde811eecfb1e498984c9d7457c16ba257bc8",
+      "afterSha256": "ce7cdf4f44ae441be9283e15bc91c0101e1ecbb554354b3e3eefb2601fca7a1f"
+    },
+    {
+      "path": "contracts/managed/just-proof/contract/index.d.ts",
+      "beforeSha256": "93de34f2ed84e1f759ef117db73dd7951327ee53f720190774aafb303e5e6da2",
+      "afterSha256": "3b42e8779489892dbca466bcafd5637c4e99be6301f666b7a6a0ac15d8a82f98"
+    },
+    {
+      "path": "contracts/managed/just-proof/contract/index.js",
+      "beforeSha256": "f2cca9f384ade18f559ee104434fcd8eaf42cc64855f57d0000acab61dd4653c",
+      "afterSha256": "bcea498b4be47b28bcade3a2f41298f77c519f882c230f0266d2d8e62b4da934"
+    },
+    {
+      "path": "contracts/managed/just-proof/contract/index.js.map",
+      "beforeSha256": "d87546fb45eeef93ac76949639010d82c34070454abaa3bf6202ef2d2c93081a",
+      "afterSha256": "a4c8b67be104dad7f17464985bfbf97d2ca1f40300a9f3af1cd60b9b4671530a"
+    },
+    {
+      "path": "docs/development/phase-3b-register-credential-report.md",
+      "beforeSha256": "5646f051ea8b55873f0dcaae47145c681b880ffeb6f0beac36450ccda9e6aaab",
+      "afterSha256": "35eea0241eb73baf3ebab6d3773faafcd4e4dd42b2c0c8f35ffeeb37ee5ec017"
+    },
+    {
+      "path": "docs/protocol/v2/04-revocation.md",
+      "beforeSha256": "feba6a4f5a10d45a28c1ad414d1f125437bdf2fa8f40cb756e3fdd471cac4609",
+      "afterSha256": "89cec96ffe6039b1c72aba6d5a114b68b4f6e902203000719fca6e10e3f7f824"
+    },
+    {
+      "path": "docs/protocol/v2/07-witnesses-and-disclosures.md",
+      "beforeSha256": "81161975c9f7d083ff4ddfd2110508a4a60ed79213b2aed5585d8d549fba0598",
+      "afterSha256": "13f831efad31b0a449a5f056f611166dbb2ee613adca0ac54dc025ca9eaabdd5"
+    },
+    {
+      "path": "docs/protocol/v2/10-specification.md",
+      "beforeSha256": "d8d75b1bd82e54316731ecbd57d61ab9031623f92e0130c960ecdb2faccca9c4",
+      "afterSha256": "f6569e65027b3a5efc337a3115818818a2d0ae8e397bb360b692396f026df8ed"
+    },
+    {
+      "path": "docs/protocol/v2/requirements.md",
+      "beforeSha256": "4fee74319bbe244749c57327be09121d082f7f693cad8721c806f031bb4a1b9b",
+      "afterSha256": "a012b272f4d54f9df12da1efa00f4cfdf580c11adbacef8e362d6d5ef1282055"
+    },
+    {
+      "path": "test/contract/v2-constructor.test.ts",
+      "beforeSha256": "e324a92c19db638e7817b9cee0d2e3fa8f5bbf4532882c35c836cd18da294807",
+      "afterSha256": "4126b5b8ec78adf14e454255e3678215c919565edef51f9f8e9b5f00ce147e86"
+    },
+    {
+      "path": "test/contract/v3a-register-issuer.test.ts",
+      "beforeSha256": "aed77ed5cad313b062a3bb2bb5cb9b56cc2d786694f01963f1ebddb3ca63793f",
+      "afterSha256": "c52a7c41efd371e43f572e68854e2a4c149fb68914a17e4499242b1d5d48bed9"
+    },
+    {
+      "path": "test/contract/v3b-public-surface.test.ts",
+      "beforeSha256": "58465ad0c6395e6498d46cfb62ef661c554d936a4bc5ff0fbc55a1b492471b6d",
+      "afterSha256": "9af260d2e9efb5544858fb735a2ab85f6f9527cd9862e7bf287112b8aadd59c0"
+    },
+    {
+      "path": "test/support/v3a-register-issuer.ts",
+      "beforeSha256": "1a9efef85c74d5a07c70672a96887fcc5b4ae265b180e46fd4a66a8b83d7c4aa",
+      "afterSha256": "933bb20d93dbb20983952e51eccbffbbf58dc257395d43daeefaf3df97d8f762"
+    },
+    {
+      "path": "test/support/v3b-register-credential.ts",
+      "beforeSha256": "928c70ed43cef9841a9427e49e22c350d010d13cab7b2658bda1dbfe2477fc2d",
+      "afterSha256": "eb2d1791b91c4d89158848ecb67a66825b2682c925127699a8d82a338cb10836"
+    }
+  ],
+  "createdFiles": [
+    "contracts/managed/just-proof/zkir/revokeCredentialV2.zkir",
+    "docs/development/evidence/phase-3c/artifact-manifest.json",
+    "docs/development/evidence/phase-3c/attempt-started",
+    "docs/development/evidence/phase-3c/baseline.json",
+    "docs/development/evidence/phase-3c/build.log",
+    "docs/development/evidence/phase-3c/cache-after.json",
+    "docs/development/evidence/phase-3c/cache-before.json",
+    "docs/development/evidence/phase-3c/capture-integrity.py",
+    "docs/development/evidence/phase-3c/check-keys.mjs",
+    "docs/development/evidence/phase-3c/commands.json",
+    "docs/development/evidence/phase-3c/compile-1.log",
+    "docs/development/evidence/phase-3c/environment.json",
+    "docs/development/evidence/phase-3c/gate.json",
+    "docs/development/evidence/phase-3c/integrity.json",
+    "docs/development/evidence/phase-3c/key-check.json",
+    "docs/development/evidence/phase-3c/managed-artifacts.json",
+    "docs/development/evidence/phase-3c/memory.jsonl",
+    "docs/development/evidence/phase-3c/monitor.py",
+    "docs/development/evidence/phase-3c/pre-run.json",
+    "docs/development/evidence/phase-3c/public-surface.json",
+    "docs/development/evidence/phase-3c/resource-analysis.json",
+    "docs/development/evidence/phase-3c/result.json",
+    "docs/development/evidence/phase-3c/snapshots.json",
+    "docs/development/evidence/phase-3c/tests-all.log",
+    "docs/development/evidence/phase-3c/tests-first-full.json",
+    "docs/development/evidence/phase-3c/tests.json",
+    "docs/development/evidence/phase-3c/typecheck.log",
+    "docs/development/phase-3c-revoke-credential-report.md",
+    "test/contract/v3c-public-surface.test.ts",
+    "test/contract/v3c-revoke-credential.test.ts",
+    "test/support/v3c-revoke-credential.ts"
+  ],
+  "phaseOnlyFiles": [
+    ".gitignore",
+    "contracts/just-proof.compact",
+    "contracts/managed/just-proof/compiler/contract-info.json",
+    "contracts/managed/just-proof/contract/index.d.ts",
+    "contracts/managed/just-proof/contract/index.js",
+    "contracts/managed/just-proof/contract/index.js.map",
+    "contracts/managed/just-proof/zkir/revokeCredentialV2.zkir",
+    "docs/development/evidence/phase-3c/artifact-manifest.json",
+    "docs/development/evidence/phase-3c/attempt-started",
+    "docs/development/evidence/phase-3c/baseline.json",
+    "docs/development/evidence/phase-3c/build.log",
+    "docs/development/evidence/phase-3c/cache-after.json",
+    "docs/development/evidence/phase-3c/cache-before.json",
+    "docs/development/evidence/phase-3c/capture-integrity.py",
+    "docs/development/evidence/phase-3c/check-keys.mjs",
+    "docs/development/evidence/phase-3c/commands.json",
+    "docs/development/evidence/phase-3c/compile-1.log",
+    "docs/development/evidence/phase-3c/environment.json",
+    "docs/development/evidence/phase-3c/gate.json",
+    "docs/development/evidence/phase-3c/integrity.json",
+    "docs/development/evidence/phase-3c/key-check.json",
+    "docs/development/evidence/phase-3c/managed-artifacts.json",
+    "docs/development/evidence/phase-3c/memory.jsonl",
+    "docs/development/evidence/phase-3c/monitor.py",
+    "docs/development/evidence/phase-3c/pre-run.json",
+    "docs/development/evidence/phase-3c/public-surface.json",
+    "docs/development/evidence/phase-3c/resource-analysis.json",
+    "docs/development/evidence/phase-3c/result.json",
+    "docs/development/evidence/phase-3c/snapshots.json",
+    "docs/development/evidence/phase-3c/tests-all.log",
+    "docs/development/evidence/phase-3c/tests-first-full.json",
+    "docs/development/evidence/phase-3c/tests.json",
+    "docs/development/evidence/phase-3c/typecheck.log",
+    "docs/development/phase-3b-register-credential-report.md",
+    "docs/development/phase-3c-revoke-credential-report.md",
+    "docs/protocol/v2/04-revocation.md",
+    "docs/protocol/v2/07-witnesses-and-disclosures.md",
+    "docs/protocol/v2/10-specification.md",
+    "docs/protocol/v2/requirements.md",
+    "test/contract/v2-constructor.test.ts",
+    "test/contract/v3a-register-issuer.test.ts",
+    "test/contract/v3b-public-surface.test.ts",
+    "test/contract/v3c-public-surface.test.ts",
+    "test/contract/v3c-revoke-credential.test.ts",
+    "test/support/v3a-register-issuer.ts",
+    "test/support/v3b-register-credential.ts",
+    "test/support/v3c-revoke-credential.ts"
+  ],
+  "unexpectedFiles": [],
+  "frozenV1": [
+    {
+      "path": "PROPOSAL.md",
+      "sha256": "7a94d94ce6aa876ec0823bd48fb22bb23d611098b22a6375e51c1c2e6ae9d4a2",
+      "unchanged": true
+    },
+    {
+      "path": "docs/USAGE.md",
+      "sha256": "62cd11c18708cec304e4f9796a66f342a31be61c9f5f71bb7a4f2627449807a7",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/01-credential.md",
+      "sha256": "117fbca7711675b9612eba220d1e8b774b2b7fccda1fb41787981f550c49f539",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/02-issuer-registry.md",
+      "sha256": "5460dbb9fca37bd68f3215e71da87fed655618a4c72c843def83cc70a45a5a4f",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/03-commitments.md",
+      "sha256": "2342f8a268294e5af25f03d5d80cc4ae88fa3ef7b4fa66b9f5ac838a9cbaa9f9",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/04-revocation.md",
+      "sha256": "bc74505866a2d766d92ad1045480703ecd7f78f7f0eb8f0251e55bd03da140ee",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/05-ledgers.md",
+      "sha256": "9b7a972042babece3752737f5f6b726fd739a88faa2fe69d7ba4fc19cb2e7dd7",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/06-merkle-tree.md",
+      "sha256": "b4d04677588ee891e7d5af9b61e0a789ff524bad15c895aeb314bdcc3e89a8c9",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/07-witnesses.md",
+      "sha256": "0c1d1154a535d8be9188e69fdca3ec6af01507cc6d096ccaa984386d2804ed74",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/08-proofs.md",
+      "sha256": "ec1cd4252b9580e601758f297f2fcd8dc101b7834f1d87245ecb48b9ef5a96c9",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/09-verification.md",
+      "sha256": "2b3d6f3b92de61fc0ec4b40e26b9ea1f35fbd58eb681dbc5a4ba3c85196848d4",
+      "unchanged": true
+    },
+    {
+      "path": "docs/protocol/10-specification.md",
+      "sha256": "0fa343641677a5ac9ebf55f656541d54b81f608adc5764887677b0e17d705bb4",
+      "unchanged": true
+    }
+  ],
+  "previousReportBodyPreserved": true,
+  "registrationCircuitBodiesUnchanged": true,
+  "historicalResourceRecordUnchanged": true,
+  "gitStatusShort": " M .gitignore\n M contracts/just-proof.compact\n M docs/development/phase-3b-register-credential-report.md\n M docs/protocol/v2/04-revocation.md\n M docs/protocol/v2/07-witnesses-and-disclosures.md\n M docs/protocol/v2/10-specification.md\n M docs/protocol/v2/requirements.md\n M test/contract/v2-constructor.test.ts\n M test/contract/v3a-register-issuer.test.ts\n M test/contract/v3b-public-surface.test.ts\n M test/support/v3a-register-issuer.ts\n M test/support/v3b-register-credential.ts\n?? docs/development/evidence/phase-3c/\n?? docs/development/phase-3c-revoke-credential-report.md\n?? test/contract/v3c-public-surface.test.ts\n?? test/contract/v3c-revoke-credential.test.ts\n?? test/support/v3c-revoke-credential.ts\n",
+  "reportLinkedEvidence": [
+    {
+      "path": "docs/development/evidence/phase-3c/artifact-manifest.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/attempt-started",
+      "validation": "UTF-8 text decoded",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/baseline.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/build.log",
+      "validation": "UTF-8 text decoded",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/cache-after.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/cache-before.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/check-keys.mjs",
+      "validation": "JavaScript syntax checked; not executed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/commands.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/compile-1.log",
+      "validation": "UTF-8 text decoded",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/environment.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/integrity.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/key-check.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/managed-artifacts.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/memory.jsonl",
+      "validation": "JSONL parsed: 1935 records",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/monitor.py",
+      "validation": "Python syntax parsed; not executed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/pre-run.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/public-surface.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/resource-analysis.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/result.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/snapshots.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/tests-all.log",
+      "validation": "UTF-8 text decoded",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/tests-first-full.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/tests.json",
+      "validation": "JSON parsed",
+      "notIgnored": true
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/typecheck.log",
+      "validation": "UTF-8 text decoded",
+      "notIgnored": true
+    }
+  ],
+  "durableLogs": [
+    {
+      "path": "docs/development/evidence/phase-3c/build.log",
+      "bytes": 22,
+      "sha256": "9edaf86c4c3c3c2cbe1fe7d1544aea59244163482ace630bab6f9964f7e2077a"
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/compile-1.log",
+      "bytes": 38,
+      "sha256": "2a9adb867ee12a6274c46348208edcaa847b253c5e8a21bf2dc448e149fd7987"
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/tests-all.log",
+      "bytes": 10906,
+      "sha256": "dd5ff7731a190899f4c1862054eec5b180937bb3214d931cef376024aa35dd2e"
+    },
+    {
+      "path": "docs/development/evidence/phase-3c/typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "notes": "New evidence files are inventoried by path to avoid self-referential integrity hashes; original baseline contains full pre-phase content hashes."
+}

@@ -1,0 +1,41 @@
+{
+  "sourceSha256": "4010eed928402850684930b2adb921153690a410fd5a88fcf52bd02847e87974",
+  "generatedBy": "compact compile +0.31.1 --skip-zk contracts/just-proof.compact contracts/managed/just-proof",
+  "artifacts": [
+    {
+      "path": "contracts/managed/just-proof/compiler/contract-info.json",
+      "bytes": 14470,
+      "sha256": "ce7cdf4f44ae441be9283e15bc91c0101e1ecbb554354b3e3eefb2601fca7a1f"
+    },
+    {
+      "path": "contracts/managed/just-proof/contract/index.d.ts",
+      "bytes": 11812,
+      "sha256": "3b42e8779489892dbca466bcafd5637c4e99be6301f666b7a6a0ac15d8a82f98"
+    },
+    {
+      "path": "contracts/managed/just-proof/contract/index.js",
+      "bytes": 157854,
+      "sha256": "bcea498b4be47b28bcade3a2f41298f77c519f882c230f0266d2d8e62b4da934"
+    },
+    {
+      "path": "contracts/managed/just-proof/contract/index.js.map",
+      "bytes": 8339,
+      "sha256": "a4c8b67be104dad7f17464985bfbf97d2ca1f40300a9f3af1cd60b9b4671530a"
+    },
+    {
+      "path": "contracts/managed/just-proof/zkir/registerCredentialV2.zkir",
+      "bytes": 65083,
+      "sha256": "b04a6e786914be257ab88d09d148ca8918d08b302e970bc81cdaec47efc1227e"
+    },
+    {
+      "path": "contracts/managed/just-proof/zkir/registerIssuerV2.zkir",
+      "bytes": 37980,
+      "sha256": "ce061c319bdbdf15fad9fd53cdfb9f5602f66cc5fd1da745388e0b7ca978b699"
+    },
+    {
+      "path": "contracts/managed/just-proof/zkir/revokeCredentialV2.zkir",
+      "bytes": 71809,
+      "sha256": "e28c864710d6b05da43dc1caa01e6d7e4ca4a66d6a87fe63511bcc0bac3a7c84"
+    }
+  ]
+}

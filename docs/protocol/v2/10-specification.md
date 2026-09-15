@@ -1,5 +1,9 @@
 # Normative lifecycle transitions
 
+## Phase 3B implementation status — 2026-09-15
+
+The incremental production ABI now contains exactly `registerIssuerV2(issuerControlCommitment: Bytes<32>): []` and `registerCredentialV2(): []`. Revocation and qualification proving remain unimplemented. Credential registration authenticates the current issuer record/path/secret before validating the exact private statement, derives the address/context-bound nullifier, rejects duplicates, checks capacity before narrowing, and authenticates the empty credential slot. Every assertion and bounded increment precedes the three writes: credentialRoot, nextCredentialIndex and registeredCredentialNullifiers. Revocation state and the other five unrelated fields remain unchanged. No block-time query, holder participation or assignment output is added. See the [Phase 3B report](../../development/phase-3b-register-credential-report.md) for simulation, public-surface and conditional resource evidence. These statuses do not freeze the draft or authorize another lifecycle circuit.
+
 ## Reviewed D5 clarification — 2026-09-14 (Phase 3A2)
 
 `issuerControlCommitment` is caller-supplied, intentionally non-secret protocol data. This does **not** require its raw bytes in public transaction inputs, query/effect transcripts, ledger state or output. The authoritative public representation is the canonical `issuerLeaf` stored in `registeredIssuerLeaves` and committed by `issuerRoot`. The authority, issuer or accepted untrusted registry coordinator may publish and retain `IssuerRecordV2` off-chain. Consumers must recompute its canonical leaf and validate membership/path against current authoritative contract state; publication provides availability, never authorization. Later issuer-controlled transitions must prove that the private issuer secret maps to the control commitment in that authenticated record.

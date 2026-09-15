@@ -1,0 +1,82 @@
+{
+  "provenance": "Recovered from previous-session conversation summary of completed tool results. Original result.json, memory.jsonl, build.log and full artifacts are no longer present. Not a newly measured or independently verified resource result.",
+  "outputDirectory": "/tmp/justproof-phase3b/two-registration-circuits-full-20260915",
+  "compilerExit": 0,
+  "elapsedSeconds": 699.3898382070001,
+  "timeout": false,
+  "stopReason": null,
+  "sampledPeakAggregateRssKiB": 2585684,
+  "waitedChildMaxRssKiB": 2386696,
+  "minimumSystemAvailableKiB": 2085496,
+  "maximumSystemSwapUsedKiB": 103524,
+  "sampleCount": 1297,
+  "reportedParameterNames": [],
+  "newCacheFiles": [],
+  "verifierRoundTrips": {
+    "registerIssuerV2": true,
+    "registerCredentialV2": true
+  },
+  "artifacts": [
+    {
+      "path": "compiler/contract-info.json",
+      "bytes": 9597,
+      "sha256": "ee63080db5e7efbf186d49561a7fde811eecfb1e498984c9d7457c16ba257bc8"
+    },
+    {
+      "path": "contract/index.d.ts",
+      "bytes": 10547,
+      "sha256": "93de34f2ed84e1f759ef117db73dd7951327ee53f720190774aafb303e5e6da2"
+    },
+    {
+      "path": "contract/index.js",
+      "bytes": 130635,
+      "sha256": "f2cca9f384ade18f559ee104434fcd8eaf42cc64855f57d0000acab61dd4653c"
+    },
+    {
+      "path": "contract/index.js.map",
+      "bytes": 6976,
+      "sha256": "f34689e07778cd356997b217894974477cc3f785aab36c7b76a4b0f2c8f9e770"
+    },
+    {
+      "path": "keys/registerCredentialV2.prover",
+      "bytes": 76642841,
+      "sha256": "1722f6f9cf0e818f414639fb179b9a3d7756242102e9fbe1367b5c167b5e263e"
+    },
+    {
+      "path": "keys/registerCredentialV2.verifier",
+      "bytes": 2119,
+      "sha256": "c0abaaf254564c21488f90784d8b29c8b106ae2e273fde89fa6fa392c4610d22"
+    },
+    {
+      "path": "keys/registerIssuerV2.prover",
+      "bytes": 76490158,
+      "sha256": "9c136a8ce811aedd13ad2e364005b1d3454f76fd7e29cd6edaff5b5a99dcca28"
+    },
+    {
+      "path": "keys/registerIssuerV2.verifier",
+      "bytes": 2119,
+      "sha256": "b6c78daa6b3964912d9cbf2bd783365de7c18521ca26efffbee5b37e410e1a9a"
+    },
+    {
+      "path": "zkir/registerCredentialV2.bzkir",
+      "bytes": 5613,
+      "sha256": "26015eecbe8847ec442d288b3d252189892772e3af6168aa30b7a6b8ab4eedba"
+    },
+    {
+      "path": "zkir/registerCredentialV2.zkir",
+      "bytes": 65083,
+      "sha256": "b04a6e786914be257ab88d09d148ca8918d08b302e970bc81cdaec47efc1227e"
+    },
+    {
+      "path": "zkir/registerIssuerV2.bzkir",
+      "bytes": 3056,
+      "sha256": "be21a00eda843b8ec88fb8e19f9a9645fe81659ed9354f8515d651991f3bab56"
+    },
+    {
+      "path": "zkir/registerIssuerV2.zkir",
+      "bytes": 37980,
+      "sha256": "ce061c319bdbdf15fad9fd53cdfb9f5602f66cc5fd1da745388e0b7ca978b699"
+    }
+  ],
+  "issuerArtifactsComparison": "Prior session reported both keys and text/binary ZKIR byte-identical to Phase 3A2; module-wide outputs changed with the new endpoint."
+}

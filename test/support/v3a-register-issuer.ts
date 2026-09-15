@@ -21,6 +21,7 @@ export function fixture(secret=syntheticInputs().authority) {
   const f=syntheticInputs(), tree=new ReferenceTree("issuer");
   let calls=0;
   const witnesses:Witnesses<PS>={
+    credentialRegistrationWitnessV2:()=>{throw new Error("issuer test must not request credential witness");},
     registryAuthoritySecretWitness:({privateState})=>[privateState,Uint8Array.from(privateState.secret)],
     issuerRegistrationWitnessV2:({privateState})=>{
       calls++;
@@ -55,7 +56,7 @@ export function overrideState(state:rt.ContractState, changes:ReadonlyMap<number
   }
   copy.data=new rt.ChargedState(data);return copy;
 }
-export function partition(ctx:rt.CircuitContext<PS>,out:rt.CircuitResults<PS,[]>) {
+export function partition<S>(ctx:rt.CircuitContext<S>,out:rt.CircuitResults<S,[]>) {
   // Exact conversion and partition procedure used by installed CompactJS ContractExecutable.
   let q=new lv.QueryContext(new lv.ChargedState(lv.StateValue.decode(ctx.currentQueryContext.state.state.encode())),ctx.currentQueryContext.address);
   q.block=ctx.currentQueryContext.block;q.effects=ctx.currentQueryContext.effects;

@@ -205,3 +205,7 @@ The parameter and full build artifacts are local files outside the repository, d
 This includes pre-existing user/earlier-phase work. The phase-only list is derived from the separate pre-phase content-hash baseline, not from treating every untracked directory as new work. Nothing was staged.
 
 **Review stop:** R58 resolved by approved clarification; the local registerIssuerV2 key-generation question is closed at the stated evidence level. R61 remains open for the complete protocol. No Phase 3B work has begun.
+
+## Acceptance addendum — 2026-09-15
+
+The user accepted Phase 3A2 as successful local registerIssuerV2 resource completion at the documented evidence level. This is not proof, cryptographic-verification, ledger, deployment or whole-protocol acceptance. R61 remains open. Phase 3B authorizes only registerCredentialV2 and its conditional local resource gate; see the [Phase 3B report](phase-3b-register-credential-report.md).

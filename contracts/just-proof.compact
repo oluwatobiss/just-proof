@@ -6,7 +6,7 @@ include "protocol-v2/derivations";
 include "protocol-v2/merkle";
 include "protocol-v2/candidate-roots";
 
-// Phase 3A: constructor, nine fields, and issuer registration only.
+// Phase 3B: constructor, nine fields, issuer and credential registration only.
 export sealed ledger registryAuthorityControlCommitment: Bytes<32>;
 export sealed ledger registryContext: Bytes<32>;
 export ledger issuerRoot: Bytes<32>;
@@ -23,6 +23,22 @@ export struct IssuerRegistrationWitnessV2 {
   insertionPath: IssuerMerklePathV2
 }
 witness issuerRegistrationWitnessV2(): IssuerRegistrationWitnessV2;
+export struct IssuerMembershipWitnessV2 {
+  record: IssuerRecordV2,
+  issuerIndex: Uint<16>,
+  path: IssuerMerklePathV2
+}
+export struct CredentialRegistrationWitnessV2 {
+  issuerSecret: Bytes<32>,
+  credential: PrivateCredentialPackageV2,
+  issuerMembership: IssuerMembershipWitnessV2,
+  insertionPath: CredentialMerklePathV2
+}
+witness credentialRegistrationWitnessV2(): CredentialRegistrationWitnessV2;
+// Retained demo schema identifier: SHA-256 of JP:QUALIFICATION:MIDNIGHT-BUILDER-DEMO:V1.
+circuit demoQualificationV2(): Bytes<32> {
+  return [50,22,194,187,119,39,36,78,37,111,227,167,246,232,157,20,139,54,54,211,27,82,93,189,67,109,151,202,146,42,61,183] as Bytes<32>;
+}
 constructor(deploymentRegistryContext: Bytes<32>) {
   assert(deploymentRegistryContext != default<Bytes<32>>, "registry context zero");
   const secret = registryAuthoritySecretWitness();
@@ -60,4 +76,47 @@ export circuit registerIssuerV2(issuerControlCommitment: Bytes<32>): [] {
   issuerRoot = disclose(newRoot);
   nextIssuerIndex = incremented;
   registeredIssuerLeaves.insert(leaf);
+}
+
+export circuit registerCredentialV2(): [] {
+  const w = credentialRegistrationWitnessV2();
+  const context = registryContext;
+  const issuerCount = nextIssuerIndex;
+  const currentIssuerRoot = issuerRoot;
+  assert(issuerCount <= 65536, "invalid issuer counter");
+  const record = w.issuerMembership.record;
+  assert(record.protocolVersion == 2, "issuer protocol version");
+  assert(record.issuerControlCommitment != default<Bytes<32>>, "issuer control zero");
+  const issuerId = issuerIdV2(context,record.issuerControlCommitment);
+  assert(issuerId == record.issuerId, "noncanonical issuer id");
+  membershipV2(DOMAIN_ISSUER_MERKLE_NODE_V2(),issuerLeafV2(record),w.issuerMembership.issuerIndex,issuerCount,w.issuerMembership.path.siblings,currentIssuerRoot);
+  assert(w.issuerSecret != default<Bytes<32>>, "issuer secret zero");
+  assert(issuerControlV2(context,w.issuerSecret) == record.issuerControlCommitment, "issuer control mismatch");
+  const statement = w.credential.statement;
+  assert(statement.protocolVersion == 2, "credential protocol version");
+  assert(statement.qualificationType == demoQualificationV2(), "qualification type");
+  assert(statement.qualificationVersion == 1, "qualification version");
+  assert(statement.issuedAt > 0, "issuedAt zero");
+  assert(statement.expiresAt == 0 || statement.expiresAt > statement.issuedAt, "invalid expiry");
+  assert(w.credential.issuanceNonce != default<Bytes<32>>, "issuance nonce zero");
+  assert(w.credential.credentialOpening != default<Bytes<32>>, "credential opening zero");
+  assert(statement.subjectCommitment != default<Bytes<32>>, "subject commitment zero");
+  assert(statement.issuerId == issuerId, "credential issuer mismatch");
+  const id = credentialIdV2(issuerId,w.credential.issuanceNonce);
+  assert(id == statement.credentialId, "credential id mismatch");
+  const commitment = credentialCommitmentV2(statement,w.credential.credentialOpening);
+  const leaf = credentialLeafV2(id,commitment);
+  // Only the final duplicate-guard nullifier is public, never its private preimage.
+  const nullifier = disclose(registrationNullifierV2(kernel.self(),context,id));
+  assert(!registeredCredentialNullifiers.member(nullifier), "duplicate credential nullifier");
+  const next = nextCredentialIndex;
+  assert(next < 65536, "credential tree full");
+  const index = next as Uint<16>;
+  emptySlotV2(DOMAIN_CREDENTIAL_MERKLE_NODE_V2(),credentialEmptyV2(),index,next,w.insertionPath.siblings,credentialRoot);
+  const newRoot = rootFromV2(DOMAIN_CREDENTIAL_MERKLE_NODE_V2(),leaf,index,w.insertionPath.siblings);
+  const incremented = (next + 1) as Uint<32>;
+  // Only the final root is acknowledged for the public state write.
+  credentialRoot = disclose(newRoot);
+  nextCredentialIndex = incremented;
+  registeredCredentialNullifiers.insert(nullifier);
 }

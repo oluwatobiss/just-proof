@@ -1,5 +1,18 @@
 # Consolidated requirement traceability
 
+## Phase 3B status — 2026-09-15
+
+| Requirement | Implementation/evidence status |
+|---|---|
+| R18 | Current issuer record/index/path and private issuer-control knowledge authenticated by registerCredentialV2; full issuer counter 65536 permits allocated membership. |
+| R19–R21 | Ordered statement, retained demo identifier/version, private validity checks, ID/nonce/opening binding and persistentCommit derivation implemented. Subject commitment is opaque during registration; no subject secret is requested. |
+| R22–R23 | kernel.self/context/ID-bound duplicate nullifier and append-only credential insertion implemented; capacity checked before narrowing; exact three writes and no revocation mutation. |
+| R40–R43 | Focused generated-logic tests cover one detached witness snapshot, malformed adapters, early/late state preservation and exact ABI; real partition inspection covers private canaries and positive public nullifier/root controls. No real proof claim. |
+| R58 | Remains resolved by the reviewed D5 clarification; issuer raw chain exposure is not required or newly implemented. |
+| R61 | Remains open for the complete four-circuit protocol. The single conditional two-circuit resource attempt and its outcome are recorded in the Phase 3B report; aggregate measurements are not credential-only measurements. |
+
+Exact commands, test cases, hashes, snapshots and remaining limitations: [Phase 3B report](../../development/phase-3b-register-credential-report.md). No further lifecycle work is authorized.
+
 ## Reviewed D5 clarification — 2026-09-14 (Phase 3A2)
 
 Phase 3A2 measured result: the single unchanged `registerIssuerV2` full build exited 0 with nonzero prover/verifier keys and process-tree memory evidence; the local key-generation question is closed. All 268 focused tests and strict TypeScript checking passed. R61 remains open for the complete protocol and later circuits. See the [Phase 3A2 resource report](../../development/phase-3a2-register-issuer-resource-report.md); no proof or network execution is implied.
@@ -115,3 +128,7 @@ This dated update supersedes earlier phase-status labels without changing histor
 | R57 / R59 | Accepted coordinator assumption and development roots unchanged; shared-runtime limitation retained. |
 
 Exact commands, tests, snapshots, structural transcript evidence and artifact hashes: [Phase 3A report](../../development/phase-3a-register-issuer-report.md). No Phase 3B work is authorized.
+
+## Phase 3B completion evidence — 2026-09-15
+
+The credential-registration portions of R18–R23 and R40–R43 pass the scoped 317-case simulation/conformance suite and structural disclosure checks. R58 remains resolved by the reviewed D5 clarification. R61 remains open: the prior session recorded successful two-circuit key generation, but its original temporary logs, memory samples and keys are no longer available for durable reinspection. See the [Phase 3B report](../../development/phase-3b-register-credential-report.md) for provenance and remaining evidence limitations. No proof generation, proof verification or ledger execution is established.

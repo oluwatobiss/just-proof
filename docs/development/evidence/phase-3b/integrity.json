@@ -1,0 +1,97 @@
+{
+  "frozenV1": [
+    {
+      "path": "PROPOSAL.md",
+      "sha256": "7a94d94ce6aa876ec0823bd48fb22bb23d611098b22a6375e51c1c2e6ae9d4a2",
+      "unchangedFromHEAD": true
+    },
+    {
+      "path": "docs/USAGE.md",
+      "sha256": "62cd11c18708cec304e4f9796a66f342a31be61c9f5f71bb7a4f2627449807a7",
+      "unchangedFromHEAD": true
+    },
+    {
+      "path": "docs/protocol/01-credential.md",
+      "sha256": "117fbca7711675b9612eba220d1e8b774b2b7fccda1fb41787981f550c49f539",
+      "unchangedFromHEAD": true
+    },
+    {
+      "path": "docs/protocol/02-issuer-registry.md",
+      "sha256": "5460dbb9fca37bd68f3215e71da87fed655618a4c72c843def83cc70a45a5a4f",
+      "unchangedFromHEAD": true
+    },
+    {
+      "path": "docs/protocol/03-commitments.md",
+      "sha256": "2342f8a268294e5af25f03d5d80cc4ae88fa3ef7b4fa66b9f5ac838a9cbaa9f9",
+      "unchangedFromHEAD": true
+    },
+    {
+      "path": "docs/protocol/04-revocation.md",
+      "sha256": "bc74505866a2d766d92ad1045480703ecd7f78f7f0eb8f0251e55bd03da140ee",
+      "unchangedFromHEAD": true
+    },
+    {
+      "path": "docs/protocol/05-ledgers.md",
+      "sha256": "9b7a972042babece3752737f5f6b726fd739a88faa2fe69d7ba4fc19cb2e7dd7",
+      "unchangedFromHEAD": true
+    },
+    {
+      "path": "docs/protocol/06-merkle-tree.md",
+      "sha256": "b4d04677588ee891e7d5af9b61e0a789ff524bad15c895aeb314bdcc3e89a8c9",
+      "unchangedFromHEAD": true
+    },
+    {
+      "path": "docs/protocol/07-witnesses.md",
+      "sha256": "0c1d1154a535d8be9188e69fdca3ec6af01507cc6d096ccaa984386d2804ed74",
+      "unchangedFromHEAD": true
+    },
+    {
+      "path": "docs/protocol/08-proofs.md",
+      "sha256": "ec1cd4252b9580e601758f297f2fcd8dc101b7834f1d87245ecb48b9ef5a96c9",
+      "unchangedFromHEAD": true
+    },
+    {
+      "path": "docs/protocol/09-verification.md",
+      "sha256": "2b3d6f3b92de61fc0ec4b40e26b9ea1f35fbd58eb681dbc5a4ba3c85196848d4",
+      "unchangedFromHEAD": true
+    },
+    {
+      "path": "docs/protocol/10-specification.md",
+      "sha256": "0fa343641677a5ac9ebf55f656541d54b81f608adc5764887677b0e17d705bb4",
+      "unchangedFromHEAD": true
+    }
+  ],
+  "managedArtifacts": [
+    {
+      "path": "contracts/managed/just-proof/compiler/contract-info.json",
+      "bytes": 9597,
+      "sha256": "ee63080db5e7efbf186d49561a7fde811eecfb1e498984c9d7457c16ba257bc8"
+    },
+    {
+      "path": "contracts/managed/just-proof/contract/index.d.ts",
+      "bytes": 10547,
+      "sha256": "93de34f2ed84e1f759ef117db73dd7951327ee53f720190774aafb303e5e6da2"
+    },
+    {
+      "path": "contracts/managed/just-proof/contract/index.js",
+      "bytes": 130635,
+      "sha256": "f2cca9f384ade18f559ee104434fcd8eaf42cc64855f57d0000acab61dd4653c"
+    },
+    {
+      "path": "contracts/managed/just-proof/contract/index.js.map",
+      "bytes": 6988,
+      "sha256": "d87546fb45eeef93ac76949639010d82c34070454abaa3bf6202ef2d2c93081a"
+    },
+    {
+      "path": "contracts/managed/just-proof/zkir/registerCredentialV2.zkir",
+      "bytes": 65083,
+      "sha256": "b04a6e786914be257ab88d09d148ca8918d08b302e970bc81cdaec47efc1227e"
+    },
+    {
+      "path": "contracts/managed/just-proof/zkir/registerIssuerV2.zkir",
+      "bytes": 37980,
+      "sha256": "ce061c319bdbdf15fad9fd53cdfb9f5602f66cc5fd1da745388e0b7ca978b699"
+    }
+  ],
+  "baselineLimitation": "Original pre-phase /tmp content-hash baseline is no longer available. Frozen V1 comparison uses committed HEAD; the initial clean status was recorded in the prior session."
+}

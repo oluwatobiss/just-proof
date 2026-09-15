@@ -1,5 +1,11 @@
 # Witnesses, private state and disclosures
 
+## Phase 3B implementation observation — 2026-09-15
+
+The implemented `credentialRegistrationWitnessV2` returns exactly the ordered `CredentialRegistrationWitnessV2` schema below. One detached operation-scoped snapshot supplies issuer secret, private credential package, issuer membership and credential insertion path; no holder secret, root, counter, direction or nullifier is supplied. Test adapters copy byte arrays and freeze structural containers; typed-array bytes are not claimed deeply frozen. Generated execution invokes the callback once and preserves input private state.
+
+Credential registration has no public lifecycle argument and returns unit. Only its final registration nullifier and replacement credential root have explicit disclosures. The installed-runtime partition gate found the expected public nullifier/root and no raw private canary atoms, paths, issuer index or credential timestamps. Time effects were unchanged. This is compiled simulation evidence, not proof verification. Detailed evidence and resource status are in the [Phase 3B report](../../development/phase-3b-register-credential-report.md).
+
 ## Reviewed D5 clarification — 2026-09-14 (Phase 3A2)
 
 `issuerControlCommitment` is caller-supplied, intentionally non-secret protocol data. This does **not** require its raw bytes in public transaction inputs, query/effect transcripts, ledger state or output. The authoritative public representation is the canonical `issuerLeaf` stored in `registeredIssuerLeaves` and committed by `issuerRoot`. The authority, issuer or accepted untrusted registry coordinator may publish and retain `IssuerRecordV2` off-chain. Consumers must recompute its canonical leaf and validate membership/path against current authoritative contract state; publication provides availability, never authorization. Later issuer-controlled transitions must prove that the private issuer secret maps to the control commitment in that authenticated record.

@@ -1,0 +1,1343 @@
+{
+  "passed": true,
+  "findings": {
+    "issuerSecret": {
+      "arguments": 0,
+      "output": 0,
+      "query": 0,
+      "guaranteed": 0,
+      "fallible": 0,
+      "effects": 0,
+      "ledger": 0
+    },
+    "issuerControl": {
+      "arguments": 0,
+      "output": 0,
+      "query": 0,
+      "guaranteed": 0,
+      "fallible": 0,
+      "effects": 0,
+      "ledger": 0
+    },
+    "issuerId": {
+      "arguments": 0,
+      "output": 0,
+      "query": 0,
+      "guaranteed": 0,
+      "fallible": 0,
+      "effects": 0,
+      "ledger": 0
+    },
+    "credentialId": {
+      "arguments": 0,
+      "output": 0,
+      "query": 0,
+      "guaranteed": 0,
+      "fallible": 0,
+      "effects": 0,
+      "ledger": 0
+    },
+    "subjectCommitment": {
+      "arguments": 0,
+      "output": 0,
+      "query": 0,
+      "guaranteed": 0,
+      "fallible": 0,
+      "effects": 0,
+      "ledger": 0
+    },
+    "credentialCommitment": {
+      "arguments": 0,
+      "output": 0,
+      "query": 0,
+      "guaranteed": 0,
+      "fallible": 0,
+      "effects": 0,
+      "ledger": 0
+    },
+    "credentialLeaf": {
+      "arguments": 0,
+      "output": 0,
+      "query": 0,
+      "guaranteed": 0,
+      "fallible": 0,
+      "effects": 0,
+      "ledger": 0
+    },
+    "nonce": {
+      "arguments": 0,
+      "output": 0,
+      "query": 0,
+      "guaranteed": 0,
+      "fallible": 0,
+      "effects": 0,
+      "ledger": 0
+    },
+    "opening": {
+      "arguments": 0,
+      "output": 0,
+      "query": 0,
+      "guaranteed": 0,
+      "fallible": 0,
+      "effects": 0,
+      "ledger": 0
+    },
+    "issuerIndex": {
+      "arguments": 0,
+      "output": 0,
+      "query": 0,
+      "guaranteed": 0,
+      "fallible": 0,
+      "effects": 0,
+      "ledger": 0
+    },
+    "issuedAt": {
+      "arguments": 0,
+      "output": 0,
+      "query": 0,
+      "guaranteed": 0,
+      "fallible": 0,
+      "effects": 0,
+      "ledger": 0
+    },
+    "expiresAt": {
+      "arguments": 0,
+      "output": 0,
+      "query": 0,
+      "guaranteed": 0,
+      "fallible": 0,
+      "effects": 0,
+      "ledger": 0
+    },
+    "issuerPath": {
+      "arguments": 0,
+      "output": 0,
+      "query": 0,
+      "guaranteed": 0,
+      "fallible": 0,
+      "effects": 0,
+      "ledger": 0
+    },
+    "insertionPath": {
+      "arguments": 0,
+      "output": 0,
+      "query": 0,
+      "guaranteed": 0,
+      "fallible": 0,
+      "effects": 0,
+      "ledger": 0
+    }
+  },
+  "positiveControls": {
+    "nullifier": true,
+    "root": true,
+    "privateWitnessCanaries": true
+  },
+  "input": {
+    "value": [],
+    "alignment": []
+  },
+  "output": {
+    "value": [],
+    "alignment": []
+  },
+  "query": [
+    {
+      "dup": {
+        "n": 0
+      }
+    },
+    {
+      "idx": {
+        "cached": false,
+        "pushPath": false,
+        "path": [
+          {
+            "tag": "value",
+            "value": {
+              "value": [
+                {
+                  "bytes": "01"
+                }
+              ],
+              "alignment": [
+                {
+                  "tag": "atom",
+                  "value": {
+                    "tag": "bytes",
+                    "length": 1
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "popeq": {
+        "cached": false,
+        "result": {
+          "value": [
+            {
+              "bytes": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c"
+            }
+          ],
+          "alignment": [
+            {
+              "tag": "atom",
+              "value": {
+                "tag": "bytes",
+                "length": 32
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "dup": {
+        "n": 0
+      }
+    },
+    {
+      "idx": {
+        "cached": false,
+        "pushPath": false,
+        "path": [
+          {
+            "tag": "value",
+            "value": {
+              "value": [
+                {
+                  "bytes": "03"
+                }
+              ],
+              "alignment": [
+                {
+                  "tag": "atom",
+                  "value": {
+                    "tag": "bytes",
+                    "length": 1
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "popeq": {
+        "cached": false,
+        "result": {
+          "value": [
+            {
+              "bytes": "6a7a"
+            }
+          ],
+          "alignment": [
+            {
+              "tag": "atom",
+              "value": {
+                "tag": "bytes",
+                "length": 4
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "dup": {
+        "n": 0
+      }
+    },
+    {
+      "idx": {
+        "cached": false,
+        "pushPath": false,
+        "path": [
+          {
+            "tag": "value",
+            "value": {
+              "value": [
+                {
+                  "bytes": "02"
+                }
+              ],
+              "alignment": [
+                {
+                  "tag": "atom",
+                  "value": {
+                    "tag": "bytes",
+                    "length": 1
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "popeq": {
+        "cached": false,
+        "result": {
+          "value": [
+            {
+              "bytes": "d46c746aae2d18ff6e9e9386a00969f1e94d873b1f3ddf5f94fc1867804dbc6b"
+            }
+          ],
+          "alignment": [
+            {
+              "tag": "atom",
+              "value": {
+                "tag": "bytes",
+                "length": 32
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "dup": {
+        "n": 2
+      }
+    },
+    {
+      "idx": {
+        "cached": true,
+        "pushPath": false,
+        "path": [
+          {
+            "tag": "value",
+            "value": {
+              "value": [
+                {
+                  "bytes": ""
+                }
+              ],
+              "alignment": [
+                {
+                  "tag": "atom",
+                  "value": {
+                    "tag": "bytes",
+                    "length": 1
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "popeq": {
+        "cached": true,
+        "result": {
+          "value": [
+            {
+              "bytes": ""
+            }
+          ],
+          "alignment": [
+            {
+              "tag": "atom",
+              "value": {
+                "tag": "bytes",
+                "length": 32
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "dup": {
+        "n": 0
+      }
+    },
+    {
+      "idx": {
+        "cached": false,
+        "pushPath": false,
+        "path": [
+          {
+            "tag": "value",
+            "value": {
+              "value": [
+                {
+                  "bytes": "07"
+                }
+              ],
+              "alignment": [
+                {
+                  "tag": "atom",
+                  "value": {
+                    "tag": "bytes",
+                    "length": 1
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "push": {
+        "storage": false,
+        "value": {
+          "tag": "cell",
+          "content": {
+            "value": [
+              {
+                "bytes": "96e799d83b6640a587798e953a3071ff4883adb616f217a7b0938dd2a05d8495"
+              }
+            ],
+            "alignment": [
+              {
+                "tag": "atom",
+                "value": {
+                  "tag": "bytes",
+                  "length": 32
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "member",
+    {
+      "popeq": {
+        "cached": true,
+        "result": {
+          "value": [
+            {
+              "bytes": ""
+            }
+          ],
+          "alignment": [
+            {
+              "tag": "atom",
+              "value": {
+                "tag": "bytes",
+                "length": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "dup": {
+        "n": 0
+      }
+    },
+    {
+      "idx": {
+        "cached": false,
+        "pushPath": false,
+        "path": [
+          {
+            "tag": "value",
+            "value": {
+              "value": [
+                {
+                  "bytes": "06"
+                }
+              ],
+              "alignment": [
+                {
+                  "tag": "atom",
+                  "value": {
+                    "tag": "bytes",
+                    "length": 1
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "popeq": {
+        "cached": false,
+        "result": {
+          "value": [
+            {
+              "bytes": ""
+            }
+          ],
+          "alignment": [
+            {
+              "tag": "atom",
+              "value": {
+                "tag": "bytes",
+                "length": 4
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "dup": {
+        "n": 0
+      }
+    },
+    {
+      "idx": {
+        "cached": false,
+        "pushPath": false,
+        "path": [
+          {
+            "tag": "value",
+            "value": {
+              "value": [
+                {
+                  "bytes": "05"
+                }
+              ],
+              "alignment": [
+                {
+                  "tag": "atom",
+                  "value": {
+                    "tag": "bytes",
+                    "length": 1
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "popeq": {
+        "cached": false,
+        "result": {
+          "value": [
+            {
+              "bytes": "fa151b227368f61e42bbbd5c7d2b0ea295a1fe142dd4e916142745b9ff75d656"
+            }
+          ],
+          "alignment": [
+            {
+              "tag": "atom",
+              "value": {
+                "tag": "bytes",
+                "length": 32
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "push": {
+        "storage": false,
+        "value": {
+          "tag": "cell",
+          "content": {
+            "value": [
+              {
+                "bytes": "05"
+              }
+            ],
+            "alignment": [
+              {
+                "tag": "atom",
+                "value": {
+                  "tag": "bytes",
+                  "length": 1
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "push": {
+        "storage": true,
+        "value": {
+          "tag": "cell",
+          "content": {
+            "value": [
+              {
+                "bytes": "d35a459845ff3c2491fead20a856db02cfbf3e46dca3b3ef718a90437b47452d"
+              }
+            ],
+            "alignment": [
+              {
+                "tag": "atom",
+                "value": {
+                  "tag": "bytes",
+                  "length": 32
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "ins": {
+        "cached": false,
+        "n": 1
+      }
+    },
+    {
+      "push": {
+        "storage": false,
+        "value": {
+          "tag": "cell",
+          "content": {
+            "value": [
+              {
+                "bytes": "06"
+              }
+            ],
+            "alignment": [
+              {
+                "tag": "atom",
+                "value": {
+                  "tag": "bytes",
+                  "length": 1
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "push": {
+        "storage": true,
+        "value": {
+          "tag": "cell",
+          "content": {
+            "value": [
+              {
+                "bytes": "01"
+              }
+            ],
+            "alignment": [
+              {
+                "tag": "atom",
+                "value": {
+                  "tag": "bytes",
+                  "length": 4
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "ins": {
+        "cached": false,
+        "n": 1
+      }
+    },
+    {
+      "idx": {
+        "cached": false,
+        "pushPath": true,
+        "path": [
+          {
+            "tag": "value",
+            "value": {
+              "value": [
+                {
+                  "bytes": "07"
+                }
+              ],
+              "alignment": [
+                {
+                  "tag": "atom",
+                  "value": {
+                    "tag": "bytes",
+                    "length": 1
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "push": {
+        "storage": false,
+        "value": {
+          "tag": "cell",
+          "content": {
+            "value": [
+              {
+                "bytes": "96e799d83b6640a587798e953a3071ff4883adb616f217a7b0938dd2a05d8495"
+              }
+            ],
+            "alignment": [
+              {
+                "tag": "atom",
+                "value": {
+                  "tag": "bytes",
+                  "length": 32
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "push": {
+        "storage": true,
+        "value": {
+          "tag": "null"
+        }
+      }
+    },
+    {
+      "ins": {
+        "cached": false,
+        "n": 1
+      }
+    },
+    {
+      "ins": {
+        "cached": true,
+        "n": 1
+      }
+    }
+  ],
+  "guaranteed": {
+    "gas": {
+      "readTime": "1632000000",
+      "computeTime": "3100711212",
+      "bytesWritten": "1584",
+      "bytesDeleted": "1378"
+    },
+    "effects": {
+      "claimedNullifiers": [],
+      "claimedShieldedReceives": [],
+      "claimedShieldedSpends": [],
+      "claimedContractCalls": [],
+      "shieldedMints": [],
+      "unshieldedMints": [],
+      "unshieldedInputs": [],
+      "unshieldedOutputs": [],
+      "claimedUnshieldedSpends": []
+    },
+    "program": [
+      {
+        "dup": {
+          "n": 0
+        }
+      },
+      {
+        "idx": {
+          "cached": false,
+          "pushPath": false,
+          "path": [
+            {
+              "tag": "value",
+              "value": {
+                "value": [
+                  {
+                    "bytes": "01"
+                  }
+                ],
+                "alignment": [
+                  {
+                    "tag": "atom",
+                    "value": {
+                      "tag": "bytes",
+                      "length": 1
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "popeq": {
+          "cached": false,
+          "result": {
+            "value": [
+              {
+                "bytes": "858c6da28ad45dc2f2cbabbbc3fce3912d2b206ce2602d0d506c5d0897654f1c"
+              }
+            ],
+            "alignment": [
+              {
+                "tag": "atom",
+                "value": {
+                  "tag": "bytes",
+                  "length": 32
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "dup": {
+          "n": 0
+        }
+      },
+      {
+        "idx": {
+          "cached": false,
+          "pushPath": false,
+          "path": [
+            {
+              "tag": "value",
+              "value": {
+                "value": [
+                  {
+                    "bytes": "03"
+                  }
+                ],
+                "alignment": [
+                  {
+                    "tag": "atom",
+                    "value": {
+                      "tag": "bytes",
+                      "length": 1
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "popeq": {
+          "cached": false,
+          "result": {
+            "value": [
+              {
+                "bytes": "6a7a"
+              }
+            ],
+            "alignment": [
+              {
+                "tag": "atom",
+                "value": {
+                  "tag": "bytes",
+                  "length": 4
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "dup": {
+          "n": 0
+        }
+      },
+      {
+        "idx": {
+          "cached": false,
+          "pushPath": false,
+          "path": [
+            {
+              "tag": "value",
+              "value": {
+                "value": [
+                  {
+                    "bytes": "02"
+                  }
+                ],
+                "alignment": [
+                  {
+                    "tag": "atom",
+                    "value": {
+                      "tag": "bytes",
+                      "length": 1
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "popeq": {
+          "cached": false,
+          "result": {
+            "value": [
+              {
+                "bytes": "d46c746aae2d18ff6e9e9386a00969f1e94d873b1f3ddf5f94fc1867804dbc6b"
+              }
+            ],
+            "alignment": [
+              {
+                "tag": "atom",
+                "value": {
+                  "tag": "bytes",
+                  "length": 32
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "dup": {
+          "n": 2
+        }
+      },
+      {
+        "idx": {
+          "cached": true,
+          "pushPath": false,
+          "path": [
+            {
+              "tag": "value",
+              "value": {
+                "value": [
+                  {
+                    "bytes": ""
+                  }
+                ],
+                "alignment": [
+                  {
+                    "tag": "atom",
+                    "value": {
+                      "tag": "bytes",
+                      "length": 1
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "popeq": {
+          "cached": true,
+          "result": {
+            "value": [
+              {
+                "bytes": ""
+              }
+            ],
+            "alignment": [
+              {
+                "tag": "atom",
+                "value": {
+                  "tag": "bytes",
+                  "length": 32
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "dup": {
+          "n": 0
+        }
+      },
+      {
+        "idx": {
+          "cached": false,
+          "pushPath": false,
+          "path": [
+            {
+              "tag": "value",
+              "value": {
+                "value": [
+                  {
+                    "bytes": "07"
+                  }
+                ],
+                "alignment": [
+                  {
+                    "tag": "atom",
+                    "value": {
+                      "tag": "bytes",
+                      "length": 1
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "push": {
+          "storage": false,
+          "value": {
+            "tag": "cell",
+            "content": {
+              "value": [
+                {
+                  "bytes": "96e799d83b6640a587798e953a3071ff4883adb616f217a7b0938dd2a05d8495"
+                }
+              ],
+              "alignment": [
+                {
+                  "tag": "atom",
+                  "value": {
+                    "tag": "bytes",
+                    "length": 32
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "member",
+      {
+        "popeq": {
+          "cached": true,
+          "result": {
+            "value": [
+              {
+                "bytes": ""
+              }
+            ],
+            "alignment": [
+              {
+                "tag": "atom",
+                "value": {
+                  "tag": "bytes",
+                  "length": 1
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "dup": {
+          "n": 0
+        }
+      },
+      {
+        "idx": {
+          "cached": false,
+          "pushPath": false,
+          "path": [
+            {
+              "tag": "value",
+              "value": {
+                "value": [
+                  {
+                    "bytes": "06"
+                  }
+                ],
+                "alignment": [
+                  {
+                    "tag": "atom",
+                    "value": {
+                      "tag": "bytes",
+                      "length": 1
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "popeq": {
+          "cached": false,
+          "result": {
+            "value": [
+              {
+                "bytes": ""
+              }
+            ],
+            "alignment": [
+              {
+                "tag": "atom",
+                "value": {
+                  "tag": "bytes",
+                  "length": 4
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "dup": {
+          "n": 0
+        }
+      },
+      {
+        "idx": {
+          "cached": false,
+          "pushPath": false,
+          "path": [
+            {
+              "tag": "value",
+              "value": {
+                "value": [
+                  {
+                    "bytes": "05"
+                  }
+                ],
+                "alignment": [
+                  {
+                    "tag": "atom",
+                    "value": {
+                      "tag": "bytes",
+                      "length": 1
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "popeq": {
+          "cached": false,
+          "result": {
+            "value": [
+              {
+                "bytes": "fa151b227368f61e42bbbd5c7d2b0ea295a1fe142dd4e916142745b9ff75d656"
+              }
+            ],
+            "alignment": [
+              {
+                "tag": "atom",
+                "value": {
+                  "tag": "bytes",
+                  "length": 32
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "push": {
+          "storage": false,
+          "value": {
+            "tag": "cell",
+            "content": {
+              "value": [
+                {
+                  "bytes": "05"
+                }
+              ],
+              "alignment": [
+                {
+                  "tag": "atom",
+                  "value": {
+                    "tag": "bytes",
+                    "length": 1
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "push": {
+          "storage": true,
+          "value": {
+            "tag": "cell",
+            "content": {
+              "value": [
+                {
+                  "bytes": "d35a459845ff3c2491fead20a856db02cfbf3e46dca3b3ef718a90437b47452d"
+                }
+              ],
+              "alignment": [
+                {
+                  "tag": "atom",
+                  "value": {
+                    "tag": "bytes",
+                    "length": 32
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ins": {
+          "cached": false,
+          "n": 1
+        }
+      },
+      {
+        "push": {
+          "storage": false,
+          "value": {
+            "tag": "cell",
+            "content": {
+              "value": [
+                {
+                  "bytes": "06"
+                }
+              ],
+              "alignment": [
+                {
+                  "tag": "atom",
+                  "value": {
+                    "tag": "bytes",
+                    "length": 1
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "push": {
+          "storage": true,
+          "value": {
+            "tag": "cell",
+            "content": {
+              "value": [
+                {
+                  "bytes": "01"
+                }
+              ],
+              "alignment": [
+                {
+                  "tag": "atom",
+                  "value": {
+                    "tag": "bytes",
+                    "length": 4
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ins": {
+          "cached": false,
+          "n": 1
+        }
+      },
+      {
+        "idx": {
+          "cached": false,
+          "pushPath": true,
+          "path": [
+            {
+              "tag": "value",
+              "value": {
+                "value": [
+                  {
+                    "bytes": "07"
+                  }
+                ],
+                "alignment": [
+                  {
+                    "tag": "atom",
+                    "value": {
+                      "tag": "bytes",
+                      "length": 1
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "push": {
+          "storage": false,
+          "value": {
+            "tag": "cell",
+            "content": {
+              "value": [
+                {
+                  "bytes": "96e799d83b6640a587798e953a3071ff4883adb616f217a7b0938dd2a05d8495"
+                }
+              ],
+              "alignment": [
+                {
+                  "tag": "atom",
+                  "value": {
+                    "tag": "bytes",
+                    "length": 32
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "push": {
+          "storage": true,
+          "value": {
+            "tag": "null"
+          }
+        }
+      },
+      {
+        "ins": {
+          "cached": false,
+          "n": 1
+        }
+      },
+      {
+        "ins": {
+          "cached": true,
+          "n": 1
+        }
+      }
+    ],
+    "version": {
+      "major": 2,
+      "minor": 3
+    }
+  },
+  "effectsBefore": {
+    "claimedNullifiers": [],
+    "claimedShieldedReceives": [],
+    "claimedShieldedSpends": [],
+    "claimedContractCalls": [],
+    "shieldedMints": [],
+    "unshieldedMints": [],
+    "unshieldedInputs": [],
+    "unshieldedOutputs": [],
+    "claimedUnshieldedSpends": []
+  },
+  "effectsAfter": {
+    "claimedNullifiers": [],
+    "claimedShieldedReceives": [],
+    "claimedShieldedSpends": [],
+    "claimedContractCalls": [],
+    "shieldedMints": [],
+    "unshieldedMints": [],
+    "unshieldedInputs": [],
+    "unshieldedOutputs": [],
+    "claimedUnshieldedSpends": []
+  }
+}

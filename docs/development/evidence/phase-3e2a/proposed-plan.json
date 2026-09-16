@@ -1,0 +1,36 @@
+{
+  "status": "PROPOSAL_REQUIRES_EXPLICIT_USER_AUTHORIZATION",
+  "sourceSha256": "9ffa12d0570659ec703479ffb35c5ab2e1248f668abff6f9fbd91f344ef62ecf",
+  "output": "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1",
+  "marker": "docs/development/evidence/phase-3e2b/attempt-started",
+  "evidence": "docs/development/evidence/phase-3e2b",
+  "cache": "/home/oluwatobiss/.cache/midnight/zk-params",
+  "expectedHost": "midnight-s3-fileshare-dev-eu-west-1.s3.eu-west-1.amazonaws.com",
+  "rayonThreads": 2,
+  "minimumMemTotalKiB": 12253256,
+  "minimumSwapTotalKiB": 8388608,
+  "launchMemAvailableKiB": 8388608,
+  "launchSwapFreeKiB": 6291456,
+  "runtimeMemAvailableKiB": 2097152,
+  "runtimeSwapFreeKiB": 2097152,
+  "sampleSeconds": 0.5,
+  "maximumSampleGapSeconds": 2,
+  "termToKillSeconds": 5,
+  "gracefulTimeoutSeconds": 2695,
+  "hardTimeoutSeconds": 2700,
+  "minimumDiskFreeBytes": 10737418240,
+  "maximumMissingParameters": 1,
+  "command": [
+    "compact",
+    "compile",
+    "+0.31.1",
+    "contracts/just-proof.compact",
+    "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1"
+  ],
+  "environmentOverrides": {
+    "RAYON_NUM_THREADS": "2",
+    "XDG_CACHE_HOME": "/home/oluwatobiss/.cache"
+  },
+  "executed": false,
+  "preAttemptWorkloadRequirement": "Stop JustProof Compose/proof-server and other avoidable Docker workloads before the authorized attempt; compiler does not require them. Do not operate Docker in Phase 3E2A."
+}

@@ -1,0 +1,83 @@
+{
+  "baselineHead": "fd0a8bb8590dd1d74d735b6365e601b7f6125163",
+  "currentHead": "fd0a8bb8590dd1d74d735b6365e601b7f6125163",
+  "preservedFileCount": 212,
+  "changedPreservedFiles": [],
+  "changedCacheFiles": [],
+  "cacheNamesUnchanged": true,
+  "unchangedPreflightEvidence": [
+    {
+      "path": "docs/development/evidence/phase-3e2a/capture-readiness.py",
+      "sha256": "ebde29e8da27081d6449c5d7472ab0a8cae761ac937341bf3c45566044072bbb"
+    },
+    {
+      "path": "docs/development/evidence/phase-3e2a/readiness.json",
+      "sha256": "7974bb9a2d73df9744647f5598f755ec3948de32165c512155659dd31131e4d8"
+    }
+  ],
+  "reviewedProposalValuesUnchanged": true,
+  "absentPaths": [
+    "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1",
+    "docs/development/evidence/phase-3e2b",
+    "docs/development/evidence/phase-3e2b/attempt-started",
+    "/tmp/justproof-phase3e2b-authorization.json",
+    "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1.marker"
+  ],
+  "jsonParsed": true,
+  "pythonAstParsed": true,
+  "proposedJavaScriptSyntaxCheckExit": 0,
+  "monitorExecuted": false,
+  "keyFormatCheckerExecuted": false,
+  "buildAttempted": false,
+  "dockerOperationsPerformed": false,
+  "gitStatusShort": "?? docs/development/evidence/phase-3e2a/\n?? docs/development/phase-3e2a-r61-higher-memory-preflight-report.md\n",
+  "createdFiles": [
+    "docs/development/evidence/phase-3e2a/capture-readiness.py",
+    "docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs",
+    "docs/development/evidence/phase-3e2a/proposed-monitor.py",
+    "docs/development/evidence/phase-3e2a/proposed-plan.json",
+    "docs/development/evidence/phase-3e2a/readiness.json",
+    "docs/development/phase-3e2a-r61-higher-memory-preflight-report.md",
+    "docs/development/evidence/phase-3e2a/integrity.json"
+  ],
+  "files": [
+    {
+      "path": "docs/development/evidence/phase-3e2a/capture-readiness.py",
+      "bytes": 3862,
+      "sha256": "ebde29e8da27081d6449c5d7472ab0a8cae761ac937341bf3c45566044072bbb"
+    },
+    {
+      "path": "docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs",
+      "bytes": 3941,
+      "sha256": "18e3e311e6bccd5cf83b54bfd828d3242c2712c28f9a6bfebad1ca4b176eefb0"
+    },
+    {
+      "path": "docs/development/evidence/phase-3e2a/proposed-monitor.py",
+      "bytes": 22193,
+      "sha256": "ad628ea9dcfe82a780d5e8dda4f62348bfed73927432a375a8ba6ed5b4308324"
+    },
+    {
+      "path": "docs/development/evidence/phase-3e2a/proposed-plan.json",
+      "bytes": 1435,
+      "sha256": "0aa964d4baeb874a370b0bcf736015113e03305fb07f3bae3c52d9067e208aca"
+    },
+    {
+      "path": "docs/development/evidence/phase-3e2a/readiness.json",
+      "bytes": 53855,
+      "sha256": "7974bb9a2d73df9744647f5598f755ec3948de32165c512155659dd31131e4d8"
+    },
+    {
+      "path": "docs/development/phase-3e2a-r61-higher-memory-preflight-report.md",
+      "bytes": 21635,
+      "sha256": "45d7b511a150bf07b9c6a3c6d4c5206b75f764a382270f572342c133f1708750"
+    }
+  ],
+  "hardeningChangedFiles": [
+    "docs/development/evidence/phase-3e2a/proposed-plan.json",
+    "docs/development/evidence/phase-3e2a/proposed-monitor.py",
+    "docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs",
+    "docs/development/evidence/phase-3e2a/integrity.json",
+    "docs/development/phase-3e2a-r61-higher-memory-preflight-report.md"
+  ],
+  "note": "Own hash excluded to avoid recursion. Original resource snapshot unchanged. Proposal sources syntax-inspected only; no monitor/postcheck execution or dynamic failure testing. R61 open; Phase 3E2B unauthorized."
+}

@@ -3,11 +3,11 @@
   "changedPreservedFiles": [],
   "changedCacheFiles": [],
   "cacheNamesUnchanged": true,
-  "head": "74591b08a808cc94bb19e0fa4331db4bbdd44a44",
+  "head": "a4218e230557dab68e5ed8468b7ce418715a3168",
   "proposedOutputAndMarkerAbsent": true,
   "jsonParsed": true,
   "pythonAstParsed": true,
-  "gitStatusShort": "?? docs/development/evidence/phase-3e1/\n?? docs/development/phase-3e1-r61-resource-readiness-report.md\n",
+  "gitStatusShort": " M docs/development/evidence/phase-3e1/integrity.json\n M docs/development/phase-3e1-r61-resource-readiness-report.md\n",
   "files": [
     {
       "path": "docs/development/evidence/phase-3e1/capture-readiness.py",
@@ -26,9 +26,15 @@
     },
     {
       "path": "docs/development/phase-3e1-r61-resource-readiness-report.md",
-      "bytes": 11132,
-      "sha256": "5742447fe7bcd425509d244c5ff62d575dbf4c3544743fbea0c76306ac675d03"
+      "bytes": 12068,
+      "sha256": "bd8a51516657bb264315c8fc7b51467c22c5e47e64c0296b964ba87cdd0a7be3"
     }
   ],
-  "note": "Own hash excluded to avoid recursion. No build or network operations. Resource data are point-in-time observations."
+  "note": "Own hash excluded to avoid recursion. Original 207-file preservation baseline and point-in-time readiness observations retained unchanged. Acceptance refresh performs no build or network operations.",
+  "reportOriginalBodyPreservedAsPrefix": true,
+  "acceptanceUpdateUnchangedEvidence": [
+    "docs/development/evidence/phase-3e1/capture-readiness.py",
+    "docs/development/evidence/phase-3e1/proposed-execution.json",
+    "docs/development/evidence/phase-3e1/readiness.json"
+  ]
 }

@@ -95,3 +95,9 @@ Final `git status --short`:
 R61 remains open. Stop for user review; no Phase 3E2 attempt is authorized. Readiness classification:
 
 BLOCKED_INSUFFICIENT_RESOURCES
+
+## User acceptance — 2026-09-16
+
+The user reviewed and accepted Phase 3E1, committed at `a4218e230557dab68e5ed8468b7ce418715a3168`, as a planning and resource-preflight evidence checkpoint. `BLOCKED_INSUFFICIENT_RESOURCES` remains the accepted classification. The inspected WSL MemTotal of 8,050,760 KiB and SwapTotal of 2,097,152 KiB match the environment in which the Phase 3C build was terminated; the current environment is not approved for another full Compact build.
+
+Phase 3E1 establishes no key generation, proof generation, cryptographic verification, ledger execution, or release readiness. Phase 3E2 requires a fresh preflight in a materially higher-memory environment and separate explicit user authorization. Phase 3E2 remains unauthorized and R61 remains open. No protocol, contract, test, generated artifact, cache, dependency, compiler, WSL configuration, or resource threshold was changed by this acceptance update.

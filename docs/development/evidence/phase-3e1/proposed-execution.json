@@ -1,0 +1,26 @@
+{
+  "status": "PROPOSED_ONLY_NOT_AUTHORIZED",
+  "command": [
+    "env",
+    "RAYON_NUM_THREADS=2",
+    "XDG_CACHE_HOME=/home/oluwatobiss/.cache",
+    "compact",
+    "compile",
+    "+0.31.1",
+    "contracts/just-proof.compact",
+    "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1"
+  ],
+  "output": "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1",
+  "marker": "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1.marker",
+  "sampleIntervalSeconds": 0.5,
+  "sigtermMemAvailableBelowKiB": 786432,
+  "sigtermSwapFreeBelowKiB": 524288,
+  "sigtermElapsedSeconds": 1345,
+  "sigkillElapsedSeconds": 1350,
+  "sigkillAfterSigtermSeconds": 5,
+  "rayonThreads": 2,
+  "maximumMissingParameters": 1,
+  "expectedParameterHost": "midnight-s3-fileshare-dev-eu-west-1.s3.eu-west-1.amazonaws.com",
+  "preflight": "BLOCKED on inspected resources; repeat higher-memory readiness inspection and obtain user approval before execution. No newly approved numerical RAM target or timeout increase.",
+  "executed": false
+}

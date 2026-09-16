@@ -1,0 +1,34 @@
+{
+  "preservedFileCount": 207,
+  "changedPreservedFiles": [],
+  "changedCacheFiles": [],
+  "cacheNamesUnchanged": true,
+  "head": "74591b08a808cc94bb19e0fa4331db4bbdd44a44",
+  "proposedOutputAndMarkerAbsent": true,
+  "jsonParsed": true,
+  "pythonAstParsed": true,
+  "gitStatusShort": "?? docs/development/evidence/phase-3e1/\n?? docs/development/phase-3e1-r61-resource-readiness-report.md\n",
+  "files": [
+    {
+      "path": "docs/development/evidence/phase-3e1/capture-readiness.py",
+      "bytes": 3772,
+      "sha256": "cf5f410bddf957ba904b4e296b4360cf347f1c9377b34b2fd0b8c5daf79ca14f"
+    },
+    {
+      "path": "docs/development/evidence/phase-3e1/proposed-execution.json",
+      "bytes": 1015,
+      "sha256": "c61d0b02c30a93a6359b340c9eeba9458dcff06ad949d5143de8fa76915aa4e2"
+    },
+    {
+      "path": "docs/development/evidence/phase-3e1/readiness.json",
+      "bytes": 52967,
+      "sha256": "05e042ba33008ae345242324b96448ef60dd46f9d3d4c02ea99793e99710213c"
+    },
+    {
+      "path": "docs/development/phase-3e1-r61-resource-readiness-report.md",
+      "bytes": 11132,
+      "sha256": "5742447fe7bcd425509d244c5ff62d575dbf4c3544743fbea0c76306ac675d03"
+    }
+  ],
+  "note": "Own hash excluded to avoid recursion. No build or network operations. Resource data are point-in-time observations."
+}

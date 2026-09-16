@@ -108,6 +108,38 @@ def terminate(group, known, sig):
         except (FileNotFoundError, ProcessLookupError):
             pass
 
+def scan_provenance(log_path, cache, before, stats, requested, plan):
+    """Full log/cache scan, shared by sampling and post-reap finalization."""
+    if before is None or stats is None:
+        raise RuntimeError('log/cache scan lacks initial inventory')
+    text = Path(log_path).read_text(errors='replace')
+    urls = re.findall(r'https?://[^\s<>"\']+', text)
+    names = set(re.findall(r'bls_midnight_[A-Za-z0-9_-]+', text))
+    requested.update(names - before.keys())
+    current = {}
+    for f in cache.rglob('*'):
+        if f.is_symlink():
+            raise RuntimeError('unexpected cache symlink')
+        if f.is_file():
+            st = f.stat()
+            current[str(f.relative_to(cache))] = (st.st_size, st.st_mtime_ns, st.st_ino)
+    if any(urlsplit(u).hostname != plan['expectedHost'] or urlsplit(u).scheme != 'https'
+           or urlsplit(u).port not in (None, 443) or urlsplit(u).username is not None for u in urls):
+        raise RuntimeError('unexpected reported origin')
+    added = current.keys() - stats.keys()
+    if any(current.get(name) != st for name, st in stats.items()):
+        raise RuntimeError('existing cache entry changed or disappeared')
+    if added - requested or any(not re.fullmatch(r'bls_midnight_2p[0-9]+', n) for n in requested):
+        raise RuntimeError('unexplained cache change or parameter name')
+    if len(requested) > plan['maximumMissingParameters'] or len(added) > plan['maximumMissingParameters']:
+        raise RuntimeError('second missing parameter/cache entry')
+    for name in requested:
+        if not any(name in u and urlsplit(u).hostname == plan['expectedHost'] for u in urls):
+            raise RuntimeError('missing parameter provenance not observable in compiler log')
+    return {'reportedUrls': urls, 'reportedParameterNames': sorted(names),
+            'requestedMissingParameters': sorted(requested), 'cacheNames': sorted(current),
+            'newCacheNames': sorted(added), 'completeLogBytes': Path(log_path).stat().st_size}
+
 def watchdog(control, group, parent):
     # Separate interpreter: deadlines/heartbeat survive a blocked monitor loop.
     initial = json.loads(Path(control).read_text())
@@ -125,11 +157,11 @@ def watchdog(control, group, parent):
         if now >= hard_at:
             terminate(group, state['known'], signal.SIGKILL)
             return
-        if not Path('/proc/' + str(parent)).exists() or now - state['heartbeat'] > 2:
+        if not Path('/proc/' + str(parent)).exists() or now - state['heartbeat'] > initial['maximumSampleGapSeconds']:
             term_at = term_at or now
         if term_at is not None:
             terminate(group, state['known'], signal.SIGTERM)
-            if now - term_at >= 5:
+            if now - term_at >= initial['termToKillSeconds']:
                 terminate(group, state['known'], signal.SIGKILL)
                 return
         time.sleep(0.1)
@@ -144,7 +176,7 @@ def main(authorization_path):
     hashes = {'planSha256': hashlib.sha256(plan_bytes).hexdigest(),
               'monitorSha256': sha(__file__), 'postcheckSha256': sha(postcheck_path),
               'authorizationSha256': hashlib.sha256(authorization_bytes).hexdigest()}
-    if (a.get('authorized') is not True or a.get('phase') != '3E2B'
+    if (a.get('authorized') is not True or a.get('phase') != '3E2B' or a.get('avoidableDockerWorkloadsStopped') is not True
             or any(a.get(k) != hashes[k] for k in ('planSha256', 'monitorSha256', 'postcheckSha256'))):
         raise RuntimeError('missing separately approved exact plan/monitor/postcheck authorization')
     head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
@@ -170,6 +202,7 @@ def main(authorization_path):
     guard = None
     log = None
     before = None
+    stats = None
     output_created = False
     known = {}
     reason = None
@@ -197,7 +230,9 @@ def main(authorization_path):
 
     def control_update(done=False):
         save(control, {'started': started, 'hardSeconds': p['hardTimeoutSeconds'],
-                       'heartbeat': time.monotonic(), 'known': known, 'done': done})
+                       'heartbeat': time.monotonic(), 'known': known, 'done': done,
+                       'maximumSampleGapSeconds': p['maximumSampleGapSeconds'],
+                       'termToKillSeconds': p['termToKillSeconds']})
 
     def core_result(complete=False):
         return {'provenance': provenance, 'compilerLaunched': child is not None,
@@ -252,8 +287,6 @@ def main(authorization_path):
         cgroup()
         if m['MemAvailable'] < p['launchMemAvailableKiB'] or m['SwapFree'] < p['launchSwapFreeKiB']:
             raise RuntimeError('launch resource floor changed during preflight')
-        if a.get('avoidableDockerWorkloadsStopped') is not True:
-            raise RuntimeError('future operator must confirm Compose/proof-server and avoidable Docker workloads stopped')
         # Catch changes after authorization/preflight hashing without logging authorization content.
         paths = {'planSha256': plan_path, 'monitorSha256': Path(__file__),
                  'postcheckSha256': postcheck_path, 'authorizationSha256': Path(authorization_path)}
@@ -294,30 +327,7 @@ def main(authorization_path):
                                          'processes': rows, 'systemKiB': m, 'cgroups': cg}) + '\n')
                 samples.flush()
                 control_update()
-                text = (evidence / 'build.txt').read_text(errors='replace')
-                urls = re.findall(r'https?://[^\s<>"\']+', text)
-                if any(urlsplit(u).hostname != p['expectedHost'] or urlsplit(u).scheme != 'https'
-                       or urlsplit(u).port not in (None, 443) or urlsplit(u).username is not None for u in urls):
-                    reason = reason or 'unexpected reported origin'
-                names = set(re.findall(r'bls_midnight_[A-Za-z0-9_-]+', text))
-                requested |= names - before.keys()
-                current = {}
-                for f in cache.rglob('*'):
-                    if f.is_symlink():
-                        raise RuntimeError('unexpected cache symlink')
-                    if f.is_file():
-                        st = f.stat()
-                        current[str(f.relative_to(cache))] = (st.st_size, st.st_mtime_ns, st.st_ino)
-                added = current.keys() - stats.keys()
-                if any(current.get(name) != st for name, st in stats.items()):
-                    reason = reason or 'existing cache entry changed or disappeared'
-                if added - requested or any(not re.fullmatch(r'bls_midnight_2p[0-9]+', n) for n in requested):
-                    reason = reason or 'unexplained cache change or parameter name'
-                if len(requested) > p['maximumMissingParameters']:
-                    reason = reason or 'second missing parameter'
-                for name in requested:
-                    if not any(name in u and urlsplit(u).hostname == p['expectedHost'] for u in urls):
-                        reason = reason or 'missing parameter provenance not observable in compiler log'
+                scan_provenance(evidence / 'build.txt', cache, before, stats, requested, p)
                 if gap > p['maximumSampleGapSeconds'] or guard.poll() is not None:
                     reason = reason or 'monitor/watchdog failure'
                 if m['MemAvailable'] < p['runtimeMemAvailableKiB'] or m['SwapFree'] < p['runtimeSwapFreeKiB']:
@@ -356,7 +366,7 @@ def main(authorization_path):
             guarded('watchdog completion signal', lambda: control_update(True))
         if guard is not None:
             try:
-                guard.wait(timeout=2)
+                guard.wait(timeout=p['maximumSampleGapSeconds'])
             except BaseException as exc:
                 error('watchdog wait', exc)
                 guarded('watchdog terminate', guard.terminate)
@@ -365,11 +375,32 @@ def main(authorization_path):
                 except BaseException as kill_exc:
                     error('watchdog wait after terminate', kill_exc)
                     guarded('watchdog kill', guard.kill)
-                    guarded('watchdog wait after kill', lambda: guard.wait(timeout=2))
+                    guarded('watchdog wait after kill', lambda: guard.wait(timeout=p['maximumSampleGapSeconds']))
             if guard.returncode not in (None, 0):
                 error('watchdog exit', RuntimeError('nonzero watchdog exit: ' + str(guard.returncode)))
+        def ensure_reaped():
+            if child is None:
+                return True
+            deadline = time.monotonic() + p['termToKillSeconds']
+            while tree(child.pid, known):
+                if time.monotonic() >= deadline:
+                    raise RuntimeError('compiler/descendant process identities not reaped after cleanup')
+                time.sleep(p['sampleSeconds'])
+            return True
+        reaped = guarded('compiler/descendant reaping confirmation', ensure_reaped)
         if log is not None:
             guarded('compiler log closure', log.close)
+        # Re-read the complete log and cache after cleanup; late compiler writes cannot
+        # bypass the sampled scan. Cleanup/scan errors independently block eligibility.
+        if child is not None:
+            def final_scan():
+                if reaped is not True:
+                    raise RuntimeError('final provenance scan requires confirmed process reaping')
+                if log is None or not log.closed:
+                    raise RuntimeError('final provenance scan requires safely closed compiler log')
+                scan = scan_provenance(evidence / 'build.txt', cache, before, stats, requested, p)
+                save(evidence / 'final-provenance-scan.json', scan)
+            guarded('final compiler-log/cache provenance scan', final_scan)
         # Preliminary result survives a later hashing/inventory failure wherever storage permits.
         guarded('preliminary result write', lambda: save(evidence / 'result.json', core_result()))
         artifacts = guarded('artifact inventory', lambda: inventory(out) if output_created else None)
@@ -399,7 +430,15 @@ def main(authorization_path):
             guarded('blocked result rewrite', lambda: save(evidence / 'result.json', core_result()))
             print(json.dumps({'stopReason': reason, 'finalizationErrors': errors,
                               'keyGenerationSuccess': False}), file=sys.stderr)
-    # Even exit 0 is a candidate only; this code never sets keyGenerationSuccess to true.
+    final = core_result(complete=True)
+    eligible = (final['compilerLaunched'] is True and final['compilerExit'] == 0
+                and final['stopReason'] is None and final['finalizationComplete'] is True
+                and not final['finalizationErrors'] and final['successPermanentlyBlocked'] is False)
+    print(json.dumps({'eligibleForSeparatePostcheck': eligible, 'compilerExit': code,
+                      'stopReason': final['stopReason'], 'finalizationErrorCount': len(errors),
+                      'keyGenerationSuccess': False}))
+    # Zero means postcheck eligibility only, never key-generation acceptance.
+    return 0 if eligible else 1
 
 if __name__ == '__main__':
     if len(sys.argv) == 5 and sys.argv[1] == '--watchdog':
@@ -407,4 +446,11 @@ if __name__ == '__main__':
     else:
         parser = argparse.ArgumentParser(description=__doc__)
         parser.add_argument('--authorization-file', required=True)
-        main(parser.parse_args().authorization_file)
+        arguments = parser.parse_args()
+        try:
+            status = main(arguments.authorization_file)
+        except Exception as exc:
+            print(json.dumps({'eligibleForSeparatePostcheck': False, 'keyGenerationSuccess': False,
+                              'error': type(exc).__name__ + ': ' + str(exc)}), file=sys.stderr)
+            status = 1
+        raise SystemExit(status)

@@ -1,6 +1,6 @@
 {
   "baselineHead": "fd0a8bb8590dd1d74d735b6365e601b7f6125163",
-  "currentHead": "fd0a8bb8590dd1d74d735b6365e601b7f6125163",
+  "currentHead": "0cd6c42f3c8c23ba1155a86af2e1820af5f97c74",
   "preservedFileCount": 212,
   "changedPreservedFiles": [],
   "changedCacheFiles": [],
@@ -13,15 +13,18 @@
     {
       "path": "docs/development/evidence/phase-3e2a/readiness.json",
       "sha256": "7974bb9a2d73df9744647f5598f755ec3948de32165c512155659dd31131e4d8"
+    },
+    {
+      "path": "docs/development/evidence/phase-3e2a/proposed-plan.json",
+      "sha256": "0aa964d4baeb874a370b0bcf736015113e03305fb07f3bae3c52d9067e208aca"
     }
   ],
   "reviewedProposalValuesUnchanged": true,
   "absentPaths": [
-    "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1",
     "docs/development/evidence/phase-3e2b",
     "docs/development/evidence/phase-3e2b/attempt-started",
-    "/tmp/justproof-phase3e2b-authorization.json",
-    "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1.marker"
+    "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1",
+    "/tmp/justproof-phase3e2b-authorization.json"
   ],
   "jsonParsed": true,
   "pythonAstParsed": true,
@@ -30,7 +33,7 @@
   "keyFormatCheckerExecuted": false,
   "buildAttempted": false,
   "dockerOperationsPerformed": false,
-  "gitStatusShort": "?? docs/development/evidence/phase-3e2a/\n?? docs/development/phase-3e2a-r61-higher-memory-preflight-report.md\n",
+  "gitStatusShort": " M docs/development/evidence/phase-3e2a/integrity.json\n M docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs\n M docs/development/evidence/phase-3e2a/proposed-monitor.py\n M docs/development/phase-3e2a-r61-higher-memory-preflight-report.md\n",
   "createdFiles": [
     "docs/development/evidence/phase-3e2a/capture-readiness.py",
     "docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs",
@@ -48,13 +51,13 @@
     },
     {
       "path": "docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs",
-      "bytes": 3941,
-      "sha256": "18e3e311e6bccd5cf83b54bfd828d3242c2712c28f9a6bfebad1ca4b176eefb0"
+      "bytes": 5300,
+      "sha256": "3629784683d64188350addd8583d3696bc17f69f80855d8e54fa939bc6008de8"
     },
     {
       "path": "docs/development/evidence/phase-3e2a/proposed-monitor.py",
-      "bytes": 22193,
-      "sha256": "ad628ea9dcfe82a780d5e8dda4f62348bfed73927432a375a8ba6ed5b4308324"
+      "bytes": 24914,
+      "sha256": "f76d0cde37dd9e640ca11db425dea7784299b925304a304a0f47c9814453dadc"
     },
     {
       "path": "docs/development/evidence/phase-3e2a/proposed-plan.json",
@@ -68,8 +71,8 @@
     },
     {
       "path": "docs/development/phase-3e2a-r61-higher-memory-preflight-report.md",
-      "bytes": 21635,
-      "sha256": "45d7b511a150bf07b9c6a3c6d4c5206b75f764a382270f572342c133f1708750"
+      "bytes": 30773,
+      "sha256": "2c0b36150102a65c52cf5c094ba97d7654c3225e20c83e2e8d69711fda510d73"
     }
   ],
   "hardeningChangedFiles": [
@@ -79,5 +82,23 @@
     "docs/development/evidence/phase-3e2a/integrity.json",
     "docs/development/phase-3e2a-r61-higher-memory-preflight-report.md"
   ],
-  "note": "Own hash excluded to avoid recursion. Original resource snapshot unchanged. Proposal sources syntax-inspected only; no monitor/postcheck execution or dynamic failure testing. R61 open; Phase 3E2B unauthorized."
+  "note": "Own hash excluded to avoid recursion. Original 212-file baseline and snapshot unchanged. Monitor syntax inspection only; postcheck controlled inert import without main invocation. No key operations, resource workloads or network access. R61 open; Phase 3E2B unauthorized.",
+  "correctionBaselineHead": "0cd6c42f3c8c23ba1155a86af2e1820af5f97c74",
+  "reportPriorBodyPreservedAsPrefix": true,
+  "correctionChangedFiles": [
+    "docs/development/evidence/phase-3e2a/integrity.json",
+    "docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs",
+    "docs/development/evidence/phase-3e2a/proposed-monitor.py",
+    "docs/development/phase-3e2a-r61-higher-memory-preflight-report.md"
+  ],
+  "monitorImported": false,
+  "controlledPostcheckImport": {
+    "exit": 0,
+    "acceptedFlagPresent": true,
+    "mainInvoked": false,
+    "forbiddenEvidenceArtifactReads": 0,
+    "moduleOutputCalls": 0,
+    "attemptPathsAbsentBeforeAndAfter": true,
+    "exactCommandAndResult": "docs/development/phase-3e2a-r61-higher-memory-preflight-report.md (Execution-safeguard correction \u2014 2026-09-16)"
+  }
 }

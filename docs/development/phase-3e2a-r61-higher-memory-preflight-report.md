@@ -171,3 +171,111 @@ Refreshed proposal SHA-256 values:
 No compilation, tests, typechecking, build, keys, downloads, proof operations, Preview/Preprod, wallet/provider, deployment, package installation, configuration change, staging, commit, amend or push occurred. No new phase or execution is authorized. Stop for user review. Final classification:
 
 HIGHER_MEMORY_OBSERVED_AWAITING_EXECUTION_AUTHORIZATION
+
+## Execution-safeguard correction — 2026-09-16
+
+The final pre-execution gate at committed HEAD `0cd6c42f3c8c23ba1155a86af2e1820af5f97c74` was blocked by static invariant 14: the prior postcheck used only an argument flag while executing its body at module scope. Importing it with that flag could reach key operations. The gate stopped before fresh resource inspection or attempt-state creation. That blocked outcome remains historical evidence; this addendum records the separately authorized correction, not an execution approval.
+
+Correction baseline: WSL, clean tree, exact HEAD and subject `docs(protocol-v2): Record R61 higher-memory execution preflight`, and absent Phase 3E2B evidence directory, durable marker, temporary output and authorization file. The original report is preserved byte-for-byte as a prefix. The historical readiness snapshot and capture script were not rerun or edited.
+
+### Corrected postcheck
+
+All postcheck evidence reads, artifact inspection, verifier-key operations and output now reside inside exported `main()`. The top-level invocation compares `pathToFileURL(resolve(process.argv[1])).href` with `import.meta.url`; the argument flag alone cannot trigger main on import. The comparison is lexical/path-and-URL aware and performs no filesystem reads. Direct invocation through an unresolved symlink alias fails closed rather than guessing the entrypoint. Direct execution still requires the exact `--separately-authorized-phase-3e2b-postcheck` flag. Static dependency imports are not verifier-key operations.
+
+Provenance comparisons now use `isDeepStrictEqual` rather than property-order-sensitive JSON string equality. Before any verifier-key operation, the postcheck requires `compilerLaunched === true`, exit 0, null stop reason, complete finalization, no permanent block, no finalization errors or error journal, and consistent provenance. Requested missing parameters and new cache names must each be arrays of at most one canonical `bls_midnight_2p[0-9]+` name; every new name must have been requested and no existing cache entry may have changed.
+
+The complete freshly assembled artifact inventory is compared structurally with saved `artifact-manifest.json`: exact relative-path set, byte sizes and SHA-256 hashes. All four prover/verifier pairs, text/binary ZKIR and generated metadata/bindings/source map must remain regular nonempty files. Only after these gates does the code perform the installed runtime's verifier-key serialization round trips. This is artifact presence/integrity/format checking, never proof generation or cryptographic proof verification. These gates were inspected statically, not exercised against real keys in this correction.
+
+### Corrected monitor
+
+Complete authorization now includes `avoidableDockerWorkloadsStopped: true` in the initial authorization predicate, before creating the evidence directory or durable marker. Exact baseline and all three approved proposal hashes remain required before reservation. Invalid/incomplete authorization consumes no reservation. The user's workload-stop confirmation is acknowledged; no Docker commands were run.
+
+A reusable `scan_provenance` inspects the complete compiler log and cache metadata during sampling and again after compiler/descendant reaping confirmation and safe compiler-log closure. The final scan detects late URLs, parameter names, origins and cache mutations/additions, and records `final-provenance-scan.json` only during a future authorized attempt. An unavailable or failing final scan, inability to confirm reaping/closure, or policy violation becomes a finalization error and permanently blocks eligibility. The existing before/after content-hash comparison remains independently guarded. Log-based provenance still cannot prove hidden network redirects; the earlier limitation is unchanged.
+
+After evidence finalization, monitor exit 0 means **eligible for the separate postcheck only**: launched compiler, exit 0, no stop reason, complete finalization, no finalization errors and no permanent block. Every other outcome returns nonzero; invalid pre-reservation authorization also exits nonzero without reserving. A concise non-secret terminal summary reports eligibility. `keyGenerationSuccess` is never set to true. Watchdog heartbeat and shutdown intervals, including bounded waits, now derive from the approved plan instead of unrelated two-/five-second literals. No numerical plan value changed.
+
+### Authorized inert-import probe
+
+JSON parsing, Python AST inspection (without importing/executing the monitor) and `node --check docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs` passed. The following exact controlled probe completed with exit 0; it imports the module with the accepted flag present, does not invoke main, guards evidence/artifact reads, captures module output, and checks path absence including dangling symlinks:
+
+```bash
+node --input-type=module <<'JS'
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { resolve } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { syncBuiltinESMExports } from 'node:module';
+const paths = ['docs/development/evidence/phase-3e2b',
+  'docs/development/evidence/phase-3e2b/attempt-started',
+  '/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1',
+  '/tmp/justproof-phase3e2b-authorization.json'].map(p => resolve(p));
+function absent() {
+  for (const p of paths) {
+    try { fs.lstatSync(p); assert.fail(`Unexpected path: ${p}`); }
+    catch (e) { assert.equal(e.code, 'ENOENT'); }
+  }
+}
+absent();
+process.argv[1] = '/tmp/justproof-inert-import-driver.mjs';
+process.argv[2] = '--separately-authorized-phase-3e2b-postcheck';
+const original = new Map();
+let forbiddenReads = 0;
+let outputCalls = 0;
+for (const name of ['readFileSync', 'readdirSync', 'statSync', 'existsSync']) {
+  original.set(name, fs[name]);
+  fs[name] = function(p, ...args) {
+    const value = p instanceof URL ? fileURLToPath(p) : p;
+    if (typeof value === 'string' && paths.some(root => resolve(value) === root || resolve(value).startsWith(root + '/'))) {
+      forbiddenReads++;
+      throw new Error('Postcheck attempted evidence/artifact access during import');
+    }
+    return original.get(name).call(this, p, ...args);
+  };
+}
+syncBuiltinESMExports();
+const stdout = process.stdout.write;
+const stderr = process.stderr.write;
+process.stdout.write = process.stderr.write = function() {
+  outputCalls++;
+  throw new Error('Unexpected postcheck/module output during inert import');
+};
+let loaded;
+try {
+  loaded = await import(pathToFileURL(resolve('docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs')).href);
+} finally {
+  process.stdout.write = stdout;
+  process.stderr.write = stderr;
+  for (const [name, fn] of original) fs[name] = fn;
+  syncBuiltinESMExports();
+}
+assert.equal(typeof loaded.main, 'function');
+assert.equal(forbiddenReads, 0);
+assert.equal(outputCalls, 0);
+absent();
+console.log(JSON.stringify({ inertImport: true, acceptedFlagPresent: true, mainInvoked: false,
+  forbiddenEvidenceArtifactReads: forbiddenReads, moduleOutputCalls: outputCalls,
+  attemptPathsAbsentBeforeAndAfter: true }));
+JS
+```
+
+Observed probe output (driver summary, not postcheck/key output):
+
+```json
+{"inertImport":true,"acceptedFlagPresent":true,"mainInvoked":false,"forbiddenEvidenceArtifactReads":0,"moduleOutputCalls":0,"attemptPathsAbsentBeforeAndAfter":true}
+```
+
+No artifact-read result or key-operation output was created. The `/tmp/justproof-inert-import-driver.mjs` argv label is only a string; no driver file was created there. The probe is import validation, not a key-format test or compiler/resource workload. No monitor execution/import, direct postcheck execution, real key operation, tests/typechecking or resource remeasurement occurred.
+
+### Refreshed proposal hashes and preservation
+
+| Artifact | SHA-256 |
+|---|---|
+| `proposed-plan.json` | `0aa964d4baeb874a370b0bcf736015113e03305fb07f3bae3c52d9067e208aca` |
+| `proposed-monitor.py` | `f76d0cde37dd9e640ca11db425dea7784299b925304a304a0f47c9814453dadc` |
+| `proposed-key-format-check.mjs` | `3629784683d64188350addd8583d3696bc17f69f80855d8e54fa939bc6008de8` |
+
+`proposed-plan.json` and its accepted numerical safeguards remain byte-identical. `capture-readiness.py`, `readiness.json`, prior committed source/generated artifacts, reports/evidence, dependencies/configuration and all seven parameter-cache files remain unchanged. The refreshed integrity evidence retains the original 212-file preservation baseline and adds this correction's exact baseline, permitted changes, import result, report-prefix check and refreshed artifact/report hashes, excluding its own hash. `git diff --check` passed.
+
+Only four files changed: `proposed-monitor.py`, `proposed-key-format-check.mjs`, this report (append-only), and `integrity.json`, all under the existing Phase 3E2A paths. Nothing was staged, committed, amended, pushed or deployed. No Phase 3E2B state was created. Phase 3E2B remains unauthorized and R61 remains open. Stop for user review.
+
+HIGHER_MEMORY_OBSERVED_AWAITING_EXECUTION_AUTHORIZATION

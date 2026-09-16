@@ -1,6 +1,6 @@
 {
   "baselineHead": "fd0a8bb8590dd1d74d735b6365e601b7f6125163",
-  "currentHead": "0cd6c42f3c8c23ba1155a86af2e1820af5f97c74",
+  "currentHead": "c3c0067b15ad44a4ca0aefa8c3ac42c44f8417f1",
   "preservedFileCount": 212,
   "changedPreservedFiles": [],
   "changedCacheFiles": [],
@@ -21,10 +21,10 @@
   ],
   "reviewedProposalValuesUnchanged": true,
   "absentPaths": [
-    "docs/development/evidence/phase-3e2b",
-    "docs/development/evidence/phase-3e2b/attempt-started",
     "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1",
-    "/tmp/justproof-phase3e2b-authorization.json"
+    "/tmp/justproof-phase3e2b-authorization.json",
+    "docs/development/evidence/phase-3e2b",
+    "docs/development/evidence/phase-3e2b/attempt-started"
   ],
   "jsonParsed": true,
   "pythonAstParsed": true,
@@ -33,15 +33,9 @@
   "keyFormatCheckerExecuted": false,
   "buildAttempted": false,
   "dockerOperationsPerformed": false,
-  "gitStatusShort": " M docs/development/evidence/phase-3e2a/integrity.json\n M docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs\n M docs/development/evidence/phase-3e2a/proposed-monitor.py\n M docs/development/phase-3e2a-r61-higher-memory-preflight-report.md\n",
+  "gitStatusShort": " M docs/development/evidence/phase-3e2a/integrity.json\n M docs/development/evidence/phase-3e2a/proposed-monitor.py\n M docs/development/phase-3e2a-r61-higher-memory-preflight-report.md\n?? docs/development/evidence/phase-3e2a/cgroup-execution-baseline.json\n",
   "createdFiles": [
-    "docs/development/evidence/phase-3e2a/capture-readiness.py",
-    "docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs",
-    "docs/development/evidence/phase-3e2a/proposed-monitor.py",
-    "docs/development/evidence/phase-3e2a/proposed-plan.json",
-    "docs/development/evidence/phase-3e2a/readiness.json",
-    "docs/development/phase-3e2a-r61-higher-memory-preflight-report.md",
-    "docs/development/evidence/phase-3e2a/integrity.json"
+    "docs/development/evidence/phase-3e2a/cgroup-execution-baseline.json"
   ],
   "files": [
     {
@@ -50,14 +44,19 @@
       "sha256": "ebde29e8da27081d6449c5d7472ab0a8cae761ac937341bf3c45566044072bbb"
     },
     {
+      "path": "docs/development/evidence/phase-3e2a/cgroup-execution-baseline.json",
+      "bytes": 40649,
+      "sha256": "d8fbb32bd518cd778acc71d46c813aed5f56b7efc329c95751a35b9af6e38536"
+    },
+    {
       "path": "docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs",
       "bytes": 5300,
       "sha256": "3629784683d64188350addd8583d3696bc17f69f80855d8e54fa939bc6008de8"
     },
     {
       "path": "docs/development/evidence/phase-3e2a/proposed-monitor.py",
-      "bytes": 24914,
-      "sha256": "f76d0cde37dd9e640ca11db425dea7784299b925304a304a0f47c9814453dadc"
+      "bytes": 38293,
+      "sha256": "2433a2678c867926c6a3600283a3aeabf8a525347cd9a867bc0fb67f0eef7378"
     },
     {
       "path": "docs/development/evidence/phase-3e2a/proposed-plan.json",
@@ -71,8 +70,8 @@
     },
     {
       "path": "docs/development/phase-3e2a-r61-higher-memory-preflight-report.md",
-      "bytes": 30773,
-      "sha256": "2c0b36150102a65c52cf5c094ba97d7654c3225e20c83e2e8d69711fda510d73"
+      "bytes": 44010,
+      "sha256": "502349a548963a47ba030b8f0e94d32b581d9599abcda01b4f873612759d88ba"
     }
   ],
   "hardeningChangedFiles": [
@@ -82,7 +81,7 @@
     "docs/development/evidence/phase-3e2a/integrity.json",
     "docs/development/phase-3e2a-r61-higher-memory-preflight-report.md"
   ],
-  "note": "Own hash excluded to avoid recursion. Original 212-file baseline and snapshot unchanged. Monitor syntax inspection only; postcheck controlled inert import without main invocation. No key operations, resource workloads or network access. R61 open; Phase 3E2B unauthorized.",
+  "note": "Own hash excluded to avoid recursion. Original 212-file historical preservation baseline retained. New prospective cgroup baseline does not assert historical CPU equivalence. Only pure synthetic helpers executed in this integration; R61 open and Phase 3E2B unauthorized.",
   "correctionBaselineHead": "0cd6c42f3c8c23ba1155a86af2e1820af5f97c74",
   "reportPriorBodyPreservedAsPrefix": true,
   "correctionChangedFiles": [
@@ -100,5 +99,641 @@
     "moduleOutputCalls": 0,
     "attemptPathsAbsentBeforeAndAfter": true,
     "exactCommandAndResult": "docs/development/phase-3e2a-r61-higher-memory-preflight-report.md (Execution-safeguard correction \u2014 2026-09-16)"
-  }
+  },
+  "prospectiveBaselineIntegrationCommit": "c3c0067b15ad44a4ca0aefa8c3ac42c44f8417f1",
+  "unchangedReviewedArtifacts": [
+    {
+      "path": "docs/development/evidence/phase-3e2a/capture-readiness.py",
+      "bytes": 3862,
+      "sha256": "ebde29e8da27081d6449c5d7472ab0a8cae761ac937341bf3c45566044072bbb"
+    },
+    {
+      "path": "docs/development/evidence/phase-3e2a/readiness.json",
+      "bytes": 53855,
+      "sha256": "7974bb9a2d73df9744647f5598f755ec3948de32165c512155659dd31131e4d8"
+    },
+    {
+      "path": "docs/development/evidence/phase-3e2a/proposed-plan.json",
+      "bytes": 1435,
+      "sha256": "0aa964d4baeb874a370b0bcf736015113e03305fb07f3bae3c52d9067e208aca"
+    },
+    {
+      "path": "docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs",
+      "bytes": 5300,
+      "sha256": "3629784683d64188350addd8583d3696bc17f69f80855d8e54fa939bc6008de8"
+    }
+  ],
+  "prospectiveIntegrationChangedFiles": [
+    "docs/development/evidence/phase-3e2a/cgroup-execution-baseline.json",
+    "docs/development/evidence/phase-3e2a/integrity.json",
+    "docs/development/evidence/phase-3e2a/proposed-monitor.py",
+    "docs/development/phase-3e2a-r61-higher-memory-preflight-report.md"
+  ],
+  "prospectiveCgroupClassification": "CURRENT_CGROUP_STATE_ACCEPTED_AS_PROSPECTIVE_EXECUTION_BASELINE",
+  "historicalCpuEquivalenceAsserted": false,
+  "syntheticCgroupValidation": {
+    "passed": 31,
+    "failed": 0,
+    "initialFixtureFailurePreserved": true,
+    "evidence": "docs/development/evidence/phase-3e2a/cgroup-execution-baseline.json",
+    "method": "AST-selected pure definitions/constants; synthetic values only; no live monitor import or capture called",
+    "exactLimitValidationStatus": "Historical 31-case result superseded for exact-limit validation; see precisionCorrection.validation (87 cases)."
+  },
+  "unrelatedMonitorSafeguardsAstUnchanged": true,
+  "currentIntegrationPostcheckImported": false,
+  "currentIntegrationMonitorImported": false,
+  "currentIntegrationValidation": [
+    "source/ZKIR/cache comparisons",
+    "JSON parse",
+    "Python AST parse",
+    "31 synthetic assertions",
+    "report-prefix check"
+  ],
+  "precisionCorrectionBaselineHead": "c3c0067b15ad44a4ca0aefa8c3ac42c44f8417f1",
+  "precisionCorrection": {
+    "originalEvidenceSha256": "4683e12a7d6794b73bfb5209efba79d33364abf734ef5eabe137db181839e7c7",
+    "incorrectlyEncodedValue": "9223372036854772000",
+    "exactValue": "9223372036854771712",
+    "difference": 288,
+    "reconfirmedAtUtc": "2026-09-16T18:28:03.933225+00:00",
+    "rawTrimmedLimitText": {
+      "/sys/fs/cgroup/memory/memory.limit_in_bytes": "9223372036854771712",
+      "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes": "9223372036854771712",
+      "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes": "9223372036854771712",
+      "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes": "9223372036854771712"
+    },
+    "initialEvidencePreservedFourLimitsSafely": false,
+    "basis": "Fresh direct ASCII byte/text reads agree with the already accepted historical value. No IEEE-754 conversion used.",
+    "historicalCpuEquivalenceAsserted": false,
+    "configurationChanged": false,
+    "phase3E2BStateChanged": false,
+    "allOtherLiveCgroupControlsReconfirmed": true,
+    "unrelatedMonitorFunctionsAstUnchanged": true,
+    "validation": {
+      "passed": 87,
+      "failed": 0,
+      "method": "AST-selected constant and three pure helpers; synthetic values only. No monitor import, live capture, main, watchdog, or subprocess invoked.",
+      "everyMutationAssertedChanged": true,
+      "allFourEvidenceAndMonitorLimitsExactStrings": true,
+      "prior31CasesRetained": true,
+      "supersedesEarlierExactLimitValidation": true,
+      "cases": [
+        {
+          "name": "exact prospective baseline",
+          "passed": true,
+          "expected": "accept",
+          "fixtureChanged": false
+        },
+        {
+          "name": "inactive unified nsdelegate",
+          "passed": true,
+          "expected": "accept",
+          "fixtureChanged": true
+        },
+        {
+          "name": "membership ordering",
+          "passed": true,
+          "expected": "accept",
+          "fixtureChanged": true
+        },
+        {
+          "name": "CPU init.scope",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "cpu.cfs_quota_us",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "cpu.cfs_period_us",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "cpu.shares",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "count",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "affinity",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "allowedList",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "cpuset.cpus",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "cpuset.effective_cpus",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "memory membership",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "changed memory.limit_in_bytes",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "changed memory.memsw.limit_in_bytes",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "hierarchy disabled",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "missing hierarchy",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "active cgroup.controllers",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "active cgroup.subtree_control",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "new memory.max",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "new memory.swap.max",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "unrelated mount option",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "changed controller binding",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "nsdelegate on v1",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "changed unified mountpoint",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "nsdelegate with active v2",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "new controller",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "malformed membership",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "duplicate controller",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "missing shares",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "malformed mount",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: rounded string",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: exact integer",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: rounded integer",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: scientific",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: leading whitespace",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: trailing whitespace",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: signed plus",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: signed minus",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: decimal",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: leading zero",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: empty",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: newline",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: missing",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: rounded string",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: exact integer",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: rounded integer",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: scientific",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: leading whitespace",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: trailing whitespace",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: signed plus",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: signed minus",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: decimal",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: leading zero",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: empty",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: newline",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: missing",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: rounded string",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: exact integer",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: rounded integer",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: scientific",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: leading whitespace",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: trailing whitespace",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: signed plus",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: signed minus",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: decimal",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: leading zero",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: empty",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: newline",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: missing",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: rounded string",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: exact integer",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: rounded integer",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: scientific",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: leading whitespace",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: trailing whitespace",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: signed plus",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: signed minus",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: decimal",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: leading zero",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: empty",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: newline",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: missing",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "usage invalid -1",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "usage invalid True",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "usage invalid '1'",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        },
+        {
+          "name": "hierarchy bool",
+          "passed": true,
+          "expected": "reject",
+          "fixtureChanged": true
+        }
+      ],
+      "initialHarnessAttempt": {
+        "exit": 1,
+        "diagnostic": "AssertionError: fixture did not change: inactive unified nsdelegate",
+        "cause": "Synthetic mount text used source cgroup instead of reviewed cgroup2; mutation guard caught the unchanged fixture before an acceptance assertion.",
+        "correction": "Use reviewed cgroup2 source spelling; rerun all assertions. Monitor behavior was unchanged."
+      },
+      "secondHarnessAttempt": {
+        "exit": 1,
+        "diagnostic": "AssertionError: fixture did not change: hierarchy bool",
+        "cause": "Python equality treats True and 1 as equal despite different types.",
+        "correction": "Use type-sensitive JSON text comparison for mutation guards; rerun all assertions."
+      }
+    },
+    "nodeJsonExactStringChecks": {
+      "passed": 4,
+      "failed": 0
+    },
+    "pythonAstSyntaxPassed": true,
+    "reportPrefix": {
+      "bytes": 39316,
+      "sha256": "a87a4951453202b91dede7179dcb541898e5e35b6d459fd0436c3f2d531d5b94",
+      "preserved": true
+    },
+    "activeRoundedLimitConstantsAbsent": true,
+    "preservedFileCount": 212,
+    "sourceZkirUnchanged": true,
+    "sevenCacheEntriesUnchanged": true,
+    "gitDiffCheckExit": 0
+  },
+  "precisionCorrectionChangedFiles": [
+    "docs/development/evidence/phase-3e2a/cgroup-execution-baseline.json",
+    "docs/development/evidence/phase-3e2a/integrity.json",
+    "docs/development/evidence/phase-3e2a/proposed-monitor.py",
+    "docs/development/phase-3e2a-r61-higher-memory-preflight-report.md"
+  ]
 }

@@ -1,0 +1,1490 @@
+{
+  "capturedAtUtc": "2026-09-16T13:43:58.178994+00:00",
+  "baselineCommit": "c3c0067b15ad44a4ca0aefa8c3ac42c44f8417f1",
+  "rawMembership": "15:name=systemd:/init.scope\n14:misc:/\n13:rdma:/\n12:pids:/init.scope\n11:hugetlb:/\n10:net_prio:/\n9:perf_event:/\n8:net_cls:/\n7:freezer:/\n6:devices:/init.scope\n5:memory:/init.scope\n4:blkio:/\n3:cpuacct:/\n2:cpu:/\n1:cpuset:/\n0::/init.scope\n",
+  "parsedMembership": [
+    {
+      "hierarchyId": 0,
+      "controllers": [],
+      "path": "/init.scope"
+    },
+    {
+      "hierarchyId": 1,
+      "controllers": [
+        "cpuset"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 2,
+      "controllers": [
+        "cpu"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 3,
+      "controllers": [
+        "cpuacct"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 4,
+      "controllers": [
+        "blkio"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 5,
+      "controllers": [
+        "memory"
+      ],
+      "path": "/init.scope"
+    },
+    {
+      "hierarchyId": 6,
+      "controllers": [
+        "devices"
+      ],
+      "path": "/init.scope"
+    },
+    {
+      "hierarchyId": 7,
+      "controllers": [
+        "freezer"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 8,
+      "controllers": [
+        "net_cls"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 9,
+      "controllers": [
+        "perf_event"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 10,
+      "controllers": [
+        "net_prio"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 11,
+      "controllers": [
+        "hugetlb"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 12,
+      "controllers": [
+        "pids"
+      ],
+      "path": "/init.scope"
+    },
+    {
+      "hierarchyId": 13,
+      "controllers": [
+        "rdma"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 14,
+      "controllers": [
+        "misc"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 15,
+      "controllers": [
+        "name=systemd"
+      ],
+      "path": "/init.scope"
+    }
+  ],
+  "historicalRawMembership": "15:name=systemd:/init.scope\n14:misc:/\n13:rdma:/\n12:pids:/init.scope\n11:hugetlb:/\n10:net_prio:/\n9:perf_event:/\n8:net_cls:/\n7:freezer:/\n6:devices:/init.scope\n5:memory:/init.scope\n4:blkio:/\n3:cpuacct:/\n2:cpu:/init.scope\n1:cpuset:/\n0::/init.scope\n",
+  "historicalParsedMembership": [
+    {
+      "hierarchyId": 0,
+      "controllers": [],
+      "path": "/init.scope"
+    },
+    {
+      "hierarchyId": 1,
+      "controllers": [
+        "cpuset"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 2,
+      "controllers": [
+        "cpu"
+      ],
+      "path": "/init.scope"
+    },
+    {
+      "hierarchyId": 3,
+      "controllers": [
+        "cpuacct"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 4,
+      "controllers": [
+        "blkio"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 5,
+      "controllers": [
+        "memory"
+      ],
+      "path": "/init.scope"
+    },
+    {
+      "hierarchyId": 6,
+      "controllers": [
+        "devices"
+      ],
+      "path": "/init.scope"
+    },
+    {
+      "hierarchyId": 7,
+      "controllers": [
+        "freezer"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 8,
+      "controllers": [
+        "net_cls"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 9,
+      "controllers": [
+        "perf_event"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 10,
+      "controllers": [
+        "net_prio"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 11,
+      "controllers": [
+        "hugetlb"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 12,
+      "controllers": [
+        "pids"
+      ],
+      "path": "/init.scope"
+    },
+    {
+      "hierarchyId": 13,
+      "controllers": [
+        "rdma"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 14,
+      "controllers": [
+        "misc"
+      ],
+      "path": "/"
+    },
+    {
+      "hierarchyId": 15,
+      "controllers": [
+        "name=systemd"
+      ],
+      "path": "/init.scope"
+    }
+  ],
+  "rawMountRecords": [
+    "492 491 0:21 / /sys/fs/cgroup/unified ro,nosuid,nodev,noexec,relatime master:28 - cgroup2 cgroup2 rw,nsdelegate",
+    "493 491 0:60 / /sys/fs/cgroup/cpuset ro,nosuid,nodev,noexec,relatime master:31 - cgroup cgroup rw,cpuset",
+    "494 491 0:61 / /sys/fs/cgroup/cpu ro,nosuid,nodev,noexec,relatime master:33 - cgroup cgroup rw,cpu",
+    "495 491 0:62 / /sys/fs/cgroup/cpuacct ro,nosuid,nodev,noexec,relatime master:34 - cgroup cgroup rw,cpuacct",
+    "496 491 0:70 / /sys/fs/cgroup/blkio ro,nosuid,nodev,noexec,relatime master:35 - cgroup cgroup rw,blkio",
+    "497 491 0:71 / /sys/fs/cgroup/memory ro,nosuid,nodev,noexec,relatime master:36 - cgroup cgroup rw,memory",
+    "498 491 0:72 / /sys/fs/cgroup/devices ro,nosuid,nodev,noexec,relatime master:37 - cgroup cgroup rw,devices",
+    "499 491 0:73 / /sys/fs/cgroup/freezer ro,nosuid,nodev,noexec,relatime master:39 - cgroup cgroup rw,freezer",
+    "500 491 0:74 / /sys/fs/cgroup/net_cls ro,nosuid,nodev,noexec,relatime master:40 - cgroup cgroup rw,net_cls",
+    "501 491 0:75 / /sys/fs/cgroup/perf_event ro,nosuid,nodev,noexec,relatime master:42 - cgroup cgroup rw,perf_event",
+    "502 491 0:76 / /sys/fs/cgroup/net_prio ro,nosuid,nodev,noexec,relatime master:44 - cgroup cgroup rw,net_prio",
+    "503 491 0:77 / /sys/fs/cgroup/hugetlb ro,nosuid,nodev,noexec,relatime master:46 - cgroup cgroup rw,hugetlb",
+    "504 491 0:78 / /sys/fs/cgroup/pids ro,nosuid,nodev,noexec,relatime master:48 - cgroup cgroup rw,pids",
+    "505 491 0:79 / /sys/fs/cgroup/rdma ro,nosuid,nodev,noexec,relatime master:52 - cgroup cgroup rw,rdma",
+    "506 491 0:80 / /sys/fs/cgroup/misc ro,nosuid,nodev,noexec,relatime master:53 - cgroup cgroup rw,misc",
+    "507 491 0:84 / /sys/fs/cgroup/systemd ro,nosuid,nodev,noexec,relatime master:56 - cgroup cgroup rw,xattr,name=systemd"
+  ],
+  "historicalRawMountRecords": [
+    "998 997 0:69 / /sys/fs/cgroup ro,nosuid,nodev,noexec master:27 - tmpfs tmpfs ro,size=4096k,nr_inodes=1024,mode=755",
+    "999 998 0:21 / /sys/fs/cgroup/unified ro,nosuid,nodev,noexec,relatime master:28 - cgroup2 cgroup2 rw",
+    "1000 998 0:60 / /sys/fs/cgroup/cpuset ro,nosuid,nodev,noexec,relatime master:30 - cgroup cgroup rw,cpuset",
+    "1001 998 0:61 / /sys/fs/cgroup/cpu ro,nosuid,nodev,noexec,relatime master:32 - cgroup cgroup rw,cpu",
+    "1002 998 0:62 / /sys/fs/cgroup/cpuacct ro,nosuid,nodev,noexec,relatime master:33 - cgroup cgroup rw,cpuacct",
+    "1003 998 0:70 / /sys/fs/cgroup/blkio ro,nosuid,nodev,noexec,relatime master:35 - cgroup cgroup rw,blkio",
+    "1004 998 0:71 / /sys/fs/cgroup/memory ro,nosuid,nodev,noexec,relatime master:36 - cgroup cgroup rw,memory",
+    "1005 998 0:72 / /sys/fs/cgroup/devices ro,nosuid,nodev,noexec,relatime master:37 - cgroup cgroup rw,devices",
+    "1006 998 0:73 / /sys/fs/cgroup/freezer ro,nosuid,nodev,noexec,relatime master:39 - cgroup cgroup rw,freezer",
+    "1007 998 0:74 / /sys/fs/cgroup/net_cls ro,nosuid,nodev,noexec,relatime master:41 - cgroup cgroup rw,net_cls",
+    "1008 998 0:75 / /sys/fs/cgroup/perf_event ro,nosuid,nodev,noexec,relatime master:43 - cgroup cgroup rw,perf_event",
+    "1009 998 0:76 / /sys/fs/cgroup/net_prio ro,nosuid,nodev,noexec,relatime master:45 - cgroup cgroup rw,net_prio",
+    "1010 998 0:77 / /sys/fs/cgroup/hugetlb ro,nosuid,nodev,noexec,relatime master:47 - cgroup cgroup rw,hugetlb",
+    "1011 998 0:78 / /sys/fs/cgroup/pids ro,nosuid,nodev,noexec,relatime master:49 - cgroup cgroup rw,pids",
+    "1012 998 0:79 / /sys/fs/cgroup/rdma ro,nosuid,nodev,noexec,relatime master:51 - cgroup cgroup rw,rdma",
+    "1013 998 0:80 / /sys/fs/cgroup/misc ro,nosuid,nodev,noexec,relatime master:53 - cgroup cgroup rw,misc",
+    "1014 998 0:84 / /sys/fs/cgroup/systemd ro,nosuid,nodev,noexec,relatime master:56 - cgroup cgroup rw,xattr,name=systemd"
+  ],
+  "normalizedMounts": [
+    {
+      "device": "0:70",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/blkio",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "blkio",
+        "rw"
+      ]
+    },
+    {
+      "device": "0:61",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/cpu",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "cpu",
+        "rw"
+      ]
+    },
+    {
+      "device": "0:62",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/cpuacct",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "cpuacct",
+        "rw"
+      ]
+    },
+    {
+      "device": "0:60",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/cpuset",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "cpuset",
+        "rw"
+      ]
+    },
+    {
+      "device": "0:72",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/devices",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "devices",
+        "rw"
+      ]
+    },
+    {
+      "device": "0:73",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/freezer",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "freezer",
+        "rw"
+      ]
+    },
+    {
+      "device": "0:77",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/hugetlb",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "hugetlb",
+        "rw"
+      ]
+    },
+    {
+      "device": "0:71",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/memory",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "memory",
+        "rw"
+      ]
+    },
+    {
+      "device": "0:80",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/misc",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "misc",
+        "rw"
+      ]
+    },
+    {
+      "device": "0:74",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/net_cls",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "net_cls",
+        "rw"
+      ]
+    },
+    {
+      "device": "0:76",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/net_prio",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "net_prio",
+        "rw"
+      ]
+    },
+    {
+      "device": "0:75",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/perf_event",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "perf_event",
+        "rw"
+      ]
+    },
+    {
+      "device": "0:78",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/pids",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "pids",
+        "rw"
+      ]
+    },
+    {
+      "device": "0:79",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/rdma",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "rdma",
+        "rw"
+      ]
+    },
+    {
+      "device": "0:84",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/systemd",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup",
+      "source": "cgroup",
+      "superOptions": [
+        "name=systemd",
+        "rw",
+        "xattr"
+      ]
+    },
+    {
+      "device": "0:21",
+      "root": "/",
+      "mountpoint": "/sys/fs/cgroup/unified",
+      "mountOptions": [
+        "nodev",
+        "noexec",
+        "nosuid",
+        "relatime",
+        "ro"
+      ],
+      "filesystem": "cgroup2",
+      "source": "cgroup2",
+      "superOptions": [
+        "rw"
+      ]
+    }
+  ],
+  "cpu": {
+    "membership": "/",
+    "controls": {
+      "cpu.cfs_quota_us": -1,
+      "cpu.cfs_period_us": 100000,
+      "cpu.shares": 1024
+    },
+    "count": 8,
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "allowedList": "0-7",
+    "cpusetMembership": "/",
+    "cpuset": {
+      "cpuset.cpus": "0-7",
+      "cpuset.effective_cpus": "0-7",
+      "cpuset.mems": "0",
+      "cpuset.effective_mems": "0"
+    }
+  },
+  "memory": {
+    "membership": "/init.scope",
+    "groups": {
+      "/sys/fs/cgroup/memory": {
+        "memory.limit_in_bytes": "9223372036854771712",
+        "memory.memsw.limit_in_bytes": "9223372036854771712",
+        "memory.usage_in_bytes": 1783939072,
+        "memory.memsw.usage_in_bytes": 1783939072,
+        "memory.use_hierarchy": 1
+      },
+      "/sys/fs/cgroup/memory/init.scope": {
+        "memory.limit_in_bytes": "9223372036854771712",
+        "memory.memsw.limit_in_bytes": "9223372036854771712",
+        "memory.usage_in_bytes": 1420591104,
+        "memory.memsw.usage_in_bytes": 1420591104,
+        "memory.use_hierarchy": 1
+      }
+    }
+  },
+  "v2": {
+    "/sys/fs/cgroup/unified": {
+      "cgroup.controllers": {
+        "present": true,
+        "value": ""
+      },
+      "cgroup.subtree_control": {
+        "present": true,
+        "value": ""
+      },
+      "memory.max": {
+        "present": false
+      },
+      "memory.current": {
+        "present": false
+      },
+      "memory.swap.max": {
+        "present": false
+      },
+      "memory.swap.current": {
+        "present": false
+      }
+    },
+    "/sys/fs/cgroup/unified/init.scope": {
+      "cgroup.controllers": {
+        "present": true,
+        "value": ""
+      },
+      "cgroup.subtree_control": {
+        "present": true,
+        "value": ""
+      },
+      "memory.max": {
+        "present": false
+      },
+      "memory.current": {
+        "present": false
+      },
+      "memory.swap.max": {
+        "present": false
+      },
+      "memory.swap.current": {
+        "present": false
+      }
+    }
+  },
+  "ramSwapKiB": {
+    "MemTotal": 12253260,
+    "MemAvailable": 10979756,
+    "SwapTotal": 8388608,
+    "SwapFree": 8388608
+  },
+  "disk": [
+    {
+      "path": "/home/oluwatobiss/projects/midnight/risein/just-proof",
+      "totalBytes": 1081101176832,
+      "freeBytes": 1005222293504
+    },
+    {
+      "path": "/tmp",
+      "totalBytes": 1081101176832,
+      "freeBytes": 1005222293504
+    },
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params",
+      "totalBytes": 1081101176832,
+      "freeBytes": 1005222293504
+    }
+  ],
+  "fingerprints": [
+    {
+      "path": "contracts/just-proof.compact",
+      "bytes": 13714,
+      "sha256": "9ffa12d0570659ec703479ffb35c5ab2e1248f668abff6f9fbd91f344ef62ecf"
+    },
+    {
+      "path": "contracts/managed/just-proof/zkir/proveQualificationV2.zkir",
+      "bytes": 72144,
+      "sha256": "7ca590bb29edd4f6dab806f7278878b1720b6773f4702b82e7c2e371db58a803"
+    },
+    {
+      "path": "contracts/managed/just-proof/zkir/registerCredentialV2.zkir",
+      "bytes": 65083,
+      "sha256": "b04a6e786914be257ab88d09d148ca8918d08b302e970bc81cdaec47efc1227e"
+    },
+    {
+      "path": "contracts/managed/just-proof/zkir/registerIssuerV2.zkir",
+      "bytes": 37980,
+      "sha256": "ce061c319bdbdf15fad9fd53cdfb9f5602f66cc5fd1da745388e0b7ca978b699"
+    },
+    {
+      "path": "contracts/managed/just-proof/zkir/revokeCredentialV2.zkir",
+      "bytes": 71809,
+      "sha256": "e28c864710d6b05da43dc1caa01e6d7e4ca4a66d6a87fe63511bcc0bac3a7c84"
+    }
+  ],
+  "cache": [
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p13",
+      "bytes": 1573252,
+      "sha256": "d3324910969c4cc54143b8045b649e5c3a4bd5fb7b8f85fe1b770f640ce1c803"
+    },
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p17",
+      "bytes": 25166212,
+      "sha256": "4a9ef6c7c0619aab74eede44b13e753e3ba54508a02dd3b7106a949aabb73b74"
+    },
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p18",
+      "bytes": 50332036,
+      "sha256": "e8436dc5d8b598f169c127c745135d889744007e6d384ff126df8d1332522f86"
+    },
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p19",
+      "bytes": 100663684,
+      "sha256": "8e8dc15c4362f05c912f1e770559a3945db3e58a374def416ed5d3e65ad5b10e"
+    },
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p6",
+      "bytes": 12676,
+      "sha256": "cf2ad6be7d0fedf5bec2aaa35f6be4aca33053d74268fdf5aa54fcb2891ea6df"
+    },
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p7",
+      "bytes": 24964,
+      "sha256": "e82ae890c080188355f37feaffe91372584cd810615082d9143d4dec0453fd9d"
+    },
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p9",
+      "bytes": 98692,
+      "sha256": "b9009f1098bcefffec3c461ab3a5e3a17f7e5599f0f08c70fcdc55a89227bcbd"
+    }
+  ],
+  "sourceZkirCacheUnchanged": true,
+  "absentAttemptPaths": [
+    "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1",
+    "/tmp/justproof-phase3e2b-authorization.json",
+    "docs/development/evidence/phase-3e2b",
+    "docs/development/evidence/phase-3e2b/attempt-started"
+  ],
+  "dockerObservation": {
+    "cliAvailable": false,
+    "daemonQueried": false,
+    "note": "No Docker command run. If CLI absent, daemon availability is not independently verifiable; no daemon started."
+  },
+  "historicalCpuEquivalence": "UNKNOWN; missing historical CPU controls are not inferred. Current controls are a newly accepted prospective baseline. Quota -1 denotes absence of a CFS hard quota, not a performance guarantee.",
+  "classification": "CURRENT_CGROUP_STATE_ACCEPTED_AS_PROSPECTIVE_EXECUTION_BASELINE",
+  "configurationChanged": false,
+  "phase3E2BAuthorized": false,
+  "r61Open": true,
+  "syntheticValidation": {
+    "method": "AST-selected pure definitions/constants only; synthetic strings/values; no live function/import/subprocess/write/attempt operation",
+    "passed": 31,
+    "failed": 0,
+    "fixtureMutationGuard": true,
+    "results": [
+      {
+        "name": "exact prospective state without nsdelegate",
+        "expected": "accept",
+        "passed": true
+      },
+      {
+        "name": "same inactive unified hierarchy with nsdelegate",
+        "expected": "accept",
+        "passed": true
+      },
+      {
+        "name": "membership ordering is structural",
+        "expected": "accept",
+        "passed": true
+      },
+      {
+        "name": "CPU init.scope",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "finite quota",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "changed period",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "changed shares",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "reduced CPU count",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "reduced affinity",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "reduced allowed list",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "reduced cpuset.effective_cpus",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "reduced cpuset.cpus",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "changed memory membership",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "changed memory limit",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "changed memsw limit",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "disabled hierarchy",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "missing memory interface",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "active v2 cgroup.controllers",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "active v2 cgroup.subtree_control",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "new v2 memory interface",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "new v2 swap interface",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "unrelated mount option",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "changed controller binding",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "nsdelegate on v1",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "changed unified mountpoint",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "nsdelegate with active v2 memory",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "new controller",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "malformed membership",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "duplicate controller",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "missing CPU interface",
+        "expected": "reject",
+        "passed": true
+      },
+      {
+        "name": "malformed mount",
+        "expected": "reject",
+        "passed": true
+      }
+    ],
+    "initialAttempt": {
+      "exit": 1,
+      "passedBeforeFailure": 21,
+      "diagnostic": "AssertionError: reject unrelated mount option unexpectedly accepted",
+      "cause": "Synthetic mount fixture used sorted cpu,rw options; mutation searched for rw,cpu and changed nothing. No monitor correction was needed for this diagnostic.",
+      "correction": "Changed fixture mutation to target cpu,rw and require every nontrivial mutation to change the synthetic input.",
+      "projectTestsRun": false
+    },
+    "exactLimitValidationStatus": "SUPERSEDED: original fixtures inherited the rounded constant; retained as historical results, not exact-limit validation."
+  },
+  "precisionCorrection": {
+    "originalEvidenceSha256": "4683e12a7d6794b73bfb5209efba79d33364abf734ef5eabe137db181839e7c7",
+    "incorrectlyEncodedValue": "9223372036854772000",
+    "exactValue": "9223372036854771712",
+    "difference": 288,
+    "reconfirmedAtUtc": "2026-09-16T18:28:03.933225+00:00",
+    "rawTrimmedLimitText": {
+      "/sys/fs/cgroup/memory/memory.limit_in_bytes": "9223372036854771712",
+      "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes": "9223372036854771712",
+      "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes": "9223372036854771712",
+      "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes": "9223372036854771712"
+    },
+    "initialEvidencePreservedFourLimitsSafely": false,
+    "basis": "Fresh direct ASCII byte/text reads agree with the already accepted historical value. No IEEE-754 conversion used.",
+    "historicalCpuEquivalenceAsserted": false,
+    "configurationChanged": false,
+    "phase3E2BStateChanged": false,
+    "allOtherLiveCgroupControlsReconfirmed": true,
+    "unrelatedMonitorFunctionsAstUnchanged": true
+  },
+  "precisionValidation": {
+    "passed": 87,
+    "failed": 0,
+    "method": "AST-selected constant and three pure helpers; synthetic values only. No monitor import, live capture, main, watchdog, or subprocess invoked.",
+    "everyMutationAssertedChanged": true,
+    "allFourEvidenceAndMonitorLimitsExactStrings": true,
+    "prior31CasesRetained": true,
+    "supersedesEarlierExactLimitValidation": true,
+    "cases": [
+      {
+        "name": "exact prospective baseline",
+        "passed": true,
+        "expected": "accept",
+        "fixtureChanged": false
+      },
+      {
+        "name": "inactive unified nsdelegate",
+        "passed": true,
+        "expected": "accept",
+        "fixtureChanged": true
+      },
+      {
+        "name": "membership ordering",
+        "passed": true,
+        "expected": "accept",
+        "fixtureChanged": true
+      },
+      {
+        "name": "CPU init.scope",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "cpu.cfs_quota_us",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "cpu.cfs_period_us",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "cpu.shares",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "count",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "affinity",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "allowedList",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "cpuset.cpus",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "cpuset.effective_cpus",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "memory membership",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "changed memory.limit_in_bytes",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "changed memory.memsw.limit_in_bytes",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "hierarchy disabled",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "missing hierarchy",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "active cgroup.controllers",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "active cgroup.subtree_control",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "new memory.max",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "new memory.swap.max",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "unrelated mount option",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "changed controller binding",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "nsdelegate on v1",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "changed unified mountpoint",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "nsdelegate with active v2",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "new controller",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "malformed membership",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "duplicate controller",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "missing shares",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "malformed mount",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: rounded string",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: exact integer",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: rounded integer",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: scientific",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: leading whitespace",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: trailing whitespace",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: signed plus",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: signed minus",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: decimal",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: leading zero",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: empty",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: newline",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.limit_in_bytes: missing",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: rounded string",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: exact integer",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: rounded integer",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: scientific",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: leading whitespace",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: trailing whitespace",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: signed plus",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: signed minus",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: decimal",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: leading zero",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: empty",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: newline",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes: missing",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: rounded string",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: exact integer",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: rounded integer",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: scientific",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: leading whitespace",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: trailing whitespace",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: signed plus",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: signed minus",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: decimal",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: leading zero",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: empty",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: newline",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes: missing",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: rounded string",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: exact integer",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: rounded integer",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: scientific",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: leading whitespace",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: trailing whitespace",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: signed plus",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: signed minus",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: decimal",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: leading zero",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: empty",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: newline",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes: missing",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "usage invalid -1",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "usage invalid True",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "usage invalid '1'",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      },
+      {
+        "name": "hierarchy bool",
+        "passed": true,
+        "expected": "reject",
+        "fixtureChanged": true
+      }
+    ],
+    "initialHarnessAttempt": {
+      "exit": 1,
+      "diagnostic": "AssertionError: fixture did not change: inactive unified nsdelegate",
+      "cause": "Synthetic mount text used source cgroup instead of reviewed cgroup2; mutation guard caught the unchanged fixture before an acceptance assertion.",
+      "correction": "Use reviewed cgroup2 source spelling; rerun all assertions. Monitor behavior was unchanged."
+    },
+    "secondHarnessAttempt": {
+      "exit": 1,
+      "diagnostic": "AssertionError: fixture did not change: hierarchy bool",
+      "cause": "Python equality treats True and 1 as equal despite different types.",
+      "correction": "Use type-sensitive JSON text comparison for mutation guards; rerun all assertions."
+    }
+  }
+}

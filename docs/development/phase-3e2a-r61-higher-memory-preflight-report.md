@@ -279,3 +279,93 @@ No artifact-read result or key-operation output was created. The `/tmp/justproof
 Only four files changed: `proposed-monitor.py`, `proposed-key-format-check.mjs`, this report (append-only), and `integrity.json`, all under the existing Phase 3E2A paths. Nothing was staged, committed, amended, pushed or deployed. No Phase 3E2B state was created. Phase 3E2B remains unauthorized and R61 remains open. Stop for user review.
 
 HIGHER_MEMORY_OBSERVED_AWAITING_EXECUTION_AUTHORIZATION
+
+## Prospective cgroup-baseline integration — 2026-09-16
+
+Baseline: WSL repository root, clean HEAD `c3c0067b15ad44a4ca0aefa8c3ac42c44f8417f1`, subject `fix(protocol-v2): Harden R61 execution safeguards`. The final pre-execution gate at this commit was blocked because historical whole-file cgroup equality rejected CPU membership `/init.scope` → `/` and unified `nsdelegate`. The subsequent adjudication correctly returned `COULD_NOT_VERIFY`: historical CPU quota, period, shares and effective-cpuset values were missing, and former CPU-group interfaces were unavailable. Those historical values remain unknown and are not reconstructed, inferred or retroactively approved.
+
+The user separately accepted the current state as a **new prospective execution baseline**, conditional on fresh confirmation. That confirmation completed at `2026-09-16T13:43:58.178994+00:00` before edits. [Prospective baseline evidence](evidence/phase-3e2a/cgroup-execution-baseline.json) records raw/parsed memberships, raw/normalized mount records, applicable controls, usage, RAM/swap/disk, source/ZKIR/cache comparisons, path absence and synthetic validation history. Its classification is `CURRENT_CGROUP_STATE_ACCEPTED_AS_PROSPECTIVE_EXECUTION_BASELINE`. This does not authorize Phase 3E2B.
+
+### Reconfirmed prospective controls
+
+- CPU-controller membership `/`; quota `-1`, period `100000`, shares `1024`; CPU count 8, affinity exactly `[0,1,2,3,4,5,6,7]`, allowed list `0-7`, configured/effective cpuset `0-7`. Cpuset membership is `/`, configured/effective memory-node set `0`. Quota `-1` means only absence of a cgroup CFS hard quota; it is not a performance guarantee.
+- Memory-controller membership remains `/init.scope`. At the v1 root and applicable membership path, memory and combined memory+swap limits remain exactly `9223372036854771712`, and `memory.use_hierarchy` remains `1`. Current usages are recorded as observations, not fixed limits.
+- At unified root and `/init.scope`, `cgroup.controllers` and `cgroup.subtree_control` are empty; all four `memory.max`, `memory.current`, `memory.swap.max`, and `memory.swap.current` interfaces are absent.
+- Every non-CPU hierarchy ID, controller set and membership matches the historical snapshot structurally. Relevant mount filesystem/device/root/mountpoint/source/options/controller bindings match, allowing only `nsdelegate` presence/absence on the same inactive unified mount. Namespace-local mount IDs, parent mount IDs and propagation-group IDs are recorded raw but are not treated as resource-control values.
+- Fresh RAM totals/available: **12,253,260/10,979,756 KiB**; swap totals/free: **8,388,608/8,388,608 KiB**. All reviewed launch floors passed. All relevant filesystems exceeded 10 GiB free; exact capacities are in JSON. These are point-in-time observations, not reserved resources.
+- Source and all four text-ZKIR fingerprints and all seven cache filenames/sizes/hashes matched accepted evidence. The four attempt/authorization paths remained absent, including dangling-symlink checks. Docker CLI available: `false`. No Docker command ran or daemon started; daemon status was not independently queried.
+
+### Narrow monitor correction
+
+The old whole-file equality is replaced by pure structural helpers `parse_cgroup_memberships`, `parse_cgroup_mounts` and `validate_cgroup_snapshot`. The prospective constants are embedded in the monitor and therefore bound to its reviewed SHA-256; the cgroup validator does not load an unbound mutable configuration file or reinterpret the historical readiness file.
+
+Every entry's hierarchy ID, full controller set and path must match the prospective constants, including CPU `/` and unchanged non-CPU memberships. Malformed, duplicate, missing or new controllers fail closed. Required memory limits and enabled hierarchy remain exact; CPU quota/period/shares/count/affinity/allowed list/cpuset must remain exact. Reduced or otherwise changed controls, missing interfaces, a CPU return to `/init.scope`, newly active v2 controllers/subtree controls, or any new v2 memory/swap interface are rejected.
+
+Mount normalization permits only `nsdelegate` on the reviewed unified mount, and only while the reviewed v2 state remains inactive. Unrelated mount changes, bindings, filesystem/device changes and duplicate mount options fail closed. This policy does not accept arbitrary non-memory differences.
+
+The live `cgroup()` capture runs at the existing pre-launch and sampling checkpoints. It returns raw and parsed membership, applicable paths, memory limits/usage, CPU controls, affinity/cpuset, v2 observations and normalized mount compatibility. Preflight and sample evidence retain that structure; result evidence adds `lastCgroupObservation` (null if no successful capture occurred). The final pre-launch recheck now retains its returned observation. No authorization, reservation, process-tree, watchdog, timeout, threshold, provenance, cache, finalization, artifact or exit-status logic was otherwise changed. AST comparison confirmed every other existing function unchanged and main unchanged after removing those observation-only additions.
+
+### Restricted validation
+
+Only JSON parsing, Python AST inspection, authorized synthetic helper assertions and preservation comparisons were performed. The full monitor was neither imported nor executed. The assertion driver selected only the three pure helper definitions and the literal baseline constant from the AST, using a non-main namespace and synthetic strings/values. It invoked no live capture, subprocess, watchdog, filesystem write, attempt operation or project test runner.
+
+Final synthetic result: **31 passed, 0 failed** (three accepted cases and 28 rejection cases). Coverage includes exact prospective state; inactive unified mount with/without `nsdelegate`; structurally reordered memberships; rejection of CPU `/init.scope`, finite quota, changed period/shares/count, reduced affinity/allowed/configured/effective cpuset, changed memory membership/limits/hierarchy, missing interfaces, active v2 controllers/subtree controls, new v2 memory/swap interfaces, changed mounts/controller bindings, nsdelegate on v1, nsdelegate with active v2 memory, unknown/duplicate controllers and malformed membership/mount text. Individual results are preserved in the new evidence JSON.
+
+An initial synthetic-driver attempt stopped after 21 passing assertions when a mutation searched for `rw,cpu` in a fixture normalized as `cpu,rw`, so it changed nothing and was accepted. The fixture—not the validator—was corrected, and the final driver additionally asserted that every proposed mutation actually changed its synthetic input. This failed validation attempt and correction are preserved in JSON. No live monitor behavior was exercised or claimed.
+
+Python AST/JSON inspection, report-prefix preservation, source/generated/cache comparisons and `git diff --check` passed. The historical `capture-readiness.py` and `readiness.json` were not rerun or changed. The plan and postcheck remain byte-identical, and no numerical proposal value changed.
+
+### Refreshed identities
+
+| Artifact | SHA-256 |
+|---|---|
+| `cgroup-execution-baseline.json` | `4683e12a7d6794b73bfb5209efba79d33364abf734ef5eabe137db181839e7c7` |
+| `proposed-monitor.py` | `7a4dce3288e92d20800ff9fa82ff99a4db380362e47f422b5b5fab7ac6256568` |
+| `proposed-plan.json` | `0aa964d4baeb874a370b0bcf736015113e03305fb07f3bae3c52d9067e208aca` |
+| `proposed-key-format-check.mjs` | `3629784683d64188350addd8583d3696bc17f69f80855d8e54fa939bc6008de8` |
+| `readiness.json` | `7974bb9a2d73df9744647f5598f755ec3948de32165c512155659dd31131e4d8` |
+| `capture-readiness.py` | `ebde29e8da27081d6449c5d7472ab0a8cae761ac937341bf3c45566044072bbb` |
+
+Only the new `cgroup-execution-baseline.json`, `proposed-monitor.py`, `integrity.json` and this append-only report changed. Integrity excludes its own hash and records the exact baseline, report prefix, new evidence/monitor/report identities, unchanged reviewed artifacts, preservation comparisons, validation results, absent paths and final Git status.
+
+No system configuration, Docker/workload, authorization file, Phase 3E2B evidence directory, marker or output directory was created or changed. No compiler, key, proof, postcheck, project-test, typecheck, resource workload or network operation ran. Nothing was staged, committed, amended, pushed or deployed. Phase 3E2B remains unauthorized and R61 remains open. Stop for user review.
+
+HIGHER_MEMORY_OBSERVED_AWAITING_EXECUTION_AUTHORIZATION
+
+
+## Cgroup-limit precision correction — 2026-09-16
+
+Attachment review identified this defect before commit or execution: the four v1 memory and memory-plus-swap limits were encoded as `9223372036854772000`, whereas the exact kernel and accepted historical value is `9223372036854771712` (difference: 288). These values exceed the cross-runtime safe-integer range. The rounded immutable constant would have rejected the exact live value after durable reservation, consuming the single attempt without launching the compiler. No reservation or attempt was created.
+
+At 2026-09-16T18:28:03.933225+00:00, direct ASCII byte/text reads reconfirmed `9223372036854771712` at all four paths:
+
+* `/sys/fs/cgroup/memory/memory.limit_in_bytes`
+* `/sys/fs/cgroup/memory/memory.memsw.limit_in_bytes`
+* `/sys/fs/cgroup/memory/init.scope/memory.limit_in_bytes`
+* `/sys/fs/cgroup/memory/init.scope/memory.memsw.limit_in_bytes`
+
+Both hierarchy settings remained exactly `1`. CPU membership `/`, quota `-1`, period `100000`, shares `1024`, eight CPUs/affinity 0–7, cpuset, other memberships, normalized mounts, and inactive v2 interfaces were reconfirmed. Quota `-1` means no CFS hard quota; it is not a performance guarantee. Historical CPU equivalence remains unknown and is not asserted.
+
+The evidence and self-contained monitor now store all four limits as exact decimal strings. Live capture trims ASCII limit text; the pure validator requires string type, canonical nonnegative decimal syntax, and exact equality. Numeric values (including exact Python integers), rounded strings, scientific notation, signs, padding, decimals, missing limits, and changed limits are rejected. Dynamic usage remains nonnegative Python integers; hierarchy requires integer `1`. Unrelated monitor functions are AST-identical to the pre-correction attachment.
+
+This addendum explicitly supersedes the earlier rounded exact-limit fields and their synthetic validation claims. The original 31-case history remains unchanged apart from its supersession annotation. Its fixtures inherited the rounded constant and did not establish exact-limit correctness. [Corrected evidence](evidence/phase-3e2a/cgroup-execution-baseline.json) retains the original evidence hash and fresh raw readings.
+
+Validation: `python3 /tmp/phase3e2a-precision-synthetic.py` finished with **87 passed, 0 failed**, using only AST-selected immutable constants and three pure helpers. Every mutation must change a type-sensitive serialized fixture. All earlier cases were retained, with per-field numeric/string/canonicality regressions, independently changed memsw limits, and usage/hierarchy type checks. Two earlier harness attempts exited 1: a synthetic mount-source spelling prevented the nsdelegate mutation; then Python `True == 1` masked a type mutation in the guard. Both diagnostics and corrections are retained in the evidence; the final complete rerun passed. Neither was a monitor execution or compiler/protocol failure.
+
+Python JSON/type assertions and a second `node --input-type=module` JSON parse confirmed all four evidence values remain exact strings without numeric conversion. Python AST inspection passed. Active limit fields/constants contain no rounded value; its retained historical correction metadata is intentionally preserved. Source, all four text ZKIR files, all seven cache entries, the 212-file preservation baseline, and all reviewed immutable artifacts match their recorded hashes. All four attempt/authorization paths remain absent. No configuration, workload, cache, protocol, or attempt state changed.
+
+Refreshed artifacts:
+
+| Artifact | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `cgroup-execution-baseline.json` | 40649 | `d8fbb32bd518cd778acc71d46c813aed5f56b7efc329c95751a35b9af6e38536` |
+| `proposed-monitor.py` | 38293 | `2433a2678c867926c6a3600283a3aeabf8a525347cd9a867bc0fb67f0eef7378` |
+
+Unchanged plan: `0aa964d4baeb874a370b0bcf736015113e03305fb07f3bae3c52d9067e208aca`.
+Unchanged postcheck: `3629784683d64188350addd8583d3696bc17f69f80855d8e54fa939bc6008de8`.
+Unchanged readiness: `7974bb9a2d73df9744647f5598f755ec3948de32165c512155659dd31131e4d8`.
+Unchanged capture script: `ebde29e8da27081d6449c5d7472ab0a8cae761ac937341bf3c45566044072bbb`.
+
+Only the prospective baseline JSON, monitor, this report, and integrity JSON changed. The refreshed integrity file records this report's final size/hash and exact prefix preservation; it excludes its own hash. No build, key generation, proof operation, project test, typecheck, Docker, network operation, staging, or commit occurred. Phase 3E2B remains unauthorized and R61 remains open.
+
+Classification: `HIGHER_MEMORY_OBSERVED_AWAITING_EXECUTION_AUTHORIZATION`.

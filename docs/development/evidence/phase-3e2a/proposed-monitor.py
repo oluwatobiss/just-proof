@@ -48,23 +48,162 @@ def memory():
     return {s.split(':')[0]: int(s.split()[1]) for s in Path('/proc/meminfo').read_text().splitlines()
             if s.split(':')[0] in ('MemTotal', 'MemAvailable', 'SwapTotal', 'SwapFree')}
 
+REVIEWED_CGROUP_BASELINE = json.loads(r'''{"memberships":[{"hierarchyId":0,"controllers":[],"path":"/init.scope"},{"hierarchyId":1,"controllers":["cpuset"],"path":"/"},{"hierarchyId":2,"controllers":["cpu"],"path":"/"},{"hierarchyId":3,"controllers":["cpuacct"],"path":"/"},{"hierarchyId":4,"controllers":["blkio"],"path":"/"},{"hierarchyId":5,"controllers":["memory"],"path":"/init.scope"},{"hierarchyId":6,"controllers":["devices"],"path":"/init.scope"},{"hierarchyId":7,"controllers":["freezer"],"path":"/"},{"hierarchyId":8,"controllers":["net_cls"],"path":"/"},{"hierarchyId":9,"controllers":["perf_event"],"path":"/"},{"hierarchyId":10,"controllers":["net_prio"],"path":"/"},{"hierarchyId":11,"controllers":["hugetlb"],"path":"/"},{"hierarchyId":12,"controllers":["pids"],"path":"/init.scope"},{"hierarchyId":13,"controllers":["rdma"],"path":"/"},{"hierarchyId":14,"controllers":["misc"],"path":"/"},{"hierarchyId":15,"controllers":["name=systemd"],"path":"/init.scope"}],"mounts":[{"device":"0:70","root":"/","mountpoint":"/sys/fs/cgroup/blkio","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["blkio","rw"]},{"device":"0:61","root":"/","mountpoint":"/sys/fs/cgroup/cpu","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["cpu","rw"]},{"device":"0:62","root":"/","mountpoint":"/sys/fs/cgroup/cpuacct","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["cpuacct","rw"]},{"device":"0:60","root":"/","mountpoint":"/sys/fs/cgroup/cpuset","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["cpuset","rw"]},{"device":"0:72","root":"/","mountpoint":"/sys/fs/cgroup/devices","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["devices","rw"]},{"device":"0:73","root":"/","mountpoint":"/sys/fs/cgroup/freezer","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["freezer","rw"]},{"device":"0:77","root":"/","mountpoint":"/sys/fs/cgroup/hugetlb","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["hugetlb","rw"]},{"device":"0:71","root":"/","mountpoint":"/sys/fs/cgroup/memory","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["memory","rw"]},{"device":"0:80","root":"/","mountpoint":"/sys/fs/cgroup/misc","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["misc","rw"]},{"device":"0:74","root":"/","mountpoint":"/sys/fs/cgroup/net_cls","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["net_cls","rw"]},{"device":"0:76","root":"/","mountpoint":"/sys/fs/cgroup/net_prio","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["net_prio","rw"]},{"device":"0:75","root":"/","mountpoint":"/sys/fs/cgroup/perf_event","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["perf_event","rw"]},{"device":"0:78","root":"/","mountpoint":"/sys/fs/cgroup/pids","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["pids","rw"]},{"device":"0:79","root":"/","mountpoint":"/sys/fs/cgroup/rdma","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["rdma","rw"]},{"device":"0:84","root":"/","mountpoint":"/sys/fs/cgroup/systemd","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup","source":"cgroup","superOptions":["name=systemd","rw","xattr"]},{"device":"0:21","root":"/","mountpoint":"/sys/fs/cgroup/unified","mountOptions":["nodev","noexec","nosuid","relatime","ro"],"filesystem":"cgroup2","source":"cgroup2","superOptions":["rw"]}],"memory":{"/sys/fs/cgroup/memory":{"memory.limit_in_bytes":"9223372036854771712","memory.memsw.limit_in_bytes":"9223372036854771712","memory.use_hierarchy":1},"/sys/fs/cgroup/memory/init.scope":{"memory.limit_in_bytes":"9223372036854771712","memory.memsw.limit_in_bytes":"9223372036854771712","memory.use_hierarchy":1}},"cpu":{"membership":"/","controls":{"cpu.cfs_quota_us":-1,"cpu.cfs_period_us":100000,"cpu.shares":1024},"count":8,"affinity":[0,1,2,3,4,5,6,7],"allowedList":"0-7","cpusetMembership":"/","cpuset":{"cpuset.cpus":"0-7","cpuset.effective_cpus":"0-7","cpuset.mems":"0","cpuset.effective_mems":"0"}},"v2":{"/sys/fs/cgroup/unified":{"cgroup.controllers":{"present":true,"value":""},"cgroup.subtree_control":{"present":true,"value":""},"memory.max":{"present":false},"memory.current":{"present":false},"memory.swap.max":{"present":false},"memory.swap.current":{"present":false}},"/sys/fs/cgroup/unified/init.scope":{"cgroup.controllers":{"present":true,"value":""},"cgroup.subtree_control":{"present":true,"value":""},"memory.max":{"present":false},"memory.current":{"present":false},"memory.swap.max":{"present":false},"memory.swap.current":{"present":false}}}}''')
+
+def parse_cgroup_memberships(raw):
+    """Pure parser: retain every hierarchy/controller/path; reject malformed entries."""
+    if not isinstance(raw, str) or not raw:
+        raise ValueError('missing cgroup membership text')
+    rows = []
+    ids = set()
+    controllers_seen = set()
+    for line in raw.splitlines():
+        fields = line.split(':', 2)
+        if len(fields) != 3:
+            raise ValueError('malformed cgroup entry')
+        ident, names, path = fields
+        if not ident.isdecimal() or ident != str(int(ident)) or int(ident) in ids:
+            raise ValueError('invalid/duplicate hierarchy ID')
+        controllers = names.split(',') if names else []
+        if len(controllers) != len(set(controllers)) or any(
+                not re.fullmatch(r'[A-Za-z0-9_=.-]+', n) for n in controllers):
+            raise ValueError('invalid/duplicate controller')
+        if (int(ident) == 0) != (not controllers):
+            raise ValueError('invalid unified hierarchy')
+        if controllers_seen.intersection(controllers):
+            raise ValueError('controller appears in multiple hierarchies')
+        if not path.startswith('/') or (path != '/' and any(
+                part in ('', '.', '..') for part in path[1:].split('/'))):
+            raise ValueError('invalid membership path')
+        ids.add(int(ident))
+        controllers_seen.update(controllers)
+        rows.append({'hierarchyId': int(ident), 'controllers': sorted(controllers), 'path': path})
+    return sorted(rows, key=lambda row: row['hierarchyId'])
+
+
+def parse_cgroup_mounts(raw):
+    """Pure parser for relevant mountinfo records; runtime IDs/propagation IDs are not limits."""
+    if not isinstance(raw, str):
+        raise ValueError('missing mountinfo')
+    rows = []
+    seen = set()
+    for line in raw.splitlines():
+        parts = line.split(' - ')
+        if len(parts) != 2:
+            raise ValueError('malformed mountinfo separator')
+        left, right = parts[0].split(), parts[1].split()
+        if len(left) < 6 or len(right) != 3:
+            raise ValueError('malformed mountinfo fields')
+        if right[0] not in ('cgroup', 'cgroup2'):
+            continue
+        if not left[0].isdecimal() or not left[1].isdecimal() or not re.fullmatch(r'[0-9]+:[0-9]+', left[2]):
+            raise ValueError('invalid mount identity')
+        if len(left[5].split(',')) != len(set(left[5].split(','))) or len(right[2].split(',')) != len(set(right[2].split(','))):
+            raise ValueError('duplicate mount options')
+        if left[4] in seen:
+            raise ValueError('duplicate cgroup mountpoint')
+        seen.add(left[4])
+        rows.append({'device': left[2], 'root': left[3], 'mountpoint': left[4],
+                     'mountOptions': sorted(left[5].split(',')), 'filesystem': right[0],
+                     'source': right[1], 'superOptions': sorted(right[2].split(','))})
+    return sorted(rows, key=lambda row: row['mountpoint'])
+
+
+def validate_cgroup_snapshot(snapshot):
+    """Pure compatibility check against immutable, monitor-hash-bound prospective constants."""
+    reviewed = REVIEWED_CGROUP_BASELINE
+    memberships = parse_cgroup_memberships(snapshot['rawMembership'])
+    if memberships != reviewed['memberships']:
+        raise ValueError('unreviewed hierarchy/controller/membership change')
+    parsed_mounts = parse_cgroup_mounts(snapshot['rawMountinfo'])
+    normalized = []
+    nsdelegate = False
+    for row in parsed_mounts:
+        normalized_row = dict(row)
+        options = list(row['superOptions'])
+        if row['filesystem'] == 'cgroup2' and row['mountpoint'] == '/sys/fs/cgroup/unified':
+            nsdelegate = 'nsdelegate' in options
+            options = [o for o in options if o != 'nsdelegate']
+        normalized_row['superOptions'] = options
+        normalized.append(normalized_row)
+    if normalized != reviewed['mounts']:
+        raise ValueError('unreviewed cgroup mount structure/options/controller binding')
+    memory_groups = snapshot['memoryGroups']
+    if set(memory_groups) != set(reviewed['memory']):
+        raise ValueError('missing/unrecognized applicable memory group')
+    usage_fields = {'memory.usage_in_bytes', 'memory.memsw.usage_in_bytes'}
+    for path, limits in reviewed['memory'].items():
+        actual = memory_groups[path]
+        if set(actual) != set(limits) | usage_fields:
+            raise ValueError('missing/unrecognized memory interface')
+        for name in ('memory.limit_in_bytes', 'memory.memsw.limit_in_bytes'):
+            value = actual[name]
+            if type(value) is not str or re.fullmatch(r'(?:0|[1-9][0-9]*)', value) is None:
+                raise ValueError('memory limits must be canonical decimal strings')
+            if value != limits[name]:
+                raise ValueError('memory limit/memsw changed')
+        if type(actual['memory.use_hierarchy']) is not int or actual['memory.use_hierarchy'] != 1:
+            raise ValueError('memory hierarchy must be integer 1')
+        if any(type(actual[k]) is not int or actual[k] < 0 for k in usage_fields):
+            raise ValueError('memory usage must be nonnegative integers')
+    cpu = snapshot['cpu']
+    if cpu != reviewed['cpu']:
+        raise ValueError('CPU membership/quota/period/shares/count/affinity/cpuset changed')
+    if type(cpu['count']) is not int or any(type(v) is not int for v in cpu['controls'].values()):
+        raise ValueError('invalid CPU control types')
+    if any(type(v) is not int for v in cpu['affinity']):
+        raise ValueError('invalid affinity types')
+    # Exact empty controller/subtree sets and absent memory/swap files are mandatory.
+    if snapshot['v2'] != reviewed['v2']:
+        raise ValueError('unreviewed v2 controllers/subtree/memory/swap interface')
+    return {'rawMembership': snapshot['rawMembership'], 'parsedMembership': memberships,
+            'rawMountRecords': [line for line in snapshot['rawMountinfo'].splitlines()
+                                if line.split(' - ')[1].split()[0] in ('cgroup', 'cgroup2')],
+            'parsedMounts': parsed_mounts, 'normalizedMounts': normalized,
+            'mountCompatibility': {'matchesReviewedStructure': True, 'nsdelegatePresent': nsdelegate},
+            'applicablePaths': {'memoryRoot': '/sys/fs/cgroup/memory',
+                                'memoryMembership': '/sys/fs/cgroup/memory/init.scope',
+                                'cpu': '/sys/fs/cgroup/cpu', 'cpuset': '/sys/fs/cgroup/cpuset',
+                                'v2Root': '/sys/fs/cgroup/unified',
+                                'v2Membership': '/sys/fs/cgroup/unified/init.scope'},
+            'memoryGroups': memory_groups, 'cpu': cpu, 'v2': snapshot['v2'],
+            'historicalCpuEquivalenceAsserted': False}
+
+
 def cgroup():
-    # Intentionally specific to inspected hybrid/v1 hierarchy; different layout needs review.
-    baseline = json.loads((HERE / 'readiness.json').read_text())
-    if Path('/proc/self/cgroup').read_text() != baseline['cgroupMembership']:
-        raise RuntimeError('changed cgroup membership requires review')
-    result = {}
-    for root in ('/sys/fs/cgroup/memory', '/sys/fs/cgroup/memory/init.scope'):
-        for name in ('memory.limit_in_bytes', 'memory.memsw.limit_in_bytes',
-                     'memory.usage_in_bytes', 'memory.memsw.usage_in_bytes'):
-            p = root + '/' + name
-            result[p] = int(Path(p).read_text())
-            if 'limit' in name and str(result[p]) != baseline['cgroupObservations'][p].strip():
-                raise RuntimeError('changed cgroup limit requires review')
-    for root in ('/sys/fs/cgroup/unified', '/sys/fs/cgroup/unified/init.scope'):
-        if Path(root + '/cgroup.controllers').read_text().strip():
-            raise RuntimeError('new v2 controller requires review')
-    return result
+    # Live capture called only by a separately authorized attempt. The compatibility helpers above
+    # are pure and do not load a mutable baseline file; their constants are bound by monitor hash.
+    raw = Path('/proc/self/cgroup').read_text()
+    membership = parse_cgroup_memberships(raw)
+    if membership != REVIEWED_CGROUP_BASELINE['memberships']:
+        raise ValueError('unreviewed memberships before interface reads')
+    groups = {}
+    for root in REVIEWED_CGROUP_BASELINE['memory']:
+        groups[root] = {name: Path(root, name).read_text(encoding='ascii').strip() for name in (
+            'memory.limit_in_bytes', 'memory.memsw.limit_in_bytes')}
+        groups[root].update({name: int(Path(root, name).read_text()) for name in (
+            'memory.use_hierarchy', 'memory.usage_in_bytes', 'memory.memsw.usage_in_bytes')})
+    controls = {name: int(Path('/sys/fs/cgroup/cpu', name).read_text()) for name in (
+        'cpu.cfs_quota_us', 'cpu.cfs_period_us', 'cpu.shares')}
+    allowed_lines = [line.split(':', 1)[1].strip() for line in Path('/proc/self/status').read_text().splitlines()
+                     if line.startswith('Cpus_allowed_list:')]
+    if len(allowed_lines) != 1:
+        raise ValueError('missing/duplicate allowed CPU list')
+    cpu = {'membership': '/', 'controls': controls, 'count': os.cpu_count(),
+           'affinity': sorted(os.sched_getaffinity(0)), 'allowedList': allowed_lines[0],
+           'cpusetMembership': '/', 'cpuset': {
+               name: Path('/sys/fs/cgroup/cpuset', name).read_text().strip() for name in (
+                   'cpuset.cpus', 'cpuset.effective_cpus', 'cpuset.mems', 'cpuset.effective_mems')}}
+    unified = {}
+    for root in REVIEWED_CGROUP_BASELINE['v2']:
+        unified[root] = {}
+        for name in ('cgroup.controllers', 'cgroup.subtree_control'):
+            unified[root][name] = {'present': True, 'value': Path(root, name).read_text().strip()}
+        for name in ('memory.max', 'memory.current', 'memory.swap.max', 'memory.swap.current'):
+            unified[root][name] = {'present': os.path.lexists(Path(root, name))}
+    return validate_cgroup_snapshot({'rawMembership': raw,
+        'rawMountinfo': Path('/proc/self/mountinfo').read_text(),
+        'memoryGroups': groups, 'cpu': cpu, 'v2': unified})
 
 def process(pid):
     p = Path('/proc') / str(pid)
@@ -203,6 +342,7 @@ def main(authorization_path):
     log = None
     before = None
     stats = None
+    cg = None
     output_created = False
     known = {}
     reason = None
@@ -236,6 +376,7 @@ def main(authorization_path):
 
     def core_result(complete=False):
         return {'provenance': provenance, 'compilerLaunched': child is not None,
+                'lastCgroupObservation': cg,
                 'compilerExit': code, 'stopReason': reason or ('finalization error' if errors else None),
                 'finalizationErrors': list(errors), 'finalizationComplete': complete and not errors,
                 'successPermanentlyBlocked': bool(errors or reason or code != 0 or child is None),
@@ -284,7 +425,7 @@ def main(authorization_path):
         stats = {str(f.relative_to(cache)): (f.stat().st_size, f.stat().st_mtime_ns, f.stat().st_ino)
                  for f in cache.rglob('*') if f.is_file()}
         m = memory()  # Recheck after cache hashing, immediately before allocating attempt state.
-        cgroup()
+        cg = cgroup()
         if m['MemAvailable'] < p['launchMemAvailableKiB'] or m['SwapFree'] < p['launchSwapFreeKiB']:
             raise RuntimeError('launch resource floor changed during preflight')
         # Catch changes after authorization/preflight hashing without logging authorization content.

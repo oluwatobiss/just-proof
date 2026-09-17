@@ -1,0 +1,37 @@
+{
+  "baselineCommit": "931a862fd1b8ba85079e201f5f67d9c53f21b3e8",
+  "classification": "BLOCKED_STATIC_PRIVACY_ADAPTER_OR_CONTAINMENT",
+  "files": {
+    "docs/development/phase-3e3a3b-r61-static-blocker-adjudication-report.md": {
+      "bytes": 13413,
+      "sha256": "94d67e401a755b8ae85e37ce8794f307b0f2ea6d011796e4aaaf9abcf890ce7e"
+    },
+    "docs/development/evidence/phase-3e3a3b/adjudication.json": {
+      "bytes": 59357,
+      "sha256": "0256753518dc54d9f7c2a44cf9f73e16819e96cd3621b6087ac1e4c24e9f3746"
+    },
+    "docs/development/evidence/phase-3e3a3b/preflight-review.json": {
+      "bytes": 1175,
+      "sha256": "93bf1d37c1bb59a67b7ce02c805ecd3590b74eda0b78862676c12a7da2070c43"
+    },
+    "docs/development/evidence/phase-3e3a3b/proposed-memory-provider.ts": {
+      "bytes": 2628,
+      "sha256": "477639cdf7f12a22c825b8422607419d7ba4d975f24a53f0cefde791b45eb921"
+    },
+    "docs/development/evidence/phase-3e3a3b/runtime-inventory.json": {
+      "bytes": 1989,
+      "sha256": "4f286c0c639e5c3624589eb25087cbd2faefa6250ba127a091b26c9846a916d9"
+    },
+    "docs/development/evidence/phase-3e3a3b/tsconfig.proposal.json": {
+      "bytes": 229,
+      "sha256": "523b258066c5575da880da84aa5f2e78df51dbcbab43678a837a4f7397e093fc"
+    }
+  },
+  "preservationPassed": true,
+  "staticCallerChecksPassed": true,
+  "jsonParsingPassed": true,
+  "targetedTypecheckExit": 0,
+  "gitDiffCheckExit": 0,
+  "selfHashExcluded": true,
+  "finalGitStatus": "?? docs/development/evidence/phase-3e3a3b/\n?? docs/development/phase-3e3a3b-r61-static-blocker-adjudication-report.md\n"
+}

@@ -1,0 +1,27 @@
+{
+  "status": "NOT_EXECUTION_READY",
+  "command": null,
+  "authorizationSchema": null,
+  "reason": "Parameter resolver/name metadata and runtime unknown; dev-node autonomous block production conflicts with literal no-ledger-execution requirement. No misleading exact command supplied.",
+  "requiredCorrections": [
+    "explicit fail-if-exists evidence and durable hash-bound authorization marker",
+    "no wallet/proof/transaction requests or private data",
+    "no download/pull/cache mutation/parameter content inspection",
+    "detect fetch attempts through reviewed metadata/log categories without raw error retention",
+    "complete stack must be ready before idle aggregate/per-container/process accounting",
+    "stop on ambiguity/mutation; retain marker and evidence",
+    "health alone is not parameter availability",
+    "resolve whether empty dev block production is permitted; otherwise cannot start full dev stack"
+  ],
+  "authorizationFutureBindings": [
+    "baseline",
+    "plan",
+    "monitor",
+    "runtime-image",
+    "configuration",
+    "parameter-metadata-allowlist",
+    "source",
+    "managed-artifact-inventory"
+  ],
+  "phase3E3A4Authorized": false
+}

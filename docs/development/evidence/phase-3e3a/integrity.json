@@ -1,0 +1,37 @@
+{
+  "baselineHead": "1f1fc4dae8d8ae19d3f7542afed40a5aa5a6af64",
+  "previousIntegritySha256": "e2a912640d4b00256e98460308ab5a5ef90626409ef9621bf4da0a97518acdb9",
+  "reportPrefix": {
+    "bytes": 23348,
+    "sha256": "f80916f4d56c24817ba6a90e9b2b5f1a00dccbfeb5c4930eeda44cd25741cd40",
+    "preserved": true
+  },
+  "classification": "COULD_NOT_VERIFY",
+  "files": {
+    "docs/development/evidence/phase-3e3a/conditional-plan.json": {
+      "bytes": 3326,
+      "sha256": "0925968f6a721d5ec71cdf81138be398717ae0aecacc225d12a1749ceac7daa9"
+    },
+    "docs/development/evidence/phase-3e3a/capability-evidence.json": {
+      "bytes": 50260,
+      "sha256": "a21741fae5ef500708beb538ffb7d9f34822cb209f9c09adf62ada257ba47305"
+    },
+    "docs/development/evidence/phase-3e3a/adapter-adjudication.json": {
+      "bytes": 6248,
+      "sha256": "0c7f7d79f26558a81e0a3efac08eb5c400fa29105da4d48b09bddf3dce17fdc4"
+    },
+    "docs/development/phase-3e3a-r61-proof-verification-preflight-report.md": {
+      "bytes": 38214,
+      "sha256": "6f9745333939ba07f2ddc5dfd13c381ded15a9104c112434643e2087336414f6"
+    }
+  },
+  "preservedFileCount": 278,
+  "changedPreservedFiles": [],
+  "jsonParsed": true,
+  "proposedRunnerCreated": false,
+  "gitDiffCheckExit": 0,
+  "gitStatusShort": "?? docs/development/evidence/phase-3e3a/\n?? docs/development/phase-3e3a-r61-proof-verification-preflight-report.md\n",
+  "ownHashExcluded": true,
+  "phase3E3BAuthorized": false,
+  "r61Open": true
+}

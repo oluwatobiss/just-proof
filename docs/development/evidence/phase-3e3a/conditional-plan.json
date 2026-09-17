@@ -1,0 +1,75 @@
+{
+  "status": "CONDITIONAL_DESIGN_NOT_EXECUTION_READY",
+  "classification": "COULD_NOT_VERIFY",
+  "authorizationRequired": true,
+  "serviceCandidate": {
+    "image": "midnightntwrk/proof-server:8.1.0",
+    "url": "http://127.0.0.1:6300",
+    "liveVersionOrAvailabilityChecked": false
+  },
+  "coverage": [
+    "registerIssuerV2",
+    "registerCredentialV2",
+    "proveQualificationV2",
+    "revokeCredentialV2"
+  ],
+  "negativeVerificationCases": [
+    "modified proof byte",
+    "wrong circuit verifier key",
+    "changed public output",
+    "changed request field",
+    "changed time transcript bound",
+    "changed authoritative root/state"
+  ],
+  "unresolvedGates": [
+    "Opaque ledger verifier semantics: verifier-key lookup, all-call proof/transcript/time/state validation and mutation guarantees",
+    "No established full ContractState/operation-table insertion into synthetic LedgerState without apply",
+    "Strict balancing/signature/binding and fee requirements with all five strictness flags enabled",
+    "Official HTTP provider retries fetch failures and 500/503; follows redirects without configurable disable",
+    "Server verbose/error logging and parameter availability need separately authorized service-only preflight"
+  ],
+  "proposedOnlySafeguards": {
+    "minimumMemTotalKiB": 12253256,
+    "minimumSwapTotalKiB": 8388608,
+    "launchMemAvailableKiB": 8388608,
+    "launchSwapFreeKiB": 6291456,
+    "runtimeMemAvailableKiB": 2097152,
+    "runtimeSwapFreeKiB": 2097152,
+    "sampleSeconds": 0.5,
+    "maximumSampleGapSeconds": 2,
+    "termToKillSeconds": 5,
+    "perCircuitGracefulSeconds": 2695,
+    "perCircuitHardSeconds": 2700,
+    "httpTimeoutMilliseconds": 2695000,
+    "concurrency": 1,
+    "automaticRetries": null,
+    "parameterDownloads": 0,
+    "minimumFreeDiskBytes": 10737418240,
+    "retryPolicy": "UNDECIDED; no custom transport substitution"
+  },
+  "pathsProposedNotCreated": {
+    "evidence": "docs/development/evidence/phase-3e3b",
+    "marker": "docs/development/evidence/phase-3e3b/attempt-started",
+    "output": "/tmp/justproof-phase3e3b-local-proof-attempt1"
+  },
+  "commands": {
+    "serviceCandidateForSeparateApproval": "docker compose up -d --no-deps --pull never proof-server",
+    "proofVerificationCommand": null,
+    "reason": "No reviewed harness/verification adapter exists; inventing an executable command would overstate readiness."
+  },
+  "environmentProposal": {
+    "MIDNIGHT_NETWORK": "local",
+    "RAYON_NUM_THREADS": "2",
+    "XDG_CACHE_HOME": "/home/oluwatobiss/.cache",
+    "note": "RAYON applies only to a separately reviewed server/in-process runner; host overrides do not automatically reach Compose container."
+  },
+  "ledgerWalletNetworkSubmissionAuthorized": false,
+  "cleanup": "Retain proof-only artifacts, hashes, public sanitized metadata, marker and failures; never delete existing Phase 3E2B state. Witnesses/preimages in memory only; no automatic retry.",
+  "historicalPlanSha256": "ac0e03ae938cab1586d911e3f4f6bea623798c30a92dbef0135a1c762a264da9",
+  "adjudication": "adapter-adjudication.json",
+  "retryPolicyDecisionRequired": [
+    "Separate authorization for one logical run with pinned bounded retry semantics, only after redirect/privacy review",
+    "Stop pending supported retry-free transport"
+  ],
+  "customTransportSelected": false
+}

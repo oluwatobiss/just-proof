@@ -1,0 +1,169 @@
+{
+  "phase": "3E3A-adjudication",
+  "capturedAtUtc": "2026-09-17T04:53:44.247037+00:00",
+  "baselineHead": "1f1fc4dae8d8ae19d3f7542afed40a5aa5a6af64",
+  "classification": "COULD_NOT_VERIFY",
+  "sourceEvidence": {
+    "node_modules/@midnight-ntwrk/ledger-v8/ledger-v8.d.ts": {
+      "bytes": 93666,
+      "sha256": "4a6eaccd531f0bb711dd8a8926d14beedd2ab8345deff378f86068608d67dc36",
+      "locations": [
+        "ContractOperation:706",
+        "ContractState:765",
+        "ChargedState:1004",
+        "WellFormedStrictness:1246",
+        "LedgerState:1659",
+        "ContractCallPrototype:1943",
+        "Transaction.prove:2335",
+        "Transaction.wellFormed:2397"
+      ]
+    },
+    "node_modules/@midnight-ntwrk/ledger-v8/midnight_ledger_wasm_bg.js": {
+      "bytes": 318367,
+      "sha256": "0fcb6f30ec4c0f894917d516db627d78de5630377bf7918bac08466b894cb716",
+      "locations": [
+        "preimage:1010",
+        "call constructor:2150",
+        "updateIndex:5126",
+        "apply:5260",
+        "wellFormed:7209",
+        "prove:7410",
+        "strictness:8336"
+      ]
+    },
+    "node_modules/@midnight-ntwrk/midnight-js-contracts/dist/index.mjs": {
+      "bytes": 97750,
+      "sha256": "9c8079430513e7b459d52fc6d22ab5dede22f86073a4b50dcbdf35de99bb4072",
+      "locations": [
+        "createUnprovenLedgerCallTx:896",
+        "call result split:1350",
+        "verifyContractState:1847"
+      ]
+    },
+    "node_modules/@midnight-ntwrk/midnight-js-contracts/dist/index.mjs.map": {
+      "bytes": 40858,
+      "sha256": "52c9962f9cba77ddecd0391f4aa986dcf3703f51b2e4fad933842362d6cc04a2",
+      "locations": [
+        "21 embedded TypeScript sources; no underlying ledger Rust implementation"
+      ]
+    },
+    "node_modules/@midnight-ntwrk/midnight-js-http-client-proof-provider/dist/index.mjs": {
+      "bytes": 5967,
+      "sha256": "f412603b4d2b262f864d9aa09eba0195a64de3ec258e2afe0e78f7c26354bc3c",
+      "locations": [
+        "retryOptions:21",
+        "makeHttpRequest:45",
+        "provider:56",
+        "proveTx:130"
+      ]
+    },
+    "node_modules/@midnight-ntwrk/midnight-js-http-client-proof-provider/dist/index.d.mts": {
+      "bytes": 1867,
+      "sha256": "15fb67ae6da583e054286f6ba9d151d208ad4b7bade5c56126ea5e53101e1de2",
+      "locations": [
+        "ProvingProviderConfig:5"
+      ]
+    },
+    "node_modules/fetch-retry/index.js": {
+      "bytes": 4670,
+      "sha256": "ac4b51567e8b80c015dda527646500239da2e7102b6aad78f92117d3db57f31c",
+      "locations": [
+        "attempts:wrappedFetch(0), attempt<retries; catch; retry"
+      ]
+    },
+    "node_modules/fetch-retry/test/unit/index.js": {
+      "bytes": 28948,
+      "sha256": "edbf7f1eabc4c23b39199c7fff57ec2322ec3866b30eab9fa96caa0d48001636",
+      "locations": [
+        "locally installed retry unit examples inspected as text only"
+      ]
+    },
+    "node_modules/cross-fetch/dist/node-ponyfill.js": {
+      "bytes": 624,
+      "sha256": "3866b630fc1f86be456d58a3a6a59239652fd82c417ec0a7ff15c231535679bc",
+      "locations": [
+        "delegates Node requests to node-fetch"
+      ]
+    },
+    "node_modules/cross-fetch/node_modules/node-fetch/lib/index.js": {
+      "bytes": 45775,
+      "sha256": "79541f01338e70f4ff6f8a1d12f5c2914d4c6ab2ba96b7ddf48d2add01c13813",
+      "locations": [
+        "default redirect/follow:1249,1256",
+        "redirect handling:1582-1638"
+      ]
+    },
+    "compose.yml": {
+      "bytes": 1974,
+      "sha256": "7dfe495f96718ba7749616a93a741f0a609e512516a6d8bb321da997865effd8",
+      "locations": [
+        "proof-server image 8.1.0, -v, full backtrace; no mounted artifact/cache directory"
+      ]
+    },
+    "node_modules/@midnight-ntwrk/zkir-v2/zkir-v2.d.ts": {
+      "bytes": 1156,
+      "sha256": "e8d72f23e9ae3b22434891708c840efd485872c7314b2aa4e63c31d27803e128",
+      "locations": [
+        "prove/check; no direct verifier declared"
+      ]
+    },
+    "node_modules/@midnight-ntwrk/onchain-runtime-v3/onchain-runtime-v3.d.ts": {
+      "bytes": 30443,
+      "sha256": "31d0d38a81d910c9154599494071b0fd4e99e354b34ebb386399a163cf0c627c",
+      "locations": [
+        "runTranscript is VM operation, verifySignature is signature only"
+      ]
+    }
+  },
+  "callGraphStatus": "JS assembly established; cryptographic verification, full reference-state injection and immutable validation semantics remain inside opaque version-matched WASM",
+  "strictnessProposal": {
+    "constructor": "new WellFormedStrictness()",
+    "enforceBalancing": true,
+    "verifyNativeProofs": true,
+    "verifyContractProofs": true,
+    "enforceLimits": true,
+    "verifySignatures": true,
+    "defaultValues": "not established statically; wasm.wellformedstrictness_new()",
+    "transcriptTimeStateFlags": "No separate flags declared; exact checks and all-call coverage unresolved"
+  },
+  "referenceStateDecision": "No justified runner. updateIndex takes ChargedState, not full ContractState; no established route preserving operation/verifier-key table in blank ledger without applying a transaction. Do not invent serialization or disable checks.",
+  "retryAdjudication": {
+    "fetchRetryVersion": "6.0.0",
+    "crossFetchVersion": "4.1.0",
+    "nodeFetchResolvedVersion": "2.7.0",
+    "initialPlusRetries": 4,
+    "httpStatuses": [
+      500,
+      503
+    ],
+    "rejectedFetchPromisesRetried": true,
+    "delaysMilliseconds": [
+      1000,
+      2000,
+      4000
+    ],
+    "samePayloadAndSignalReused": true,
+    "redirectMode": "follow",
+    "maximumRedirectsPerFetch": 20,
+    "post301302303BecomesGet": true,
+    "post307308RetainsBody": true,
+    "supportedProviderRetryOrRedirectOverride": false,
+    "proveTxUsesSameProvider": true,
+    "canRepeatProofComputation": true,
+    "choices": [
+      "Separate authorization for one logical run with pinned bounded retry semantics, only after redirect/privacy review",
+      "Stop pending supported retry-free transport"
+    ],
+    "customTransportImplementedOrSelected": false
+  },
+  "privacy": {
+    "verboseLoggingSemanticsKnown": false,
+    "parameterAvailabilityKnown": false,
+    "serverInspectedLive": false,
+    "serviceOnlyPreflightRequiredBeforeWitnesses": true
+  },
+  "proposedRunnerCreated": false,
+  "executed": false,
+  "phase3E3BAuthorized": false,
+  "r61Open": true
+}

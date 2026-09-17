@@ -1,0 +1,30 @@
+{
+  "command": [
+    "docker",
+    "run",
+    "-d",
+    "--name",
+    "justproof-phase3e3a1-proof-server",
+    "--pull",
+    "never",
+    "--network",
+    "justproof-phase3e3a1-internal",
+    "--publish",
+    "127.0.0.1:6300:6300",
+    "--restart",
+    "no",
+    "--env",
+    "RUST_BACKTRACE=0",
+    "--entrypoint",
+    "/nix/store/6naj0x3l5n0b4cx722xwasyp597p6z3h-ledger-8.1.0/bin/midnight-proof-server",
+    "midnightntwrk/proof-server:8.1.0",
+    "--port",
+    "6300",
+    "--no-fetch-params",
+    "--num-workers",
+    "1"
+  ],
+  "exit": 0,
+  "stdout": "96c7a7bdb3479175848586f4d6c4583d7f3987c7abfe9a2be45d391c10e4737a\n",
+  "stderr": ""
+}

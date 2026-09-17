@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+content-length: 120
+vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+content-type: application/json
+access-control-allow-credentials: true
+access-control-expose-headers: content-type
+date: Thu, 17 Sep 2026 15:15:08 GMT
+

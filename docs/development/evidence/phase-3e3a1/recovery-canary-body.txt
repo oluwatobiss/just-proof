@@ -1,0 +1,1 @@
+expected header tag 'midnight:(proof-preimage-versioned,option(proving-data),option(fr-bls)):', got 'JP_PHASE3E3A1_RECOVERY_CANARY_NOT_PRIVATE_20260917'

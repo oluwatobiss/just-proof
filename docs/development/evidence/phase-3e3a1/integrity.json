@@ -1,0 +1,256 @@
+{
+  "baselineCommit": "28e906388e6558cb037f57ffa2973429fe859a13",
+  "classification": "LOCAL_PROOF_SERVICE_RESPONDS_AWAITING_PRIVACY_AND_INTEGRATION_PLAN",
+  "previousIntegrity": {
+    "bytes": 5939,
+    "sha256": "c4d46ef036d1d8c7f39140e3d862bcc58895054eabdc30023f58737cd67fdc4c"
+  },
+  "reportPrefix": {
+    "bytes": 9286,
+    "sha256": "53f986ba42ad109d2cea49ffc9c8cd5c0178ac454a63e9cf1f452144c70f1b92"
+  },
+  "report": {
+    "bytes": 15974,
+    "sha256": "14aacabcf38bf9ad02a1d4f529c84446bddf065ee89a620d66614817b1e3aef7"
+  },
+  "files": {
+    "docs/development/evidence/phase-3e3a1/container-stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/development/evidence/phase-3e3a1/container-stdout.txt": {
+      "bytes": 1993,
+      "sha256": "23bb2f0f5ccc20a38d58fbfdb935567f45e7034de16b36530657aed41ce5badf"
+    },
+    "docs/development/evidence/phase-3e3a1/docker-version.json": {
+      "bytes": 1672,
+      "sha256": "ad89cb74dc5992b48e9800b8d6330cc0790b18828c3ff82de55cfd9532253067"
+    },
+    "docs/development/evidence/phase-3e3a1/endpoints.json": {
+      "bytes": 2148,
+      "sha256": "0e2f3758a387f9022040ffe60c1b5ee66a89a8de6c6160c898a067187e70cc42"
+    },
+    "docs/development/evidence/phase-3e3a1/filesystem-diff.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/development/evidence/phase-3e3a1/final-inspection.json": {
+      "bytes": 4153,
+      "sha256": "446d5a45a9e45b0ee74e22eed002ed2fe3f5a74f138c2ddc8b06333a47169a91"
+    },
+    "docs/development/evidence/phase-3e3a1/health-headers.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/development/evidence/phase-3e3a1/help.txt": {
+      "bytes": 622,
+      "sha256": "d8ba81a2e3612cda024a4a42d584e18a7a698db2b77ef37a6ef9d7542b76a3c2"
+    },
+    "docs/development/evidence/phase-3e3a1/image.json": {
+      "bytes": 696,
+      "sha256": "8923301ea50a9ffb96e62fe34b4de12cc07fb6a521365ec641df229d49d2ed4b"
+    },
+    "docs/development/evidence/phase-3e3a1/launch.json": {
+      "bytes": 643,
+      "sha256": "3184d60d4bc106e4653cb66b4524012e4f1fa59095685ffae92f60cd54ee1d28"
+    },
+    "docs/development/evidence/phase-3e3a1/network.json": {
+      "bytes": 951,
+      "sha256": "8e1906dde3f1fb344186ce20464b873ac3fd07a55b43788be72e8bff95bec940"
+    },
+    "docs/development/evidence/phase-3e3a1/observations.json": {
+      "bytes": 2731,
+      "sha256": "429b32405e8a7200e51e8d5bfb742cb65d24fead561f3bf39e28def1e19d8c0b"
+    },
+    "docs/development/evidence/phase-3e3a1/preservation-baseline.json": {
+      "bytes": 44901,
+      "sha256": "ec582df17ef1cc0f3d44f059412fe687a0ca507c086ca386fe1af0c81e6cfb82"
+    },
+    "docs/development/evidence/phase-3e3a1/ready-headers.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-bridge.json": {
+      "bytes": 1435,
+      "sha256": "122c97b69a86293580f3cbfa55d1e4227ecc32675a5e35a929770a5a45b0c387"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-canary-body.txt": {
+      "bytes": 152,
+      "sha256": "211a6aec6f4f52d5e77e7c83b46880c7effdf95945c2101a6b285d2ca141de60"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-canary-headers.txt": {
+      "bytes": 289,
+      "sha256": "0472dcab680c3909ec2a2d1f13f41567781d057ef72508dd216f7042379c88a5"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-canary.json": {
+      "bytes": 632,
+      "sha256": "cd767a49ba672afdf3b8cbdd37a1abebca9dffbd96fe962d9fbad87bacbba8df"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-container-stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-container-stdout.txt": {
+      "bytes": 2875,
+      "sha256": "439e6e7fe46a5bd676f7775a60943bf0113fafa70a0b241f71bea02057ec82fe"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-endpoints.json": {
+      "bytes": 1916,
+      "sha256": "bae343073c3ba4cc18771f60a31f29c9a395649c622b58c21643875fe2970c17"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-filesystem-diff.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-final-inspection.json": {
+      "bytes": 7275,
+      "sha256": "d66f916f33ac6dd55b38e381cae235671c1dd16f7c6cb7e2a8f875b10908309d"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-health-body.txt": {
+      "bytes": 69,
+      "sha256": "8825b8fbde9795477dd1b845bc6e04f2a0187bf0db097878e7374a504e45abf3"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-health-headers.txt": {
+      "bytes": 270,
+      "sha256": "bc98efa725430faa17384ee2b218b391dccea3fdf1c80f28d9cad1c681985d60"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-launch.json": {
+      "bytes": 624,
+      "sha256": "848af9bbdbb4e5f06f0a7ee45af5bab9da92c8e251172c002bc1f2790ce48203"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-ready-body.txt": {
+      "bytes": 120,
+      "sha256": "e39a294ec2f9b5333a86226c60d22a16e62c6999d7b8e92e385d8569cc1c6a09"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-ready-headers.txt": {
+      "bytes": 271,
+      "sha256": "2ae353bad898f82b233d284b2a9197b71ce6991896f03e700173d84a5ddb236f"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-result.json": {
+      "bytes": 821,
+      "sha256": "3837fc8c96f1fd92c3537d48715dba37e4b706dec0bf1b012ae5b06670a5ff21"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-startup-inspection.json": {
+      "bytes": 5767,
+      "sha256": "0d47ec3a512bac247875f3f8fee90b9a49f4231f7719f842dd14e955f3a3bb9d"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-stop.json": {
+      "bytes": 205,
+      "sha256": "ee43d191c866e70ef11ab16dac2df3208e6737fdf7b36efa3951d0136fd52db0"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-version-body.txt": {
+      "bytes": 5,
+      "sha256": "b4b41112e37cfecd1d19a2a6210b745bc3134ae321b43a5d706c335bcd08f279"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-version-headers.txt": {
+      "bytes": 278,
+      "sha256": "f0a023fdbaf6217e1a9376dcdb23b6d952b3d956413394cb1534293cb9e87628"
+    },
+    "docs/development/evidence/phase-3e3a1/restart-adjudication.json": {
+      "bytes": 1850,
+      "sha256": "506e8d874aea5445cb3a53759206a737abca7b1bb6b38a99085dd0b0ecf0a0cd"
+    },
+    "docs/development/evidence/phase-3e3a1/startup-inspection.json": {
+      "bytes": 4361,
+      "sha256": "9086a63e421738fdf8b7298f0e3777ed4e2ae98576efd3aefe18a7097f886155"
+    },
+    "docs/development/evidence/phase-3e3a1/stop.json": {
+      "bytes": 249,
+      "sha256": "865510abfcd865ceb6c303badeadac2f31b9fa0b98daf2e963c9a9429f0161f6"
+    },
+    "docs/development/evidence/phase-3e3a1/version-headers.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "originalEvidenceUnchanged": true,
+  "durablePreservationCount": 262,
+  "managedInventory": {
+    "compiler/contract-info.json": {
+      "bytes": 24565,
+      "sha256": "868cca4e3cc858d9cb0cb63ce93e81808509a2eaa60d9ff65c32b54bd3a4902d"
+    },
+    "contract/index.js.map": {
+      "bytes": 10682,
+      "sha256": "2ff2c49f300b2843a8cbf7d365a4b4f739d1addd1da9f476a6cf7e8ad81ebe78"
+    },
+    "contract/index.d.ts": {
+      "bytes": 12959,
+      "sha256": "0139fd7406b87a3498b5141ff2bdce2dcef9193753597326af99aa9e738b0d08"
+    },
+    "contract/index.js": {
+      "bytes": 200816,
+      "sha256": "b7396f8c593c99104aeb7ae0bf2f4fe4341beadf525ab841deeb5a064addaeef"
+    },
+    "keys/registerCredentialV2.prover": {
+      "bytes": 76642841,
+      "sha256": "1722f6f9cf0e818f414639fb179b9a3d7756242102e9fbe1367b5c167b5e263e"
+    },
+    "keys/proveQualificationV2.prover": {
+      "bytes": 76660599,
+      "sha256": "1dc78862643d288d1731fc43567667c9923b017ec23fa77f471f8c66059c762b"
+    },
+    "keys/registerCredentialV2.verifier": {
+      "bytes": 2119,
+      "sha256": "c0abaaf254564c21488f90784d8b29c8b106ae2e273fde89fa6fa392c4610d22"
+    },
+    "keys/revokeCredentialV2.prover": {
+      "bytes": 152517062,
+      "sha256": "87a0a6d42dc536f855d806418db0a47b6ab78535cbdfda5856c01a2ad2798908"
+    },
+    "keys/registerIssuerV2.verifier": {
+      "bytes": 2119,
+      "sha256": "b6c78daa6b3964912d9cbf2bd783365de7c18521ca26efffbee5b37e410e1a9a"
+    },
+    "keys/revokeCredentialV2.verifier": {
+      "bytes": 2119,
+      "sha256": "eb07cc2b21b2181426e596b9f459b13a441db99c177ad29b4fad1923209523d0"
+    },
+    "keys/registerIssuerV2.prover": {
+      "bytes": 76490158,
+      "sha256": "9c136a8ce811aedd13ad2e364005b1d3454f76fd7e29cd6edaff5b5a99dcca28"
+    },
+    "keys/proveQualificationV2.verifier": {
+      "bytes": 2119,
+      "sha256": "21fcff4439ed11bd959a0f3f6f58a2bc2358912de142014309fdaf7c5ad4e56a"
+    },
+    "zkir/registerCredentialV2.zkir": {
+      "bytes": 65083,
+      "sha256": "b04a6e786914be257ab88d09d148ca8918d08b302e970bc81cdaec47efc1227e"
+    },
+    "zkir/revokeCredentialV2.zkir": {
+      "bytes": 71809,
+      "sha256": "e28c864710d6b05da43dc1caa01e6d7e4ca4a66d6a87fe63511bcc0bac3a7c84"
+    },
+    "zkir/proveQualificationV2.zkir": {
+      "bytes": 72144,
+      "sha256": "7ca590bb29edd4f6dab806f7278878b1720b6773f4702b82e7c2e371db58a803"
+    },
+    "zkir/registerIssuerV2.bzkir": {
+      "bytes": 3056,
+      "sha256": "be21a00eda843b8ec88fb8e19f9a9645fe81659ed9354f8515d651991f3bab56"
+    },
+    "zkir/revokeCredentialV2.bzkir": {
+      "bytes": 6209,
+      "sha256": "98eedb891db4d2b3220c1306078033f8079cc92b8212e24c0e84bebc59d0d573"
+    },
+    "zkir/registerIssuerV2.zkir": {
+      "bytes": 37980,
+      "sha256": "ce061c319bdbdf15fad9fd53cdfb9f5602f66cc5fd1da745388e0b7ca978b699"
+    },
+    "zkir/proveQualificationV2.bzkir": {
+      "bytes": 6077,
+      "sha256": "918ce164f19565f8323efcfe29483f1976e5a302304f6d0deb41b8c1e9200ec6"
+    },
+    "zkir/registerCredentialV2.bzkir": {
+      "bytes": 5613,
+      "sha256": "26015eecbe8847ec442d288b3d252189892772e3af6168aa30b7a6b8ab4eedba"
+    }
+  },
+  "ephemeralPreservationAdjudication": "Historical /tmp loss consistent with user-confirmed restart; exact deletion mechanism unknown; not recreated.",
+  "jsonParsingPassed": true,
+  "gitDiffCheckExit": 0,
+  "finalGitStatus": "?? docs/development/evidence/phase-3e3a1/\n?? docs/development/phase-3e3a1-r61-local-proof-service-preflight-report.md\n",
+  "selfHashExcluded": true,
+  "r61Open": true
+}

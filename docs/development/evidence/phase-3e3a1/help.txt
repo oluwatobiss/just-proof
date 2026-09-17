@@ -1,0 +1,10 @@
+Usage: midnight-proof-server [OPTIONS]
+
+Options:
+  -p, --port <PORT>                  [env: MIDNIGHT_PROOF_SERVER_PORT=] [default: 6300]
+  -v, --verbose                      [env: MIDNIGHT_PROOF_SERVER_VERBOSE=]
+      --job-capacity <JOB_CAPACITY>  [env: MIDNIGHT_PROOF_SERVER_JOB_CAPACITY=] [default: 0]
+      --num-workers <NUM_WORKERS>    [env: MIDNIGHT_PROOF_SERVER_NUM_WORKERS=] [default: 2]
+      --job-timeout <JOB_TIMEOUT>    [env: MIDNIGHT_PROOF_SERVER_JOB_TIMEOUT=] [default: 600]
+      --no-fetch-params              [env: MIDNIGHT_PROOF_SERVER_NO_FETCH_PARAMS=]
+  -h, --help                         Print help

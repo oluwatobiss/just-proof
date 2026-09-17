@@ -1,0 +1,24 @@
+{
+  "Id": "sha256:801bbc0340e9e96f16735f77b523f23c7459e3359842f7c79c2c53f4e994d531",
+  "RepoDigests": [
+    "midnightntwrk/proof-server@sha256:801bbc0340e9e96f16735f77b523f23c7459e3359842f7c79c2c53f4e994d531"
+  ],
+  "Created": "1970-01-01T00:00:01Z",
+  "Architecture": "amd64",
+  "Os": "linux",
+  "Size": 26730919,
+  "Config": {
+    "Entrypoint": [
+      "/nix/store/d24gb0hj1rasyyp3jh0x52i5fd4mkxsi-bash-interactive-x86_64-unknown-linux-musl-5.3p9/bin/bash",
+      "-c"
+    ],
+    "Cmd": [
+      "/nix/store/6naj0x3l5n0b4cx722xwasyp597p6z3h-ledger-8.1.0/bin/midnight-proof-server --port $PORT"
+    ],
+    "ExposedPorts": {
+      "6300/tcp": {}
+    },
+    "User": null,
+    "Volumes": null
+  }
+}

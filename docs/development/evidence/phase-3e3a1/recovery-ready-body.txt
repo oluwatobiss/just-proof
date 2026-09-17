@@ -1,0 +1,1 @@
+{"status":"ok","jobsProcessing":0,"jobsPending":0,"jobCapacity":0,"timestamp":"2026-09-17 15:15:08.323603839 +00:00:00"}

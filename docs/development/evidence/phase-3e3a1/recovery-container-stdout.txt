@@ -1,0 +1,18 @@
+2026-09-17T15:13:20.584797636Z [2m2026-09-17T15:13:20.584448Z[0m [32m INFO[0m [2mactix_server::builder[0m[2m:[0m starting 8 workers
+2026-09-17T15:13:20.585136359Z [2m2026-09-17T15:13:20.584952Z[0m [32m INFO[0m [2mactix_server::server[0m[2m:[0m Actix runtime found; starting in Actix runtime
+2026-09-17T15:13:20.585153074Z [2m2026-09-17T15:13:20.584989Z[0m [32m INFO[0m [2mactix_server::server[0m[2m:[0m starting service: "actix-web-service-0.0.0.0:6300", workers: 8, listening on: 0.0.0.0:6300
+2026-09-17T15:15:08.308888127Z [2m2026-09-17T15:15:08.308500Z[0m [32m INFO[0m [2mactix_web::middleware::logger[0m[2m:[0m 172.17.0.1 GET /health HTTP/1.1; took 0.002044s
+2026-09-17T15:15:08.316555782Z [2m2026-09-17T15:15:08.316264Z[0m [32m INFO[0m [2mactix_web::middleware::logger[0m[2m:[0m 172.17.0.1 GET /version HTTP/1.1; took 0.000037s
+2026-09-17T15:15:08.323899794Z [2m2026-09-17T15:15:08.323634Z[0m [32m INFO[0m [2mactix_web::middleware::logger[0m[2m:[0m 172.17.0.1 GET /ready HTTP/1.1; took 0.000063s
+2026-09-17T15:15:41.983556828Z [2m2026-09-17T15:15:41.983178Z[0m [32m INFO[0m [2mmidnight_proof_server::endpoints[0m[2m:[0m Starting to process request for /prove...
+2026-09-17T15:15:41.984398713Z [2m2026-09-17T15:15:41.984168Z[0m [32m INFO[0m [2mactix_web::middleware::logger[0m[2m:[0m 172.17.0.1 POST /prove HTTP/1.1; took 0.001043s
+2026-09-17T15:16:01.021225796Z [2m2026-09-17T15:16:01.020988Z[0m [32m INFO[0m [2mactix_server::server[0m[2m:[0m SIGTERM received; starting graceful shutdown
+2026-09-17T15:16:01.021256566Z [2m2026-09-17T15:16:01.021086Z[0m [32m INFO[0m [2mactix_server::accept[0m[2m:[0m accept thread stopped
+2026-09-17T15:16:01.021267849Z [2m2026-09-17T15:16:01.021110Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker
+2026-09-17T15:16:01.021569196Z [2m2026-09-17T15:16:01.021151Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker
+2026-09-17T15:16:01.021580786Z [2m2026-09-17T15:16:01.021163Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker
+2026-09-17T15:16:01.021586427Z [2m2026-09-17T15:16:01.021168Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker
+2026-09-17T15:16:01.021591556Z [2m2026-09-17T15:16:01.021199Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker
+2026-09-17T15:16:01.021596376Z [2m2026-09-17T15:16:01.021224Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker
+2026-09-17T15:16:01.021602018Z [2m2026-09-17T15:16:01.021152Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker
+2026-09-17T15:16:01.021610736Z [2m2026-09-17T15:16:01.021314Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker

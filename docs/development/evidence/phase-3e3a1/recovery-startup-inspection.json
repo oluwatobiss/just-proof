@@ -1,0 +1,221 @@
+{
+  "Id": "c2181a30ee9ae4fc480509473c5d11ecaf1b9ab0645feddf77cf73ebef3b202e",
+  "Created": "2026-09-17T15:13:19.83010568Z",
+  "Path": "/nix/store/6naj0x3l5n0b4cx722xwasyp597p6z3h-ledger-8.1.0/bin/midnight-proof-server",
+  "Args": [
+    "--port",
+    "6300",
+    "--no-fetch-params",
+    "--num-workers",
+    "1"
+  ],
+  "State": {
+    "Status": "running",
+    "Running": true,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 502,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-09-17T15:13:20.21358148Z",
+    "FinishedAt": "0001-01-01T00:00:00Z"
+  },
+  "Image": "sha256:801bbc0340e9e96f16735f77b523f23c7459e3359842f7c79c2c53f4e994d531",
+  "ResolvConfPath": "/var/lib/docker/containers/c2181a30ee9ae4fc480509473c5d11ecaf1b9ab0645feddf77cf73ebef3b202e/resolv.conf",
+  "HostnamePath": "/var/lib/docker/containers/c2181a30ee9ae4fc480509473c5d11ecaf1b9ab0645feddf77cf73ebef3b202e/hostname",
+  "HostsPath": "/var/lib/docker/containers/c2181a30ee9ae4fc480509473c5d11ecaf1b9ab0645feddf77cf73ebef3b202e/hosts",
+  "LogPath": "/var/lib/docker/containers/c2181a30ee9ae4fc480509473c5d11ecaf1b9ab0645feddf77cf73ebef3b202e/c2181a30ee9ae4fc480509473c5d11ecaf1b9ab0645feddf77cf73ebef3b202e-json.log",
+  "Name": "/justproof-phase3e3a1-loopback-recovery",
+  "RestartCount": 0,
+  "Driver": "overlayfs",
+  "Platform": "linux",
+  "MountLabel": "",
+  "ProcessLabel": "",
+  "AppArmorProfile": "",
+  "ExecIDs": null,
+  "HostConfig": {
+    "Binds": null,
+    "ContainerIDFile": "",
+    "LogConfig": {
+      "Type": "json-file",
+      "Config": {}
+    },
+    "NetworkMode": "bridge",
+    "PortBindings": {
+      "6300/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "6300"
+        }
+      ]
+    },
+    "RestartPolicy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    },
+    "AutoRemove": false,
+    "VolumeDriver": "",
+    "VolumesFrom": null,
+    "ConsoleSize": [
+      0,
+      0
+    ],
+    "CapAdd": null,
+    "CapDrop": null,
+    "CgroupnsMode": "host",
+    "Dns": null,
+    "DnsOptions": [],
+    "DnsSearch": [],
+    "ExtraHosts": null,
+    "GroupAdd": null,
+    "IpcMode": "private",
+    "Cgroup": "",
+    "Links": null,
+    "OomScoreAdj": 0,
+    "PidMode": "",
+    "Privileged": false,
+    "PublishAllPorts": false,
+    "ReadonlyRootfs": false,
+    "SecurityOpt": null,
+    "UTSMode": "",
+    "UsernsMode": "",
+    "ShmSize": 67108864,
+    "Runtime": "runc",
+    "Isolation": "",
+    "CpuShares": 0,
+    "Memory": 0,
+    "NanoCpus": 0,
+    "CgroupParent": "",
+    "BlkioWeight": 0,
+    "BlkioWeightDevice": [],
+    "BlkioDeviceReadBps": [],
+    "BlkioDeviceWriteBps": [],
+    "BlkioDeviceReadIOps": [],
+    "BlkioDeviceWriteIOps": [],
+    "CpuPeriod": 0,
+    "CpuQuota": 0,
+    "CpuRealtimePeriod": 0,
+    "CpuRealtimeRuntime": 0,
+    "CpusetCpus": "",
+    "CpusetMems": "",
+    "Devices": [],
+    "DeviceCgroupRules": null,
+    "DeviceRequests": null,
+    "MemoryReservation": 0,
+    "MemorySwap": 0,
+    "MemorySwappiness": null,
+    "OomKillDisable": false,
+    "PidsLimit": null,
+    "Ulimits": [],
+    "CpuCount": 0,
+    "CpuPercent": 0,
+    "IOMaximumIOps": 0,
+    "IOMaximumBandwidth": 0,
+    "MaskedPaths": [
+      "/proc/acpi",
+      "/proc/asound",
+      "/proc/interrupts",
+      "/proc/kcore",
+      "/proc/keys",
+      "/proc/latency_stats",
+      "/proc/sched_debug",
+      "/proc/scsi",
+      "/proc/timer_list",
+      "/proc/timer_stats",
+      "/sys/devices/virtual/powercap",
+      "/sys/firmware"
+    ],
+    "ReadonlyPaths": [
+      "/proc/bus",
+      "/proc/fs",
+      "/proc/irq",
+      "/proc/sys",
+      "/proc/sysrq-trigger"
+    ]
+  },
+  "Storage": {
+    "RootFS": {
+      "Snapshot": {
+        "Name": "overlayfs"
+      }
+    }
+  },
+  "Mounts": [],
+  "Config": {
+    "Hostname": "c2181a30ee9a",
+    "Domainname": "",
+    "User": "",
+    "AttachStdin": false,
+    "AttachStdout": false,
+    "AttachStderr": false,
+    "ExposedPorts": {
+      "6300/tcp": {}
+    },
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "RUST_BACKTRACE=0",
+      "PATH=/nix/store/6naj0x3l5n0b4cx722xwasyp597p6z3h-ledger-8.1.0/bin",
+      "PORT=6300"
+    ],
+    "Cmd": [
+      "--port",
+      "6300",
+      "--no-fetch-params",
+      "--num-workers",
+      "1"
+    ],
+    "Image": "midnightntwrk/proof-server:8.1.0",
+    "Volumes": null,
+    "WorkingDir": "",
+    "Entrypoint": [
+      "/nix/store/6naj0x3l5n0b4cx722xwasyp597p6z3h-ledger-8.1.0/bin/midnight-proof-server"
+    ],
+    "Labels": {
+      "desktop.docker.io/wsl-distro": "Ubuntu"
+    }
+  },
+  "NetworkSettings": {
+    "SandboxID": "840bd78e415f0fc150809fbe78f92c350a71694af95bcdab5810682612fe6d12",
+    "SandboxKey": "/var/run/docker/netns/840bd78e415f",
+    "Ports": {
+      "6300/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "6300"
+        }
+      ]
+    },
+    "Networks": {
+      "bridge": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": null,
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "ab0119f5254da293035f0852be7cf4dfc317bc9e2357172f8fa6ca05f4723275",
+        "EndpointID": "1b3954309bd445a7f0cc57788212b092e7a854e5fb69a0db1f7ff14d161b2ef5",
+        "Gateway": "172.17.0.1",
+        "IPAddress": "172.17.0.2",
+        "MacAddress": "86:06:c6:9a:31:ab",
+        "IPPrefixLen": 16,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": null
+      }
+    }
+  },
+  "ImageManifestDescriptor": {
+    "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+    "digest": "sha256:829d02876b346fe773d3d17419a38aadb9fafc6653603afbb3f16672bc122bd4",
+    "size": 528,
+    "platform": {
+      "architecture": "amd64",
+      "os": "linux"
+    }
+  }
+}

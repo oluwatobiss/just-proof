@@ -1,0 +1,26 @@
+{
+  "classification": "LOCAL_PROOF_SERVICE_RESPONDS_AWAITING_PRIVACY_AND_INTEGRATION_PLAN",
+  "baselineCommit": "28e906388e6558cb037f57ffa2973429fe859a13",
+  "durableFilesMatched": 262,
+  "managedFilesMatched": 20,
+  "historicalTmpObservationsReclassifiedAsEphemeral": true,
+  "endpointStatuses": {
+    "health": "200",
+    "version": "200",
+    "ready": "200"
+  },
+  "version": "8.1.0",
+  "canaryStatus": "400",
+  "canaryAbsentFromContainerLogs": true,
+  "canaryEchoedInHttpErrorResponse": true,
+  "generalPrivateLoggingSafetyEstablished": false,
+  "parameterAvailabilityEstablished": false,
+  "noFetchObservedInLogs": true,
+  "filesystemDiffEmpty": true,
+  "containerExit": 0,
+  "privateMaterialSent": false,
+  "proofGeneration": false,
+  "proofVerification": false,
+  "phase3E3BAuthorized": false,
+  "r61Open": true
+}

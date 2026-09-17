@@ -1,0 +1,12 @@
+{
+  "command": [
+    "docker",
+    "stop",
+    "--timeout",
+    "10",
+    "justproof-phase3e3a1-loopback-recovery"
+  ],
+  "exit": 0,
+  "stdout": "justproof-phase3e3a1-loopback-recovery\n",
+  "stderr": ""
+}

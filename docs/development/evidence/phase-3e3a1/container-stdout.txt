@@ -1,0 +1,13 @@
+2026-09-17T05:15:43.652633664Z [2m2026-09-17T05:15:43.652242Z[0m [32m INFO[0m [2mactix_server::builder[0m[2m:[0m starting 8 workers
+2026-09-17T05:15:43.653224007Z [2m2026-09-17T05:15:43.652932Z[0m [32m INFO[0m [2mactix_server::server[0m[2m:[0m Actix runtime found; starting in Actix runtime
+2026-09-17T05:15:43.653247929Z [2m2026-09-17T05:15:43.652995Z[0m [32m INFO[0m [2mactix_server::server[0m[2m:[0m starting service: "actix-web-service-0.0.0.0:6300", workers: 8, listening on: 0.0.0.0:6300
+2026-09-17T05:16:34.797276055Z [2m2026-09-17T05:16:34.797034Z[0m [32m INFO[0m [2mactix_server::server[0m[2m:[0m SIGTERM received; starting graceful shutdown
+2026-09-17T05:16:34.797314131Z [2m2026-09-17T05:16:34.797146Z[0m [32m INFO[0m [2mactix_server::accept[0m[2m:[0m accept thread stopped
+2026-09-17T05:16:34.797321484Z [2m2026-09-17T05:16:34.797157Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker
+2026-09-17T05:16:34.797372755Z [2m2026-09-17T05:16:34.797177Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker
+2026-09-17T05:16:34.797392498Z [2m2026-09-17T05:16:34.797196Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker
+2026-09-17T05:16:34.797399448Z [2m2026-09-17T05:16:34.797244Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker
+2026-09-17T05:16:34.797407507Z [2m2026-09-17T05:16:34.797259Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker
+2026-09-17T05:16:34.797477513Z [2m2026-09-17T05:16:34.797320Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker
+2026-09-17T05:16:34.797490507Z [2m2026-09-17T05:16:34.797209Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker
+2026-09-17T05:16:34.797675446Z [2m2026-09-17T05:16:34.797221Z[0m [32m INFO[0m [2mactix_server::worker[0m[2m:[0m shutting down idle worker

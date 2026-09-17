@@ -1,0 +1,42 @@
+{
+  "userConfirmedRestart": true,
+  "bootTimeUtc": "2026-09-17T14:35:31+00:00",
+  "tmpMount": "{\n   \"filesystems\": [\n      {\n         \"target\": \"/tmp\",\n         \"source\": \"/dev/sde[/tmp]\",\n         \"fstype\": \"ext4\",\n         \"options\": \"rw,nosuid,nodev,relatime,discard,errors=remount-ro,data=ordered\"\n      }\n   ]\n}\n",
+  "tmpfilesPolicyLines": {
+    "/usr/lib/tmpfiles.d/tmp.conf": [
+      "D /tmp 1777 root root 30d"
+    ],
+    "/usr/lib/tmpfiles.d/snapd.conf": [
+      "D! /tmp/snap-private-tmp 0700 root root -",
+      "X /tmp/snap-private-tmp",
+      "X /tmp/snap-private-tmp/*/tmp",
+      "x /tmp/snap-private-tmp/*/tmp/.snap"
+    ],
+    "/usr/lib/tmpfiles.d/systemd-tmp.conf": [
+      "x /tmp/systemd-private-%b-*",
+      "X /tmp/systemd-private-%b-*/tmp",
+      "x /var/tmp/systemd-private-%b-*",
+      "X /var/tmp/systemd-private-%b-*/tmp",
+      "R! /tmp/systemd-private-*",
+      "R! /var/tmp/systemd-private-*"
+    ],
+    "/usr/lib/tmpfiles.d/x11.conf": [
+      "D! /tmp/.X11-unix 1777 root root 10d",
+      "D! /tmp/.ICE-unix 1777 root root 10d",
+      "D! /tmp/.XIM-unix 1777 root root 10d",
+      "D! /tmp/.font-unix 1777 root root 10d",
+      "r! /tmp/.X[0-9]*-lock"
+    ]
+  },
+  "conclusion": "Missing historical /tmp output and authorization are consistent with confirmed restart and ephemeral storage. Exact deletion mechanism/time unestablished. No reconstruction/retry/reuse authorized. Durable evidence and promoted artifacts remain accepted.",
+  "ordinaryBridgeAllowsOutbound": true,
+  "privateProvingNetworkApproved": false,
+  "originalContainerStoppedExit0": true,
+  "originalLogsAndDiffUnchanged": true,
+  "originalRequestedBinding": "127.0.0.1:6300",
+  "originalStoppedEffectivePorts": {},
+  "originalStartupEffectivePorts": {
+    "6300/tcp": []
+  },
+  "originalInternalNetworkRetained": true
+}

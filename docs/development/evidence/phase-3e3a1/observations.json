@@ -1,0 +1,51 @@
+{
+  "classification": "BLOCKED_LOCAL_PROOF_SERVICE",
+  "baselineCommit": "28e906388e6558cb037f57ffa2973429fe859a13",
+  "initialObservationsSource": "Earlier tool results in this task; not repeated after continuation",
+  "dockerContext": "default",
+  "composeVersion": "v5.5.1",
+  "initialRunningContainers": [],
+  "initialNetworks": [
+    "bridge",
+    "example-hello-world-001_default",
+    "host",
+    "none"
+  ],
+  "initialVolumes": [],
+  "initialPort6300Unused": true,
+  "canarySent": false,
+  "proofGeneration": false,
+  "proofVerification": false,
+  "parameterDownloadObserved": false,
+  "parameterFileInventoryEstablished": false,
+  "preservation": {
+    "baselineCount": 283,
+    "missing": [
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/compiler/contract-info.json",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/contract/index.js.map",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/contract/index.d.ts",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/contract/index.js",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/keys/registerCredentialV2.prover",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/keys/proveQualificationV2.prover",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/keys/registerCredentialV2.verifier",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/keys/revokeCredentialV2.prover",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/keys/registerIssuerV2.verifier",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/keys/revokeCredentialV2.verifier",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/keys/registerIssuerV2.prover",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/keys/proveQualificationV2.verifier",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/zkir/registerCredentialV2.zkir",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/zkir/revokeCredentialV2.zkir",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/zkir/proveQualificationV2.zkir",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/zkir/registerIssuerV2.bzkir",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/zkir/revokeCredentialV2.bzkir",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/zkir/registerIssuerV2.zkir",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/zkir/proveQualificationV2.bzkir",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1/zkir/registerCredentialV2.bzkir",
+      "/tmp/justproof-phase3e2b-authorization.json"
+    ],
+    "changed": [],
+    "managed20Match": true
+  },
+  "phase3E3BAuthorized": false,
+  "r61Open": true
+}

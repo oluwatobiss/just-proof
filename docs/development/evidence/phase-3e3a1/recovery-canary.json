@@ -1,0 +1,30 @@
+{
+  "command": [
+    "curl",
+    "--silent",
+    "--show-error",
+    "--retry",
+    "0",
+    "--max-redirs",
+    "0",
+    "--noproxy",
+    "*",
+    "--connect-timeout",
+    "2",
+    "--max-time",
+    "5",
+    "--dump-header",
+    "docs/development/evidence/phase-3e3a1/recovery-canary-headers.txt",
+    "--output",
+    "docs/development/evidence/phase-3e3a1/recovery-canary-body.txt",
+    "--write-out",
+    "%{http_code}",
+    "--data-binary",
+    "JP_PHASE3E3A1_RECOVERY_CANARY_NOT_PRIVATE_20260917",
+    "http://127.0.0.1:6300/prove"
+  ],
+  "exit": 0,
+  "status": "400",
+  "stderr": "",
+  "elapsedSeconds": 0.015442212999914773
+}

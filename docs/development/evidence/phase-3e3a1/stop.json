@@ -1,0 +1,12 @@
+{
+  "command": [
+    "docker",
+    "stop",
+    "--time",
+    "10",
+    "justproof-phase3e3a1-proof-server"
+  ],
+  "exit": 0,
+  "stdout": "Flag --time has been deprecated, use --timeout instead\njustproof-phase3e3a1-proof-server\n",
+  "stderr": ""
+}

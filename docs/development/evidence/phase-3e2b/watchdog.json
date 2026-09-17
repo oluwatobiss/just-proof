@@ -1,0 +1,13 @@
+{
+  "started": 20654.208810351,
+  "hardSeconds": 2700,
+  "heartbeat": 22090.965774519,
+  "known": {
+    "62": 2065420,
+    "71": 2065421,
+    "76": 2065534
+  },
+  "done": true,
+  "maximumSampleGapSeconds": 2,
+  "termToKillSeconds": 5
+}

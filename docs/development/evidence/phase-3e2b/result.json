@@ -1,0 +1,869 @@
+{
+  "provenance": {
+    "authorizedBaselineHead": "b6eb850a441db20d944f212efb077226a3804571",
+    "sourceSha256": "9ffa12d0570659ec703479ffb35c5ab2e1248f668abff6f9fbd91f344ef62ecf",
+    "planSha256": "0aa964d4baeb874a370b0bcf736015113e03305fb07f3bae3c52d9067e208aca",
+    "monitorSha256": "2433a2678c867926c6a3600283a3aeabf8a525347cd9a867bc0fb67f0eef7378",
+    "postcheckSha256": "3629784683d64188350addd8583d3696bc17f69f80855d8e54fa939bc6008de8",
+    "authorizationSha256": "8652a02b153cae3cacbf6dc3e8b5affad1cb79ff6cdde6f48045ce6dc60b7087",
+    "command": [
+      "compact",
+      "compile",
+      "+0.31.1",
+      "contracts/just-proof.compact",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1"
+    ],
+    "environmentOverrides": {
+      "RAYON_NUM_THREADS": "2",
+      "XDG_CACHE_HOME": "/home/oluwatobiss/.cache"
+    },
+    "resourceThresholds": {
+      "minimumMemTotalKiB": 12253256,
+      "minimumSwapTotalKiB": 8388608,
+      "launchMemAvailableKiB": 8388608,
+      "launchSwapFreeKiB": 6291456,
+      "runtimeMemAvailableKiB": 2097152,
+      "runtimeSwapFreeKiB": 2097152,
+      "sampleSeconds": 0.5,
+      "maximumSampleGapSeconds": 2,
+      "termToKillSeconds": 5,
+      "gracefulTimeoutSeconds": 2695,
+      "hardTimeoutSeconds": 2700,
+      "minimumDiskFreeBytes": 10737418240,
+      "rayonThreads": 2,
+      "maximumMissingParameters": 1
+    },
+    "expectedHost": "midnight-s3-fileshare-dev-eu-west-1.s3.eu-west-1.amazonaws.com"
+  },
+  "compilerLaunched": true,
+  "lastCgroupObservation": {
+    "rawMembership": "15:name=systemd:/init.scope\n14:misc:/\n13:rdma:/\n12:pids:/init.scope\n11:hugetlb:/\n10:net_prio:/\n9:perf_event:/\n8:net_cls:/\n7:freezer:/\n6:devices:/init.scope\n5:memory:/init.scope\n4:blkio:/\n3:cpuacct:/\n2:cpu:/\n1:cpuset:/\n0::/init.scope\n",
+    "parsedMembership": [
+      {
+        "hierarchyId": 0,
+        "controllers": [],
+        "path": "/init.scope"
+      },
+      {
+        "hierarchyId": 1,
+        "controllers": [
+          "cpuset"
+        ],
+        "path": "/"
+      },
+      {
+        "hierarchyId": 2,
+        "controllers": [
+          "cpu"
+        ],
+        "path": "/"
+      },
+      {
+        "hierarchyId": 3,
+        "controllers": [
+          "cpuacct"
+        ],
+        "path": "/"
+      },
+      {
+        "hierarchyId": 4,
+        "controllers": [
+          "blkio"
+        ],
+        "path": "/"
+      },
+      {
+        "hierarchyId": 5,
+        "controllers": [
+          "memory"
+        ],
+        "path": "/init.scope"
+      },
+      {
+        "hierarchyId": 6,
+        "controllers": [
+          "devices"
+        ],
+        "path": "/init.scope"
+      },
+      {
+        "hierarchyId": 7,
+        "controllers": [
+          "freezer"
+        ],
+        "path": "/"
+      },
+      {
+        "hierarchyId": 8,
+        "controllers": [
+          "net_cls"
+        ],
+        "path": "/"
+      },
+      {
+        "hierarchyId": 9,
+        "controllers": [
+          "perf_event"
+        ],
+        "path": "/"
+      },
+      {
+        "hierarchyId": 10,
+        "controllers": [
+          "net_prio"
+        ],
+        "path": "/"
+      },
+      {
+        "hierarchyId": 11,
+        "controllers": [
+          "hugetlb"
+        ],
+        "path": "/"
+      },
+      {
+        "hierarchyId": 12,
+        "controllers": [
+          "pids"
+        ],
+        "path": "/init.scope"
+      },
+      {
+        "hierarchyId": 13,
+        "controllers": [
+          "rdma"
+        ],
+        "path": "/"
+      },
+      {
+        "hierarchyId": 14,
+        "controllers": [
+          "misc"
+        ],
+        "path": "/"
+      },
+      {
+        "hierarchyId": 15,
+        "controllers": [
+          "name=systemd"
+        ],
+        "path": "/init.scope"
+      }
+    ],
+    "rawMountRecords": [
+      "492 491 0:21 / /sys/fs/cgroup/unified ro,nosuid,nodev,noexec,relatime master:28 - cgroup2 cgroup2 rw,nsdelegate",
+      "493 491 0:60 / /sys/fs/cgroup/cpuset ro,nosuid,nodev,noexec,relatime master:31 - cgroup cgroup rw,cpuset",
+      "494 491 0:61 / /sys/fs/cgroup/cpu ro,nosuid,nodev,noexec,relatime master:33 - cgroup cgroup rw,cpu",
+      "495 491 0:62 / /sys/fs/cgroup/cpuacct ro,nosuid,nodev,noexec,relatime master:34 - cgroup cgroup rw,cpuacct",
+      "496 491 0:70 / /sys/fs/cgroup/blkio ro,nosuid,nodev,noexec,relatime master:35 - cgroup cgroup rw,blkio",
+      "497 491 0:71 / /sys/fs/cgroup/memory ro,nosuid,nodev,noexec,relatime master:36 - cgroup cgroup rw,memory",
+      "498 491 0:72 / /sys/fs/cgroup/devices ro,nosuid,nodev,noexec,relatime master:37 - cgroup cgroup rw,devices",
+      "499 491 0:73 / /sys/fs/cgroup/freezer ro,nosuid,nodev,noexec,relatime master:39 - cgroup cgroup rw,freezer",
+      "500 491 0:74 / /sys/fs/cgroup/net_cls ro,nosuid,nodev,noexec,relatime master:40 - cgroup cgroup rw,net_cls",
+      "501 491 0:75 / /sys/fs/cgroup/perf_event ro,nosuid,nodev,noexec,relatime master:42 - cgroup cgroup rw,perf_event",
+      "502 491 0:76 / /sys/fs/cgroup/net_prio ro,nosuid,nodev,noexec,relatime master:44 - cgroup cgroup rw,net_prio",
+      "503 491 0:77 / /sys/fs/cgroup/hugetlb ro,nosuid,nodev,noexec,relatime master:46 - cgroup cgroup rw,hugetlb",
+      "504 491 0:78 / /sys/fs/cgroup/pids ro,nosuid,nodev,noexec,relatime master:48 - cgroup cgroup rw,pids",
+      "505 491 0:79 / /sys/fs/cgroup/rdma ro,nosuid,nodev,noexec,relatime master:52 - cgroup cgroup rw,rdma",
+      "506 491 0:80 / /sys/fs/cgroup/misc ro,nosuid,nodev,noexec,relatime master:53 - cgroup cgroup rw,misc",
+      "507 491 0:84 / /sys/fs/cgroup/systemd ro,nosuid,nodev,noexec,relatime master:56 - cgroup cgroup rw,xattr,name=systemd"
+    ],
+    "parsedMounts": [
+      {
+        "device": "0:70",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/blkio",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "blkio",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:61",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/cpu",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "cpu",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:62",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/cpuacct",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "cpuacct",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:60",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/cpuset",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "cpuset",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:72",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/devices",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "devices",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:73",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/freezer",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "freezer",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:77",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/hugetlb",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "hugetlb",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:71",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/memory",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "memory",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:80",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/misc",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "misc",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:74",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/net_cls",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "net_cls",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:76",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/net_prio",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "net_prio",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:75",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/perf_event",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "perf_event",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:78",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/pids",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "pids",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:79",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/rdma",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "rdma",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:84",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/systemd",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "name=systemd",
+          "rw",
+          "xattr"
+        ]
+      },
+      {
+        "device": "0:21",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/unified",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup2",
+        "source": "cgroup2",
+        "superOptions": [
+          "nsdelegate",
+          "rw"
+        ]
+      }
+    ],
+    "normalizedMounts": [
+      {
+        "device": "0:70",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/blkio",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "blkio",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:61",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/cpu",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "cpu",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:62",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/cpuacct",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "cpuacct",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:60",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/cpuset",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "cpuset",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:72",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/devices",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "devices",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:73",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/freezer",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "freezer",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:77",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/hugetlb",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "hugetlb",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:71",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/memory",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "memory",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:80",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/misc",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "misc",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:74",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/net_cls",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "net_cls",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:76",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/net_prio",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "net_prio",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:75",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/perf_event",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "perf_event",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:78",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/pids",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "pids",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:79",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/rdma",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "rdma",
+          "rw"
+        ]
+      },
+      {
+        "device": "0:84",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/systemd",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup",
+        "source": "cgroup",
+        "superOptions": [
+          "name=systemd",
+          "rw",
+          "xattr"
+        ]
+      },
+      {
+        "device": "0:21",
+        "root": "/",
+        "mountpoint": "/sys/fs/cgroup/unified",
+        "mountOptions": [
+          "nodev",
+          "noexec",
+          "nosuid",
+          "relatime",
+          "ro"
+        ],
+        "filesystem": "cgroup2",
+        "source": "cgroup2",
+        "superOptions": [
+          "rw"
+        ]
+      }
+    ],
+    "mountCompatibility": {
+      "matchesReviewedStructure": true,
+      "nsdelegatePresent": true
+    },
+    "applicablePaths": {
+      "memoryRoot": "/sys/fs/cgroup/memory",
+      "memoryMembership": "/sys/fs/cgroup/memory/init.scope",
+      "cpu": "/sys/fs/cgroup/cpu",
+      "cpuset": "/sys/fs/cgroup/cpuset",
+      "v2Root": "/sys/fs/cgroup/unified",
+      "v2Membership": "/sys/fs/cgroup/unified/init.scope"
+    },
+    "memoryGroups": {
+      "/sys/fs/cgroup/memory": {
+        "memory.limit_in_bytes": "9223372036854771712",
+        "memory.memsw.limit_in_bytes": "9223372036854771712",
+        "memory.use_hierarchy": 1,
+        "memory.usage_in_bytes": 2307309568,
+        "memory.memsw.usage_in_bytes": 2307309568
+      },
+      "/sys/fs/cgroup/memory/init.scope": {
+        "memory.limit_in_bytes": "9223372036854771712",
+        "memory.memsw.limit_in_bytes": "9223372036854771712",
+        "memory.use_hierarchy": 1,
+        "memory.usage_in_bytes": 1894092800,
+        "memory.memsw.usage_in_bytes": 1894092800
+      }
+    },
+    "cpu": {
+      "membership": "/",
+      "controls": {
+        "cpu.cfs_quota_us": -1,
+        "cpu.cfs_period_us": 100000,
+        "cpu.shares": 1024
+      },
+      "count": 8,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "allowedList": "0-7",
+      "cpusetMembership": "/",
+      "cpuset": {
+        "cpuset.cpus": "0-7",
+        "cpuset.effective_cpus": "0-7",
+        "cpuset.mems": "0",
+        "cpuset.effective_mems": "0"
+      }
+    },
+    "v2": {
+      "/sys/fs/cgroup/unified": {
+        "cgroup.controllers": {
+          "present": true,
+          "value": ""
+        },
+        "cgroup.subtree_control": {
+          "present": true,
+          "value": ""
+        },
+        "memory.max": {
+          "present": false
+        },
+        "memory.current": {
+          "present": false
+        },
+        "memory.swap.max": {
+          "present": false
+        },
+        "memory.swap.current": {
+          "present": false
+        }
+      },
+      "/sys/fs/cgroup/unified/init.scope": {
+        "cgroup.controllers": {
+          "present": true,
+          "value": ""
+        },
+        "cgroup.subtree_control": {
+          "present": true,
+          "value": ""
+        },
+        "memory.max": {
+          "present": false
+        },
+        "memory.current": {
+          "present": false
+        },
+        "memory.swap.max": {
+          "present": false
+        },
+        "memory.swap.current": {
+          "present": false
+        }
+      }
+    },
+    "historicalCpuEquivalenceAsserted": false
+  },
+  "compilerExit": 0,
+  "stopReason": null,
+  "finalizationErrors": [],
+  "finalizationComplete": true,
+  "successPermanentlyBlocked": false,
+  "compilerWaitElapsedSeconds": 1436.7545950050007,
+  "elapsedSecondsIncludingCleanup": 1446.2761655489994,
+  "sampledPeakAggregateRssKiB": 4971680,
+  "minimumMemAvailableKiB": 5982824,
+  "minimumSwapFreeKiB": 8388608,
+  "maximumSampleGapSeconds": 0.905406188001507,
+  "requestedMissingParameters": [],
+  "keyGenerationSuccess": false,
+  "note": "No success promotion here. Requires separate artifact/format/resource review; no proof operation."
+}

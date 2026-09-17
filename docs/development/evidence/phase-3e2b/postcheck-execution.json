@@ -1,0 +1,46 @@
+{
+  "command": [
+    "node",
+    "docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs",
+    "--separately-authorized-phase-3e2b-postcheck"
+  ],
+  "startedAtUtc": "2026-09-17T01:48:28.954521+00:00",
+  "finishedAtUtc": "2026-09-17T01:48:32.575841+00:00",
+  "directNodeExit": 0,
+  "stdout": {
+    "bytes": 3618,
+    "sha256": "7a9d20ca91a26dc551aeb23805a6bc8927d695e2a5f83f3ec3047b73bcc1308c"
+  },
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdoutParsed": true,
+  "parseError": null,
+  "checks": [
+    {
+      "circuit": "registerIssuerV2",
+      "verifierKeyFormatRoundTrip": true
+    },
+    {
+      "circuit": "registerCredentialV2",
+      "verifierKeyFormatRoundTrip": true
+    },
+    {
+      "circuit": "revokeCredentialV2",
+      "verifierKeyFormatRoundTrip": true
+    },
+    {
+      "circuit": "proveQualificationV2",
+      "verifierKeyFormatRoundTrip": true
+    }
+  ],
+  "freshManifestMatchesSaved": true,
+  "artifactCount": 20,
+  "proofGeneration": false,
+  "cryptographicProofVerification": false,
+  "changedPreservedFiles": [],
+  "cacheNamesUnchanged": true,
+  "managedNamesUnchanged": true,
+  "classification": "POSTCHECK_PASSED_AWAITING_USER_ACCEPTANCE"
+}

@@ -1,0 +1,621 @@
+{
+  "phase": "3E2C",
+  "capturedAtUtc": "2026-09-17T02:05:41.768769+00:00",
+  "baselineCommit": "b6eb850a441db20d944f212efb077226a3804571",
+  "source": {
+    "bytes": 13714,
+    "sha256": "9ffa12d0570659ec703479ffb35c5ab2e1248f668abff6f9fbd91f344ef62ecf"
+  },
+  "provenance": {
+    "authorizedBaselineHead": "b6eb850a441db20d944f212efb077226a3804571",
+    "sourceSha256": "9ffa12d0570659ec703479ffb35c5ab2e1248f668abff6f9fbd91f344ef62ecf",
+    "planSha256": "0aa964d4baeb874a370b0bcf736015113e03305fb07f3bae3c52d9067e208aca",
+    "monitorSha256": "2433a2678c867926c6a3600283a3aeabf8a525347cd9a867bc0fb67f0eef7378",
+    "postcheckSha256": "3629784683d64188350addd8583d3696bc17f69f80855d8e54fa939bc6008de8",
+    "authorizationSha256": "8652a02b153cae3cacbf6dc3e8b5affad1cb79ff6cdde6f48045ce6dc60b7087",
+    "command": [
+      "compact",
+      "compile",
+      "+0.31.1",
+      "contracts/just-proof.compact",
+      "/tmp/justproof-phase3e2-four-circuit-74591b08-attempt1"
+    ],
+    "environmentOverrides": {
+      "RAYON_NUM_THREADS": "2",
+      "XDG_CACHE_HOME": "/home/oluwatobiss/.cache"
+    },
+    "resourceThresholds": {
+      "minimumMemTotalKiB": 12253256,
+      "minimumSwapTotalKiB": 8388608,
+      "launchMemAvailableKiB": 8388608,
+      "launchSwapFreeKiB": 6291456,
+      "runtimeMemAvailableKiB": 2097152,
+      "runtimeSwapFreeKiB": 2097152,
+      "sampleSeconds": 0.5,
+      "maximumSampleGapSeconds": 2,
+      "termToKillSeconds": 5,
+      "gracefulTimeoutSeconds": 2695,
+      "hardTimeoutSeconds": 2700,
+      "minimumDiskFreeBytes": 10737418240,
+      "rayonThreads": 2,
+      "maximumMissingParameters": 1
+    },
+    "expectedHost": "midnight-s3-fileshare-dev-eu-west-1.s3.eu-west-1.amazonaws.com"
+  },
+  "compiler": {
+    "version": "0.31.1",
+    "path": "/home/oluwatobiss/.compact/versions/0.31.1/x86_64-unknown-linux-musl/compactc",
+    "bytes": 115,
+    "sha256": "15646793d3ff7f36cd81aa63419163e29d9893538bb4a6911a21012e8735b537",
+    "hashScope": "Current installed pinned compiler executable, read without execution; build version attested in unchanged metadata/preflight."
+  },
+  "circuitInventory": [
+    "registerIssuerV2",
+    "registerCredentialV2",
+    "revokeCredentialV2",
+    "proveQualificationV2"
+  ],
+  "abi": {
+    "sourceDeclarations": [
+      {
+        "name": "registerIssuerV2",
+        "arguments": "issuerControlCommitment: Bytes<32>",
+        "return": "[]"
+      },
+      {
+        "name": "registerCredentialV2",
+        "arguments": "",
+        "return": "[]"
+      },
+      {
+        "name": "revokeCredentialV2",
+        "arguments": "",
+        "return": "[]"
+      },
+      {
+        "name": "proveQualificationV2",
+        "arguments": "request: QualificationRequestV2",
+        "return": "QualificationProofPublicOutputV2"
+      }
+    ],
+    "metadataCircuits": [
+      {
+        "name": "registerIssuerV2",
+        "pure": false,
+        "proof": true,
+        "arguments": [
+          {
+            "name": "issuerControlCommitment",
+            "type": {
+              "type-name": "Bytes",
+              "length": 32
+            }
+          }
+        ],
+        "result-type": {
+          "type-name": "Tuple",
+          "types": []
+        }
+      },
+      {
+        "name": "registerCredentialV2",
+        "pure": false,
+        "proof": true,
+        "arguments": [],
+        "result-type": {
+          "type-name": "Tuple",
+          "types": []
+        }
+      },
+      {
+        "name": "revokeCredentialV2",
+        "pure": false,
+        "proof": true,
+        "arguments": [],
+        "result-type": {
+          "type-name": "Tuple",
+          "types": []
+        }
+      },
+      {
+        "name": "proveQualificationV2",
+        "pure": false,
+        "proof": true,
+        "arguments": [
+          {
+            "name": "request",
+            "type": {
+              "type-name": "Struct",
+              "name": "QualificationRequestV2",
+              "elements": [
+                {
+                  "name": "protocolVersion",
+                  "type": {
+                    "type-name": "Uint",
+                    "maxval": 65535
+                  }
+                },
+                {
+                  "name": "proofType",
+                  "type": {
+                    "type-name": "Uint",
+                    "maxval": 255
+                  }
+                },
+                {
+                  "name": "registryContract",
+                  "type": {
+                    "type-name": "Struct",
+                    "name": "ContractAddress",
+                    "elements": [
+                      {
+                        "name": "bytes",
+                        "type": {
+                          "type-name": "Bytes",
+                          "length": 32
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "registryContext",
+                  "type": {
+                    "type-name": "Bytes",
+                    "length": 32
+                  }
+                },
+                {
+                  "name": "qualificationType",
+                  "type": {
+                    "type-name": "Bytes",
+                    "length": 32
+                  }
+                },
+                {
+                  "name": "qualificationVersion",
+                  "type": {
+                    "type-name": "Uint",
+                    "maxval": 65535
+                  }
+                },
+                {
+                  "name": "verifierContext",
+                  "type": {
+                    "type-name": "Bytes",
+                    "length": 32
+                  }
+                },
+                {
+                  "name": "challenge",
+                  "type": {
+                    "type-name": "Bytes",
+                    "length": 32
+                  }
+                },
+                {
+                  "name": "requestIssuedAt",
+                  "type": {
+                    "type-name": "Uint",
+                    "maxval": 18446744073709551615
+                  }
+                },
+                {
+                  "name": "requestExpiresAt",
+                  "type": {
+                    "type-name": "Uint",
+                    "maxval": 18446744073709551615
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "result-type": {
+          "type-name": "Struct",
+          "name": "QualificationProofPublicOutputV2",
+          "elements": [
+            {
+              "name": "requestDigest",
+              "type": {
+                "type-name": "Bytes",
+                "length": 32
+              }
+            },
+            {
+              "name": "stateDigest",
+              "type": {
+                "type-name": "Bytes",
+                "length": 32
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "declarationCollections": [
+      "Circuits",
+      "ImpureCircuits",
+      "ProvableCircuits"
+    ],
+    "javascriptCollections": [
+      "circuits",
+      "impureCircuits",
+      "provableCircuits"
+    ],
+    "allExactlyMatch": true,
+    "generatedJavaScriptExecuted": false,
+    "phase3dSourceAndArtifactsMatch": true,
+    "phase3dPublicSurfacePassed": true
+  },
+  "temporaryManifest": {
+    "compiler/contract-info.json": {
+      "bytes": 24565,
+      "sha256": "868cca4e3cc858d9cb0cb63ce93e81808509a2eaa60d9ff65c32b54bd3a4902d"
+    },
+    "contract/index.d.ts": {
+      "bytes": 12959,
+      "sha256": "0139fd7406b87a3498b5141ff2bdce2dcef9193753597326af99aa9e738b0d08"
+    },
+    "contract/index.js": {
+      "bytes": 200816,
+      "sha256": "b7396f8c593c99104aeb7ae0bf2f4fe4341beadf525ab841deeb5a064addaeef"
+    },
+    "contract/index.js.map": {
+      "bytes": 10670,
+      "sha256": "4a5ae38bbdca175bd3104826df8671db6a53ec001837f65764393924b05a1b4d"
+    },
+    "keys/proveQualificationV2.prover": {
+      "bytes": 76660599,
+      "sha256": "1dc78862643d288d1731fc43567667c9923b017ec23fa77f471f8c66059c762b"
+    },
+    "keys/proveQualificationV2.verifier": {
+      "bytes": 2119,
+      "sha256": "21fcff4439ed11bd959a0f3f6f58a2bc2358912de142014309fdaf7c5ad4e56a"
+    },
+    "keys/registerCredentialV2.prover": {
+      "bytes": 76642841,
+      "sha256": "1722f6f9cf0e818f414639fb179b9a3d7756242102e9fbe1367b5c167b5e263e"
+    },
+    "keys/registerCredentialV2.verifier": {
+      "bytes": 2119,
+      "sha256": "c0abaaf254564c21488f90784d8b29c8b106ae2e273fde89fa6fa392c4610d22"
+    },
+    "keys/registerIssuerV2.prover": {
+      "bytes": 76490158,
+      "sha256": "9c136a8ce811aedd13ad2e364005b1d3454f76fd7e29cd6edaff5b5a99dcca28"
+    },
+    "keys/registerIssuerV2.verifier": {
+      "bytes": 2119,
+      "sha256": "b6c78daa6b3964912d9cbf2bd783365de7c18521ca26efffbee5b37e410e1a9a"
+    },
+    "keys/revokeCredentialV2.prover": {
+      "bytes": 152517062,
+      "sha256": "87a0a6d42dc536f855d806418db0a47b6ab78535cbdfda5856c01a2ad2798908"
+    },
+    "keys/revokeCredentialV2.verifier": {
+      "bytes": 2119,
+      "sha256": "eb07cc2b21b2181426e596b9f459b13a441db99c177ad29b4fad1923209523d0"
+    },
+    "zkir/proveQualificationV2.bzkir": {
+      "bytes": 6077,
+      "sha256": "918ce164f19565f8323efcfe29483f1976e5a302304f6d0deb41b8c1e9200ec6"
+    },
+    "zkir/proveQualificationV2.zkir": {
+      "bytes": 72144,
+      "sha256": "7ca590bb29edd4f6dab806f7278878b1720b6773f4702b82e7c2e371db58a803"
+    },
+    "zkir/registerCredentialV2.bzkir": {
+      "bytes": 5613,
+      "sha256": "26015eecbe8847ec442d288b3d252189892772e3af6168aa30b7a6b8ab4eedba"
+    },
+    "zkir/registerCredentialV2.zkir": {
+      "bytes": 65083,
+      "sha256": "b04a6e786914be257ab88d09d148ca8918d08b302e970bc81cdaec47efc1227e"
+    },
+    "zkir/registerIssuerV2.bzkir": {
+      "bytes": 3056,
+      "sha256": "be21a00eda843b8ec88fb8e19f9a9645fe81659ed9354f8515d651991f3bab56"
+    },
+    "zkir/registerIssuerV2.zkir": {
+      "bytes": 37980,
+      "sha256": "ce061c319bdbdf15fad9fd53cdfb9f5602f66cc5fd1da745388e0b7ca978b699"
+    },
+    "zkir/revokeCredentialV2.bzkir": {
+      "bytes": 6209,
+      "sha256": "98eedb891db4d2b3220c1306078033f8079cc92b8212e24c0e84bebc59d0d573"
+    },
+    "zkir/revokeCredentialV2.zkir": {
+      "bytes": 71809,
+      "sha256": "e28c864710d6b05da43dc1caa01e6d7e4ca4a66d6a87fe63511bcc0bac3a7c84"
+    }
+  },
+  "savedAndPostcheckManifestMatch": true,
+  "managedInventory": {
+    "compiler/contract-info.json": {
+      "bytes": 24565,
+      "sha256": "868cca4e3cc858d9cb0cb63ce93e81808509a2eaa60d9ff65c32b54bd3a4902d"
+    },
+    "contract/index.d.ts": {
+      "bytes": 12959,
+      "sha256": "0139fd7406b87a3498b5141ff2bdce2dcef9193753597326af99aa9e738b0d08"
+    },
+    "contract/index.js": {
+      "bytes": 200816,
+      "sha256": "b7396f8c593c99104aeb7ae0bf2f4fe4341beadf525ab841deeb5a064addaeef"
+    },
+    "contract/index.js.map": {
+      "bytes": 10682,
+      "sha256": "2ff2c49f300b2843a8cbf7d365a4b4f739d1addd1da9f476a6cf7e8ad81ebe78"
+    },
+    "zkir/proveQualificationV2.zkir": {
+      "bytes": 72144,
+      "sha256": "7ca590bb29edd4f6dab806f7278878b1720b6773f4702b82e7c2e371db58a803"
+    },
+    "zkir/registerCredentialV2.zkir": {
+      "bytes": 65083,
+      "sha256": "b04a6e786914be257ab88d09d148ca8918d08b302e970bc81cdaec47efc1227e"
+    },
+    "zkir/registerIssuerV2.zkir": {
+      "bytes": 37980,
+      "sha256": "ce061c319bdbdf15fad9fd53cdfb9f5602f66cc5fd1da745388e0b7ca978b699"
+    },
+    "zkir/revokeCredentialV2.zkir": {
+      "bytes": 71809,
+      "sha256": "e28c864710d6b05da43dc1caa01e6d7e4ca4a66d6a87fe63511bcc0bac3a7c84"
+    }
+  },
+  "sevenByteIdenticalArtifacts": [
+    "compiler/contract-info.json",
+    "contract/index.d.ts",
+    "contract/index.js",
+    "zkir/registerIssuerV2.zkir",
+    "zkir/registerCredentialV2.zkir",
+    "zkir/revokeCredentialV2.zkir",
+    "zkir/proveQualificationV2.zkir"
+  ],
+  "sourceMapComparison": {
+    "temporary": {
+      "bytes": 10670,
+      "sha256": "4a5ae38bbdca175bd3104826df8671db6a53ec001837f65764393924b05a1b4d"
+    },
+    "managed": {
+      "bytes": 10682,
+      "sha256": "2ff2c49f300b2843a8cbf7d365a4b4f739d1addd1da9f476a6cf7e8ad81ebe78"
+    },
+    "differences": [
+      {
+        "field": "sourceRoot",
+        "temporary": "",
+        "managed": "../../../../"
+      }
+    ],
+    "identicalFields": [
+      "version",
+      "file",
+      "sources",
+      "names",
+      "mappings"
+    ],
+    "sourcesContentPresent": false,
+    "classification": "nonsemantic output-location/source-root metadata only",
+    "explanation": "Both maps reference index.js and identical source entries and mappings. Managed sourceRoot climbs from contracts/managed/just-proof/contract to repository root; temporary map uses an empty sourceRoot. No embedded sourcesContent exists in either map. Source and imported repository module bytes remain preserved; compiler standard-library reference is identical. This does not claim the temporary relative source URLs resolve from /tmp.",
+    "applicableSourceFiles": {
+      "contracts/just-proof.compact": {
+        "bytes": 13714,
+        "sha256": "9ffa12d0570659ec703479ffb35c5ab2e1248f668abff6f9fbd91f344ef62ecf"
+      },
+      "contracts/protocol-v2/domains.compact": {
+        "bytes": 5912,
+        "sha256": "580c22c1f70bf2d6a7b226ae8517751281a3b3fb80df709f127ac671a1afce34"
+      },
+      "contracts/protocol-v2/derivations.compact": {
+        "bytes": 4039,
+        "sha256": "2755b25010a1942f1dce3fc55acc1f23608f2c98aec97b4bea1ae755f5ccb058"
+      },
+      "contracts/protocol-v2/merkle.compact": {
+        "bytes": 1913,
+        "sha256": "9df52b8d5be6249576ddb50856c0431cb81ca159e57e775fc8586e5d780d4682"
+      },
+      "contracts/protocol-v2/candidate-roots.compact": {
+        "bytes": 1034,
+        "sha256": "35ca805452d5837cb178a4261da20a21cdfa74550dbe7c9d7791903b0388de3b"
+      }
+    }
+  },
+  "managedKeysAbsent": true,
+  "managedBinaryZkirAbsent": true,
+  "circuitLocalComparisons": [
+    {
+      "circuit": "registerIssuerV2",
+      "path": "keys/registerIssuerV2.prover",
+      "bytes": 76490158,
+      "sha256": "9c136a8ce811aedd13ad2e364005b1d3454f76fd7e29cd6edaff5b5a99dcca28",
+      "classification": "accepted historical fingerprint match"
+    },
+    {
+      "circuit": "registerIssuerV2",
+      "path": "keys/registerIssuerV2.verifier",
+      "bytes": 2119,
+      "sha256": "b6c78daa6b3964912d9cbf2bd783365de7c18521ca26efffbee5b37e410e1a9a",
+      "classification": "accepted historical fingerprint match"
+    },
+    {
+      "circuit": "registerIssuerV2",
+      "path": "zkir/registerIssuerV2.bzkir",
+      "bytes": 3056,
+      "sha256": "be21a00eda843b8ec88fb8e19f9a9645fe81659ed9354f8515d651991f3bab56",
+      "classification": "accepted historical fingerprint match"
+    },
+    {
+      "circuit": "registerIssuerV2",
+      "path": "zkir/registerIssuerV2.zkir",
+      "bytes": 37980,
+      "sha256": "ce061c319bdbdf15fad9fd53cdfb9f5602f66cc5fd1da745388e0b7ca978b699",
+      "classification": "accepted historical fingerprint match"
+    },
+    {
+      "circuit": "registerCredentialV2",
+      "path": "keys/registerCredentialV2.prover",
+      "bytes": 76642841,
+      "sha256": "1722f6f9cf0e818f414639fb179b9a3d7756242102e9fbe1367b5c167b5e263e",
+      "classification": "accepted historical fingerprint match"
+    },
+    {
+      "circuit": "registerCredentialV2",
+      "path": "keys/registerCredentialV2.verifier",
+      "bytes": 2119,
+      "sha256": "c0abaaf254564c21488f90784d8b29c8b106ae2e273fde89fa6fa392c4610d22",
+      "classification": "accepted historical fingerprint match"
+    },
+    {
+      "circuit": "registerCredentialV2",
+      "path": "zkir/registerCredentialV2.bzkir",
+      "bytes": 5613,
+      "sha256": "26015eecbe8847ec442d288b3d252189892772e3af6168aa30b7a6b8ab4eedba",
+      "classification": "accepted historical fingerprint match"
+    },
+    {
+      "circuit": "registerCredentialV2",
+      "path": "zkir/registerCredentialV2.zkir",
+      "bytes": 65083,
+      "sha256": "b04a6e786914be257ab88d09d148ca8918d08b302e970bc81cdaec47efc1227e",
+      "classification": "accepted historical fingerprint match"
+    },
+    {
+      "circuit": "revokeCredentialV2",
+      "path": "keys/revokeCredentialV2.prover",
+      "bytes": 152517062,
+      "sha256": "87a0a6d42dc536f855d806418db0a47b6ab78535cbdfda5856c01a2ad2798908",
+      "classification": "newly completed key; Phase 3C placeholder was zero bytes"
+    },
+    {
+      "circuit": "revokeCredentialV2",
+      "path": "keys/revokeCredentialV2.verifier",
+      "bytes": 2119,
+      "sha256": "eb07cc2b21b2181426e596b9f459b13a441db99c177ad29b4fad1923209523d0",
+      "classification": "newly completed key; Phase 3C placeholder was zero bytes"
+    },
+    {
+      "circuit": "revokeCredentialV2",
+      "path": "zkir/revokeCredentialV2.bzkir",
+      "bytes": 6209,
+      "sha256": "98eedb891db4d2b3220c1306078033f8079cc92b8212e24c0e84bebc59d0d573",
+      "classification": "earlier partial-build binary fingerprint match"
+    },
+    {
+      "circuit": "revokeCredentialV2",
+      "path": "zkir/revokeCredentialV2.zkir",
+      "bytes": 71809,
+      "sha256": "e28c864710d6b05da43dc1caa01e6d7e4ca4a66d6a87fe63511bcc0bac3a7c84",
+      "classification": "accepted text fingerprint match"
+    },
+    {
+      "circuit": "proveQualificationV2",
+      "path": "keys/proveQualificationV2.prover",
+      "bytes": 76660599,
+      "sha256": "1dc78862643d288d1731fc43567667c9923b017ec23fa77f471f8c66059c762b",
+      "classification": "newly completed artifact"
+    },
+    {
+      "circuit": "proveQualificationV2",
+      "path": "keys/proveQualificationV2.verifier",
+      "bytes": 2119,
+      "sha256": "21fcff4439ed11bd959a0f3f6f58a2bc2358912de142014309fdaf7c5ad4e56a",
+      "classification": "newly completed artifact"
+    },
+    {
+      "circuit": "proveQualificationV2",
+      "path": "zkir/proveQualificationV2.bzkir",
+      "bytes": 6077,
+      "sha256": "918ce164f19565f8323efcfe29483f1976e5a302304f6d0deb41b8c1e9200ec6",
+      "classification": "newly completed artifact"
+    },
+    {
+      "circuit": "proveQualificationV2",
+      "path": "zkir/proveQualificationV2.zkir",
+      "bytes": 72144,
+      "sha256": "7ca590bb29edd4f6dab806f7278878b1720b6773f4702b82e7c2e371db58a803",
+      "classification": "accepted Phase 3D text fingerprint match"
+    }
+  ],
+  "monitorAcceptance": {
+    "compilerLaunched": true,
+    "compilerExit": 0,
+    "stopReason": null,
+    "finalizationErrors": [],
+    "finalizationComplete": true,
+    "successPermanentlyBlocked": false,
+    "compilerWaitElapsedSeconds": 1436.7545950050007,
+    "elapsedSecondsIncludingCleanup": 1446.2761655489994,
+    "sampledPeakAggregateRssKiB": 4971680,
+    "minimumMemAvailableKiB": 5982824,
+    "minimumSwapFreeKiB": 8388608,
+    "maximumSampleGapSeconds": 0.905406188001507,
+    "requestedMissingParameters": [],
+    "keyGenerationSuccess": false,
+    "note": "No success promotion here. Requires separate artifact/format/resource review; no proof operation."
+  },
+  "postcheckAcceptance": {
+    "command": [
+      "node",
+      "docs/development/evidence/phase-3e2a/proposed-key-format-check.mjs",
+      "--separately-authorized-phase-3e2b-postcheck"
+    ],
+    "startedAtUtc": "2026-09-17T01:48:28.954521+00:00",
+    "finishedAtUtc": "2026-09-17T01:48:32.575841+00:00",
+    "directNodeExit": 0,
+    "stdout": {
+      "bytes": 3618,
+      "sha256": "7a9d20ca91a26dc551aeb23805a6bc8927d695e2a5f83f3ec3047b73bcc1308c"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdoutParsed": true,
+    "parseError": null,
+    "checks": [
+      {
+        "circuit": "registerIssuerV2",
+        "verifierKeyFormatRoundTrip": true
+      },
+      {
+        "circuit": "registerCredentialV2",
+        "verifierKeyFormatRoundTrip": true
+      },
+      {
+        "circuit": "revokeCredentialV2",
+        "verifierKeyFormatRoundTrip": true
+      },
+      {
+        "circuit": "proveQualificationV2",
+        "verifierKeyFormatRoundTrip": true
+      }
+    ],
+    "freshManifestMatchesSaved": true,
+    "artifactCount": 20,
+    "proofGeneration": false,
+    "cryptographicProofVerification": false,
+    "changedPreservedFiles": [],
+    "cacheNamesUnchanged": true,
+    "managedNamesUnchanged": true,
+    "classification": "POSTCHECK_PASSED_AWAITING_USER_ACCEPTANCE"
+  },
+  "noParameterRequested": true,
+  "cacheUnchanged": true,
+  "proofGeneration": false,
+  "cryptographicProofVerification": false,
+  "ledgerExecution": false,
+  "artifactPromotion": false,
+  "classification": "FOUR_CIRCUIT_KEY_GENERATION_ACCEPTED_AWAITING_PROMOTION",
+  "r61KeyGenerationResourcePortionSatisfied": true,
+  "r61Open": true,
+  "remaining": [
+    "actual proof generation",
+    "cryptographic proof verification",
+    "ledger execution",
+    "artifact-profile/release work",
+    "other explicitly retained requirements"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "compiler/contract-info.json": {
+    "bytes": 24565,
+    "sha256": "868cca4e3cc858d9cb0cb63ce93e81808509a2eaa60d9ff65c32b54bd3a4902d"
+  },
+  "contract/index.d.ts": {
+    "bytes": 12959,
+    "sha256": "0139fd7406b87a3498b5141ff2bdce2dcef9193753597326af99aa9e738b0d08"
+  },
+  "contract/index.js": {
+    "bytes": 200816,
+    "sha256": "b7396f8c593c99104aeb7ae0bf2f4fe4341beadf525ab841deeb5a064addaeef"
+  },
+  "contract/index.js.map": {
+    "bytes": 10670,
+    "sha256": "4a5ae38bbdca175bd3104826df8671db6a53ec001837f65764393924b05a1b4d"
+  },
+  "keys/proveQualificationV2.prover": {
+    "bytes": 76660599,
+    "sha256": "1dc78862643d288d1731fc43567667c9923b017ec23fa77f471f8c66059c762b"
+  },
+  "keys/proveQualificationV2.verifier": {
+    "bytes": 2119,
+    "sha256": "21fcff4439ed11bd959a0f3f6f58a2bc2358912de142014309fdaf7c5ad4e56a"
+  },
+  "keys/registerCredentialV2.prover": {
+    "bytes": 76642841,
+    "sha256": "1722f6f9cf0e818f414639fb179b9a3d7756242102e9fbe1367b5c167b5e263e"
+  },
+  "keys/registerCredentialV2.verifier": {
+    "bytes": 2119,
+    "sha256": "c0abaaf254564c21488f90784d8b29c8b106ae2e273fde89fa6fa392c4610d22"
+  },
+  "keys/registerIssuerV2.prover": {
+    "bytes": 76490158,
+    "sha256": "9c136a8ce811aedd13ad2e364005b1d3454f76fd7e29cd6edaff5b5a99dcca28"
+  },
+  "keys/registerIssuerV2.verifier": {
+    "bytes": 2119,
+    "sha256": "b6c78daa6b3964912d9cbf2bd783365de7c18521ca26efffbee5b37e410e1a9a"
+  },
+  "keys/revokeCredentialV2.prover": {
+    "bytes": 152517062,
+    "sha256": "87a0a6d42dc536f855d806418db0a47b6ab78535cbdfda5856c01a2ad2798908"
+  },
+  "keys/revokeCredentialV2.verifier": {
+    "bytes": 2119,
+    "sha256": "eb07cc2b21b2181426e596b9f459b13a441db99c177ad29b4fad1923209523d0"
+  },
+  "zkir/proveQualificationV2.bzkir": {
+    "bytes": 6077,
+    "sha256": "918ce164f19565f8323efcfe29483f1976e5a302304f6d0deb41b8c1e9200ec6"
+  },
+  "zkir/proveQualificationV2.zkir": {
+    "bytes": 72144,
+    "sha256": "7ca590bb29edd4f6dab806f7278878b1720b6773f4702b82e7c2e371db58a803"
+  },
+  "zkir/registerCredentialV2.bzkir": {
+    "bytes": 5613,
+    "sha256": "26015eecbe8847ec442d288b3d252189892772e3af6168aa30b7a6b8ab4eedba"
+  },
+  "zkir/registerCredentialV2.zkir": {
+    "bytes": 65083,
+    "sha256": "b04a6e786914be257ab88d09d148ca8918d08b302e970bc81cdaec47efc1227e"
+  },
+  "zkir/registerIssuerV2.bzkir": {
+    "bytes": 3056,
+    "sha256": "be21a00eda843b8ec88fb8e19f9a9645fe81659ed9354f8515d651991f3bab56"
+  },
+  "zkir/registerIssuerV2.zkir": {
+    "bytes": 37980,
+    "sha256": "ce061c319bdbdf15fad9fd53cdfb9f5602f66cc5fd1da745388e0b7ca978b699"
+  },
+  "zkir/revokeCredentialV2.bzkir": {
+    "bytes": 6209,
+    "sha256": "98eedb891db4d2b3220c1306078033f8079cc92b8212e24c0e84bebc59d0d573"
+  },
+  "zkir/revokeCredentialV2.zkir": {
+    "bytes": 71809,
+    "sha256": "e28c864710d6b05da43dc1caa01e6d7e4ca4a66d6a87fe63511bcc0bac3a7c84"
+  }
+}

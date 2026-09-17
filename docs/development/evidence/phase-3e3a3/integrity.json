@@ -1,0 +1,33 @@
+{
+  "baselineCommit": "49d4bc8bbd7de1affe44827bd293c389b771ef9f",
+  "classification": "BLOCKED_STATIC_PRIVATE_INTEGRATION_HARNESS",
+  "files": {
+    "docs/development/phase-3e3a3-r61-private-integration-harness-report.md": {
+      "bytes": 13867,
+      "sha256": "70f5d1bd708719e9b2a07ec0e53bfb0c58e0c83b208a057ddb19de69858c917f"
+    },
+    "docs/development/evidence/phase-3e3a3/parameter-resource-preflight-plan.json": {
+      "bytes": 1764,
+      "sha256": "c7974bb030304d47dc982ec6fd6219e3df3bc068daf603479ccafdabf07c9bc4"
+    },
+    "docs/development/evidence/phase-3e3a3/privacy-field-classification.json": {
+      "bytes": 20433,
+      "sha256": "5008ecb73a55426d488dfc2acc669921a9e70fcf7dd439dd100f044b124d4e81"
+    },
+    "docs/development/evidence/phase-3e3a3/proposed-plan.json": {
+      "bytes": 2421,
+      "sha256": "1e36c1860a62d8e84f3b942e8ff6436ed55a3b16546b94b66e587fa271b3739b"
+    },
+    "docs/development/evidence/phase-3e3a3/static-evidence.json": {
+      "bytes": 51962,
+      "sha256": "9261c7a9a46eb6e7d1ace378b641870bc9c46412e6061408fc80e99bab2f495f"
+    }
+  },
+  "preservationPassed": true,
+  "managed20Match": true,
+  "jsonAndMappingAssertionsPassed": true,
+  "mappingValidationCorrection": "Initial extraction stopped at nested ContractAddress brace; corrected balanced-brace extraction before final validation. No contract/code execution.",
+  "gitDiffCheckExit": 0,
+  "finalGitStatus": "?? docs/development/evidence/phase-3e3a3/\n?? docs/development/phase-3e3a3-r61-private-integration-harness-report.md\n",
+  "selfHashExcluded": true
+}

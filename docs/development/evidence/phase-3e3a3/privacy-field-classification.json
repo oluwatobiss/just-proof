@@ -1,0 +1,476 @@
+{
+  "generatedDeclarationsSha256": "0139fd7406b87a3498b5141ff2bdce2dcef9193753597326af99aa9e738b0d08",
+  "fields": [
+    {
+      "schema": "constructor",
+      "field": "deploymentRegistryContext",
+      "classification": "public",
+      "derivation": "SHA256 UTF8 public test label JP:3E3B:SYNTHETIC:REGISTRY-CONTEXT:V1",
+      "lifetime": "deployment",
+      "evidenceAllowed": true
+    },
+    {
+      "schema": "registryAuthoritySecretWitness",
+      "field": "return tuple [PS, Bytes<32>]",
+      "classification": "private",
+      "derivation": "runtime SHA256 distinct public test label authority; no production use",
+      "lifetime": "memory only",
+      "evidenceAllowed": false
+    },
+    {
+      "schema": "registerIssuerV2",
+      "field": "issuerControlCommitment",
+      "classification": "non-secret protocol argument; no raw chain-exposure claim",
+      "derivation": "canonical typed issuerControlV2 from separate synthetic issuer secret",
+      "lifetime": "operation",
+      "evidenceAllowed": true
+    },
+    {
+      "schema": "CredentialStatementV2",
+      "field": "protocolVersion",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialStatementV2",
+      "field": "credentialId",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialStatementV2",
+      "field": "issuerId",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialStatementV2",
+      "field": "subjectCommitment",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialStatementV2",
+      "field": "qualificationType",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialStatementV2",
+      "field": "qualificationVersion",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialStatementV2",
+      "field": "issuedAt",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialStatementV2",
+      "field": "expiresAt",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "PrivateCredentialPackageV2",
+      "field": "statement",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "PrivateCredentialPackageV2",
+      "field": "issuanceNonce",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "PrivateCredentialPackageV2",
+      "field": "credentialOpening",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "IssuerRecordV2",
+      "field": "protocolVersion",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "IssuerRecordV2",
+      "field": "issuerId",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "IssuerRecordV2",
+      "field": "issuerControlCommitment",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "IssuerMembershipWitnessV2",
+      "field": "record",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "IssuerMembershipWitnessV2",
+      "field": "issuerIndex",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "IssuerMembershipWitnessV2",
+      "field": "path",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialMembershipWitnessV2",
+      "field": "credentialIndex",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialMembershipWitnessV2",
+      "field": "path",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "IssuerRegistrationWitnessV2",
+      "field": "registryAuthoritySecret",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "IssuerRegistrationWitnessV2",
+      "field": "insertionPath",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialRegistrationWitnessV2",
+      "field": "issuerSecret",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialRegistrationWitnessV2",
+      "field": "credential",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialRegistrationWitnessV2",
+      "field": "issuerMembership",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialRegistrationWitnessV2",
+      "field": "insertionPath",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialRevocationWitnessV2",
+      "field": "issuerSecret",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialRevocationWitnessV2",
+      "field": "issuerMembership",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialRevocationWitnessV2",
+      "field": "issuanceNonce",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialRevocationWitnessV2",
+      "field": "credentialId",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialRevocationWitnessV2",
+      "field": "credentialCommitment",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialRevocationWitnessV2",
+      "field": "credentialMembership",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialRevocationWitnessV2",
+      "field": "revocationPath",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "QualificationWitnessV2",
+      "field": "credential",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "QualificationWitnessV2",
+      "field": "subjectSecret",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "QualificationWitnessV2",
+      "field": "issuerMembership",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "QualificationWitnessV2",
+      "field": "credentialMembership",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "QualificationWitnessV2",
+      "field": "revocationPath",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "QualificationRequestV2",
+      "field": "protocolVersion",
+      "classification": "protocol-public",
+      "evidenceAllowed": true,
+      "lifetime": "request/allowlisted result",
+      "derivation": "fixed protocol/request metadata or finalized address/context"
+    },
+    {
+      "schema": "QualificationRequestV2",
+      "field": "proofType",
+      "classification": "protocol-public",
+      "evidenceAllowed": true,
+      "lifetime": "request/allowlisted result",
+      "derivation": "fixed protocol/request metadata or finalized address/context"
+    },
+    {
+      "schema": "QualificationRequestV2",
+      "field": "registryContract",
+      "classification": "protocol-public",
+      "evidenceAllowed": true,
+      "lifetime": "request/allowlisted result",
+      "derivation": "fixed protocol/request metadata or finalized address/context"
+    },
+    {
+      "schema": "QualificationRequestV2",
+      "field": "bytes",
+      "classification": "protocol-public",
+      "evidenceAllowed": true,
+      "lifetime": "request/allowlisted result",
+      "derivation": "fixed protocol/request metadata or finalized address/context"
+    },
+    {
+      "schema": "QualificationRequestV2",
+      "field": "registryContext",
+      "classification": "protocol-public",
+      "evidenceAllowed": true,
+      "lifetime": "request/allowlisted result",
+      "derivation": "fixed protocol/request metadata or finalized address/context"
+    },
+    {
+      "schema": "QualificationRequestV2",
+      "field": "qualificationType",
+      "classification": "protocol-public",
+      "evidenceAllowed": true,
+      "lifetime": "request/allowlisted result",
+      "derivation": "fixed protocol/request metadata or finalized address/context"
+    },
+    {
+      "schema": "QualificationRequestV2",
+      "field": "qualificationVersion",
+      "classification": "protocol-public",
+      "evidenceAllowed": true,
+      "lifetime": "request/allowlisted result",
+      "derivation": "fixed protocol/request metadata or finalized address/context"
+    },
+    {
+      "schema": "QualificationRequestV2",
+      "field": "verifierContext",
+      "classification": "protocol-public",
+      "evidenceAllowed": true,
+      "lifetime": "request/allowlisted result",
+      "derivation": "fixed protocol/request metadata or finalized address/context"
+    },
+    {
+      "schema": "QualificationRequestV2",
+      "field": "challenge",
+      "classification": "protocol-public",
+      "evidenceAllowed": true,
+      "lifetime": "request/allowlisted result",
+      "derivation": "fixed protocol/request metadata or finalized address/context"
+    },
+    {
+      "schema": "QualificationRequestV2",
+      "field": "requestIssuedAt",
+      "classification": "protocol-public",
+      "evidenceAllowed": true,
+      "lifetime": "request/allowlisted result",
+      "derivation": "fixed protocol/request metadata or finalized address/context"
+    },
+    {
+      "schema": "QualificationRequestV2",
+      "field": "requestExpiresAt",
+      "classification": "protocol-public",
+      "evidenceAllowed": true,
+      "lifetime": "request/allowlisted result",
+      "derivation": "fixed protocol/request metadata or finalized address/context"
+    },
+    {
+      "schema": "QualificationProofPublicOutputV2",
+      "field": "requestDigest",
+      "classification": "protocol-public",
+      "evidenceAllowed": true,
+      "lifetime": "request/allowlisted result",
+      "derivation": "fixed protocol/request metadata or finalized address/context"
+    },
+    {
+      "schema": "QualificationProofPublicOutputV2",
+      "field": "stateDigest",
+      "classification": "protocol-public",
+      "evidenceAllowed": true,
+      "lifetime": "request/allowlisted result",
+      "derivation": "fixed protocol/request metadata or finalized address/context"
+    },
+    {
+      "schema": "IssuerMerklePathV2",
+      "field": "siblings",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "CredentialMerklePathV2",
+      "field": "siblings",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    },
+    {
+      "schema": "RevocationMerklePathV2",
+      "field": "siblings",
+      "classification": "private witness material",
+      "evidenceAllowed": false,
+      "lifetime": "memory-only operation snapshot",
+      "derivation": "synthetic typed derivation, retained in-memory package or refreshed reference-tree path checked against finalized roots"
+    }
+  ],
+  "nestedRule": "All nested witness fields, including protocol constants, are forbidden from raw witness evidence. Every path is exactly 16 sibling Bytes<32>. WitnessContext and PS are private memory-only.",
+  "callbacks": [
+    "registryAuthoritySecretWitness",
+    "issuerRegistrationWitnessV2",
+    "credentialRegistrationWitnessV2",
+    "credentialRevocationWitnessV2",
+    "qualificationWitnessV2"
+  ],
+  "callbackRule": "Exactly generated [PS,value], one detached operation snapshot, copy bytes, freeze containers; no unchecked any.",
+  "zeroArgumentCircuits": [
+    "registerCredentialV2",
+    "revokeCredentialV2"
+  ],
+  "qualificationArgument": "request: QualificationRequestV2",
+  "outputs": {
+    "registerIssuerV2": "[]",
+    "registerCredentialV2": "[]",
+    "revokeCredentialV2": "[]",
+    "proveQualificationV2": [
+      "requestDigest",
+      "stateDigest"
+    ]
+  }
+}

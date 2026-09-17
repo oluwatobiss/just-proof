@@ -1,0 +1,36 @@
+{
+  "phase": "3E3A4 proposed only",
+  "executable": false,
+  "authorizationRequired": true,
+  "stopBeforeServiceLaunchUntil": [
+    "reviewed local runner/guard image and fixed image IDs",
+    "authoritative pinned proof-server parameter resolver/name metadata",
+    "contained topology and redaction review"
+  ],
+  "orderedGates": [
+    "Revalidate source/managed/cache/evidence and absence of attempt paths",
+    "Resolve exact required parameter names for contract AND native wallet operations from pinned public metadata; never infer from key size",
+    "Inspect only parameter path/name/type/size/uid/gid/compatibility metadata; no content reads/copies; stop if absent or ambiguous",
+    "Validate no-fetch behavior and network isolation without proof payloads; stop on fetching or changed cache",
+    "Only after separate authorization start fully contained stack once; no witnesses, wallet, /check or /prove",
+    "Record aggregate/per-container/process idle resources and startup/readiness durations; verify logging-driver policy",
+    "Recompare all cache metadata and source/artifacts; retain evidence and marker; stop gracefully under reviewed policy"
+  ],
+  "resourceFloors": {
+    "MemTotalKiB": 12253256,
+    "SwapTotalKiB": 8388608,
+    "launchMemAvailableKiB": 8388608,
+    "launchSwapFreeKiB": 6291456,
+    "runtimeMemAvailableKiB": 2097152,
+    "runtimeSwapFreeKiB": 2097152,
+    "sampleSeconds": 0.5,
+    "maximumGapSeconds": 2,
+    "termToKillSeconds": 5,
+    "minimumDiskBytes": 10737418240
+  },
+  "applyLaunchFloorsAfterFullStackIdle": true,
+  "commands": null,
+  "reason": "Exact parameter paths/names and runnable contained image are unestablished; no invented execution command",
+  "downloadsAllowed": false,
+  "witnessesAllowed": false
+}

@@ -1,0 +1,52 @@
+{
+  "classification": "BLOCKED_STATIC_PRIVATE_INTEGRATION_HARNESS",
+  "baselineCommit": "49d4bc8bbd7de1affe44827bd293c389b771ef9f",
+  "executableProposals": [],
+  "sequence": [
+    "deploy V2",
+    "registerIssuerV2",
+    "registerCredentialV2",
+    "proveQualificationV2",
+    "revokeCredentialV2"
+  ],
+  "syntheticDerivation": "Runtime SHA256 UTF8 JP:3E3B:SYNTHETIC:<role>:V1; distinct authority/issuer/subject/nonce/credential-opening/context/verifier/challenge labels. Public labels are fixtures, never production secrets.",
+  "walletDecision": "Public genesis-funded fixture is supported by LocalTestEnvironment; privacy-safe standalone wallet path not established; do not invoke environment wrapper or random-seed logger.",
+  "privateStateDecision": "Existing Map provider is not selected unchanged: plaintext exports, shared object references, import diagnostics. No disk writes in implementation.",
+  "topologyProposal": {
+    "proofNetwork": "dedicated internal; proof server only here",
+    "ledgerNetwork": "separate internal node/indexer/runner network",
+    "guard": "transport-only fixed upstream, runner requests only guard; guard dual-homed only as needed, no external route",
+    "publishedProofPort": false,
+    "runnerImage": "UNRESOLVED; local inventory has no reviewed Node runner image",
+    "redirectPolicy": "refuse upstream 3xx; constant nonredirect local errors; never echo upstream text",
+    "retryPolicy": "official initial + 3 retries remain; future explicit acceptance required",
+    "proxyImplementation": "not created; runtime/image/body-size/timeout/isolation review unresolved"
+  },
+  "localConfigRule": "Reject environment network selectors and all proxy/endpoint overrides; parsed fixed scheme/host/port/path, no userinfo/query/fragment; no getConfig or dotenv",
+  "privacyEvidenceFields": [
+    "circuit",
+    "stage",
+    "fixedCategory",
+    "startUtc",
+    "finishUtc",
+    "elapsedMs",
+    "byteCount",
+    "publicArtifactSha256"
+  ],
+  "forbiddenEvidence": [
+    "rawErrors",
+    "stack",
+    "cause",
+    "response",
+    "request",
+    "transaction",
+    "witness",
+    "privateState",
+    "proof",
+    "walletSeed",
+    "completeEnvironment"
+  ],
+  "authorization": "Separate future hash-bound authorization for services and ledger submission; exclusive durable reservation only after complete preflight; no overall retry",
+  "phase3E3BAuthorized": false,
+  "r61Open": true
+}

@@ -1,0 +1,26 @@
+{
+  "baselineCommit": "45ee03b446756e542c96d246293ff5c63e8312eb",
+  "classification": "BLOCKED_PRIVATE_LOCAL_INTEGRATION_PLAN",
+  "files": {
+    "docs/development/phase-3e3a2-r61-private-local-integration-plan-report.md": {
+      "bytes": 13570,
+      "sha256": "b803683276b7ce945b85876d0e21b0085f7e4c0b54c1ce4269ba3bdd691488d7"
+    },
+    "docs/development/evidence/phase-3e3a2/capability-findings.json": {
+      "bytes": 53627,
+      "sha256": "f013dc1431ec00c25c72c7a885d183b1afc27dcdfb814a0914ce606c924a2008"
+    },
+    "docs/development/evidence/phase-3e3a2/conditional-design.json": {
+      "bytes": 994,
+      "sha256": "3bb3ced5b574779fcf9dd1899a8b4e31bb0834a99140797ce5467cc062f1cc41"
+    }
+  },
+  "preservationPassed": true,
+  "preservedFiles": 301,
+  "jsonParsingPassed": true,
+  "gitDiffCheckExit": 0,
+  "finalGitStatus": "?? docs/development/evidence/phase-3e3a2/\n?? docs/development/phase-3e3a2-r61-private-local-integration-plan-report.md\n",
+  "selfHashExcluded": true,
+  "phase3E3BAuthorized": false,
+  "r61Open": true
+}

@@ -1,0 +1,29 @@
+{
+  "status": "BLOCKED_NOT_EXECUTABLE",
+  "sequence": [
+    "deploy with private authority constructor witness and public context",
+    "registerIssuerV2",
+    "registerCredentialV2",
+    "proveQualificationV2",
+    "revokeCredentialV2"
+  ],
+  "runtimeCommands": null,
+  "reason": "No fully reviewed containment, privacy-safe provider wiring, parameter supply or verification evidence route",
+  "proposedResourceFloors": {
+    "MemTotalKiB": 12253256,
+    "SwapTotalKiB": 8388608,
+    "launchMemAvailableKiB": 8388608,
+    "launchSwapFreeKiB": 6291456,
+    "runtimeMemAvailableKiB": 2097152,
+    "runtimeSwapFreeKiB": 2097152,
+    "sampleSeconds": 0.5,
+    "maximumGapSeconds": 2,
+    "termToKillSeconds": 5,
+    "freeDiskBytes": 10737418240
+  },
+  "concurrency": 1,
+  "automaticRelaunch": false,
+  "providerRetriesApproved": false,
+  "timeouts": "Unresolved pending full-stack resource budget; no inherited compiler timeout asserted appropriate for finality",
+  "phase3E3BAuthorized": false
+}

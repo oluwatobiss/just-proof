@@ -1,0 +1,112 @@
+{
+  "baselineCommit": "b572f189d36d2d306709004afccf47a1647c21b3",
+  "classification": "BLOCKED_PUBLIC_RUNTIME_OR_A4_PLAN",
+  "files": {
+    "docs/development/phase-3e3a3c-r61-contained-runtime-wallet-scaffold-report.md": {
+      "bytes": 16296,
+      "sha256": "90e8f3c6656eccd5f2d0bb868d4e4d79a2147a8db19a218186124ef1a89ae8d9"
+    },
+    "docs/development/evidence/phase-3e3a3c/Dockerfile.proposed-runtime": {
+      "bytes": 88,
+      "sha256": "df5e2355ed2838ef1aa84b399af7a269c08295ff4b8b039f55b7eb48506b0d04"
+    },
+    "docs/development/evidence/phase-3e3a3c/build-context-manifest.json": {
+      "bytes": 2483,
+      "sha256": "1816c7e2ccc8b5e084249c790566be797626a23bcca599578cf8ba6bd6d84069"
+    },
+    "docs/development/evidence/phase-3e3a3c/existing-images.json": {
+      "bytes": 3018,
+      "sha256": "d5e39115527af1dd9782754d71ec9c02147968ebd3ec9964c059336fb018c468"
+    },
+    "docs/development/evidence/phase-3e3a3c/existing-runtime-probes.json": {
+      "bytes": 2024,
+      "sha256": "1ae377cd5fa45839730bd5233062580724c7ca0a3c0a5a8730cfbb4922c60472"
+    },
+    "docs/development/evidence/phase-3e3a3c/native-addon-metadata.json": {
+      "bytes": 4001,
+      "sha256": "1bd86e041b40b28e8acaa29f5f41def225e279b6d386f5dc220e1585797e221e"
+    },
+    "docs/development/evidence/phase-3e3a3c/offline-build-started": {
+      "bytes": 111,
+      "sha256": "34ee7ed49e8fba9f00f81c96804e3dde18391260a893bb1778738aac8f0fd55b"
+    },
+    "docs/development/evidence/phase-3e3a3c/offline-build.json": {
+      "bytes": 1643,
+      "sha256": "5ba225c47a5765dd46ac2dc578344c5a64ba13d7746ae380f8ef970857342a70"
+    },
+    "docs/development/evidence/phase-3e3a3c/parameter-metadata-probe.json": {
+      "bytes": 1051,
+      "sha256": "340e60c212995e330f6d485f09f8198b153cd7a8219a80d47cc5e740629a4f28"
+    },
+    "docs/development/evidence/phase-3e3a3c/preservation-baseline.json": {
+      "bytes": 50457,
+      "sha256": "44f32d058517d5133f8d9f9f921ea8fdf480e97e3f1509a910176f9aae7ae166"
+    },
+    "docs/development/evidence/phase-3e3a3c/proposed-a4-authorization.json": {
+      "bytes": 502,
+      "sha256": "2d7ad91a461bdd0cb06a3df8e6a64d0912bbd834ad2500a35a95884c72ac0b03"
+    },
+    "docs/development/evidence/phase-3e3a3c/proposed-a4-plan.json": {
+      "bytes": 2356,
+      "sha256": "001b9b861eb76ac68bc74365498f8e94fe94f502714d57cfbeb9e824888c72cd"
+    },
+    "docs/development/evidence/phase-3e3a3c/proposed-compose.yml": {
+      "bytes": 2749,
+      "sha256": "241edf805d89dbbdd024a333102e774cc278b4b72780b81fe68a4dbd52b68837"
+    },
+    "docs/development/evidence/phase-3e3a3c/proposed-idle-runtime.mjs": {
+      "bytes": 414,
+      "sha256": "28606ce9b7ddf7a0ae5263e5a368ccb20235f79217f4329b80c3ca9242f1cfdf"
+    },
+    "docs/development/evidence/phase-3e3a3c/proposed-memory-provider.ts": {
+      "bytes": 2628,
+      "sha256": "477639cdf7f12a22c825b8422607419d7ba4d975f24a53f0cefde791b45eb921"
+    },
+    "docs/development/evidence/phase-3e3a3c/proposed-redirect-guard.mjs": {
+      "bytes": 3107,
+      "sha256": "d4c6bfa9714e4de90a1a0106ab1fe7c229f94404511262e6a6c870314c067ee9"
+    },
+    "docs/development/evidence/phase-3e3a3c/proposed-wallet-boundary.ts": {
+      "bytes": 630,
+      "sha256": "022d9920c54d12ee3ecf361cae1bba40c02497be7783e1166f6f72980cefbe0b"
+    },
+    "docs/development/evidence/phase-3e3a3c/public-guard-selftest.mjs": {
+      "bytes": 2214,
+      "sha256": "126742cbae9de00499043206f670f99ec21da76da5943b9cb865cb368cb85128"
+    },
+    "docs/development/evidence/phase-3e3a3c/public-memory-assertions.mjs": {
+      "bytes": 3135,
+      "sha256": "f9b89af9e526eced66e36da3d40e6a749f80bc9282ab138329dd1cdd6e9e1e26"
+    },
+    "docs/development/evidence/phase-3e3a3c/public-runtime-validation.json": {
+      "bytes": 1037,
+      "sha256": "e035cb9dae69f93e660c05e7094d5d56df8e96335e15132005932682eaa08071"
+    },
+    "docs/development/evidence/phase-3e3a3c/public-runtime-validation.mjs": {
+      "bytes": 997,
+      "sha256": "59d903b6722ca9e9c0e9140e0939c0125f809f10d35bd784c512b4a40e541678"
+    },
+    "docs/development/evidence/phase-3e3a3c/results.json": {
+      "bytes": 1458,
+      "sha256": "04ee79f0ebd0ed854aeb72d63ff24876b67073dfb239c9923a2dc0f25dcbf79e"
+    },
+    "docs/development/evidence/phase-3e3a3c/runner-image.json": {
+      "bytes": 1637,
+      "sha256": "37c8fe858fe79f015f46fdc5107180cc29e485b8d758a7cd44037a8ebb87ec0d"
+    },
+    "docs/development/evidence/phase-3e3a3c/tsconfig.proposal.json": {
+      "bytes": 225,
+      "sha256": "442e89040f1aa840733bce902e176a830aacbb30e507182d3fe6a291148fa0ca"
+    }
+  },
+  "historicalPreservationPassed": true,
+  "managed20Match": true,
+  "memoryAssertions": 30,
+  "guardAssertions": 6,
+  "inertImportPassed": true,
+  "targetedTypecheckExit": 0,
+  "jsonYamlSyntaxPassed": true,
+  "gitDiffCheckExit": 0,
+  "finalGitStatus": "?? docs/development/evidence/phase-3e3a3c/\n?? docs/development/phase-3e3a3c-r61-contained-runtime-wallet-scaffold-report.md\n",
+  "selfHashExcluded": true
+}

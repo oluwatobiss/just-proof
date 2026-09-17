@@ -1,0 +1,5 @@
+FROM scratch
+COPY . /
+USER 65532:65532
+WORKDIR /work
+ENTRYPOINT ["/usr/local/bin/node"]

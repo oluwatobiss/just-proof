@@ -1,0 +1,25 @@
+{
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--pull",
+    "never",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges",
+    "--mount",
+    "type=bind,src=/home/oluwatobiss/projects/midnight/risein/just-proof/docs/development/evidence/phase-3e3a3c,dst=/proposal,readonly",
+    "justproof-r61-runner:b572f189-3e3a3c",
+    "/proposal/public-runtime-validation.mjs"
+  ],
+  "exit": 0,
+  "stdout": "{\"node\":\"v24.18.0\",\"uid\":65532,\"inertImports\":true,\"unchangedHandles\":true,\"unchangedResources\":true}\n{\"passed\":30,\"requiredShapes\":\"plain generated records, bigint, bytes, arrays, maps, undefined; SigningKey:string\",\"classPrototypePreservation\":false,\"classValuesPermittedInPlannedPrivateState\":false,\"signingKeyValidationPerformed\":false}\n{\"passed\":6,\"transmissions\":6,\"canaryEcho\":false,\"proofProviderUsed\":false,\"proofServerUsed\":false}\n",
+  "stderr": "",
+  "network": "none",
+  "walletOrServiceInstantiated": false
+}

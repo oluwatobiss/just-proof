@@ -1,0 +1,91 @@
+[
+  {
+    "path": "node_modules/lightningcss-linux-x64-gnu/lightningcss.linux-x64-gnu.node",
+    "needed": [
+      "0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]",
+      "0x0000000000000001 (NEEDED)             Shared library: [librt.so.1]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libpthread.so.0]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libdl.so.2]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]",
+      "0x0000000000000001 (NEEDED)             Shared library: [ld-linux-x86-64.so.2]"
+    ],
+    "exit": 0
+  },
+  {
+    "path": "node_modules/@msgpackr-extract/msgpackr-extract-linux-x64/node.napi.glibc.node",
+    "needed": [
+      "0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libpthread.so.0]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]",
+      "0x0000000000000001 (NEEDED)             Shared library: [ld-linux-x86-64.so.2]"
+    ],
+    "exit": 0
+  },
+  {
+    "path": "node_modules/classic-level/prebuilds/linux-x64/classic-level.node",
+    "needed": [
+      "0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libpthread.so.0]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]"
+    ],
+    "exit": 0
+  },
+  {
+    "path": "node_modules/classic-level/prebuilds/linux-x64/classic-level.musl.node",
+    "needed": [
+      "0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libc.musl-x86_64.so.1]"
+    ],
+    "exit": 0
+  },
+  {
+    "path": "node_modules/@rolldown/binding-linux-x64-gnu/rolldown-binding.linux-x64-gnu.node",
+    "needed": [
+      "0x0000000000000001 (NEEDED)             Shared library: [libdl.so.2]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]",
+      "0x0000000000000001 (NEEDED)             Shared library: [librt.so.1]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libpthread.so.0]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]",
+      "0x0000000000000001 (NEEDED)             Shared library: [ld-linux-x86-64.so.2]"
+    ],
+    "exit": 0
+  },
+  {
+    "path": "node_modules/cpu-features/build/Release/cpufeatures.node",
+    "needed": [
+      "0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]"
+    ],
+    "exit": 0
+  },
+  {
+    "path": "node_modules/cpu-features/build/Release/obj.target/cpufeatures.node",
+    "needed": [
+      "0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]"
+    ],
+    "exit": 0
+  },
+  {
+    "path": "node_modules/ssh2/lib/protocol/crypto/build/Release/sshcrypto.node",
+    "needed": [
+      "0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]"
+    ],
+    "exit": 0
+  },
+  {
+    "path": "node_modules/ssh2/lib/protocol/crypto/build/Release/obj.target/sshcrypto.node",
+    "needed": [
+      "0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]",
+      "0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]"
+    ],
+    "exit": 0
+  }
+]

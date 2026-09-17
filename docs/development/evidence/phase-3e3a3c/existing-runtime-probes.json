@@ -1,0 +1,74 @@
+[
+  {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--pull",
+      "never",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/nix/store/d24gb0hj1rasyyp3jh0x52i5fd4mkxsi-bash-interactive-x86_64-unknown-linux-musl-5.3p9/bin/bash",
+      "midnightntwrk/proof-server:8.1.0",
+      "-c",
+      "command -v node; command -v find; command -v stat; command -v id; command -v sh; if command -v node >/dev/null; then node --version; fi; if command -v id >/dev/null; then id; fi"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--pull",
+      "never",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/sh",
+      "midnightntwrk/midnight-node:1.0.0",
+      "-c",
+      "command -v node; command -v find; command -v stat; command -v id; command -v sh; if command -v node >/dev/null; then node --version; fi; if command -v id >/dev/null; then id; fi"
+    ],
+    "exit": 0,
+    "stdout": "/usr/bin/stat\n/usr/bin/id\n/usr/bin/sh\nuid=0(root) gid=0(root) groups=0(root)\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--pull",
+      "never",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/sh",
+      "midnightntwrk/indexer-standalone:4.3.3",
+      "-c",
+      "command -v node; command -v find; command -v stat; command -v id; command -v sh; if command -v node >/dev/null; then node --version; fi; if command -v id >/dev/null; then id; fi"
+    ],
+    "exit": 0,
+    "stdout": "/usr/bin/find\n/usr/bin/stat\n/usr/bin/id\n/usr/bin/sh\nuid=10001(appuser) gid=10001(appuser) groups=10001(appuser)\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,49 @@
+[
+    {
+        "Id": "sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec",
+        "RepoTags": [
+            "justproof-r61-runner:b572f189-3e3a3c"
+        ],
+        "RepoDigests": [
+            "justproof-r61-runner@sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec"
+        ],
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-09-17T21:33:17.090736836Z",
+        "Config": {
+            "User": "65532:65532",
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Entrypoint": [
+                "/usr/local/bin/node"
+            ],
+            "WorkingDir": "/work"
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 48118339,
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:f7c6bff51e3753d3c1fbf5b3209e481e4ff0dbfd723446e90b06651a454c54af",
+                "sha256:7908e4dfe7a018fcf5fbaf656b3b317a9ffb269d8f3fd68785899acb647e29da"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-09-17T21:33:28.421671652Z"
+        },
+        "Descriptor": {
+            "mediaType": "application/vnd.oci.image.index.v1+json",
+            "digest": "sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec",
+            "size": 855
+        },
+        "Identity": {
+            "Build": [
+                {
+                    "Ref": "1c695hzg51yh6jphajolxdiru",
+                    "CreatedAt": "2026-09-17T21:33:30.708842741Z"
+                }
+            ]
+        }
+    }
+]

@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import { readdirSync } from 'node:fs';
+const handles=process._getActiveHandles().length;
+const resources=process.getActiveResourcesInfo();
+const files=readdirSync('/proposal').sort();
+process.argv[2]='--separately-authorized-phase3e3a4-guard';
+await import('./proposed-redirect-guard.mjs');
+await import('./proposed-memory-provider.ts');
+await import('./public-memory-assertions.mjs');
+await import('./public-guard-selftest.mjs');
+assert.deepEqual(readdirSync('/proposal').sort(),files);
+assert.equal(process._getActiveHandles().length,handles);
+assert.deepEqual(process.getActiveResourcesInfo(),resources);
+console.log(JSON.stringify({node:process.version,uid:process.getuid(),inertImports:true,unchangedHandles:true,unchangedResources:true}));
+process.argv[2]='--public-memory-assertions';await (await import('./public-memory-assertions.mjs')).main();
+process.argv[2]='--public-guard-selftest';await (await import('./public-guard-selftest.mjs')).main();

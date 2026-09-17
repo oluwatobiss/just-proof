@@ -1,0 +1,61 @@
+{
+  "status": "BLOCKED_BEFORE_AUTHORIZATION_OR_SERVICE_LAUNCH",
+  "exactExecutionCommand": null,
+  "reason": "No valid complete A4 monitor/configuration yet; parameter resolver and image write-path compatibility unresolved. Do not execute Compose template.",
+  "proposedConfiguration": {
+    "file": "proposed-compose.yml",
+    "bytes": 2749,
+    "sha256": "241edf805d89dbbdd024a333102e774cc278b4b72780b81fe68a4dbd52b68837"
+  },
+  "runtimeImage": "sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec",
+  "parameterMetadataAllowlist": null,
+  "mandatoryStopGates": [
+    "Unknown resolver or required parameter name",
+    "Unknown native-wallet parameter requirements",
+    "Absent/incompatible metadata",
+    "Attempted fetch, external connection or cache mutation",
+    "Image read-only/nonroot/tmpfs incompatibility",
+    "Indexer storage config incomplete",
+    "Sample gap >2 seconds or monitor failure"
+  ],
+  "resourceFloors": {
+    "MemTotalKiB": 12253256,
+    "SwapTotalKiB": 8388608,
+    "launchMemAvailableKiB": 8388608,
+    "launchSwapFreeKiB": 6291456,
+    "runtimeMemAvailableKiB": 2097152,
+    "runtimeSwapFreeKiB": 2097152,
+    "sampleSeconds": 0.5,
+    "maximumGapSeconds": 2,
+    "termToKillSeconds": 5,
+    "freeDiskBytes": 10737418240
+  },
+  "componentCapsProposalMiB": {
+    "node": 3072,
+    "indexer": 2048,
+    "proof": 2048,
+    "runner": 512,
+    "guard": 256
+  },
+  "capsNotReservation": true,
+  "measureAfterAllHealthy": true,
+  "emptyDevBlocksAllowedOnlyAfterA4Authorization": true,
+  "noUserTransactions": true,
+  "noWalletOrFunding": true,
+  "noCheckOrProve": true,
+  "noPrivateInput": true,
+  "noDownloadsPullsRebuildsOrCacheMutation": true,
+  "futureMarker": "docs/development/evidence/phase-3e3a4/attempt-started",
+  "futureOutput": "/tmp/justproof-phase3e3a4-public-metadata-attempt1",
+  "reservation": "exclusive, durable, only after complete authorization; never auto-delete; no relaunch",
+  "monitorRequirements": [
+    "WSL RAM/swap and process tree",
+    "per-container idle memory/PIDs",
+    "disk/startup/readiness timing",
+    "sample gaps",
+    "fetch/external-connection observation",
+    "before/after metadata and filesystem changes",
+    "privacy-safe logging categories only"
+  ],
+  "unresolvedTimeouts": "No guessed full-stack startup timeout or missing monitor advertised executable"
+}

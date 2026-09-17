@@ -1,0 +1,22 @@
+{
+  "templateOnly": true,
+  "authorized": false,
+  "phase": "3E3A4",
+  "requiredBindings": [
+    "cleanBaselineCommit",
+    "planSha256",
+    "monitorSha256",
+    "runtimeImageId",
+    "composeSha256",
+    "sourceSha256",
+    "managedArtifactManifestSha256",
+    "parameterMetadataAllowlistSha256"
+  ],
+  "missingBindings": [
+    "monitorSha256",
+    "parameterMetadataAllowlistSha256"
+  ],
+  "autonomousEmptyBlocks": true,
+  "walletFundingProofUserTransactions": false,
+  "validForExecution": false
+}

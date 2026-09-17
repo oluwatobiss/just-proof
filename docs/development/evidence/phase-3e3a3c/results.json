@@ -1,0 +1,24 @@
+{
+  "classification": "BLOCKED_PUBLIC_RUNTIME_OR_A4_PLAN",
+  "baselineCommit": "b572f189d36d2d306709004afccf47a1647c21b3",
+  "runtimeImage": "sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec",
+  "runtimeEstablishedFor": "Node builtins, type-stripped inert proposal imports and public loopback mock only",
+  "nativeSdkCompatibilityEstablished": false,
+  "memoryAssertionsPassed": 30,
+  "guardAssertionsPassed": 6,
+  "inertImportPassed": true,
+  "walletConstructed": false,
+  "walletStatus": "Partial constant-error boundary only; direct lower-level privacy-safe construction/shutdown still unestablished",
+  "fundingDecision": "Future transparent local-only genesis fixture may fund fresh ephemeral wallet; no seed embedded, no faucet, no automatic retry; funding and DUST transactions require authorization",
+  "parameterStatus": "Names/completeness/compatibility unresolved; metadata probe found stat symlink but no parameter candidates within searched paths",
+  "hostSandbox": {
+    "unshareUserNetMountTrueExit": 0,
+    "bwrapAvailable": false,
+    "firejailAvailable": false,
+    "nodePermission": "No advertised --allow-net option in inspected Node24 help; permission flag not a reviewed OS egress boundary",
+    "reasonNotSelected": "Namespace creation alone does not establish filesystem containment and local-stack network reachability"
+  },
+  "phase3E3A4Authorized": false,
+  "phase3E3BAuthorized": false,
+  "r61Open": true
+}

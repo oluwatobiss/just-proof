@@ -1,0 +1,26 @@
+{
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--pull",
+    "never",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges",
+    "--entrypoint",
+    "/nix/store/d24gb0hj1rasyyp3jh0x52i5fd4mkxsi-bash-interactive-x86_64-unknown-linux-musl-5.3p9/bin/bash",
+    "midnightntwrk/proof-server:8.1.0",
+    "-c",
+    "shopt -s nullglob globstar; for p in /nix/store/*/bin/find /nix/store/*/bin/stat /root/.cache /home/*/.cache /tmp /nix/store/**/*bls_midnight*; do if [[ -L \"$p\" ]]; then t=symlink; elif [[ -d \"$p\" ]]; then t=directory; elif [[ -f \"$p\" ]]; then t=regular; else t=other; fi; printf \"%s %s\\n\" \"$t\" \"$p\"; done"
+  ],
+  "exit": 0,
+  "stdout": "symlink /nix/store/8kymgya7h4nv1h6pa7vrr1vdry02smp9-coreutils-x86_64-unknown-linux-musl-9.10/bin/stat\nother /root/.cache\nother /tmp\n",
+  "stderr": "",
+  "contentsRead": false,
+  "limitation": "No find/stat available on image PATH; shell glob/type metadata only. No sizes/ownership/compatibility inferred."
+}

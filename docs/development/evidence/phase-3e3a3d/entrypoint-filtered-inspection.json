@@ -1,0 +1,50 @@
+[
+  {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--pull",
+      "never",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/sh",
+      "midnightntwrk/midnight-node:1.0.0",
+      "-c",
+      "p=/entrypoint.sh; n=0; while IFS= read -r l; do n=$((n+1)); case \"$l\" in *CFG_*|*dev*|*base-path*|*chain*|*exec*|*mkdir*|*DATA*|*tmp*|*export*|*SIDECHAIN*|*permission*|*chown*) printf \"%s:%s\\n\" \"$n\" \"$l\";; esac; done < \"$p\""
+    ],
+    "exit": 0,
+    "stdout": "6:# Parse arguments to find --base-path\n10:    if [[ \"$arg\" == --base-path=* ]]; then\n13:    elif [[ \"$prev_arg\" == \"--base-path\" ]]; then\n14:        # Handle --base-path <value> format\n27:# Create directories and set permissions if they don't exist\n29:    mkdir -p \"$FINAL_BASE_PATH\"\n33:exec /midnight-node \"$@\"\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--pull",
+      "never",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/sh",
+      "midnightntwrk/indexer-standalone:4.3.3",
+      "-c",
+      "p=$(command -v entrypoint.sh); printf \"entrypoint=%s\\n\" \"$p\"; n=0; while IFS= read -r l; do n=$((n+1)); case \"$l\" in *APP__*|*postgres*|*redis*|*storage*|*mkdir*|*chown*|*var/*|*tmp*|*exec*|*config*|*running*|*supervis*|*indexer*|*source*|*.sh*) printf \"%s:%s\\n\" \"$n\" \"$l\";; esac; done < \"$p\""
+    ],
+    "exit": 0,
+    "stdout": "entrypoint=/usr/local/bin/entrypoint.sh\n3:trap 'rm /var/run/indexer-standalone/running' EXIT\n7:touch /var/run/indexer-standalone/running\n8:indexer-standalone &\n",
+    "stderr": ""
+  }
+]

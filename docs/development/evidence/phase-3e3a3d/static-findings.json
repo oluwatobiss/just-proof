@@ -1,0 +1,55 @@
+{
+  "baselineCommit": "efb6ec32eae6d43decf88daa9c631b3bc87240c7",
+  "classification": "BLOCKED_PARAMETER_OR_FULL_STACK_PLAN",
+  "sourceHashes": {
+    "node_modules/@midnight-ntwrk/midnight-js-http-client-proof-provider/dist/index.mjs": {
+      "bytes": 5967,
+      "sha256": "f412603b4d2b262f864d9aa09eba0195a64de3ec258e2afe0e78f7c26354bc3c"
+    },
+    "node_modules/cross-fetch/dist/node-ponyfill.js": {
+      "bytes": 624,
+      "sha256": "3866b630fc1f86be456d58a3a6a59239652fd82c417ec0a7ff15c231535679bc"
+    },
+    "node_modules/cross-fetch/node_modules/node-fetch/lib/index.js": {
+      "bytes": 45775,
+      "sha256": "79541f01338e70f4ff6f8a1d12f5c2914d4c6ab2ba96b7ddf48d2add01c13813"
+    },
+    "node_modules/cross-fetch/package.json": {
+      "bytes": 2727,
+      "sha256": "856d0b44165fcd5421c6cd801d45f8d3160c22ebf7ddfb21016c366d475f6dea"
+    },
+    "node_modules/cross-fetch/node_modules/node-fetch/package.json": {
+      "bytes": 2668,
+      "sha256": "000a0b3b037d4e3e211e7b7ca559a5a62a39b96ca2c6bcdaed3aba0a545eedba"
+    },
+    "compose.yml": {
+      "bytes": 1974,
+      "sha256": "7dfe495f96718ba7749616a93a741f0a609e512516a6d8bb321da997865effd8"
+    }
+  },
+  "framing": "Provider Uint8Array becomes Buffer in node-fetch; getTotalBytes supplies Content-Length. Nonempty fixed byte arrays compatible with positive canonical length. No streaming SDK request is supported by guard.",
+  "nodePath": "BASE_PATH=/node/chain; /entrypoint.sh selects --base-path override or BASE_PATH, mkdir and exec /midnight-node. Effective CFG_PRESET=dev implementation not established.",
+  "indexerReadiness": "entrypoint creates /var/run/indexer-standalone/running before starting process; presence alone is not API/backend readiness",
+  "unresolved": [
+    "Proof-server parameter resolver/home behavior",
+    "All-four-circuit and native required parameter set",
+    "Indexer storage configuration and all write paths",
+    "Read-only/capability/tmpfs runtime compatibility",
+    "Public node/indexer health implementation",
+    "Complete one-attempt service monitor and justified timeouts"
+  ],
+  "preservation": {
+    "allBaselineMatch": true,
+    "cacheExactSevenMatch": true,
+    "managedExact20Match": true
+  },
+  "validation": {
+    "guardAssertionsPassed": 18,
+    "inertImports": true,
+    "composeRenderExit": 0,
+    "monitorAstPassed": true,
+    "monitorExecuted": false,
+    "proofProviderUsed": false,
+    "midnightServiceStarted": false
+  }
+}

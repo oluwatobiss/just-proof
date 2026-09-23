@@ -1,0 +1,24 @@
+{
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--pull",
+    "never",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges",
+    "--mount",
+    "type=bind,src=/home/oluwatobiss/projects/midnight/risein/just-proof/docs/development/evidence/phase-3e3a3d,dst=/proposal,readonly",
+    "sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec",
+    "/proposal/public-guard-tests.mjs",
+    "--public-guard-tests"
+  ],
+  "exit": 1,
+  "stdout": "",
+  "stderr": "{\"category\":\"PUBLIC_GUARD_ASSERTION_FAILED\",\"actual\":14,\"expected\":18}\n"
+}

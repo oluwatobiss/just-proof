@@ -1,0 +1,82 @@
+{
+  "classification": "BLOCKED_PARAMETER_OR_FULL_STACK_PLAN",
+  "ready": false,
+  "reviewBaseline": "efb6ec32eae6d43decf88daa9c631b3bc87240c7",
+  "bindingFiles": {
+    "planSha256": "docs/development/evidence/phase-3e3a3d/proposed-plan.json",
+    "monitorSha256": "docs/development/evidence/phase-3e3a3d/proposed-a4-monitor.py",
+    "composeSha256": "docs/development/evidence/phase-3e3a3d/proposed-compose.yml",
+    "guardSha256": "docs/development/evidence/phase-3e3a3d/proposed-redirect-guard.mjs",
+    "idleRuntimeSha256": "docs/development/evidence/phase-3e3a3d/proposed-idle-runtime.mjs",
+    "healthProbeSha256": "docs/development/evidence/phase-3e3a3d/proposed-public-health.mjs",
+    "parameterAllowlistSha256": "docs/development/evidence/phase-3e3a3d/parameter-allowlist.json",
+    "sourceSha256": "contracts/just-proof.compact",
+    "managedArtifactManifestSha256": "docs/development/evidence/phase-3e3a3d/managed-artifact-manifest.json",
+    "imageConfigurationSha256": "docs/development/evidence/phase-3e3a3d/image-configurations.json"
+  },
+  "monitorCommand": "python3 docs/development/evidence/phase-3e3a3d/proposed-a4-monitor.py --separately-authorized-a4-service-preflight --authorization-file /tmp/justproof-phase3e3a4-authorization.json",
+  "monitorCommandOutcome": "Refuses without reservation; no service-launch implementation. Not executed.",
+  "composeInvocationProposal": [
+    "docker",
+    "compose",
+    "--project-name",
+    "justproof-phase3e3a4",
+    "--file",
+    "docs/development/evidence/phase-3e3a3d/proposed-compose.yml",
+    "up",
+    "--detach",
+    "--no-build",
+    "--pull",
+    "never"
+  ],
+  "composeExecutableApproved": false,
+  "unresolved": [
+    "Parameter resolver/home behavior and compatible required-name set",
+    "Indexer storage config and full write paths",
+    "Node CFG_PRESET=dev effective flags and capability compatibility",
+    "Full monitor reservation/sampling/cleanup/finalization implementation",
+    "Node/indexer public readiness probes and justified startup/hard timeouts",
+    "Clean committed proposal baseline authorization"
+  ],
+  "marker": "docs/development/evidence/phase-3e3a4/attempt-started",
+  "output": "/tmp/justproof-phase3e3a4-public-service-attempt1",
+  "futureReservationRules": [
+    "Validate every binding and exact clean baseline first",
+    "Require evidence/output absent including symlinks",
+    "Exclusive mkdir and marker, fsync; copy exact authorization bytes/hash immediately",
+    "Never delete marker or retry",
+    "Stop all launched services on every outcome and retain stopped resources",
+    "Independently guard cleanup/evidence collection; permanent failure and nonzero exit if incomplete"
+  ],
+  "futureMonitoringRules": [
+    "0.5s WSL/process-tree/container/status/PID sampling",
+    "Stop on gap>2s, resource floor, replacement, unexpected network/routes/cache files or changed files",
+    "Require 10GiB on all relevant filesystems",
+    "Recheck headroom after all services healthy and dwell",
+    "Only sanctioned public counters/health; no transaction inspection",
+    "5s TERM to KILL; retain core result even if cleanup fails"
+  ],
+  "resources": {
+    "MemTotalKiB": 12253256,
+    "SwapTotalKiB": 8388608,
+    "launchMemAvailableKiB": 8388608,
+    "launchSwapFreeKiB": 6291456,
+    "runtimeMemAvailableKiB": 2097152,
+    "runtimeSwapFreeKiB": 2097152,
+    "sampleSeconds": 0.5,
+    "maxGapSeconds": 2,
+    "termToKillSeconds": 5,
+    "freeDiskBytes": 10737418240
+  },
+  "timeouts": {
+    "startup": null,
+    "readinessDwell": null,
+    "gracefulStopSeconds": 5,
+    "hard": null
+  },
+  "timeoutReason": "No demonstrated full-stack startup/write-path behavior; no unjustified execution deadline selected",
+  "authorization": "disabled-authorization.json",
+  "phase3E3A4Authorized": false,
+  "phase3E3BAuthorized": false,
+  "r61Open": true
+}

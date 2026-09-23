@@ -1,0 +1,25 @@
+{
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--pull",
+    "never",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges",
+    "--mount",
+    "type=bind,src=/home/oluwatobiss/projects/midnight/risein/just-proof/docs/development/evidence/phase-3e3a3d,dst=/proposal,readonly",
+    "sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec",
+    "/proposal/public-guard-tests.mjs",
+    "--public-guard-tests"
+  ],
+  "exit": 0,
+  "stdout": "{\"passed\":18,\"counters\":{\"inboundRequests\":14,\"eligibleForForwarding\":6,\"upstreamRequestsCreated\":6,\"completedUpstreamResponses\":4,\"rejections\":{\"REDIRECT\":1,\"UPSTREAM_STATUS\":1,\"METHOD\":1,\"PATH\":1,\"MEDIA_TYPE\":1,\"LENGTH\":2,\"OVERSIZE\":1,\"PARSER\":6,\"FRAMING\":1,\"CONCURRENCY\":1,\"TIMEOUT\":1,\"CLIENT_DISCONNECT\":1,\"RESPONSE_SIZE\":1}},\"noErrorCanaryEcho\":true,\"noLocation\":true,\"providerUsed\":false,\"proofServerUsed\":false}\n",
+  "stderr": "",
+  "correction": "Four HTTP parser rejections never become request events; expected parsed inbound count corrected from18 to14. Guard unchanged."
+}

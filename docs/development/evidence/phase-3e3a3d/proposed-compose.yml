@@ -1,0 +1,128 @@
+name: justproof-phase3e3a4
+x-safety: &a1
+  pull_policy: never
+  restart: no
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  read_only: true
+  pids_limit: 256
+  logging:
+    driver: none
+  dns:
+    - 127.0.0.1
+services:
+  proof-server:
+    <<: *a1
+    image: sha256:801bbc0340e9e96f16735f77b523f23c7459e3359842f7c79c2c53f4e994d531
+    entrypoint:
+      - /nix/store/6naj0x3l5n0b4cx722xwasyp597p6z3h-ledger-8.1.0/bin/midnight-proof-server
+    command:
+      - --port
+      - "6300"
+      - --no-fetch-params
+      - --num-workers
+      - "1"
+    user: 65532:65532
+    environment:
+      RUST_BACKTRACE: "0"
+    mem_limit: 2g
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    networks:
+      proof:
+        ipv4_address: 172.28.61.10
+  guard:
+    <<: *a1
+    image: sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec
+    command:
+      - /proposal/proposed-redirect-guard.mjs
+      - --separately-authorized-a4-guard
+      - /authorization/authorization.json
+    user: 65532:65532
+    mem_limit: 256m
+    volumes:
+      - type: bind
+        source: ./proposed-redirect-guard.mjs
+        target: /proposal/proposed-redirect-guard.mjs
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./disabled-authorization.json
+        target: /authorization/authorization.json
+        read_only: true
+        bind:
+          create_host_path: false
+    networks:
+      proof:
+        ipv4_address: 172.28.61.11
+  runner:
+    <<: *a1
+    image: sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec
+    command:
+      - /proposal/proposed-idle-runtime.mjs
+      - --separately-authorized-phase3e3a4-idle
+    user: 65532:65532
+    mem_limit: 512m
+    volumes:
+      - type: bind
+        source: ./proposed-idle-runtime.mjs
+        target: /proposal/proposed-idle-runtime.mjs
+        read_only: true
+        bind:
+          create_host_path: false
+    networks:
+      proof:
+        ipv4_address: 172.28.61.12
+      ledger:
+        ipv4_address: 172.28.62.12
+  node:
+    <<: *a1
+    image: sha256:ede01da35e982b6a4b85461ad8492ae2753ef14246fba33c8039b782aa8e39fb
+    environment:
+      CFG_PRESET: dev
+      RUST_BACKTRACE: "0"
+    mem_limit: 3g
+    tmpfs:
+      - /tmp:size=256m,mode=1777
+      - /node:size=512m,mode=0700,uid=10001,gid=10001
+    user: 10001:10001
+    networks:
+      ledger:
+        ipv4_address: 172.28.62.10
+  indexer:
+    <<: *a1
+    image: sha256:03afd079b00bcd229df29a24771439c5e7695c339cd89216d0763ce40731cc4b
+    environment:
+      APP__INFRA__NODE__URL: ws://172.28.62.10:9944
+      APP__INFRA__SPO_NODE__URL: ws://172.28.62.10:9944
+      APP__APPLICATION__NETWORK_ID: undeployed
+      RUST_BACKTRACE: "0"
+    mem_limit: 2g
+    tmpfs:
+      - /tmp:size=256m,mode=1777
+      - /var/run/indexer-standalone:size=1m,mode=0700,uid=10001,gid=10001
+    user: 10001:10001
+    networks:
+      ledger:
+        ipv4_address: 172.28.62.11
+networks:
+  proof:
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.28.61.0/24
+  ledger:
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.28.62.0/24
+x-unresolved:
+  launchAllowed: false
+  reasons:
+    - parameter-resolution
+    - indexer-storage-write-paths
+    - runtime-compatibility
+    - complete-monitor

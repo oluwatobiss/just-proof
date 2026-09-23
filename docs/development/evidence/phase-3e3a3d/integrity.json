@@ -1,0 +1,122 @@
+{
+  "baselineCommit": "efb6ec32eae6d43decf88daa9c631b3bc87240c7",
+  "classification": "BLOCKED_PARAMETER_OR_FULL_STACK_PLAN",
+  "files": {
+    "docs/development/phase-3e3a3d-r61-a4-static-completion-report.md": {
+      "bytes": 18453,
+      "sha256": "054e4e34657972c30682add0f0c30e9544c511272ea9156865c8a99c6c44e713"
+    },
+    "docs/development/evidence/phase-3e3a3d/compose-render-validation.json": {
+      "bytes": 328,
+      "sha256": "ea85ec4ad5c5a8f8959560b1b163640cd43f13c9af0ca834235275811a6eb20d"
+    },
+    "docs/development/evidence/phase-3e3a3d/disabled-authorization.json": {
+      "bytes": 2200,
+      "sha256": "1afa5f6a6859983a3998b9844b7deb2032269626c319cea07c06a095e2ac0379"
+    },
+    "docs/development/evidence/phase-3e3a3d/entrypoint-filtered-inspection.json": {
+      "bytes": 1840,
+      "sha256": "42740bb007f0fd744fe9e78ff691ca086dba51ed7bb95b3b4541586401e196ef"
+    },
+    "docs/development/evidence/phase-3e3a3d/guard-validation-1.json": {
+      "bytes": 585,
+      "sha256": "461290729581bd0ab2f6052453192d0d5218c8adffb6172e5fa34c536f7124df"
+    },
+    "docs/development/evidence/phase-3e3a3d/guard-validation-2.json": {
+      "bytes": 634,
+      "sha256": "b5961cc41b04fbd5b21bff71cf2ea95657aeaadeef9f0a5f339210b9dfca5057"
+    },
+    "docs/development/evidence/phase-3e3a3d/guard-validation-3.json": {
+      "bytes": 1168,
+      "sha256": "0a045e6187d95a25785b660a15f718aaa28334fb0b4506acc19f31307316f141"
+    },
+    "docs/development/evidence/phase-3e3a3d/guard-validation-4.json": {
+      "bytes": 1148,
+      "sha256": "71dbf0f1bf4ee8cedb64014d6ae6b7eff4db18e3458e666c7a1d2312644b147a"
+    },
+    "docs/development/evidence/phase-3e3a3d/guard-validation-5.json": {
+      "bytes": 1229,
+      "sha256": "d48bc6637e8d7e8e926364fbdd9fc21724b179ce20ec04582cd2654349f0140f"
+    },
+    "docs/development/evidence/phase-3e3a3d/image-configurations.json": {
+      "bytes": 5371,
+      "sha256": "4016007d6c2b292ae71c508b13fda41626c123351c15dd3dc77a8ad022423c7d"
+    },
+    "docs/development/evidence/phase-3e3a3d/inert-import-validation.mjs": {
+      "bytes": 836,
+      "sha256": "7f2eeae8efd54262bfa0d0048c52c94dd1f85f92667a6463f222356bdae403b8"
+    },
+    "docs/development/evidence/phase-3e3a3d/managed-artifact-manifest.json": {
+      "bytes": 2857,
+      "sha256": "9e0695100e7f8bdfcbf46741828341930750d330b1b45058f86713d0e1364a26"
+    },
+    "docs/development/evidence/phase-3e3a3d/parameter-allowlist.json": {
+      "bytes": 4251,
+      "sha256": "97698106692ae4ade59e998ac1f707c613930354fdaaaa905939bebc167502a0"
+    },
+    "docs/development/evidence/phase-3e3a3d/preservation-baseline.json": {
+      "bytes": 54865,
+      "sha256": "ec3836e7a59b3c4dabcec02e57c1cdbbc7de8a8a2af448d7c41e2c8494e6f91f"
+    },
+    "docs/development/evidence/phase-3e3a3d/proposed-a4-monitor.py": {
+      "bytes": 3607,
+      "sha256": "7f895d00e5e335f434965e3228a6c1664c65af41f5fc02afb5ce99ef0d00541f"
+    },
+    "docs/development/evidence/phase-3e3a3d/proposed-compose.yml": {
+      "bytes": 3288,
+      "sha256": "adab24ceff3bff4cc9f29ef75bc8ad13cc6d5a1aa345eef1e892b0bbe7eee2a3"
+    },
+    "docs/development/evidence/phase-3e3a3d/proposed-idle-runtime.mjs": {
+      "bytes": 414,
+      "sha256": "28606ce9b7ddf7a0ae5263e5a368ccb20235f79217f4329b80c3ca9242f1cfdf"
+    },
+    "docs/development/evidence/phase-3e3a3d/proposed-plan.json": {
+      "bytes": 3855,
+      "sha256": "8eabc39f0f1fb5ca5efc5f91b24cdec0333ea76c48b9c7d72ce2406400edf37c"
+    },
+    "docs/development/evidence/phase-3e3a3d/proposed-public-health.mjs": {
+      "bytes": 1327,
+      "sha256": "03eeb4010efebd5f7eb4b30134a564e55e700189446e0d13bb43d77d07c91b92"
+    },
+    "docs/development/evidence/phase-3e3a3d/proposed-redirect-guard.mjs": {
+      "bytes": 5381,
+      "sha256": "851c36140554f58f57fceac4365885b5353acba8b5c297ff6b29c4626f8da3b6"
+    },
+    "docs/development/evidence/phase-3e3a3d/public-guard-tests.mjs": {
+      "bytes": 5825,
+      "sha256": "557f1dfddd5062c9ce9a8eda214ec34e9115e39fbdeee2a8b15483d6f5800096"
+    },
+    "docs/development/evidence/phase-3e3a3d/rendered-compose.json": {
+      "bytes": 6288,
+      "sha256": "f81f9facd74a29bccabe084a44457f0552346af27683e7bf1d284bd59da15b48"
+    },
+    "docs/development/evidence/phase-3e3a3d/static-findings.json": {
+      "bytes": 2454,
+      "sha256": "22bfba5df83241c2d5a21b7574020d6bf64545dca5f8bb92f9f06c698e620d08"
+    },
+    "docs/development/evidence/phase-3e3a3d/writable-path-metadata.json": {
+      "bytes": 1928,
+      "sha256": "43999fcdd0ccb7268a7202cfe46c5033f18b156d1ab6520646ffb188db3cb6b2"
+    }
+  },
+  "preservationPassed": true,
+  "cacheExactSevenMatch": true,
+  "managedExact20Match": true,
+  "validation": {
+    "jsonPassed": true,
+    "pythonAstPassed": true,
+    "monitorImportedOrExecuted": false,
+    "javascriptSyntaxPassed": true,
+    "inertImportsPassed": true,
+    "guardFinalScenarios": 18,
+    "guardFinalExit": 0,
+    "composeStaticRenderExit": 0,
+    "authorizationHashesMatch": true,
+    "gitDiffCheckExit": 0
+  },
+  "finalGitStatus": "?? docs/development/evidence/phase-3e3a3d/\n?? docs/development/phase-3e3a3d-r61-a4-static-completion-report.md\n",
+  "selfHashExcluded": true,
+  "phase3E3A4Authorized": false,
+  "phase3E3BAuthorized": false,
+  "r61Open": true
+}

@@ -1,0 +1,46 @@
+{
+  "authorized": false,
+  "validForExecution": false,
+  "phase": "3E3A4",
+  "baselineCommit": null,
+  "reviewBaseline": "efb6ec32eae6d43decf88daa9c631b3bc87240c7",
+  "bindings": {
+    "planSha256": "8eabc39f0f1fb5ca5efc5f91b24cdec0333ea76c48b9c7d72ce2406400edf37c",
+    "monitorSha256": "7f895d00e5e335f434965e3228a6c1664c65af41f5fc02afb5ce99ef0d00541f",
+    "composeSha256": "adab24ceff3bff4cc9f29ef75bc8ad13cc6d5a1aa345eef1e892b0bbe7eee2a3",
+    "guardSha256": "851c36140554f58f57fceac4365885b5353acba8b5c297ff6b29c4626f8da3b6",
+    "idleRuntimeSha256": "28606ce9b7ddf7a0ae5263e5a368ccb20235f79217f4329b80c3ca9242f1cfdf",
+    "healthProbeSha256": "03eeb4010efebd5f7eb4b30134a564e55e700189446e0d13bb43d77d07c91b92",
+    "parameterAllowlistSha256": "97698106692ae4ade59e998ac1f707c613930354fdaaaa905939bebc167502a0",
+    "sourceSha256": "9ffa12d0570659ec703479ffb35c5ab2e1248f668abff6f9fbd91f344ef62ecf",
+    "managedArtifactManifestSha256": "9e0695100e7f8bdfcbf46741828341930750d330b1b45058f86713d0e1364a26",
+    "imageConfigurationSha256": "4016007d6c2b292ae71c508b13fda41626c123351c15dd3dc77a8ad022423c7d"
+  },
+  "imageIds": [
+    "sha256:801bbc0340e9e96f16735f77b523f23c7459e3359842f7c79c2c53f4e994d531",
+    "sha256:ede01da35e982b6a4b85461ad8492ae2753ef14246fba33c8039b782aa8e39fb",
+    "sha256:03afd079b00bcd229df29a24771439c5e7695c339cd89216d0763ce40731cc4b",
+    "sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec"
+  ],
+  "permissions": {
+    "autonomousEmptyBlocks": true,
+    "wallet": false,
+    "funding": false,
+    "proofRequests": false,
+    "checkRequests": false,
+    "deployment": false,
+    "contractCalls": false,
+    "userTransactions": false,
+    "downloads": false,
+    "imagePulls": false,
+    "cacheMutation": false
+  },
+  "unresolved": [
+    "Parameter resolver/home behavior and compatible required-name set",
+    "Indexer storage config and full write paths",
+    "Node CFG_PRESET=dev effective flags and capability compatibility",
+    "Full monitor reservation/sampling/cleanup/finalization implementation",
+    "Node/indexer public readiness probes and justified startup/hard timeouts",
+    "Clean committed proposal baseline authorization"
+  ]
+}

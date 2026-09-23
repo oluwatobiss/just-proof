@@ -1,0 +1,146 @@
+[
+  {
+    "Id": "sha256:801bbc0340e9e96f16735f77b523f23c7459e3359842f7c79c2c53f4e994d531",
+    "Architecture": "amd64",
+    "Os": "linux",
+    "Config": {
+      "ExposedPorts": {
+        "6300/tcp": {}
+      },
+      "Env": [
+        "PATH=/nix/store/6naj0x3l5n0b4cx722xwasyp597p6z3h-ledger-8.1.0/bin",
+        "PORT=6300"
+      ],
+      "Entrypoint": [
+        "/nix/store/d24gb0hj1rasyyp3jh0x52i5fd4mkxsi-bash-interactive-x86_64-unknown-linux-musl-5.3p9/bin/bash",
+        "-c"
+      ],
+      "Cmd": [
+        "/nix/store/6naj0x3l5n0b4cx722xwasyp597p6z3h-ledger-8.1.0/bin/midnight-proof-server --port $PORT"
+      ]
+    },
+    "RootFS": {
+      "Type": "layers",
+      "Layers": [
+        "sha256:eb0939b9d3b7369d62e0ea0437b8120b1b29b6556ee37d35d8a73a4d41a14f2a"
+      ]
+    },
+    "Size": 26730919
+  },
+  {
+    "Id": "sha256:ede01da35e982b6a4b85461ad8492ae2753ef14246fba33c8039b782aa8e39fb",
+    "Architecture": "amd64",
+    "Os": "linux",
+    "Config": {
+      "User": "root",
+      "ExposedPorts": {
+        "30333/tcp": {},
+        "9615/tcp": {},
+        "9933/tcp": {},
+        "9944/tcp": {}
+      },
+      "Env": [
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "BASE_PATH=/node/chain",
+        "RUST_BACKTRACE=1",
+        "GIT_CONTENT_HASH=a748db6ce78ccbd9b6bb3571686b83f849c7dc59",
+        "GHCR_REGISTRY=ghcr.io/midnight-ntwrk",
+        "GHCR_REGISTRY_PUBLIC=ghcr.io/midnightntwrk",
+        "IMAGE_TAG=1.0.0-a748db6ce78c-amd64",
+        "IMAGE_TAG_DEV=1.0.0-dev-a748db6ce78c-amd64"
+      ],
+      "Entrypoint": [
+        "/entrypoint.sh"
+      ],
+      "WorkingDir": "/",
+      "Labels": {
+        "dev.earthly.built-by": "",
+        "dev.earthly.git-sha": "c48905267920d5599e849e8e043f801c6baab94a",
+        "dev.earthly.version": "v0.8.16"
+      }
+    },
+    "RootFS": {
+      "Type": "layers",
+      "Layers": [
+        "sha256:57cd4b870f743c25469e3345a997ceb4706cc997f497f52f458fe1c5c622d93f",
+        "sha256:c957a389b0053ba17527ed4b75baa4b62ac26bd4b19e9dd240143be67bb7d372",
+        "sha256:ed19a90b70d2ce70bce13dcb6d04caed7ffcb3fa6fba0048ecd5dc057ea462c1",
+        "sha256:1d09b547a969003740d3bcd1163768014cdb50b0729e15559f63edd76c5fa0f6",
+        "sha256:c0464975c87a14fa2ccef24a27496a97d6ef37e6ac875ebfb5aaa0659ce2ef40",
+        "sha256:2d726b8deaeb548d2ac15faa18bb4c7258b12af610ce15d1f1de891f1829147a",
+        "sha256:0772c687c080a0f415e7637a0751dc5e1fa9032c6c7dff390463971b042464dc",
+        "sha256:863f9f6f1a1c065ab70480de2542e862e38cdb37f33f9bbdd9454c38e129e032",
+        "sha256:6a1bcd09b3fa1b1886cb761500ab324c53575fe81773e5e5cf6e270e0a6cdf9c",
+        "sha256:192c25895b9466eeab1012afed75a6c5fbfff2fbf0d8aa13d9b6b01a0dc18591",
+        "sha256:12c3e299e7d5ff3170190735fc6bfbfa00f24f870fb0721a19dfa997e08bd591",
+        "sha256:45ed57f61cdf079ffab3e12b02c7626104abfb4096375fc04d699ab64874a1d6",
+        "sha256:6d49501934dbf4ec69d90f33a91e990a6973b618d0689cd56167f36b561270d5",
+        "sha256:3ea358d384723c3ef829009bc8603d0d5259ab5eb201467f4802004cade2c98b",
+        "sha256:d5ba61804b207d52bfea671bd982ed857969556b049380463e3feaf87a01d381"
+      ]
+    },
+    "Size": 338089362
+  },
+  {
+    "Id": "sha256:03afd079b00bcd229df29a24771439c5e7695c339cd89216d0763ce40731cc4b",
+    "Architecture": "amd64",
+    "Os": "linux",
+    "Config": {
+      "User": "appuser",
+      "ExposedPorts": {
+        "8088/tcp": {}
+      },
+      "Env": [
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      ],
+      "Entrypoint": [
+        "entrypoint.sh"
+      ],
+      "WorkingDir": "/opt/indexer-standalone",
+      "Labels": {
+        "org.opencontainers.image.created": "2026-06-04T17:46:03.062Z",
+        "org.opencontainers.image.description": "Midnight Indexer",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "a89e1d3b3d8daf73a0e7beed9839ee70188e92c4",
+        "org.opencontainers.image.source": "https://github.com/midnightntwrk/midnight-indexer/",
+        "org.opencontainers.image.title": "indexer-standalone",
+        "org.opencontainers.image.url": "https://github.com/midnightntwrk/midnight-indexer",
+        "org.opencontainers.image.version": "4.3.3"
+      }
+    },
+    "RootFS": {
+      "Type": "layers",
+      "Layers": [
+        "sha256:a8ff6f8cbdfd6741c10dd183560df7212db666db046768b0f05bbc3904515f03",
+        "sha256:87321b9833bec516219941827a7ef91e9d71138f98ebd478f330a383a872479d",
+        "sha256:09d57e1b2d502624f75d8f9eb1b4bf04332b60f7f6ca1dcacd48608dd0caddcd",
+        "sha256:1283615e5bcfaeed45f31663a6807004fe061d17d9d673a1baa57b2a919bec52",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+      ]
+    },
+    "Size": 55582507
+  },
+  {
+    "Id": "sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec",
+    "Architecture": "amd64",
+    "Os": "linux",
+    "Config": {
+      "User": "65532:65532",
+      "Env": [
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      ],
+      "Entrypoint": [
+        "/usr/local/bin/node"
+      ],
+      "WorkingDir": "/work"
+    },
+    "RootFS": {
+      "Type": "layers",
+      "Layers": [
+        "sha256:f7c6bff51e3753d3c1fbf5b3209e481e4ff0dbfd723446e90b06651a454c54af",
+        "sha256:7908e4dfe7a018fcf5fbaf656b3b317a9ffb269d8f3fd68785899acb647e29da"
+      ]
+    },
+    "Size": 48118339
+  }
+]

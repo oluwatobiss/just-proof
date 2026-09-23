@@ -1,0 +1,122 @@
+{
+  "completeness": "UNKNOWN",
+  "resolverLocation": "UNRESOLVED",
+  "homeOrXdgBehavior": "UNRESOLVED; proof image Config sets PATH and PORT only; no declared cache volume",
+  "requiredAndPresent": [],
+  "requiredAndAbsent": [],
+  "candidateOnly": [
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p18",
+      "filename": "bls_midnight_2p18",
+      "status": "CANDIDATE_ONLY",
+      "bytes": 50332036,
+      "sha256": "e8436dc5d8b598f169c127c745135d889744007e6d384ff126df8d1332522f86",
+      "type": "regular",
+      "mode": "0o644",
+      "uid": 1000,
+      "gid": 1000,
+      "nonrootReadability": "world-readable file",
+      "mountDestination": null,
+      "proofServerCompatibility": "UNKNOWN"
+    },
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p9",
+      "filename": "bls_midnight_2p9",
+      "status": "CANDIDATE_ONLY",
+      "bytes": 98692,
+      "sha256": "b9009f1098bcefffec3c461ab3a5e3a17f7e5599f0f08c70fcdc55a89227bcbd",
+      "type": "regular",
+      "mode": "0o644",
+      "uid": 1000,
+      "gid": 1000,
+      "nonrootReadability": "world-readable file",
+      "mountDestination": null,
+      "proofServerCompatibility": "UNKNOWN"
+    },
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p13",
+      "filename": "bls_midnight_2p13",
+      "status": "CANDIDATE_ONLY",
+      "bytes": 1573252,
+      "sha256": "d3324910969c4cc54143b8045b649e5c3a4bd5fb7b8f85fe1b770f640ce1c803",
+      "type": "regular",
+      "mode": "0o644",
+      "uid": 1000,
+      "gid": 1000,
+      "nonrootReadability": "world-readable file",
+      "mountDestination": null,
+      "proofServerCompatibility": "UNKNOWN"
+    },
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p7",
+      "filename": "bls_midnight_2p7",
+      "status": "CANDIDATE_ONLY",
+      "bytes": 24964,
+      "sha256": "e82ae890c080188355f37feaffe91372584cd810615082d9143d4dec0453fd9d",
+      "type": "regular",
+      "mode": "0o644",
+      "uid": 1000,
+      "gid": 1000,
+      "nonrootReadability": "world-readable file",
+      "mountDestination": null,
+      "proofServerCompatibility": "UNKNOWN"
+    },
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p19",
+      "filename": "bls_midnight_2p19",
+      "status": "CANDIDATE_ONLY",
+      "bytes": 100663684,
+      "sha256": "8e8dc15c4362f05c912f1e770559a3945db3e58a374def416ed5d3e65ad5b10e",
+      "type": "regular",
+      "mode": "0o644",
+      "uid": 1000,
+      "gid": 1000,
+      "nonrootReadability": "world-readable file",
+      "mountDestination": null,
+      "proofServerCompatibility": "UNKNOWN"
+    },
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p6",
+      "filename": "bls_midnight_2p6",
+      "status": "CANDIDATE_ONLY",
+      "bytes": 12676,
+      "sha256": "cf2ad6be7d0fedf5bec2aaa35f6be4aca33053d74268fdf5aa54fcb2891ea6df",
+      "type": "regular",
+      "mode": "0o644",
+      "uid": 1000,
+      "gid": 1000,
+      "nonrootReadability": "world-readable file",
+      "mountDestination": null,
+      "proofServerCompatibility": "UNKNOWN"
+    },
+    {
+      "path": "/home/oluwatobiss/.cache/midnight/zk-params/bls_midnight_2p17",
+      "filename": "bls_midnight_2p17",
+      "status": "CANDIDATE_ONLY",
+      "bytes": 25166212,
+      "sha256": "4a9ef6c7c0619aab74eede44b13e753e3ba54508a02dd3b7106a949aabb73b74",
+      "type": "regular",
+      "mode": "0o644",
+      "uid": 1000,
+      "gid": 1000,
+      "nonrootReadability": "world-readable file",
+      "mountDestination": null,
+      "proofServerCompatibility": "UNKNOWN"
+    }
+  ],
+  "unresolved": [
+    "Exact all-four-contract parameter-name set",
+    "Native-wallet proving parameter-name set",
+    "Proof-server resolver and filename mapping",
+    "Nonroot mount destination and full directory traversal permissions",
+    "Compatibility metadata linking these compiler-cache files to proof-server8.1.0"
+  ],
+  "policy": {
+    "downloads": false,
+    "newCacheFiles": false,
+    "existingFileMutation": false,
+    "inferCompleteness": false,
+    "mountUntilResolved": false
+  },
+  "checksumMeaning": "Local preservation hashes, not independently authenticated official checksums"
+}

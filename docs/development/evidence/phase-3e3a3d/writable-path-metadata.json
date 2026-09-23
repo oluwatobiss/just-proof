@@ -1,0 +1,50 @@
+[
+  {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--pull",
+      "never",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/sh",
+      "midnightntwrk/midnight-node:1.0.0",
+      "-c",
+      "n=0; while IFS= read -r l; do n=$((n+1)); case \"$l\" in *PATH*|*HOME*|*USER*|*chmod*|*chown*|*mkdir*|*exec*) printf \"%s:%s\\n\" \"$n\" \"$l\";; esac; done < /entrypoint.sh; stat -c \"%n %F %a %u:%g\" / /data /node /tmp 2>/dev/null"
+    ],
+    "exit": 1,
+    "stdout": "4:DEFAULT_BASE_PATH=\"$BASE_PATH\"\n7:PARSED_BASE_PATH=\"\"\n12:        PARSED_BASE_PATH=\"${arg#*=}\"\n15:        PARSED_BASE_PATH=\"$arg\"\n21:if [ -z \"$PARSED_BASE_PATH\" ]; then\n22:    FINAL_BASE_PATH=\"$DEFAULT_BASE_PATH\"\n24:    FINAL_BASE_PATH=\"$PARSED_BASE_PATH\"\n28:if [ ! -d \"$FINAL_BASE_PATH\" ]; then\n29:    mkdir -p \"$FINAL_BASE_PATH\"\n33:exec /midnight-node \"$@\"\n/ directory 755 0:0\n/node directory 755 10001:10001\n/tmp directory 1777 0:0\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--pull",
+      "never",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/sh",
+      "midnightntwrk/indexer-standalone:4.3.3",
+      "-c",
+      "stat -c \"%n %F %a %u:%g\" /var/run/indexer-standalone /tmp /home/appuser /var/lib/postgresql /var/lib/redis 2>/dev/null; find /etc /usr/local -maxdepth 3 -type f \\( -name \"*indexer*\" -o -name \"*supervis*\" -o -name \"*postgres*\" \\) -printf \"%p %s %u:%g %m\\n\" 2>/dev/null"
+    ],
+    "exit": 1,
+    "stdout": "/var/run/indexer-standalone directory 755 10001:10001\n/tmp directory 1777 0:0\n/usr/local/bin/indexer-standalone 82917264 appuser:appuser 755\n",
+    "stderr": ""
+  }
+]

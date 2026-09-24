@@ -1,0 +1,190 @@
+{
+  "baselineCommit": "9dc7f06aa0684f3452f8d5186c5fe127b070f966",
+  "classification": "BLOCKED_PUBLIC_COMPONENT_CHARACTERIZATION_PLAN",
+  "previousIntegritySha256": "cf3d584861c3399992fd6bddb8e1b00be3ae93247baaaf5945f0c35683e5aecd",
+  "reportPrefix": {
+    "bytes": 19731,
+    "sha256": "e4736210cec0c576a822eb591c976a47dd1199cab8dd5c5d7448919f3c55a2dc",
+    "preserved": true
+  },
+  "files": {
+    "docs/development/evidence/phase-3e3a3e/baseline-gate.json": {
+      "type": "regular",
+      "bytes": 671,
+      "sha256": "1e44bbdd53216a44a5e4f3047ee8f9e6c5083c51db2b7c4a00958da2f9dc2fc2"
+    },
+    "docs/development/evidence/phase-3e3a3e/container-definitions.json": {
+      "type": "regular",
+      "bytes": 7363,
+      "sha256": "266635d3fcabf85efa2d45af6382033e29f813b77a2c6cdf6bb2b50ddd27c28b"
+    },
+    "docs/development/evidence/phase-3e3a3e/correction-findings.json": {
+      "type": "regular",
+      "bytes": 4137,
+      "sha256": "ede6bf09b6527416c463ac340a17e2e41ed2ce8032abb0bb6cffe78826ec01b4"
+    },
+    "docs/development/evidence/phase-3e3a3e/correction-preservation-results.json": {
+      "type": "regular",
+      "bytes": 4867,
+      "sha256": "3999e4b4d25e2f01f7ffd76ac41ecf351e2bbc0807157107cbaff0837656aa9f"
+    },
+    "docs/development/evidence/phase-3e3a3e/disabled-authorization.json": {
+      "type": "regular",
+      "bytes": 1725,
+      "sha256": "764461397fea90ab27af78438de7e8f44177eced3182edd14c34af7e4b3a0421"
+    },
+    "docs/development/evidence/phase-3e3a3e/inert-probe-validation.json": {
+      "type": "regular",
+      "bytes": 263,
+      "sha256": "4f084514ac3d6b3f7309a4897c19e2ea1bccb448b7e9fbeca76911b0900e0060"
+    },
+    "docs/development/evidence/phase-3e3a3e/mock-probe-transport-results.json": {
+      "type": "regular",
+      "bytes": 1141,
+      "sha256": "7fddae80e428056460cf397215c88b4e6164ffd29dd6b62c50b4e5373375cb63"
+    },
+    "docs/development/evidence/phase-3e3a3e/mock-probe-transport-tests.mjs": {
+      "type": "regular",
+      "bytes": 4849,
+      "sha256": "8771a5b5fbe941d87268ceac81b0bd6529dc1cc2c3de697c0607f7e3ba2732f4"
+    },
+    "docs/development/evidence/phase-3e3a3e/pre-correction-identities.json": {
+      "type": "regular",
+      "bytes": 9629,
+      "sha256": "acab518f730b0a1dadb4ddd8d1b875e98fcac9345cb46b1910b6c949ed374741"
+    },
+    "docs/development/evidence/phase-3e3a3e/preservation-baseline.json": {
+      "type": "regular",
+      "bytes": 67732,
+      "sha256": "3c37c6a00666970f133b13275bc1224aa3293d496bf8f59677f312f85c5277cb"
+    },
+    "docs/development/evidence/phase-3e3a3e/preservation-results.json": {
+      "type": "regular",
+      "bytes": 4332,
+      "sha256": "0c2d4f7216333271d588bcaac303833e8ce3c132147651f0553d543ee9194267"
+    },
+    "docs/development/evidence/phase-3e3a3e/production-simulation-results.json": {
+      "type": "regular",
+      "bytes": 9010,
+      "sha256": "63fdb260fa3a1d16b257fc5c5a6ff678a16a5003be0bbc4af09fea0c534ae99d"
+    },
+    "docs/development/evidence/phase-3e3a3e/production-simulations.py": {
+      "type": "regular",
+      "bytes": 12305,
+      "sha256": "a5a438130864e3ba5c368e384419e6f9ed3ef1f7a16e313123df05157f7c667e"
+    },
+    "docs/development/evidence/phase-3e3a3e/proposed-component-monitor.py": {
+      "type": "regular",
+      "bytes": 25097,
+      "sha256": "5b5fc4451b291055562986439ec231b25d81c9e1082a59a6e77b82702947c7cb"
+    },
+    "docs/development/evidence/phase-3e3a3e/proposed-plan.json": {
+      "type": "regular",
+      "bytes": 6334,
+      "sha256": "ec86c132243e4e17d5c36cad061046f2db1f0c440183b9d6635ca437414edd7c"
+    },
+    "docs/development/evidence/phase-3e3a3e/proposed-public-probes.mjs": {
+      "type": "regular",
+      "bytes": 7215,
+      "sha256": "eaaa30bbc5693f81426b1ed4173a7d05fe84791fcef61614a136505c761ce0af"
+    },
+    "docs/development/evidence/phase-3e3a3e/proposed-real-adapters.py": {
+      "type": "regular",
+      "bytes": 19085,
+      "sha256": "26ff33d193d1e136886bf8b052b5c5cc4fb24d857e63bcb5c09821ff73165a9a"
+    },
+    "docs/development/evidence/phase-3e3a3e/python-inert-import-check.py": {
+      "type": "regular",
+      "bytes": 1658,
+      "sha256": "ad65b643353ba8c0194a93740c66b5cb3f44e33727e272c36f813dfd62e012e0"
+    },
+    "docs/development/evidence/phase-3e3a3e/python-inert-import-result.json": {
+      "type": "regular",
+      "bytes": 293,
+      "sha256": "9282dbf8fefc7b685fbf700d8b9d4db5e86cce3c88a79134eea734efc63b8231"
+    },
+    "docs/development/evidence/phase-3e3a3e/static-findings.json": {
+      "type": "regular",
+      "bytes": 3713,
+      "sha256": "161e17d51732648ed888668836706b4259b7598a50f6af9d4b71726d93d2a4e4"
+    },
+    "docs/development/evidence/phase-3e3a3e/static-scenarios-result.json": {
+      "type": "regular",
+      "bytes": 6000,
+      "sha256": "46bec3523f0a85674a55b3376efe60d67f54084c5fb5e7fb53ae541d780b19f5"
+    },
+    "docs/development/evidence/phase-3e3a3e/static-scenarios.py": {
+      "type": "regular",
+      "bytes": 9066,
+      "sha256": "b0291240b0441e1204e7669b0fbc9af93f6af683169cab6ce3ddd4da49b8e2d8"
+    },
+    "docs/development/evidence/phase-3e3a3e/validate-inert-probes.mjs": {
+      "type": "regular",
+      "bytes": 2232,
+      "sha256": "7951b4ec5ce5e4ece4aeb432e936e8445b2eb3483d735edebfe8f94298b53060"
+    },
+    "docs/development/evidence/phase-3e3a3e/validation.json": {
+      "type": "regular",
+      "bytes": 2766,
+      "sha256": "1e02b3083b02e6638b7ff6183b9a8ccb0f3058a3da3708d2aba703c0053fddf6"
+    },
+    "docs/development/phase-3e3a3e-r61-public-component-characterization-plan-report.md": {
+      "type": "regular",
+      "bytes": 35310,
+      "sha256": "e690ca68c8222e9243706c52f847a335c794292f908ae697f1daa677d740ab23"
+    }
+  },
+  "selfHashExcluded": true,
+  "changesSinceAttachmentBaseline": {
+    "docs/development/evidence/phase-3e3a3e/container-definitions.json": "modified",
+    "docs/development/evidence/phase-3e3a3e/correction-findings.json": "created",
+    "docs/development/evidence/phase-3e3a3e/correction-preservation-results.json": "created",
+    "docs/development/evidence/phase-3e3a3e/disabled-authorization.json": "modified",
+    "docs/development/evidence/phase-3e3a3e/mock-probe-transport-results.json": "created",
+    "docs/development/evidence/phase-3e3a3e/mock-probe-transport-tests.mjs": "created",
+    "docs/development/evidence/phase-3e3a3e/pre-correction-identities.json": "created",
+    "docs/development/evidence/phase-3e3a3e/preservation-baseline.json": "modified",
+    "docs/development/evidence/phase-3e3a3e/production-simulation-results.json": "created",
+    "docs/development/evidence/phase-3e3a3e/production-simulations.py": "created",
+    "docs/development/evidence/phase-3e3a3e/proposed-component-monitor.py": "modified",
+    "docs/development/evidence/phase-3e3a3e/proposed-plan.json": "modified",
+    "docs/development/evidence/phase-3e3a3e/proposed-public-probes.mjs": "modified",
+    "docs/development/evidence/phase-3e3a3e/proposed-real-adapters.py": "created",
+    "docs/development/evidence/phase-3e3a3e/python-inert-import-check.py": "created",
+    "docs/development/evidence/phase-3e3a3e/python-inert-import-result.json": "created",
+    "docs/development/evidence/phase-3e3a3e/validation.json": "modified",
+    "docs/development/phase-3e3a3e-r61-public-component-characterization-plan-report.md": "modified",
+    "docs/development/evidence/phase-3e3a3e/integrity.json": "modified"
+  },
+  "preservation": {
+    "entries": 368,
+    "allTypedEntriesMatch": true,
+    "managedExact20Match": true,
+    "cacheExactSevenMatch": true,
+    "historicalPhasesUnchanged": true,
+    "trackedAndStagedFilesUnchanged": true
+  },
+  "validation": {
+    "json": true,
+    "pythonAst": true,
+    "pythonControlledInertImport": true,
+    "productionStateMachineScenarios": 99,
+    "supplementaryCapturePreservationAssertions": 14,
+    "mockedTransportCases": 24,
+    "allPassed": true,
+    "javascriptSyntaxAndInertImport": true,
+    "gitDiffCheck": true,
+    "realAdaptersConstructedOrExecuted": false,
+    "monitorMainExecuted": false
+  },
+  "dockerResourceNamesUnchanged": true,
+  "retainedContainersStoppedExitZero": true,
+  "resourceFloorsAndComponentTimeoutsUnchanged": true,
+  "captureOrderingEstablished": false,
+  "independentRealWatchdogDispatcherEstablished": false,
+  "phase3E3A4AAuthorized": false,
+  "phase3E3A4Authorized": false,
+  "phase3E3BAuthorized": false,
+  "r61Open": true,
+  "finalGitStatus": "?? docs/development/evidence/phase-3e3a3e/\n?? docs/development/phase-3e3a3e-r61-public-component-characterization-plan-report.md\n"
+}

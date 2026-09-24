@@ -1,0 +1,39 @@
+{
+  "authorized": false,
+  "validForExecution": false,
+  "phase": "3E3A4A",
+  "baselineCommit": null,
+  "bindings": {
+    "planSha256": "ec86c132243e4e17d5c36cad061046f2db1f0c440183b9d6635ca437414edd7c",
+    "monitorSha256": "5b5fc4451b291055562986439ec231b25d81c9e1082a59a6e77b82702947c7cb",
+    "realAdaptersSha256": "26ff33d193d1e136886bf8b052b5c5cc4fb24d857e63bcb5c09821ff73165a9a",
+    "definitionsSha256": "266635d3fcabf85efa2d45af6382033e29f813b77a2c6cdf6bb2b50ddd27c28b",
+    "probeSha256": "eaaa30bbc5693f81426b1ed4173a7d05fe84791fcef61614a136505c761ce0af",
+    "preservationSha256": "3c37c6a00666970f133b13275bc1224aa3293d496bf8f59677f312f85c5277cb",
+    "sourceSha256": "9ffa12d0570659ec703479ffb35c5ab2e1248f668abff6f9fbd91f344ef62ecf",
+    "managedManifestSha256": "9e0695100e7f8bdfcbf46741828341930750d330b1b45058f86713d0e1364a26",
+    "parameterCandidatesSha256": "97698106692ae4ade59e998ac1f707c613930354fdaaaa905939bebc167502a0"
+  },
+  "imageIds": {
+    "proof": "sha256:801bbc0340e9e96f16735f77b523f23c7459e3359842f7c79c2c53f4e994d531",
+    "node": "sha256:ede01da35e982b6a4b85461ad8492ae2753ef14246fba33c8039b782aa8e39fb",
+    "indexer": "sha256:03afd079b00bcd229df29a24771439c5e7695c339cd89216d0763ce40731cc4b",
+    "runner": "sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec"
+  },
+  "permissions": {
+    "wallet": false,
+    "funding": false,
+    "proof": false,
+    "check": false,
+    "deployment": false,
+    "contractCall": false,
+    "userTransaction": false,
+    "download": false,
+    "pull": false,
+    "cacheMutation": false,
+    "publicComponentCharacterization": true,
+    "autonomousEmptyBlocks": true
+  },
+  "reviewedTimeouts": false,
+  "reviewedDefinitions": false
+}

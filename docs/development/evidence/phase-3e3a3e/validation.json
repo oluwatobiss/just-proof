@@ -1,0 +1,63 @@
+{
+  "supersededPreCorrectionValidation": {
+    "jsonParsingPassed": true,
+    "pythonAstPassed": true,
+    "monitorImportedOrExecuted": false,
+    "javascriptSyntaxPassed": true,
+    "controlledProbeImportPassed": true,
+    "pureProbeDecoderCases": 11,
+    "syntheticMonitorCases": 71,
+    "syntheticMonitorPassed": true,
+    "validationCommands": [
+      "python3 docs/development/evidence/phase-3e3a3e/static-scenarios.py",
+      "node --check docs/development/evidence/phase-3e3a3e/proposed-public-probes.mjs",
+      "node --check docs/development/evidence/phase-3e3a3e/validate-inert-probes.mjs",
+      "node docs/development/evidence/phase-3e3a3e/validate-inert-probes.mjs",
+      "Python ast.parse / json.loads / streaming sha256 preservation",
+      "git diff --check"
+    ],
+    "exactContainerDefinitionsUsedInsteadOfCompose": true,
+    "composeNotExecutedOrRendered": true,
+    "disabledAuthorizationBindingsMatch": true,
+    "attemptPathsAbsent": [
+      "docs/development/evidence/phase-3e3a4",
+      "docs/development/evidence/phase-3e3a4a",
+      "/tmp/justproof-phase3e3a4-public-service-attempt1",
+      "/tmp/justproof-phase3e3a4a-public-components-attempt1",
+      "/tmp/justproof-phase3e3a4-authorization.json",
+      "/tmp/justproof-phase3e3a4a-authorization.json"
+    ],
+    "gitDiffCheckPassed": true,
+    "dockerMutations": false,
+    "servicesLaunched": false,
+    "httpRequestsSent": false,
+    "projectTestsRun": false,
+    "typecheckingRun": false,
+    "compilationRun": false,
+    "proofOrWalletOrLedgerOperations": false
+  },
+  "classification": "BLOCKED_PUBLIC_COMPONENT_CHARACTERIZATION_PLAN",
+  "pythonASTPassed": true,
+  "jsonParsingPassed": true,
+  "monitorMainExecuted": false,
+  "realAdaptersConstructedOrExecuted": false,
+  "productionStateMachineWithFakes": 99,
+  "productionSimulationsPassed": true,
+  "mockedTransportCases": 24,
+  "mockedTransportPassed": true,
+  "pythonInertImportPassed": true,
+  "javascriptSyntaxAndInertImportPassed": true,
+  "noSocketsOrServicesOrFutureStateCreated": true,
+  "resourceThresholdsAndStageTimeoutsUnchanged": true,
+  "commands": [
+    "PYTHONDONTWRITEBYTECODE=1 python3 docs/development/evidence/phase-3e3a3e/python-inert-import-check.py",
+    "PYTHONDONTWRITEBYTECODE=1 python3 docs/development/evidence/phase-3e3a3e/production-simulations.py",
+    "node --check docs/development/evidence/phase-3e3a3e/proposed-public-probes.mjs",
+    "node --check docs/development/evidence/phase-3e3a3e/mock-probe-transport-tests.mjs",
+    "node docs/development/evidence/phase-3e3a3e/mock-probe-transport-tests.mjs",
+    "Python ast.parse / json.loads / lstat and streaming SHA-256 preservation",
+    "git diff --check"
+  ],
+  "supplementaryCaptureAndPreservationCases": 14,
+  "totalPythonCases": 113
+}

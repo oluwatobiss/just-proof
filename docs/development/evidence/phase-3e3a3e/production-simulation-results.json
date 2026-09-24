@@ -1,0 +1,466 @@
+{
+  "productionModuleImportedInertly": true,
+  "bytecodeDisabled": true,
+  "realAdaptersConstructed": false,
+  "realMonitorMainExecuted": false,
+  "dockerCommands": 0,
+  "httpRequests": 0,
+  "cases": [
+    {
+      "name": "complete production state machine sequence",
+      "passed": true
+    },
+    {
+      "name": "injected authorization-copy",
+      "passed": true
+    },
+    {
+      "name": "injected bindings",
+      "passed": true
+    },
+    {
+      "name": "injected cache",
+      "passed": true
+    },
+    {
+      "name": "injected capture-close",
+      "passed": true
+    },
+    {
+      "name": "injected capture:indexer",
+      "passed": true
+    },
+    {
+      "name": "injected capture:indexer-probe",
+      "passed": true
+    },
+    {
+      "name": "injected capture:node",
+      "passed": true
+    },
+    {
+      "name": "injected capture:node-probe",
+      "passed": true
+    },
+    {
+      "name": "injected capture:proof",
+      "passed": true
+    },
+    {
+      "name": "injected capture:proof-probe",
+      "passed": true
+    },
+    {
+      "name": "injected create:indexer",
+      "passed": true
+    },
+    {
+      "name": "injected create:indexer-probe",
+      "passed": true
+    },
+    {
+      "name": "injected create:node",
+      "passed": true
+    },
+    {
+      "name": "injected create:node-probe",
+      "passed": true
+    },
+    {
+      "name": "injected create:proof",
+      "passed": true
+    },
+    {
+      "name": "injected create:proof-probe",
+      "passed": true
+    },
+    {
+      "name": "injected diagnostic:indexer",
+      "passed": true
+    },
+    {
+      "name": "injected diagnostic:indexer-probe",
+      "passed": true
+    },
+    {
+      "name": "injected diagnostic:node",
+      "passed": true
+    },
+    {
+      "name": "injected diagnostic:node-probe",
+      "passed": true
+    },
+    {
+      "name": "injected diagnostic:proof",
+      "passed": true
+    },
+    {
+      "name": "injected diagnostic:proof-probe",
+      "passed": true
+    },
+    {
+      "name": "injected discovery",
+      "passed": true
+    },
+    {
+      "name": "injected final-status",
+      "passed": true
+    },
+    {
+      "name": "injected gate-final",
+      "passed": true
+    },
+    {
+      "name": "injected gate-initial",
+      "passed": true
+    },
+    {
+      "name": "injected inspect:indexer",
+      "passed": true
+    },
+    {
+      "name": "injected inspect:indexer-probe",
+      "passed": true
+    },
+    {
+      "name": "injected inspect:node",
+      "passed": true
+    },
+    {
+      "name": "injected inspect:node-probe",
+      "passed": true
+    },
+    {
+      "name": "injected inspect:proof",
+      "passed": true
+    },
+    {
+      "name": "injected inspect:proof-probe",
+      "passed": true
+    },
+    {
+      "name": "injected managed",
+      "passed": true
+    },
+    {
+      "name": "injected marker",
+      "passed": true
+    },
+    {
+      "name": "injected network",
+      "passed": true
+    },
+    {
+      "name": "injected network-create:justproof-phase3e3a4a-ledger-internal",
+      "passed": true
+    },
+    {
+      "name": "injected network-create:justproof-phase3e3a4a-proof-internal",
+      "passed": true
+    },
+    {
+      "name": "injected os",
+      "passed": true
+    },
+    {
+      "name": "injected output-reserve",
+      "passed": true
+    },
+    {
+      "name": "injected preservation",
+      "passed": true
+    },
+    {
+      "name": "injected process",
+      "passed": true
+    },
+    {
+      "name": "injected reserve",
+      "passed": true
+    },
+    {
+      "name": "injected resource",
+      "passed": true
+    },
+    {
+      "name": "injected result-write",
+      "passed": true
+    },
+    {
+      "name": "injected root-diff",
+      "passed": true
+    },
+    {
+      "name": "injected sample",
+      "passed": true
+    },
+    {
+      "name": "injected start:indexer",
+      "passed": true
+    },
+    {
+      "name": "injected start:indexer-probe",
+      "passed": true
+    },
+    {
+      "name": "injected start:node",
+      "passed": true
+    },
+    {
+      "name": "injected start:node-probe",
+      "passed": true
+    },
+    {
+      "name": "injected start:proof",
+      "passed": true
+    },
+    {
+      "name": "injected start:proof-probe",
+      "passed": true
+    },
+    {
+      "name": "injected status",
+      "passed": true
+    },
+    {
+      "name": "injected status:indexer",
+      "passed": true
+    },
+    {
+      "name": "injected status:indexer-probe",
+      "passed": true
+    },
+    {
+      "name": "injected status:node",
+      "passed": true
+    },
+    {
+      "name": "injected status:node-probe",
+      "passed": true
+    },
+    {
+      "name": "injected status:proof",
+      "passed": true
+    },
+    {
+      "name": "injected status:proof-probe",
+      "passed": true
+    },
+    {
+      "name": "injected term:indexer",
+      "passed": true
+    },
+    {
+      "name": "injected term:node",
+      "passed": true
+    },
+    {
+      "name": "injected term:proof",
+      "passed": true
+    },
+    {
+      "name": "injected write-final:bindings",
+      "passed": true
+    },
+    {
+      "name": "injected write-final:cache",
+      "passed": true
+    },
+    {
+      "name": "injected write-final:capture-close",
+      "passed": true
+    },
+    {
+      "name": "injected write-final:discovery",
+      "passed": true
+    },
+    {
+      "name": "injected write-final:final-network",
+      "passed": true
+    },
+    {
+      "name": "injected write-final:final-status",
+      "passed": true
+    },
+    {
+      "name": "injected write-final:managed",
+      "passed": true
+    },
+    {
+      "name": "injected write-final:preservation",
+      "passed": true
+    },
+    {
+      "name": "injected write-final:root-diff",
+      "passed": true
+    },
+    {
+      "name": "gate-race",
+      "passed": true
+    },
+    {
+      "name": "service-exit",
+      "passed": true
+    },
+    {
+      "name": "probe-nonzero",
+      "passed": true
+    },
+    {
+      "name": "oom",
+      "passed": true
+    },
+    {
+      "name": "replacement",
+      "passed": true
+    },
+    {
+      "name": "pid-replacement",
+      "passed": true
+    },
+    {
+      "name": "foreign-network",
+      "passed": true
+    },
+    {
+      "name": "sample-gap",
+      "passed": true
+    },
+    {
+      "name": "capture-stale",
+      "passed": true
+    },
+    {
+      "name": "capture-exit",
+      "passed": true
+    },
+    {
+      "name": "SIGINT",
+      "passed": true
+    },
+    {
+      "name": "SIGTERM",
+      "passed": true
+    },
+    {
+      "name": "ignore-term",
+      "passed": true
+    },
+    {
+      "name": "watchdog",
+      "passed": true
+    },
+    {
+      "name": "daemon-dead",
+      "passed": true
+    },
+    {
+      "name": "authorization rejection without reservation",
+      "passed": true
+    },
+    {
+      "name": "independent finalization after discovery",
+      "passed": true
+    },
+    {
+      "name": "independent finalization after final-status",
+      "passed": true
+    },
+    {
+      "name": "independent finalization after capture-close",
+      "passed": true
+    },
+    {
+      "name": "independent finalization after root-diff",
+      "passed": true
+    },
+    {
+      "name": "independent finalization after write-final:final-network",
+      "passed": true
+    },
+    {
+      "name": "independent finalization after bindings",
+      "passed": true
+    },
+    {
+      "name": "independent finalization after preservation",
+      "passed": true
+    },
+    {
+      "name": "independent finalization after managed",
+      "passed": true
+    },
+    {
+      "name": "independent finalization after cache",
+      "passed": true
+    },
+    {
+      "name": "failure journal write failure permanently blocks success",
+      "passed": true
+    },
+    {
+      "name": "runtime blocker retains complete finalization independently",
+      "passed": true
+    },
+    {
+      "name": "capture invalid UTF8",
+      "passed": true
+    },
+    {
+      "name": "capture line limit",
+      "passed": true
+    },
+    {
+      "name": "capture byte exhaustion",
+      "passed": true
+    },
+    {
+      "name": "capture partial final line",
+      "passed": true
+    },
+    {
+      "name": "capture pipe closes before container exit",
+      "passed": true
+    },
+    {
+      "name": "nonregular file mode 40960",
+      "passed": true
+    },
+    {
+      "name": "nonregular file mode 16384",
+      "passed": true
+    },
+    {
+      "name": "nonregular file mode 8192",
+      "passed": true
+    },
+    {
+      "name": "nonregular file mode 24576",
+      "passed": true
+    },
+    {
+      "name": "nonregular file mode 4096",
+      "passed": true
+    },
+    {
+      "name": "nonregular file mode 49152",
+      "passed": true
+    },
+    {
+      "name": "symlink to identical bytes",
+      "passed": true
+    },
+    {
+      "name": "symlink parent rejected",
+      "passed": true
+    },
+    {
+      "name": "exclusive reservation collision",
+      "passed": true
+    }
+  ],
+  "stateMachineCases": 99,
+  "supplementaryCases": 14,
+  "count": 113,
+  "passed": true
+}

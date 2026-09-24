@@ -1,0 +1,146 @@
+{
+  "baselineEntries": 368,
+  "allTypedEntriesMatch": true,
+  "managed": {
+    "compiler/contract-info.json": {
+      "type": "regular",
+      "bytes": 24565,
+      "sha256": "868cca4e3cc858d9cb0cb63ce93e81808509a2eaa60d9ff65c32b54bd3a4902d"
+    },
+    "contract/index.js.map": {
+      "type": "regular",
+      "bytes": 10682,
+      "sha256": "2ff2c49f300b2843a8cbf7d365a4b4f739d1addd1da9f476a6cf7e8ad81ebe78"
+    },
+    "contract/index.d.ts": {
+      "type": "regular",
+      "bytes": 12959,
+      "sha256": "0139fd7406b87a3498b5141ff2bdce2dcef9193753597326af99aa9e738b0d08"
+    },
+    "contract/index.js": {
+      "type": "regular",
+      "bytes": 200816,
+      "sha256": "b7396f8c593c99104aeb7ae0bf2f4fe4341beadf525ab841deeb5a064addaeef"
+    },
+    "keys/registerCredentialV2.prover": {
+      "type": "regular",
+      "bytes": 76642841,
+      "sha256": "1722f6f9cf0e818f414639fb179b9a3d7756242102e9fbe1367b5c167b5e263e"
+    },
+    "keys/proveQualificationV2.prover": {
+      "type": "regular",
+      "bytes": 76660599,
+      "sha256": "1dc78862643d288d1731fc43567667c9923b017ec23fa77f471f8c66059c762b"
+    },
+    "keys/registerCredentialV2.verifier": {
+      "type": "regular",
+      "bytes": 2119,
+      "sha256": "c0abaaf254564c21488f90784d8b29c8b106ae2e273fde89fa6fa392c4610d22"
+    },
+    "keys/revokeCredentialV2.prover": {
+      "type": "regular",
+      "bytes": 152517062,
+      "sha256": "87a0a6d42dc536f855d806418db0a47b6ab78535cbdfda5856c01a2ad2798908"
+    },
+    "keys/registerIssuerV2.verifier": {
+      "type": "regular",
+      "bytes": 2119,
+      "sha256": "b6c78daa6b3964912d9cbf2bd783365de7c18521ca26efffbee5b37e410e1a9a"
+    },
+    "keys/revokeCredentialV2.verifier": {
+      "type": "regular",
+      "bytes": 2119,
+      "sha256": "eb07cc2b21b2181426e596b9f459b13a441db99c177ad29b4fad1923209523d0"
+    },
+    "keys/registerIssuerV2.prover": {
+      "type": "regular",
+      "bytes": 76490158,
+      "sha256": "9c136a8ce811aedd13ad2e364005b1d3454f76fd7e29cd6edaff5b5a99dcca28"
+    },
+    "keys/proveQualificationV2.verifier": {
+      "type": "regular",
+      "bytes": 2119,
+      "sha256": "21fcff4439ed11bd959a0f3f6f58a2bc2358912de142014309fdaf7c5ad4e56a"
+    },
+    "zkir/registerCredentialV2.zkir": {
+      "type": "regular",
+      "bytes": 65083,
+      "sha256": "b04a6e786914be257ab88d09d148ca8918d08b302e970bc81cdaec47efc1227e"
+    },
+    "zkir/revokeCredentialV2.zkir": {
+      "type": "regular",
+      "bytes": 71809,
+      "sha256": "e28c864710d6b05da43dc1caa01e6d7e4ca4a66d6a87fe63511bcc0bac3a7c84"
+    },
+    "zkir/proveQualificationV2.zkir": {
+      "type": "regular",
+      "bytes": 72144,
+      "sha256": "7ca590bb29edd4f6dab806f7278878b1720b6773f4702b82e7c2e371db58a803"
+    },
+    "zkir/registerIssuerV2.bzkir": {
+      "type": "regular",
+      "bytes": 3056,
+      "sha256": "be21a00eda843b8ec88fb8e19f9a9645fe81659ed9354f8515d651991f3bab56"
+    },
+    "zkir/revokeCredentialV2.bzkir": {
+      "type": "regular",
+      "bytes": 6209,
+      "sha256": "98eedb891db4d2b3220c1306078033f8079cc92b8212e24c0e84bebc59d0d573"
+    },
+    "zkir/registerIssuerV2.zkir": {
+      "type": "regular",
+      "bytes": 37980,
+      "sha256": "ce061c319bdbdf15fad9fd53cdfb9f5602f66cc5fd1da745388e0b7ca978b699"
+    },
+    "zkir/proveQualificationV2.bzkir": {
+      "type": "regular",
+      "bytes": 6077,
+      "sha256": "918ce164f19565f8323efcfe29483f1976e5a302304f6d0deb41b8c1e9200ec6"
+    },
+    "zkir/registerCredentialV2.bzkir": {
+      "type": "regular",
+      "bytes": 5613,
+      "sha256": "26015eecbe8847ec442d288b3d252189892772e3af6168aa30b7a6b8ab4eedba"
+    }
+  },
+  "cache": {
+    "bls_midnight_2p18": {
+      "type": "regular",
+      "bytes": 50332036,
+      "sha256": "e8436dc5d8b598f169c127c745135d889744007e6d384ff126df8d1332522f86"
+    },
+    "bls_midnight_2p9": {
+      "type": "regular",
+      "bytes": 98692,
+      "sha256": "b9009f1098bcefffec3c461ab3a5e3a17f7e5599f0f08c70fcdc55a89227bcbd"
+    },
+    "bls_midnight_2p13": {
+      "type": "regular",
+      "bytes": 1573252,
+      "sha256": "d3324910969c4cc54143b8045b649e5c3a4bd5fb7b8f85fe1b770f640ce1c803"
+    },
+    "bls_midnight_2p7": {
+      "type": "regular",
+      "bytes": 24964,
+      "sha256": "e82ae890c080188355f37feaffe91372584cd810615082d9143d4dec0453fd9d"
+    },
+    "bls_midnight_2p19": {
+      "type": "regular",
+      "bytes": 100663684,
+      "sha256": "8e8dc15c4362f05c912f1e770559a3945db3e58a374def416ed5d3e65ad5b10e"
+    },
+    "bls_midnight_2p6": {
+      "type": "regular",
+      "bytes": 12676,
+      "sha256": "cf2ad6be7d0fedf5bec2aaa35f6be4aca33053d74268fdf5aa54fcb2891ea6df"
+    },
+    "bls_midnight_2p17": {
+      "type": "regular",
+      "bytes": 25166212,
+      "sha256": "4a9ef6c7c0619aab74eede44b13e753e3ba54508a02dd3b7106a949aabb73b74"
+    }
+  },
+  "noHistoricalPhaseChanged": true,
+  "attemptPathsAbsent": true,
+  "noRealAdapterExecuted": true
+}

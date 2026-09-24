@@ -1,0 +1,79 @@
+{
+  "classification": "BLOCKED_PUBLIC_COMPONENT_CHARACTERIZATION_PLAN",
+  "issues": [
+    {
+      "item": 1,
+      "status": "IMPLEMENTED_WITH_STATIC_SIMULATION_LIMITS",
+      "details": "Production Attempt executes with explicit capabilities; 99 actual state-machine scenarios plus 14 supplementary capture/preservation assertions import the inert module. CLI/OS adapter implementations are syntax-inspected, not executed."
+    },
+    {
+      "item": 2,
+      "status": "BLOCKED_CAPTURE_ORDERING_EVIDENCE",
+      "details": "Cumulative log polling removed. Incremental attached-stream candidate rejects UTF8/line/byte/framing/EOF/process/gap failures, but pinned Docker attach-before-start ordering not established. Plan captureOrderingEstablished=false denies real preflight before reservation."
+    },
+    {
+      "item": 3,
+      "status": "IMPLEMENTED_WITH_EXPLICIT_OBSERVABILITY_LIMITS",
+      "details": "Root PID identity, docker top PID/PPID/RSS/CPU, batch Docker stats normalized with precision caveat, separate freshness fields. WSL cgroup interface text recorded; Docker VM cgroup files remain unobservable from Ubuntu and are not claimed."
+    },
+    {
+      "item": 4,
+      "status": "COORDINATOR_IMPLEMENTED_REAL_DEADLINE_DISPATCH_BLOCKED",
+      "details": "One idempotent coordinator, one TERM initiation per container, KILL only after five seconds; normal/signals/watchdog share it. Natural and signal exits separated. Independent real deadline scheduling under stalled adapters remains unresolved."
+    },
+    {
+      "item": 5,
+      "status": "IMPLEMENTED_STATIC_ONLY",
+      "details": "Typed lstat+O_NOFOLLOW+parent canonical checks; complete preflight repeated through same real gate before reservation; exclusive reservation ownership tracked. Real gate not executed."
+    },
+    {
+      "item": 6,
+      "status": "CORRECTED",
+      "details": "Configured internal-network containment only; no empirical egress-denial assertion and no canary."
+    },
+    {
+      "item": 7,
+      "status": "IMPLEMENTED_MOCK_VALIDATED",
+      "details": "24 mocked transport cases, normal end+IncomingMessage.complete required, aborted/error/premature close/framing/media/trailer rejection. Exact kind-specific event schema and terminal dwell event. No sockets."
+    },
+    {
+      "item": 8,
+      "status": "IMPLEMENTED_SIMULATION_VALIDATED",
+      "details": "Runtime blocker versus permanent monitor/finalization failure separated; finalizationComplete independent of component compatibility; journal failure and result-write failure permanently block success."
+    }
+  ],
+  "resourceFloorsAndComponentTimeoutsUnchanged": true,
+  "realAdaptersExecuted": false,
+  "serviceLaunches": false,
+  "a4aAuthorized": false,
+  "r61Open": true,
+  "testIterations": [
+    {
+      "attempt": "additional clean-finalization runtime blocker assertion",
+      "exit": 1,
+      "cause": "Fake status indicated service exit while its fake capture still represented a running process",
+      "fix": "Align fake process and status state; production correctly blocked the inconsistent observation"
+    },
+    {
+      "attempt": "additional TERM/KILL timing assertion",
+      "exit": 1,
+      "cause": "Assertion assumed successful TERM dispatch even in injected TERM command failure",
+      "fix": "Use production coordinator recorded TERM initiation; KILL still requires at least five seconds"
+    }
+  ],
+  "historicalProofMediaEvidence": {
+    "docs/development/evidence/phase-3e3a1/recovery-health-headers.txt": {
+      "bytes": 270,
+      "sha256": "bc98efa725430faa17384ee2b218b391dccea3fdf1c80f28d9cad1c681985d60"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-version-headers.txt": {
+      "bytes": 278,
+      "sha256": "f0a023fdbaf6217e1a9376dcdb23b6d952b3d956413394cb1534293cb9e87628"
+    },
+    "docs/development/evidence/phase-3e3a1/recovery-ready-headers.txt": {
+      "bytes": 271,
+      "sha256": "2ae353bad898f82b233d284b2a9197b71ce6991896f03e700173d84a5ddb236f"
+    }
+  },
+  "jsonRpcGraphqlMediaRule": "application/json optionally charset=utf-8; conservative proposed rule, not empirically observed in this phase"
+}

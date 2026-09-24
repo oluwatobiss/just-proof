@@ -1,0 +1,103 @@
+{
+  "phase": "3E3A4A",
+  "proposalOnly": true,
+  "executionAuthorized": false,
+  "baselineForThisDesign": "9dc7f06aa0684f3452f8d5186c5fe127b070f966",
+  "futureBaseline": "Exact clean commit containing these reviewed proposal bytes; supplied in separate authorization",
+  "claims": {
+    "componentStartupConfinementWritePathsShutdownPublicReadiness": "ONLY possible claim of proposed attempt; failure results are valid characterization",
+    "concurrentFullStackResources": false,
+    "parameterCompatibilityOrCompleteness": false,
+    "proofGenerationOrVerification": false
+  },
+  "sequence": [
+    "proof + proof-probe; successful dwell then both stopped",
+    "node + node-probe; successful public block-one dwell required",
+    "same node remains running + indexer + indexer-probe; no restarted node; stop all"
+  ],
+  "command": "python3 docs/development/evidence/phase-3e3a3e/proposed-component-monitor.py --separately-authorized-phase3e3a4a-public-components --authorization-file /tmp/justproof-phase3e3a4a-authorization.json",
+  "definitions": "container-definitions.json",
+  "publicProbes": "proposed-public-probes.mjs",
+  "marker": "docs/development/evidence/phase-3e3a4a/attempt-started",
+  "output": "/tmp/justproof-phase3e3a4a-public-components-attempt1",
+  "overallAttempts": 1,
+  "restartOrRelaunch": false,
+  "resourceFloors": {
+    "MemTotalKiB": 12253256,
+    "SwapTotalKiB": 8388608,
+    "launchMemAvailableKiB": 8388608,
+    "launchSwapFreeKiB": 6291456,
+    "runtimeMemAvailableKiB": 2097152,
+    "runtimeSwapFreeKiB": 2097152,
+    "freeDiskBytes": 10737418240,
+    "samplingSeconds": 0.5,
+    "maximumSampleGapSeconds": 2,
+    "maximumContainerObservationAgeSeconds": 2,
+    "termToKillSeconds": 5
+  },
+  "timeoutsProposalNotApproved": {
+    "proofStartupSeconds": 45,
+    "proofDwellSeconds": 10,
+    "proofComponentDeadlineSeconds": 65,
+    "nodeStartupSeconds": 120,
+    "nodeDwellSeconds": 15,
+    "nodeComponentDeadlineSeconds": 145,
+    "indexerStartupSeconds": 120,
+    "indexerDwellSeconds": 15,
+    "indexerComponentDeadlineSeconds": 145,
+    "httpDeadlineSeconds": 1.5,
+    "readinessPollDelaySeconds": 1,
+    "overallHardStopSeconds": 420,
+    "termToKillSeconds": 5,
+    "overallGracefulStopSeconds": 415
+  },
+  "timeoutReasoning": "65+145+145=355s component ceilings; 65s allowance for bounded creation/network/cleanup commands before hard stop420. Startup budgets are proposed finite characterization limits, not observed guarantees. Failure does not authorize relaxing caps or relaunching. Public readiness polling within startup is bounded observation, not service restart. 10/15s dwell checks that readiness persists; no performance or full-stack claim. Independent watchdog requests TERM at415s and KILL at420s; after a heartbeat gap it requests TERM immediately and KILL after5s if not finalized. Docker daemon failure cannot be cured by the proposal and blocks completion.",
+  "logging": "No cumulative docker logs polling. Candidate single docker start --attach per container with logging driver none, bounded incremental stdout/stderr classifier. Reject pipe closure before exit, invalid UTF8, partial final lines, CLI exit mismatch, any capture gap, line >4096 bytes, cumulative >=49152 bytes. Capture-before-start ordering remains UNESTABLISHED; real preflight blocks before reservation.",
+  "parameterPolicy": {
+    "allSevenHostFiles": "CANDIDATE_ONLY",
+    "mount": false,
+    "download": false,
+    "mutate": false,
+    "completeness": "UNKNOWN",
+    "healthDoesNotResolveParameters": true
+  },
+  "laterProofGuardRequirement": "Any separately reviewed later guard must validate successful upstream Content-Type and unambiguous response framing, not only status and byte count. Historical guard unchanged and not used here.",
+  "permissions": {
+    "wallet": false,
+    "funding": false,
+    "proof": false,
+    "check": false,
+    "deployment": false,
+    "contractCall": false,
+    "userTransaction": false,
+    "download": false,
+    "pull": false,
+    "cacheMutation": false,
+    "publicComponentCharacterization": true,
+    "autonomousEmptyBlocks": true
+  },
+  "characterizationUnknowns": [
+    "node nonroot/read-only/tmpfs viability",
+    "indexer minimal no-secret startup configuration, storage/writepaths and backend readiness",
+    "public diagnostics allowlist sufficiency",
+    "Docker telemetry can satisfy two-second freshness under load"
+  ],
+  "limits": [
+    "No parameter or wallet mounts",
+    "No user transaction bodies or state queries",
+    "No proof/ledger concurrency",
+    "No complete tmpfs content inventory: inspect definitions, resource usage, image-layer diff, and sanitized write failures only",
+    "No independent cryptographic verification claim"
+  ],
+  "authorizationCopy": "Read exact mode0600 owner-matching nonsymlink /tmp authorization only after all checks; exclusive durable copy fsynced immediately after marker, mount this copy read-only only into probe containers. Disabled template never mounted. Durable copy is public authorization metadata with mode0444 for the fixed nonroot probe UID; original /tmp input must remain0600. Bytes are identical; bind is read-only. No secrets are allowed in authorization.",
+  "r61Open": true,
+  "captureOrderingEstablished": false,
+  "classification": "BLOCKED_PUBLIC_COMPONENT_CHARACTERIZATION_PLAN",
+  "executionBlockers": [
+    "Version-matched Docker start --attach pre-start stream ordering and lossless delivery not established by available static evidence",
+    "Watchdog still depends on bounded adapter-return scheduling; independent real deadline dispatcher has not been implemented and validated against shared shutdown coordinator"
+  ],
+  "containment": "CONFIGURED_INTERNAL_NETWORK_ONLY; no empirical egress-denial claim or canary",
+  "monitoring": "Independent category timestamps for WSL OS, Docker status, docker top process metadata, internal-network configuration, diagnostic capture, and normalized Docker CLI stats. Container cgroup filesystem visibility is not claimed from Ubuntu; CLI statistics are rounded values, not exact counters.",
+  "finalization": "Component runtime blocker separated from permanent monitor/containment/cleanup/preservation/evidence failure; append-only fixed-category failure journal; independent final collectors; result-write failure blocks success."
+}

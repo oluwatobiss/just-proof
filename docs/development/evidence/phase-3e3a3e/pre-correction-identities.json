@@ -1,0 +1,360 @@
+{
+  "previousIntegritySha256": "cf3d584861c3399992fd6bddb8e1b00be3ae93247baaaf5945f0c35683e5aecd",
+  "files": {
+    "docs/development/evidence/phase-3e3a3e/baseline-gate.json": {
+      "bytes": 671,
+      "sha256": "1e44bbdd53216a44a5e4f3047ee8f9e6c5083c51db2b7c4a00958da2f9dc2fc2"
+    },
+    "docs/development/evidence/phase-3e3a3e/container-definitions.json": {
+      "bytes": 7170,
+      "sha256": "4cf206f9df72be3e75569f6d8b1abb7293735906e55116a62811e0b34d5108e6"
+    },
+    "docs/development/evidence/phase-3e3a3e/disabled-authorization.json": {
+      "bytes": 1631,
+      "sha256": "a518544ca88df8b8b00fa259b2dfb09284d51715b741d517f9171fac23f5b1bf"
+    },
+    "docs/development/evidence/phase-3e3a3e/inert-probe-validation.json": {
+      "bytes": 263,
+      "sha256": "4f084514ac3d6b3f7309a4897c19e2ea1bccb448b7e9fbeca76911b0900e0060"
+    },
+    "docs/development/evidence/phase-3e3a3e/preservation-baseline.json": {
+      "bytes": 59268,
+      "sha256": "4a5f2afabd8c351b88fa44483617542abb6068c4d28cff8470f6b9e1f9dd3866"
+    },
+    "docs/development/evidence/phase-3e3a3e/preservation-results.json": {
+      "bytes": 4332,
+      "sha256": "0c2d4f7216333271d588bcaac303833e8ce3c132147651f0553d543ee9194267"
+    },
+    "docs/development/evidence/phase-3e3a3e/proposed-component-monitor.py": {
+      "bytes": 30517,
+      "sha256": "7681ec733f594d6d1a182b9fcb71dd98c0ce89202e173d06bdf347c14fa67abe"
+    },
+    "docs/development/evidence/phase-3e3a3e/proposed-plan.json": {
+      "bytes": 5202,
+      "sha256": "0243779f76403cd02f489738f6de3c246d1531668f92ca5f8bc4b7b5d4023800"
+    },
+    "docs/development/evidence/phase-3e3a3e/proposed-public-probes.mjs": {
+      "bytes": 5116,
+      "sha256": "af943c52ed7ea7be89d39dd91a7716a8d4be1d18bb2af37f6ddb520f56184f17"
+    },
+    "docs/development/evidence/phase-3e3a3e/static-findings.json": {
+      "bytes": 3713,
+      "sha256": "161e17d51732648ed888668836706b4259b7598a50f6af9d4b71726d93d2a4e4"
+    },
+    "docs/development/evidence/phase-3e3a3e/static-scenarios-result.json": {
+      "bytes": 6000,
+      "sha256": "46bec3523f0a85674a55b3376efe60d67f54084c5fb5e7fb53ae541d780b19f5"
+    },
+    "docs/development/evidence/phase-3e3a3e/static-scenarios.py": {
+      "bytes": 9066,
+      "sha256": "b0291240b0441e1204e7669b0fbc9af93f6af683169cab6ce3ddd4da49b8e2d8"
+    },
+    "docs/development/evidence/phase-3e3a3e/validate-inert-probes.mjs": {
+      "bytes": 2232,
+      "sha256": "7951b4ec5ce5e4ece4aeb432e936e8445b2eb3483d735edebfe8f94298b53060"
+    },
+    "docs/development/evidence/phase-3e3a3e/validation.json": {
+      "bytes": 1441,
+      "sha256": "cb1894cfa62b68f0ed6b127b304a3f3c6f35a2858536d298bf6b9b23807b449c"
+    },
+    "docs/development/phase-3e3a3e-r61-public-component-characterization-plan-report.md": {
+      "bytes": 19731,
+      "sha256": "e4736210cec0c576a822eb591c976a47dd1199cab8dd5c5d7448919f3c55a2dc"
+    }
+  },
+  "reportPrefixBytes": 19731,
+  "reportPrefixSha256": "e4736210cec0c576a822eb591c976a47dd1199cab8dd5c5d7448919f3c55a2dc",
+  "supersededHelperTestResult": {
+    "validation": "AST-selected synthetic helpers only",
+    "realMonitorImportedOrExecuted": false,
+    "dockerOrNetworkCalled": false,
+    "cases": [
+      {
+        "name": "exact complete future authorization accepted synthetically",
+        "passed": true
+      },
+      {
+        "name": "reject disabled authorized",
+        "passed": true
+      },
+      {
+        "name": "reject disabled validForExecution",
+        "passed": true
+      },
+      {
+        "name": "reject disabled reviewedTimeouts",
+        "passed": true
+      },
+      {
+        "name": "reject disabled reviewedDefinitions",
+        "passed": true
+      },
+      {
+        "name": "reject changed bindings",
+        "passed": true
+      },
+      {
+        "name": "reject changed imageIds",
+        "passed": true
+      },
+      {
+        "name": "reject changed baselineCommit",
+        "passed": true
+      },
+      {
+        "name": "reject changed phase",
+        "passed": true
+      },
+      {
+        "name": "reject permission wallet",
+        "passed": true
+      },
+      {
+        "name": "reject permission funding",
+        "passed": true
+      },
+      {
+        "name": "reject permission proof",
+        "passed": true
+      },
+      {
+        "name": "reject permission check",
+        "passed": true
+      },
+      {
+        "name": "reject permission deployment",
+        "passed": true
+      },
+      {
+        "name": "reject permission contractCall",
+        "passed": true
+      },
+      {
+        "name": "reject permission userTransaction",
+        "passed": true
+      },
+      {
+        "name": "reject permission download",
+        "passed": true
+      },
+      {
+        "name": "reject permission pull",
+        "passed": true
+      },
+      {
+        "name": "reject permission cacheMutation",
+        "passed": true
+      },
+      {
+        "name": "reject missing authorization field",
+        "passed": true
+      },
+      {
+        "name": "reject numeric permission boolean",
+        "passed": true
+      },
+      {
+        "name": "two-second timing boundary",
+        "passed": true
+      },
+      {
+        "name": "OS sample gap above two seconds",
+        "passed": true
+      },
+      {
+        "name": "container telemetry older than two seconds",
+        "passed": true
+      },
+      {
+        "name": "exact launch floors",
+        "passed": true
+      },
+      {
+        "name": "below launch MemTotal",
+        "passed": true
+      },
+      {
+        "name": "below launch SwapTotal",
+        "passed": true
+      },
+      {
+        "name": "below launch MemAvailable",
+        "passed": true
+      },
+      {
+        "name": "below launch SwapFree",
+        "passed": true
+      },
+      {
+        "name": "disk floor",
+        "passed": true
+      },
+      {
+        "name": "runtime memory floor",
+        "passed": true
+      },
+      {
+        "name": "runtime swap floor",
+        "passed": true
+      },
+      {
+        "name": "exact container confinement",
+        "passed": true
+      },
+      {
+        "name": "reject HostConfig ReadonlyRootfs",
+        "passed": true
+      },
+      {
+        "name": "reject HostConfig Privileged",
+        "passed": true
+      },
+      {
+        "name": "reject HostConfig CapDrop",
+        "passed": true
+      },
+      {
+        "name": "reject HostConfig SecurityOpt",
+        "passed": true
+      },
+      {
+        "name": "reject HostConfig Dns",
+        "passed": true
+      },
+      {
+        "name": "reject HostConfig PortBindings",
+        "passed": true
+      },
+      {
+        "name": "reject HostConfig Memory",
+        "passed": true
+      },
+      {
+        "name": "reject HostConfig MemorySwap",
+        "passed": true
+      },
+      {
+        "name": "reject HostConfig PidsLimit",
+        "passed": true
+      },
+      {
+        "name": "reject HostConfig Tmpfs",
+        "passed": true
+      },
+      {
+        "name": "reject HostConfig AutoRemove",
+        "passed": true
+      },
+      {
+        "name": "reject HostConfig RestartPolicy",
+        "passed": true
+      },
+      {
+        "name": "reject replacement ID",
+        "passed": true
+      },
+      {
+        "name": "reject default network attachment",
+        "passed": true
+      },
+      {
+        "name": "reject writable mount",
+        "passed": true
+      },
+      {
+        "name": "reject unexpected env",
+        "passed": true
+      },
+      {
+        "name": "public startup log sanitized",
+        "passed": true
+      },
+      {
+        "name": "reject secret diagnostic",
+        "passed": true
+      },
+      {
+        "name": "reject body diagnostic",
+        "passed": true
+      },
+      {
+        "name": "reject env diagnostic",
+        "passed": true
+      },
+      {
+        "name": "reject fetch diagnostic",
+        "passed": true
+      },
+      {
+        "name": "reject unknown diagnostic",
+        "passed": true
+      },
+      {
+        "name": "reject oversize diagnostic",
+        "passed": true
+      },
+      {
+        "name": "reject writepath diagnostic",
+        "passed": true
+      },
+      {
+        "name": "public probe height schema",
+        "passed": true
+      },
+      {
+        "name": "probe unknown field",
+        "passed": true
+      },
+      {
+        "name": "proof stopped before ledger; same node carried into indexer",
+        "passed": true
+      },
+      {
+        "name": "sequence stops immediately at proof",
+        "passed": true
+      },
+      {
+        "name": "sequence stops immediately at proof-probe",
+        "passed": true
+      },
+      {
+        "name": "sequence stops immediately at node",
+        "passed": true
+      },
+      {
+        "name": "sequence stops immediately at node-probe",
+        "passed": true
+      },
+      {
+        "name": "sequence stops immediately at indexer",
+        "passed": true
+      },
+      {
+        "name": "sequence stops immediately at indexer-probe",
+        "passed": true
+      },
+      {
+        "name": "exclusive durable write rejects existing path",
+        "passed": true
+      },
+      {
+        "name": "public durable authorization copy readable by fixed nonroot probe UID",
+        "passed": true
+      },
+      {
+        "name": "fsync helper scoped to temporary mock path only",
+        "passed": true
+      },
+      {
+        "name": "authorization before reservation, guarded main, no removal call",
+        "passed": true
+      },
+      {
+        "name": "independent finalization actions continue after failure",
+        "passed": true
+      }
+    ],
+    "count": 71,
+    "passed": true
+  }
+}

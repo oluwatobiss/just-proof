@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "project": "justproof-phase3e3a4a",
+  "imageIds": {
+    "proof": "sha256:801bbc0340e9e96f16735f77b523f23c7459e3359842f7c79c2c53f4e994d531",
+    "node": "sha256:ede01da35e982b6a4b85461ad8492ae2753ef14246fba33c8039b782aa8e39fb",
+    "indexer": "sha256:03afd079b00bcd229df29a24771439c5e7695c339cd89216d0763ce40731cc4b",
+    "runner": "sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec"
+  },
+  "networks": {
+    "justproof-phase3e3a4a-proof-internal": {
+      "subnet": "172.29.71.0/24"
+    },
+    "justproof-phase3e3a4a-ledger-internal": {
+      "subnet": "172.29.72.0/24"
+    }
+  },
+  "containers": {
+    "proof": {
+      "name": "justproof-phase3e3a4a-proof",
+      "image": "sha256:801bbc0340e9e96f16735f77b523f23c7459e3359842f7c79c2c53f4e994d531",
+      "network": "justproof-phase3e3a4a-proof-internal",
+      "ip": "172.29.71.10",
+      "user": "65532:65532",
+      "entrypoint": [
+        "/nix/store/6naj0x3l5n0b4cx722xwasyp597p6z3h-ledger-8.1.0/bin/midnight-proof-server"
+      ],
+      "command": [
+        "--port",
+        "6300",
+        "--no-fetch-params",
+        "--num-workers",
+        "1"
+      ],
+      "memoryBytes": 2147483648,
+      "pids": 128,
+      "tmpfs": {
+        "/tmp": "size=64m,mode=1777"
+      },
+      "environment": {
+        "RUST_BACKTRACE": "0"
+      },
+      "effectiveEnvironment": {
+        "PATH": "/nix/store/6naj0x3l5n0b4cx722xwasyp597p6z3h-ledger-8.1.0/bin",
+        "PORT": "6300",
+        "RUST_BACKTRACE": "0"
+      }
+    },
+    "node": {
+      "name": "justproof-phase3e3a4a-node",
+      "image": "sha256:ede01da35e982b6a4b85461ad8492ae2753ef14246fba33c8039b782aa8e39fb",
+      "network": "justproof-phase3e3a4a-ledger-internal",
+      "ip": "172.29.72.10",
+      "user": "10001:10001",
+      "entrypoint": [
+        "/entrypoint.sh"
+      ],
+      "command": [],
+      "memoryBytes": 3221225472,
+      "pids": 256,
+      "tmpfs": {
+        "/tmp": "size=256m,mode=1777",
+        "/node": "size=512m,mode=0700,uid=10001,gid=10001"
+      },
+      "environment": {
+        "CFG_PRESET": "dev",
+        "RUST_BACKTRACE": "0",
+        "SIDECHAIN_BLOCK_BENEFICIARY": "04bcf7ad3be7a5c790460be82a713af570f22e0f801f6659ab8e84a52be6969e"
+      },
+      "effectiveEnvironment": {
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "BASE_PATH": "/node/chain",
+        "RUST_BACKTRACE": "0",
+        "GIT_CONTENT_HASH": "a748db6ce78ccbd9b6bb3571686b83f849c7dc59",
+        "GHCR_REGISTRY": "ghcr.io/midnight-ntwrk",
+        "GHCR_REGISTRY_PUBLIC": "ghcr.io/midnightntwrk",
+        "IMAGE_TAG": "1.0.0-a748db6ce78c-amd64",
+        "IMAGE_TAG_DEV": "1.0.0-dev-a748db6ce78c-amd64",
+        "CFG_PRESET": "dev",
+        "SIDECHAIN_BLOCK_BENEFICIARY": "04bcf7ad3be7a5c790460be82a713af570f22e0f801f6659ab8e84a52be6969e"
+      }
+    },
+    "indexer": {
+      "name": "justproof-phase3e3a4a-indexer",
+      "image": "sha256:03afd079b00bcd229df29a24771439c5e7695c339cd89216d0763ce40731cc4b",
+      "network": "justproof-phase3e3a4a-ledger-internal",
+      "ip": "172.29.72.11",
+      "user": "10001:10001",
+      "entrypoint": [
+        "entrypoint.sh"
+      ],
+      "command": [],
+      "memoryBytes": 2147483648,
+      "pids": 256,
+      "tmpfs": {
+        "/tmp": "size=256m,mode=1777",
+        "/var/run/indexer-standalone": "size=1m,mode=0700,uid=10001,gid=10001"
+      },
+      "environment": {
+        "APP__INFRA__NODE__URL": "ws://172.29.72.10:9944",
+        "APP__INFRA__SPO_NODE__URL": "ws://172.29.72.10:9944",
+        "APP__APPLICATION__NETWORK_ID": "undeployed",
+        "RUST_BACKTRACE": "0"
+      },
+      "effectiveEnvironment": {
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "APP__INFRA__NODE__URL": "ws://172.29.72.10:9944",
+        "APP__INFRA__SPO_NODE__URL": "ws://172.29.72.10:9944",
+        "APP__APPLICATION__NETWORK_ID": "undeployed",
+        "RUST_BACKTRACE": "0"
+      }
+    },
+    "proof-probe": {
+      "name": "justproof-phase3e3a4a-proof-probe",
+      "image": "sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec",
+      "network": "justproof-phase3e3a4a-proof-internal",
+      "ip": "172.29.71.12",
+      "user": "65532:65532",
+      "entrypoint": [
+        "/usr/local/bin/node"
+      ],
+      "command": [
+        "/proposal/public-probes.mjs",
+        "--authorized-public-component-probe",
+        "proof"
+      ],
+      "memoryBytes": 134217728,
+      "pids": 32,
+      "tmpfs": {},
+      "environment": {},
+      "effectiveEnvironment": {
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      },
+      "deadlineSeconds": 65
+    },
+    "node-probe": {
+      "name": "justproof-phase3e3a4a-node-probe",
+      "image": "sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec",
+      "network": "justproof-phase3e3a4a-ledger-internal",
+      "ip": "172.29.72.12",
+      "user": "65532:65532",
+      "entrypoint": [
+        "/usr/local/bin/node"
+      ],
+      "command": [
+        "/proposal/public-probes.mjs",
+        "--authorized-public-component-probe",
+        "node"
+      ],
+      "memoryBytes": 134217728,
+      "pids": 32,
+      "tmpfs": {},
+      "environment": {},
+      "effectiveEnvironment": {
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      },
+      "deadlineSeconds": 145
+    },
+    "indexer-probe": {
+      "name": "justproof-phase3e3a4a-indexer-probe",
+      "image": "sha256:e2833f0160c095894cfccd33cd48980cd524ed96e553bebb1bc388c9702354ec",
+      "network": "justproof-phase3e3a4a-ledger-internal",
+      "ip": "172.29.72.13",
+      "user": "65532:65532",
+      "entrypoint": [
+        "/usr/local/bin/node"
+      ],
+      "command": [
+        "/proposal/public-probes.mjs",
+        "--authorized-public-component-probe",
+        "indexer"
+      ],
+      "memoryBytes": 134217728,
+      "pids": 32,
+      "tmpfs": {},
+      "environment": {},
+      "effectiveEnvironment": {
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      },
+      "deadlineSeconds": 145
+    }
+  },
+  "common": {
+    "pull": "never",
+    "readOnlyRoot": true,
+    "capDrop": [
+      "ALL"
+    ],
+    "securityOpt": [
+      "no-new-privileges"
+    ],
+    "restart": "no",
+    "dns": [
+      "127.0.0.1"
+    ],
+    "publishedPorts": [],
+    "logging": {
+      "driver": "none"
+    },
+    "diagnosticReadLimitBytes": 49152,
+    "networkDriver": "bridge",
+    "internal": true,
+    "external": false,
+    "build": false,
+    "diagnosticCapture": {
+      "transport": "candidate docker start --attach; stdout/stderr continuously pumped",
+      "perLineBytes": 4096,
+      "cumulativeBytesExclusiveLimit": 49152,
+      "persistentRawLogs": false,
+      "orderingEvidence": "UNESTABLISHED"
+    }
+  },
+  "bindsOnlyForProbes": {
+    "script": "read-only exact proposal probe file",
+    "authorization": "read-only durable phase-3e3a4a/authorization.json copied from validated bytes after reservation"
+  },
+  "indexerConfigurationStatus": "Minimal candidate: no password/secret fixture injected; missing required configuration or writable path stops without retry; defaults not claimed verified",
+  "nodeConfigurationStatus": "CFG_PRESET=dev and beneficiary as committed compose; restricted UID/tmpfs compatibility is characterization, not assumed"
+}

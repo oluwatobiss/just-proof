@@ -1,0 +1,293 @@
+{
+  "validation": "AST-selected synthetic helpers only",
+  "realMonitorImportedOrExecuted": false,
+  "dockerOrNetworkCalled": false,
+  "cases": [
+    {
+      "name": "exact complete future authorization accepted synthetically",
+      "passed": true
+    },
+    {
+      "name": "reject disabled authorized",
+      "passed": true
+    },
+    {
+      "name": "reject disabled validForExecution",
+      "passed": true
+    },
+    {
+      "name": "reject disabled reviewedTimeouts",
+      "passed": true
+    },
+    {
+      "name": "reject disabled reviewedDefinitions",
+      "passed": true
+    },
+    {
+      "name": "reject changed bindings",
+      "passed": true
+    },
+    {
+      "name": "reject changed imageIds",
+      "passed": true
+    },
+    {
+      "name": "reject changed baselineCommit",
+      "passed": true
+    },
+    {
+      "name": "reject changed phase",
+      "passed": true
+    },
+    {
+      "name": "reject permission wallet",
+      "passed": true
+    },
+    {
+      "name": "reject permission funding",
+      "passed": true
+    },
+    {
+      "name": "reject permission proof",
+      "passed": true
+    },
+    {
+      "name": "reject permission check",
+      "passed": true
+    },
+    {
+      "name": "reject permission deployment",
+      "passed": true
+    },
+    {
+      "name": "reject permission contractCall",
+      "passed": true
+    },
+    {
+      "name": "reject permission userTransaction",
+      "passed": true
+    },
+    {
+      "name": "reject permission download",
+      "passed": true
+    },
+    {
+      "name": "reject permission pull",
+      "passed": true
+    },
+    {
+      "name": "reject permission cacheMutation",
+      "passed": true
+    },
+    {
+      "name": "reject missing authorization field",
+      "passed": true
+    },
+    {
+      "name": "reject numeric permission boolean",
+      "passed": true
+    },
+    {
+      "name": "two-second timing boundary",
+      "passed": true
+    },
+    {
+      "name": "OS sample gap above two seconds",
+      "passed": true
+    },
+    {
+      "name": "container telemetry older than two seconds",
+      "passed": true
+    },
+    {
+      "name": "exact launch floors",
+      "passed": true
+    },
+    {
+      "name": "below launch MemTotal",
+      "passed": true
+    },
+    {
+      "name": "below launch SwapTotal",
+      "passed": true
+    },
+    {
+      "name": "below launch MemAvailable",
+      "passed": true
+    },
+    {
+      "name": "below launch SwapFree",
+      "passed": true
+    },
+    {
+      "name": "disk floor",
+      "passed": true
+    },
+    {
+      "name": "runtime memory floor",
+      "passed": true
+    },
+    {
+      "name": "runtime swap floor",
+      "passed": true
+    },
+    {
+      "name": "exact container confinement",
+      "passed": true
+    },
+    {
+      "name": "reject HostConfig ReadonlyRootfs",
+      "passed": true
+    },
+    {
+      "name": "reject HostConfig Privileged",
+      "passed": true
+    },
+    {
+      "name": "reject HostConfig CapDrop",
+      "passed": true
+    },
+    {
+      "name": "reject HostConfig SecurityOpt",
+      "passed": true
+    },
+    {
+      "name": "reject HostConfig Dns",
+      "passed": true
+    },
+    {
+      "name": "reject HostConfig PortBindings",
+      "passed": true
+    },
+    {
+      "name": "reject HostConfig Memory",
+      "passed": true
+    },
+    {
+      "name": "reject HostConfig MemorySwap",
+      "passed": true
+    },
+    {
+      "name": "reject HostConfig PidsLimit",
+      "passed": true
+    },
+    {
+      "name": "reject HostConfig Tmpfs",
+      "passed": true
+    },
+    {
+      "name": "reject HostConfig AutoRemove",
+      "passed": true
+    },
+    {
+      "name": "reject HostConfig RestartPolicy",
+      "passed": true
+    },
+    {
+      "name": "reject replacement ID",
+      "passed": true
+    },
+    {
+      "name": "reject default network attachment",
+      "passed": true
+    },
+    {
+      "name": "reject writable mount",
+      "passed": true
+    },
+    {
+      "name": "reject unexpected env",
+      "passed": true
+    },
+    {
+      "name": "public startup log sanitized",
+      "passed": true
+    },
+    {
+      "name": "reject secret diagnostic",
+      "passed": true
+    },
+    {
+      "name": "reject body diagnostic",
+      "passed": true
+    },
+    {
+      "name": "reject env diagnostic",
+      "passed": true
+    },
+    {
+      "name": "reject fetch diagnostic",
+      "passed": true
+    },
+    {
+      "name": "reject unknown diagnostic",
+      "passed": true
+    },
+    {
+      "name": "reject oversize diagnostic",
+      "passed": true
+    },
+    {
+      "name": "reject writepath diagnostic",
+      "passed": true
+    },
+    {
+      "name": "public probe height schema",
+      "passed": true
+    },
+    {
+      "name": "probe unknown field",
+      "passed": true
+    },
+    {
+      "name": "proof stopped before ledger; same node carried into indexer",
+      "passed": true
+    },
+    {
+      "name": "sequence stops immediately at proof",
+      "passed": true
+    },
+    {
+      "name": "sequence stops immediately at proof-probe",
+      "passed": true
+    },
+    {
+      "name": "sequence stops immediately at node",
+      "passed": true
+    },
+    {
+      "name": "sequence stops immediately at node-probe",
+      "passed": true
+    },
+    {
+      "name": "sequence stops immediately at indexer",
+      "passed": true
+    },
+    {
+      "name": "sequence stops immediately at indexer-probe",
+      "passed": true
+    },
+    {
+      "name": "exclusive durable write rejects existing path",
+      "passed": true
+    },
+    {
+      "name": "public durable authorization copy readable by fixed nonroot probe UID",
+      "passed": true
+    },
+    {
+      "name": "fsync helper scoped to temporary mock path only",
+      "passed": true
+    },
+    {
+      "name": "authorization before reservation, guarded main, no removal call",
+      "passed": true
+    },
+    {
+      "name": "independent finalization actions continue after failure",
+      "passed": true
+    }
+  ],
+  "count": 71,
+  "passed": true
+}

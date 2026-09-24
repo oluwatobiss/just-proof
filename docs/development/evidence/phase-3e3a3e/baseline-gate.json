@@ -1,0 +1,23 @@
+{
+  "baselineCommit": "9dc7f06aa0684f3452f8d5186c5fe127b070f966",
+  "capturedAt": "2026-09-23T18:28:04.813267+00:00",
+  "wsl": true,
+  "canonicalRoot": "/home/oluwatobiss/projects/midnight/risein/just-proof",
+  "initialGitStatus": "",
+  "eightRequiredHashesPassed": true,
+  "phase3e3a3dIntegrityEntriesPassed": true,
+  "priorPreservationEntriesPassed": true,
+  "a4A4aPathsAbsent": true,
+  "dockerContainers": [
+    "justproof-phase3e3a1-loopback-recovery",
+    "justproof-phase3e3a1-proof-server"
+  ],
+  "dockerNetworks": [
+    "bridge",
+    "example-hello-world-001_default",
+    "host",
+    "justproof-phase3e3a1-internal",
+    "none"
+  ],
+  "dockerMutations": false
+}

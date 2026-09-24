@@ -1,0 +1,93 @@
+{
+  "sourceEvidence": {
+    "compose.yml": {
+      "bytes": 1974,
+      "sha256": "7dfe495f96718ba7749616a93a741f0a609e512516a6d8bb321da997865effd8"
+    },
+    "utils/config.ts": {
+      "bytes": 2766,
+      "sha256": "87e85624ef5761f86c2b1a7449b6c2f7c11b6150f097a95c9e7bf5a820c05c1a"
+    },
+    "node_modules/@midnight-ntwrk/midnight-js-indexer-public-data-provider/package.json": {
+      "bytes": 1685,
+      "sha256": "9a3c306c8d9239c454f641e939f570f55f479f1b4a19709fe74293baf581b6b4"
+    },
+    "node_modules/@midnight-ntwrk/midnight-js-indexer-public-data-provider/dist/gen/graphql.d.ts": {
+      "bytes": 54989,
+      "sha256": "320f34f4c2d85a6cf5d37c9d2fefb94706ccf0ab79180c28c659a0e49fd630db"
+    },
+    "node_modules/@midnight-ntwrk/midnight-js-indexer-public-data-provider/dist/gen/gql.d.ts": {
+      "bytes": 25012,
+      "sha256": "ff97c06f7f408c009519abc4b27035d5605749e731dc678c6d19a9ca7f85000d"
+    },
+    "docs/development/evidence/phase-3e3a3d/image-configurations.json": {
+      "bytes": 5371,
+      "sha256": "4016007d6c2b292ae71c508b13fda41626c123351c15dd3dc77a8ad022423c7d"
+    },
+    "docs/development/evidence/phase-3e3a3d/entrypoint-filtered-inspection.json": {
+      "bytes": 1840,
+      "sha256": "42740bb007f0fd744fe9e78ff691ca086dba51ed7bb95b3b4541586401e196ef"
+    },
+    "docs/development/evidence/phase-3e3a3d/writable-path-metadata.json": {
+      "bytes": 1928,
+      "sha256": "43999fcdd0ccb7268a7202cfe46c5033f18b156d1ab6520646ffb188db3cb6b2"
+    }
+  },
+  "nodePublicProbe": {
+    "endpoint": "http://172.29.72.10:9944/",
+    "method": "POST",
+    "body": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "chain_getBlockHash",
+      "params": [
+        1
+      ]
+    },
+    "source": "compose.yml services.node.healthcheck.test",
+    "retention": "only BLOCK_ONE_PRESENT boolean; block hash remains memory-only",
+    "claim": "block 1 exists, not transaction validation"
+  },
+  "indexerPublicProbe": {
+    "endpoint": "http://172.29.72.11:8088/api/v4/graphql",
+    "method": "POST",
+    "body": {
+      "query": "query PublicComponentHeight { block { height } }"
+    },
+    "sources": [
+      "utils/config.ts: local indexer URL",
+      "installed gen/gql.d.ts BLOCK_HASH_QUERY and gen/graphql.d.ts Block.height"
+    ],
+    "retention": "safe nonnegative integer height >=1 only; never transaction bodies/contract state",
+    "claim": "public GraphQL and block-height resolver responding, not complete backend/finality validation"
+  },
+  "proofProbes": {
+    "paths": [
+      "/health",
+      "/version",
+      "/ready"
+    ],
+    "version": "8.1.0",
+    "noParametersMounted": true,
+    "claim": "public endpoints only; no proving compatibility/completeness"
+  },
+  "staticUnresolvedForCharacterization": [
+    "Node nonroot and readonly/tmpfs operating behavior",
+    "Indexer minimal no-secret configuration and all writable dependencies",
+    "Conservative diagnostic classifier may reject previously unseen public startup lines; no relaxation or modified relaunch in attempt",
+    "Telemetry overhead may exceed the strict two-second limit; such a gap fails instead of relaxing monitoring"
+  ],
+  "futureIndependentGates": [
+    "Concurrent full-stack resource preflight",
+    "Parameter-resolution and compatibility metadata for required circuit/native-wallet sets",
+    "Wallet/privacy and local funding authorization",
+    "Proof generation, independent cryptographic verification, ledger/user transactions"
+  ],
+  "runtimeImageChecks": {
+    "allFourExactIdsPresent": true,
+    "serviceImages": "linux/amd64",
+    "readOnlyDockerInspectionOnly": true
+  },
+  "historicalGuardChanged": false,
+  "laterGuardSuccessResponseFramingAndMediaValidationRequired": true
+}

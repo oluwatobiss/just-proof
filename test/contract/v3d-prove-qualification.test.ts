@@ -1,3 +1,6 @@
+import {tmpdir} from "node:os";
+import {join} from "node:path";
+import {mkdtempSync} from "node:fs";
 import {describe,it,expect,afterAll} from "vitest";
 import {writeFileSync} from "node:fs";
 import * as rt from "@midnight-ntwrk/compact-runtime";
@@ -135,4 +138,4 @@ describe("proveQualificationV2 compiled read-only logic",()=>{
  it("rejects malformed public request at generated adapter boundary",()=>{const f=setup(),r=f.request();r.challenge=new Uint8Array(31);failed("challenge length",f,f.witness(),r,f.state,1700000250n,undefined,0);r.challenge=bytes("valid");r.requestExpiresAt=18446744073709551616n;failed("request time overflow",f,f.witness(),r,f.state,1700000250n,undefined,0);});
 
 });
-afterAll(()=>writeFileSync("docs/development/evidence/phase-3d/snapshots.json",JSON.stringify(evidence,null,2)));
+afterAll(()=>writeFileSync(join(mkdtempSync(join(tmpdir(),"justproof-snapshots-")),"snapshots.json"),JSON.stringify(evidence,null,2)));

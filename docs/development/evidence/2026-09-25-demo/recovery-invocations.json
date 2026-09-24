@@ -1,0 +1,124 @@
+{
+  "structuralRuns": [
+    {
+      "command": "MIDNIGHT_NETWORK=local npm run test -- test/contract/v3c-public-surface.test.ts",
+      "invocation": 1,
+      "fixture": "original random oracle; evidence output redirected only",
+      "exit": 0,
+      "filesPassed": 1,
+      "testsPassed": 2,
+      "durationSeconds": 2.25
+    },
+    {
+      "command": "MIDNIGHT_NETWORK=local npm run test -- test/contract/v3c-public-surface.test.ts",
+      "invocation": 2,
+      "fixture": "diagnostic deterministic trailing-zero canaries with original raw-only oracle",
+      "exit": 1,
+      "filesFailed": 1,
+      "testsPassed": 1,
+      "testsFailed": 1,
+      "durationSeconds": 2.03
+    },
+    {
+      "command": "MIDNIGHT_NETWORK=local npm run test -- test/contract/v3c-public-surface.test.ts",
+      "invocation": 3,
+      "fixture": "repaired raw/canonical oracle, same deterministic trailing-zero canaries",
+      "exit": 0,
+      "filesPassed": 1,
+      "testsPassed": 2,
+      "durationSeconds": 2.02
+    },
+    {
+      "command": "MIDNIGHT_NETWORK=local npm run test -- test/contract/v3c-public-surface.test.ts test/contract/v3d-public-surface.test.ts",
+      "invocation": 4,
+      "exit": 0,
+      "filesPassed": 2,
+      "testsPassed": 4,
+      "durationSeconds": 4.09
+    }
+  ],
+  "integrationTypecheck": {
+    "command": "node_modules/.bin/tsc -p docs/development/evidence/2026-09-25-demo/tsconfig.integration.json --noEmit",
+    "exits": [
+      0,
+      2,
+      2,
+      2,
+      0
+    ],
+    "diagnostics": "Three iterative scoped-WebSocket constructor/static-member signature errors; final overloads match installed ws types"
+  },
+  "focusedSdkIntegration": {
+    "invocations": 0,
+    "exit": null,
+    "scope": "Codex standalone invocations only; both cases passed in user full-suite run"
+  },
+  "testLocal": {
+    "invocations": 0,
+    "exit": null,
+    "scope": "Codex invocations only; later user run recorded separately"
+  },
+  "noRetriesHidden": true,
+  "userExecutedPostResponseValidation": {
+    "executor": "user",
+    "timing": "post-response validation before this acceptance integration",
+    "command": "npm run test:local",
+    "source": "User-supplied successful Vitest/npm completion summary",
+    "successfulCompletionReported": true,
+    "codexExecuted": false,
+    "codexCapturedDirectShellExit": false,
+    "directShellExitCode": null,
+    "files": {
+      "passed": 17,
+      "failed": 0,
+      "total": 17
+    },
+    "tests": {
+      "passed": 489,
+      "failed": 0,
+      "skipped": 0,
+      "total": 489
+    },
+    "durationSeconds": 310.01,
+    "integration": {
+      "file": "test/just-proof.test.ts",
+      "passed": 2,
+      "skipped": 0,
+      "cases": [
+        "Exact nine-field deployment test",
+        "Finalized registerIssuerV2 transition test"
+      ]
+    },
+    "hashReconciliation": "Current test files exactly match the preceding 31-file integrity manifest; user identifies this working tree as the executed version. No independently captured test-time manifest was supplied.",
+    "reconciledTestHashes": {
+      "test/contract/v3c-public-surface.test.ts": {
+        "bytes": 8167,
+        "sha256": "1921e12de2ad87bc011938eeeba65d8fb38eb1449a477a31f2bade99c9bfd0cf"
+      },
+      "test/contract/v3c-revoke-credential.test.ts": {
+        "bytes": 13215,
+        "sha256": "5769870e98d2df6fd219e3eaf5e316e6c19fb244509108956dc77a4b0b59b85e"
+      },
+      "test/contract/v3d-prove-qualification.test.ts": {
+        "bytes": 21275,
+        "sha256": "ef0aa57ac1ecd3f781cd3d1b85fc7ecc1a14fe5dd21d1c04e2c506153357cab5"
+      },
+      "test/contract/v3d-public-surface.test.ts": {
+        "bytes": 9582,
+        "sha256": "ec09cfe2927b86ef58c3216ba80fd3f196359f89c3ed3e2d1e230fe496fca262"
+      },
+      "test/frontend/demo.test.ts": {
+        "bytes": 5584,
+        "sha256": "cd71b3afbabbb4da2796fcd51a90b715e473e3c7d98918b7bffa12c0c8008f8b"
+      },
+      "test/just-proof.test.ts": {
+        "bytes": 8273,
+        "sha256": "33a76f1e4678b795e4139b826548a6094f889b158349257342a2999cb6dbaca4"
+      },
+      "test/support/local-v2-memory.ts": {
+        "bytes": 2628,
+        "sha256": "477639cdf7f12a22c825b8422607419d7ba4d975f24a53f0cefde791b45eb921"
+      }
+    }
+  }
+}

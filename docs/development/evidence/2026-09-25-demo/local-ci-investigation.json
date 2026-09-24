@@ -1,0 +1,147 @@
+{
+  "classification": "2026-09-25_DEMO_READY_FOR_USER_COMMIT_AND_REMOTE_CI",
+  "integrationRepairImplemented": true,
+  "testLocal": {
+    "executor": "user",
+    "timing": "post-response validation before this acceptance integration",
+    "command": "npm run test:local",
+    "source": "User-supplied successful Vitest/npm completion summary",
+    "successfulCompletionReported": true,
+    "codexExecuted": false,
+    "codexCapturedDirectShellExit": false,
+    "directShellExitCode": null,
+    "files": {
+      "passed": 17,
+      "failed": 0,
+      "total": 17
+    },
+    "tests": {
+      "passed": 489,
+      "failed": 0,
+      "skipped": 0,
+      "total": 489
+    },
+    "durationSeconds": 310.01,
+    "integration": {
+      "file": "test/just-proof.test.ts",
+      "passed": 2,
+      "skipped": 0,
+      "cases": [
+        "Exact nine-field deployment test",
+        "Finalized registerIssuerV2 transition test"
+      ]
+    },
+    "hashReconciliation": "Current test files exactly match the preceding 31-file integrity manifest; user identifies this working tree as the executed version. No independently captured test-time manifest was supplied.",
+    "reconciledTestHashes": {
+      "test/contract/v3c-public-surface.test.ts": {
+        "bytes": 8167,
+        "sha256": "1921e12de2ad87bc011938eeeba65d8fb38eb1449a477a31f2bade99c9bfd0cf"
+      },
+      "test/contract/v3c-revoke-credential.test.ts": {
+        "bytes": 13215,
+        "sha256": "5769870e98d2df6fd219e3eaf5e316e6c19fb244509108956dc77a4b0b59b85e"
+      },
+      "test/contract/v3d-prove-qualification.test.ts": {
+        "bytes": 21275,
+        "sha256": "ef0aa57ac1ecd3f781cd3d1b85fc7ecc1a14fe5dd21d1c04e2c506153357cab5"
+      },
+      "test/contract/v3d-public-surface.test.ts": {
+        "bytes": 9582,
+        "sha256": "ec09cfe2927b86ef58c3216ba80fd3f196359f89c3ed3e2d1e230fe496fca262"
+      },
+      "test/frontend/demo.test.ts": {
+        "bytes": 5584,
+        "sha256": "cd71b3afbabbb4da2796fcd51a90b715e473e3c7d98918b7bffa12c0c8008f8b"
+      },
+      "test/just-proof.test.ts": {
+        "bytes": 8273,
+        "sha256": "33a76f1e4678b795e4139b826548a6094f889b158349257342a2999cb6dbaca4"
+      },
+      "test/support/local-v2-memory.ts": {
+        "bytes": 2628,
+        "sha256": "477639cdf7f12a22c825b8422607419d7ba4d975f24a53f0cefde791b45eb921"
+      }
+    }
+  },
+  "userReportedEarlierResult": {
+    "source": "User supplied authoritative historical transcript; not a fresh run",
+    "passedFiles": 15,
+    "failedFiles": 2,
+    "totalFiles": 17,
+    "passedTests": 486,
+    "failedTests": 1,
+    "skippedIntegrationTests": 2,
+    "totalTests": 489,
+    "failedSetup": "test/just-proof.test.ts",
+    "failedStructuralTest": "test/contract/v3c-public-surface.test.ts",
+    "independentlyRerun": false,
+    "supersedes": "Earlier 16 passed/1 failed file and 487 passing-test figures were incorrect"
+  },
+  "ciCommand": "npm run test:local",
+  "ciStartsServices": "npm run env:up",
+  "ciStopsServices": "npm run env:down",
+  "ciAlsoCompiles": true,
+  "ciCompactVersion": "0.31.1",
+  "acceptedArtifactCompilerVersion": "0.31.1",
+  "inputs": {
+    "test/just-proof.test.ts": {
+      "bytes": 8273,
+      "sha256": "33a76f1e4678b795e4139b826548a6094f889b158349257342a2999cb6dbaca4"
+    },
+    "contracts/index.ts": {
+      "bytes": 525,
+      "sha256": "dc5bd4ff5525ab39c8e6d2be3aa81e6c5bd7e44e1bad384a72352773dde7f162"
+    },
+    "utils/witnesses.ts": {
+      "bytes": 556,
+      "sha256": "34aca86379a9cca6a2c0470795fbcb058b5a9c314c60f5e676997c0c0628bcd7"
+    },
+    "providers/buildNodeProviders.ts": {
+      "bytes": 1492,
+      "sha256": "02be3972ee428fa123cc14fb323f644bdc72ce6143b3d45264ba2d4fea4b934f"
+    },
+    "providers/walletProviders.ts": {
+      "bytes": 3224,
+      "sha256": "44aecc6fdfb7b9b8866216589bf6e56c68dc4061ad87444b52959a7f3808b92f"
+    },
+    "test/support/v3a-register-issuer.ts": {
+      "bytes": 5381,
+      "sha256": "7648b1cff7b7716d536a5cc2732935d0491c2e5dda742ae707eab76533eb8e41"
+    },
+    "contracts/managed/just-proof/contract/index.d.ts": {
+      "bytes": 12959,
+      "sha256": "0139fd7406b87a3498b5141ff2bdce2dcef9193753597326af99aa9e738b0d08"
+    },
+    "compose.yml": {
+      "bytes": 1974,
+      "sha256": "7dfe495f96718ba7749616a93a741f0a609e512516a6d8bb321da997865effd8"
+    },
+    ".github/workflows/ci.yaml": {
+      "bytes": 2340,
+      "sha256": "e48b033454287337906ac9225f119a6254240f8c756acc55af430d4a38c8e8d1"
+    },
+    "docs/development/evidence/phase-3e3a3d/parameter-allowlist.json": {
+      "bytes": 4251,
+      "sha256": "97698106692ae4ade59e998ac1f707c613930354fdaaaa905939bebc167502a0"
+    }
+  },
+  "cacheBeforeAfterEqual": true,
+  "hostCacheFiles": 7,
+  "noServiceMutation": true,
+  "integrationRepairRuntimeValidated": true,
+  "structuralDiagnosis": {
+    "kind": "nondeterministic test oracle defect reproduced",
+    "mechanism": "CompactTypeBytes.toValue trims trailing zero bytes; raw-only private positive controls intermittently miss canonical transcript atoms",
+    "repair": "Deterministic distinct SHA-256 canaries with trailing-zero regression; uniqueness assertion; raw plus canonical negative checks; canonical positive controls; all privacy assertions retained",
+    "contractOrArtifactChanged": false
+  },
+  "previousCodexPreflight": {
+    "invoked": false,
+    "exitCode": null,
+    "suiteCounts": null,
+    "testCounts": null,
+    "reason": "Containment and required proof/native-wallet parameter resolution/completeness remain unestablished; no services launched."
+  },
+  "runtimeValidationProvenance": "User-executed successful run, not repeated by Codex",
+  "hostedCiObserved": false
+}

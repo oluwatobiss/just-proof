@@ -1,0 +1,30 @@
+{
+  "bls_midnight_2p18": {
+    "bytes": 50332036,
+    "sha256": "e8436dc5d8b598f169c127c745135d889744007e6d384ff126df8d1332522f86"
+  },
+  "bls_midnight_2p9": {
+    "bytes": 98692,
+    "sha256": "b9009f1098bcefffec3c461ab3a5e3a17f7e5599f0f08c70fcdc55a89227bcbd"
+  },
+  "bls_midnight_2p13": {
+    "bytes": 1573252,
+    "sha256": "d3324910969c4cc54143b8045b649e5c3a4bd5fb7b8f85fe1b770f640ce1c803"
+  },
+  "bls_midnight_2p7": {
+    "bytes": 24964,
+    "sha256": "e82ae890c080188355f37feaffe91372584cd810615082d9143d4dec0453fd9d"
+  },
+  "bls_midnight_2p19": {
+    "bytes": 100663684,
+    "sha256": "8e8dc15c4362f05c912f1e770559a3945db3e58a374def416ed5d3e65ad5b10e"
+  },
+  "bls_midnight_2p6": {
+    "bytes": 12676,
+    "sha256": "cf2ad6be7d0fedf5bec2aaa35f6be4aca33053d74268fdf5aa54fcb2891ea6df"
+  },
+  "bls_midnight_2p17": {
+    "bytes": 25166212,
+    "sha256": "4a9ef6c7c0619aab74eede44b13e753e3ba54508a02dd3b7106a949aabb73b74"
+  }
+}

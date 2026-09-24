@@ -1,0 +1,34 @@
+Local-CI recovery: preflight/diagnosis record, not a full-suite transcript.
+Codex full npm run test:local invocations during recovery: 0; exit: unavailable.
+Codex focused SDK integration invocations during recovery: 0; exit: unavailable.
+No service launch; no parameter download; no proof or ledger submission.
+See recovery-invocations.json for all four structural test commands and outcomes.
+See recovery-service-inspection.json for image identities and metadata probes.
+
+Authoritative historical transcript supplied by user (NOT rerun):
+Test files: 15 passed, 2 failed, 17 total.
+Tests: 486 passed, 1 failed, 2 skipped, 489 total.
+Failed setup: test/just-proof.test.ts.
+Failed test: test/contract/v3c-public-surface.test.ts.
+This supersedes the earlier incorrect 16/1-file and 487-passing-test figures.
+
+Current structural runs: pass 2/2; diagnostic fail 1/2; repaired pass 2/2;
+combined structural pass 4/4. Diagnostic failure retained, not hidden.
+Static V2 harness repair: final targeted TypeScript exit 0, runtime unvalidated.
+Blocker: service parameter resolver/completeness and no-egress loopback access
+remain unestablished. Candidate parameter paths in pinned image are absent.
+No skipped test was introduced to mask this blocker.
+
+
+POST-RESPONSE USER-EXECUTED VALIDATION (supersedes the prior unexecuted status)
+Command: npm run test:local
+Successful Vitest/npm completion supplied by the user:
+Test Files: 17 passed (17)
+Tests: 489 passed (489); skipped: 0
+Duration: 310.01 seconds
+test/just-proof.test.ts: 2/2 passed
+- Exact nine-field deployment test: passed
+- Finalized registerIssuerV2 transition test: passed
+Codex did not execute this run or capture a direct shell exit code.
+Current test hashes match the prior integrity manifest; no rerun was needed.
+This is the supplied completion summary, not a reconstructed raw console log.

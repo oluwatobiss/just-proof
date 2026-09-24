@@ -1,0 +1,154 @@
+{
+  "classification": "2026-09-25_DEMO_READY_FOR_USER_COMMIT_AND_REMOTE_CI",
+  "baselineHead": "8af94a2794fde1a6e09105734621bfe10d65134e",
+  "files": {
+    ".github/workflows/ci.yaml": {
+      "bytes": 2340,
+      "sha256": "e48b033454287337906ac9225f119a6254240f8c756acc55af430d4a38c8e8d1"
+    },
+    "app/PublicApp.tsx": {
+      "bytes": 831,
+      "sha256": "051ccb67e586cd9b772ada64cc04ebee17404e119cce9dd4395ad2b00c64636c"
+    },
+    "app/components/Header.tsx": {
+      "bytes": 986,
+      "sha256": "2718aebbe03cba00dc2ecd768f9180a2fdb5d201defb26c55c589a751e274832"
+    },
+    "app/components/Hero.tsx": {
+      "bytes": 1665,
+      "sha256": "b03475f14167d9c8acc5041edeb2e7b3a4a24fac5cd931bcd88217ec1c1190eb"
+    },
+    "app/demo/Demo.tsx": {
+      "bytes": 12590,
+      "sha256": "c7081b7d9b2465919959ada177639ca1ae3f5a771ae0050a197ccfbfffdc8999"
+    },
+    "app/demo/demo.css": {
+      "bytes": 3285,
+      "sha256": "77c878b347347d500851077e370ae105010d60212794343cc31f7bb9cc6f31d0"
+    },
+    "app/demo/state.ts": {
+      "bytes": 2578,
+      "sha256": "f6edc14043ccb64a374959164a2113acb611e8dc78e4263e9922293850120e12"
+    },
+    "app/index.css": {
+      "bytes": 1866,
+      "sha256": "9073d3b840628e8aab7ac990b2c2be03301ce508b320ebe5b9dbfcf883d32db1"
+    },
+    "app/main.tsx": {
+      "bytes": 510,
+      "sha256": "9afda3c52491b98edc7a10c4fca453a08348ebbbd942465845922440fbf52512"
+    },
+    "docs/development/2026-09-25-demo-guide.md": {
+      "bytes": 10450,
+      "sha256": "b76309bdbfc6a53973fb672de4058eccec0fbc591165326662c057bd7a65aa16"
+    },
+    "docs/development/2026-09-25-demo-implementation-report.md": {
+      "bytes": 14586,
+      "sha256": "a81b06390d882788e713e205a23e7d488e5e30a74b066878d4baaafee77b1824"
+    },
+    "docs/development/evidence/2026-09-25-demo/cache-after.json": {
+      "bytes": 929,
+      "sha256": "0469ca9d62aca09a00ede7c83e45ba191b940b988b2db6e6813029104bce0da6"
+    },
+    "docs/development/evidence/2026-09-25-demo/cache-before.json": {
+      "bytes": 929,
+      "sha256": "0469ca9d62aca09a00ede7c83e45ba191b940b988b2db6e6813029104bce0da6"
+    },
+    "docs/development/evidence/2026-09-25-demo/local-ci-investigation.json": {
+      "bytes": 5644,
+      "sha256": "c4d6712dab56f4de5e9bb76eb0a4001d1c5aad64e74253c4098b9dc0179a8ad9"
+    },
+    "docs/development/evidence/2026-09-25-demo/post-run-service-cache-review.json": {
+      "bytes": 1647,
+      "sha256": "05d40e965c2582860b866ba3f00a5df476962c5cf50e560b3f7bb37237051a53"
+    },
+    "docs/development/evidence/2026-09-25-demo/preservation-baseline.json": {
+      "bytes": 35017,
+      "sha256": "d83cbb96ea4cad34896e9558a16325a9e1d53c2787c3b7703750d6e27fb4ffa5"
+    },
+    "docs/development/evidence/2026-09-25-demo/recovery-invocations.json": {
+      "bytes": 4225,
+      "sha256": "ef6342c7baf0ccfb255e8d6cd86c7233bb0fcbca7abf48e0d45bc8f8a305f98c"
+    },
+    "docs/development/evidence/2026-09-25-demo/recovery-service-inspection.json": {
+      "bytes": 1871,
+      "sha256": "b5bd70a6e440fb2f46cf9d5de0319f62474e23fae5579edaace7b703ded739fe"
+    },
+    "docs/development/evidence/2026-09-25-demo/test-local-preflight.txt": {
+      "bytes": 1849,
+      "sha256": "2ba91571fcbfc4f1cc707240621529e1f55e51f6f4d81576a81511cd9bce663f"
+    },
+    "docs/development/evidence/2026-09-25-demo/tsconfig.integration.json": {
+      "bytes": 333,
+      "sha256": "f2b86e2edf1d1010d027a2bfa40c1d7051159f2336f6bb5a76e20c37bda62446"
+    },
+    "docs/development/evidence/2026-09-25-demo/validation.json": {
+      "bytes": 9357,
+      "sha256": "282f861f03ad26fb08d805be111a0dcd83f5208717cf6a3e1dd254af7e3706cc"
+    },
+    "package.json": {
+      "bytes": 3789,
+      "sha256": "d0a7a47b479a2dbfaccd2a7e2927623c9008742a79c9cfce4b546afa7244ef71"
+    },
+    "scripts/ci-service-status.py": {
+      "bytes": 2296,
+      "sha256": "8223561493c96ca967080cbf2c4dadfa1c18cb6c0d37b6aff137a9485957d7b7"
+    },
+    "test/contract/v3c-public-surface.test.ts": {
+      "bytes": 8167,
+      "sha256": "1921e12de2ad87bc011938eeeba65d8fb38eb1449a477a31f2bade99c9bfd0cf"
+    },
+    "test/contract/v3c-revoke-credential.test.ts": {
+      "bytes": 13215,
+      "sha256": "5769870e98d2df6fd219e3eaf5e316e6c19fb244509108956dc77a4b0b59b85e"
+    },
+    "test/contract/v3d-prove-qualification.test.ts": {
+      "bytes": 21275,
+      "sha256": "ef0aa57ac1ecd3f781cd3d1b85fc7ecc1a14fe5dd21d1c04e2c506153357cab5"
+    },
+    "test/contract/v3d-public-surface.test.ts": {
+      "bytes": 9582,
+      "sha256": "ec09cfe2927b86ef58c3216ba80fd3f196359f89c3ed3e2d1e230fe496fca262"
+    },
+    "test/frontend/demo.test.ts": {
+      "bytes": 5584,
+      "sha256": "cd71b3afbabbb4da2796fcd51a90b715e473e3c7d98918b7bffa12c0c8008f8b"
+    },
+    "test/just-proof.test.ts": {
+      "bytes": 8273,
+      "sha256": "33a76f1e4678b795e4139b826548a6094f889b158349257342a2999cb6dbaca4"
+    },
+    "test/support/local-v2-memory.ts": {
+      "bytes": 2628,
+      "sha256": "477639cdf7f12a22c825b8422607419d7ba4d975f24a53f0cefde791b45eb921"
+    },
+    "tsconfig.frontend.json": {
+      "bytes": 399,
+      "sha256": "9c3b158e68bed50cd0427fa88872e570ab42c003ae540d613a9ed897b839ceba"
+    },
+    "vite.frontend.config.ts": {
+      "bytes": 336,
+      "sha256": "63c3fa7d3f07e84c008256f6ed45ee0caf0812cb75b5611218b2de99cfa3fedb"
+    },
+    "vitest.frontend.config.ts": {
+      "bytes": 170,
+      "sha256": "db6a02ebf7cd64c1796cc977eb8e393b2bcc37b427f8df3e9adbca9db5c51453"
+    }
+  },
+  "selfHashExcluded": true,
+  "finalGitStatusShort": " M .github/workflows/ci.yaml\n M app/components/Header.tsx\n M app/components/Hero.tsx\n M app/index.css\n M app/main.tsx\n M package.json\n M test/contract/v3c-public-surface.test.ts\n M test/contract/v3c-revoke-credential.test.ts\n M test/contract/v3d-prove-qualification.test.ts\n M test/contract/v3d-public-surface.test.ts\n M test/just-proof.test.ts\n?? app/PublicApp.tsx\n?? app/demo/\n?? docs/development/2026-09-25-demo-guide.md\n?? docs/development/2026-09-25-demo-implementation-report.md\n?? docs/development/evidence/2026-09-25-demo/\n?? scripts/ci-service-status.py\n?? test/frontend/\n?? test/support/local-v2-memory.ts\n?? tsconfig.frontend.json\n?? vite.frontend.config.ts\n?? vitest.frontend.config.ts\n",
+  "diffCheck": "passed",
+  "preservation": {
+    "protectedFiles": 267,
+    "managedArtifacts": 20,
+    "parameterCacheFiles": 7,
+    "unchanged": true
+  },
+  "codexIntegrationSuiteInvoked": false,
+  "userFullSuiteSuccessful": true,
+  "userFullSuiteDirectExitCapturedByCodex": false,
+  "noProjectServiceRunning": true,
+  "hostedCiObserved": false,
+  "containerDownloadHistoryAvailable": false,
+  "noEgressContainmentProven": false
+}

@@ -1,5 +1,7 @@
+import {tmpdir} from "node:os";
+import {join} from "node:path";
 import {it,expect} from "vitest";
-import {readFileSync,writeFileSync} from "node:fs";
+import {readFileSync,writeFileSync,mkdtempSync} from "node:fs";
 import {randomBytes} from "node:crypto";
 import ts from "typescript";
 import * as rt from "@midnight-ntwrk/compact-runtime";
@@ -49,5 +51,5 @@ it("runtime structural privacy gate and invariant public time bounds across priv
  }
  const source=readFileSync("contracts/just-proof.compact","utf8").split("export circuit proveQualificationV2")[1];expect(source.match(/disclose\(/g)).toHaveLength(2);expect(source).toContain("blockTimeGte(disclose(request.requestIssuedAt))");expect(source).toContain("blockTimeLt(disclose(request.requestExpiresAt))");
  const replacer=(_k:string,v:unknown)=>typeof v==="bigint"?v.toString():v instanceof Uint8Array?{bytes:hex(v)}:v instanceof Map?[...v]:v;
- writeFileSync("docs/development/evidence/phase-3d/public-surface.json",JSON.stringify({passed:true,privateTimesChangeOnlyAuthenticatedRootsAndDigests:true,timeProgramInvariant:true,runs},replacer,2));
+ writeFileSync(join(mkdtempSync(join(tmpdir(),"justproof-v3d-surface-")),"public-surface.json"),JSON.stringify({passed:true,privateTimesChangeOnlyAuthenticatedRootsAndDigests:true,timeProgramInvariant:true,runs},replacer,2));
 });

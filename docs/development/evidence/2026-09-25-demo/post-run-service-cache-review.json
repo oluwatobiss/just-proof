@@ -1,0 +1,36 @@
+{
+  "capturedAtUtc": "2026-09-24T18:36:50.506013+00:00",
+  "method": "Read-only docker ps -a with Compose project/service labels",
+  "command": "docker ps -a --format '{{.ID}} {{.Names}} {{.Status}} {{.Label \"com.docker.compose.project\"}} {{.Label \"com.docker.compose.service\"}}'",
+  "exitCode": 0,
+  "repositoryComposeContainers": [],
+  "remainingContainers": [
+    {
+      "name": "justproof-phase3e3a1-loopback-recovery",
+      "status": "Exited (0) 7 days ago",
+      "composeProject": "",
+      "composeService": ""
+    },
+    {
+      "name": "justproof-phase3e3a1-proof-server",
+      "status": "Exited (0) 7 days ago",
+      "composeProject": "",
+      "composeService": ""
+    }
+  ],
+  "projectServiceRemainingRunning": false,
+  "stopRequired": false,
+  "stopInvocations": 0,
+  "retainedResourcesChanged": false,
+  "projectMountsWritableLayersAndLogs": "Unavailable: no repository Compose containers remain. Their earlier lifecycle/deletion timing was not observed by Codex. No logs or writable layers can be inspected retrospectively.",
+  "hostCacheFiles": 7,
+  "hostCacheComparedTo": "docs/development/evidence/2026-09-25-demo/cache-before.json",
+  "hostCacheEqual": true,
+  "hostNewFiles": [],
+  "hostChangedFiles": [],
+  "containerParameterInventory": "Unavailable for removed/absent project containers",
+  "parameterDownloadObservation": "No download/origin evidence is available from absent project logs; unchanged host cache does not prove no container download occurred.",
+  "noEgressContainmentProven": false,
+  "strongerContainment": "Separate infrastructure hardening; not retroactively asserted",
+  "rawLogsSaved": false
+}

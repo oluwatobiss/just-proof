@@ -11,11 +11,12 @@ export function Header() {
             <span className="status-text">IN ACTIVE DEVELOPMENT</span>
           </div>
         </div>
+        <a href="/demo" className="btn btn-secondary">Try demo</a>
         <nav className="primary-nav">
-          <a href="#verify" className="nav-link">
+          <a href="/demo" className="nav-link">
             Verify
           </a>
-          <a href="#issuers" className="nav-link">
+          <a href="/demo#demo-progress" className="nav-link">
             Become an Issuer
           </a>
           <a

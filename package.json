@@ -12,7 +12,7 @@
     "build:start": "npm run build && npm run start",
     "build:start:preview": "npm run build:preview && npm run start",
     "ci": "npm run lint && npm run build:preview",
-    "compile": "compact compile contracts/just-proof.compact contracts/managed/just-proof",
+    "compile": "compact compile +0.31.1 contracts/just-proof.compact contracts/managed/just-proof",
     "deploy": "vite-node scripts/deploy.ts",
     "deploy:preprod": "MIDNIGHT_NETWORK=preprod npm run deploy",
     "deploy:preview": "MIDNIGHT_NETWORK=preview npm run deploy",
@@ -34,7 +34,10 @@
     "test:preprod": "MIDNIGHT_NETWORK=preprod npm run test",
     "test:preview": "MIDNIGHT_NETWORK=preview npm run test",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "validate": "npm run env:up && npm run test:local && npm run env:down"
+    "validate": "npm run env:up && npm run test:local && npm run env:down",
+    "build:frontend": "vite build --config vite.frontend.config.ts --mode demo",
+    "test:frontend": "vitest run --config vitest.frontend.config.ts",
+    "typecheck:frontend": "tsc -p tsconfig.frontend.json --noEmit"
   },
   "dependencies": {
     "@midnight-ntwrk/dapp-connector-api": "^4.0.1",

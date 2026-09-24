@@ -1,4 +1,4 @@
-﻿export function Hero() {
+export function Hero() {
   return (
     <section className="hero">
       <div className="hero-content">
@@ -16,11 +16,11 @@
           information.
         </p>
         <div className="hero-actions">
-          <a href="#verify" className="btn btn-primary">
-            Explore Verification
+          <a href="/demo" className="btn btn-primary">
+            Try interactive demo
           </a>
-          <a href="#issuers" className="btn btn-secondary">
-            For Issuers
+          <a href="/demo#demo-progress" className="btn btn-secondary">
+            See what is built
           </a>
         </div>
       </div>

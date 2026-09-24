@@ -1,0 +1,1 @@
+{"compilerOptions":{"target":"ES2022","module":"ESNext","moduleResolution":"bundler","strict":true,"skipLibCheck":true,"noEmit":true,"esModuleInterop":true,"types":["node"]},"files":["../../../../test/just-proof.test.ts","../../../../test/contract/v3c-public-surface.test.ts","../../../../test/contract/v3d-public-surface.test.ts"]}

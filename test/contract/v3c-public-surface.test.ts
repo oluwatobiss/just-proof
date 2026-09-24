@@ -1,11 +1,13 @@
+import {tmpdir} from "node:os";
+import {join} from "node:path";
 import {it,expect} from "vitest";
-import {readFileSync,writeFileSync} from "node:fs";
-import {randomBytes} from "node:crypto";
+import {readFileSync,writeFileSync,mkdtempSync} from "node:fs";
+import {createHash} from "node:crypto";
 import ts from "typescript";
 import {ledger} from "../../contracts/managed/just-proof/contract/index.js";
 import {setup} from "../support/v3c-revoke-credential.js";
 import {p,partition,locations,overrideState} from "../support/v3a-register-issuer.js";
-import {hex,u8,u16,domain} from "../support/v2-reference.js";
+import {hex,u8,u16,b32,domain} from "../support/v2-reference.js";
 it("exact four-circuit ABI, ordered revocation witness and no diagnostic callback",()=>{
   const f=setup(),names=["registerIssuerV2","registerCredentialV2","revokeCredentialV2","proveQualificationV2"];
   for(const group of [f.contract.circuits,f.contract.impureCircuits,f.contract.provableCircuits])expect(Object.keys(group)).toEqual(names);
@@ -17,7 +19,8 @@ it("exact four-circuit ABI, ordered revocation witness and no diagnostic callbac
   }
 });
 it("real partition structural gate: only existing reads and final revocation root; no private atoms or extra effects",()=>{
-  const f=setup(),w=f.witness(),random=()=>Uint8Array.from(randomBytes(32));
+  const f=setup(),w=f.witness();let serial=0;
+  const random=()=>{const b=Uint8Array.from(createHash("sha256").update(`justproof-public-v3c-canary:${serial++}`).digest());b[31]=0;return b;};
   w.issuerSecret=random();w.issuanceNonce=random();w.credentialCommitment=random();
   const r=w.issuerMembership.record;r.issuerControlCommitment=p.diagnose_issuerControlV2(f.f.context,w.issuerSecret);r.issuerId=p.diagnose_issuerIdV2(f.f.context,r.issuerControlCommitment);w.credentialId=p.diagnose_credentialIdV2(r.issuerId,w.issuanceNonce);
   w.issuerMembership.issuerIndex=31337n;w.credentialMembership.credentialIndex=23456n;
@@ -36,11 +39,16 @@ it("real partition structural gate: only existing reads and final revocation roo
   expect(selectors).toEqual([1n,3n,2n,6n,5n,8n]);expect(program.flatMap(op=>typeof op==="object"&&"dup"in op?[op.dup.n]:[])).toEqual([0,0,0,0,0,0]);
   const surfaces={arguments:out.proofData.input,output:out.proofData.output,query:program,guaranteed,fallible,effects:out.context.currentQueryContext.effects,ledger:out.context.currentQueryContext.state.state.encode()};
   const privateAtoms:Record<string,Uint8Array[]>={issuerSecret:[w.issuerSecret],issuerControl:[r.issuerControlCommitment],issuerId:[r.issuerId],issuerIndex:u16.toValue(w.issuerMembership.issuerIndex),issuerPath:w.issuerMembership.path.siblings,nonce:[w.issuanceNonce],credentialId:[w.credentialId],credentialCommitment:[w.credentialCommitment],credentialLeaf:[leaf],credentialIndex:u16.toValue(w.credentialMembership.credentialIndex),credentialPath:w.credentialMembership.path.siblings,revocationPath:w.revocationPath.siblings,revokedLeaf:[revoked]};
+  // CompactTypeBytes.toValue removes trailing zero bytes. Test both raw and
+  // canonical atoms; canonical lookup is essential for transcript positive controls.
+  const canonical=(atom:Uint8Array)=>b32.toValue(atom)[0];
+  const atomKeys=Object.values(privateAtoms).flat().map(x=>hex(canonical(x)));
+  expect(new Set(atomKeys).size,"private canary fixture collision").toBe(atomKeys.length);
   const findings:Record<string,Record<string,number>>={};
-  for(const [name,atoms]of Object.entries(privateAtoms)){findings[name]={};for(const [place,value]of Object.entries(surfaces)){const count=atoms.reduce((n,x)=>n+locations(value,x).length,0);findings[name][place]=count;expect(count===0).toBe(true);}}
-  for(const atom of [w.issuerSecret,r.issuerControlCommitment,r.issuerId,w.issuanceNonce,w.credentialId,w.credentialCommitment,...w.issuerMembership.path.siblings,...w.credentialMembership.path.siblings,...w.revocationPath.siblings,...u16.toValue(w.issuerMembership.issuerIndex),...u16.toValue(w.credentialMembership.credentialIndex)])expect(locations(out.proofData.privateTranscriptOutputs,atom).length>0).toBe(true);
+  for(const [name,atoms]of Object.entries(privateAtoms)){findings[name]={};for(const [place,value]of Object.entries(surfaces)){const count=atoms.reduce((n,x)=>n+new Set([...locations(value,x),...locations(value,canonical(x))]).size,0);findings[name][place]=count;expect(count,`private atom ${name} leaked at ${place}`).toBe(0);}}
+  for(const atom of [w.issuerSecret,r.issuerControlCommitment,r.issuerId,w.issuanceNonce,w.credentialId,w.credentialCommitment,...w.issuerMembership.path.siblings,...w.credentialMembership.path.siblings,...w.revocationPath.siblings,...u16.toValue(w.issuerMembership.issuerIndex),...u16.toValue(w.credentialMembership.credentialIndex)])expect(locations(out.proofData.privateTranscriptOutputs,canonical(atom)).length,`private positive control missing (${atom.length}-byte atom)`).toBeGreaterThan(0);
   const finalRoot=ledger(out.context.currentQueryContext.state).revocationRoot;expect(locations(guaranteed,finalRoot).length>0).toBe(true);expect(locations(program,finalRoot).length>0).toBe(true);
   const source=readFileSync("contracts/just-proof.compact","utf8").split("export circuit revokeCredentialV2")[1].split("export circuit proveQualificationV2")[0];expect(source.match(/disclose\(/g)).toHaveLength(1);expect(source).toContain("revocationRoot = disclose(newRoot)");
   const replacer=(_k:string,v:unknown)=>typeof v==="bigint"?v.toString():v instanceof Uint8Array?{bytes:hex(v)}:v instanceof Map?[...v]:v;
-  writeFileSync("docs/development/evidence/phase-3d/retained-3c-public-surface.json",JSON.stringify({passed:true,findings,positiveControls:{finalRoot:true,privateWitnessCanaries:true},input:out.proofData.input,output:out.proofData.output,query:program,guaranteed,fallible,effectsBefore:beforeEffects,effectsAfter:out.context.currentQueryContext.effects},replacer,2));
+  writeFileSync(join(mkdtempSync(join(tmpdir(),"justproof-v3c-surface-")),"public-surface.json"),JSON.stringify({passed:true,findings,positiveControls:{finalRoot:true,privateWitnessCanaries:true},input:out.proofData.input,output:out.proofData.output,query:program,guaranteed,fallible,effectsBefore:beforeEffects,effectsAfter:out.context.currentQueryContext.effects},replacer,2));
 });

@@ -1,0 +1,38 @@
+{
+  "classification": "BLOCKED_TRANSACTION_NATIVE_ADDRESS_BINDING",
+  "baselineCommit": "2f45d8af0c1cde86ed86cc926b4729904ded980c",
+  "selfHashExcluded": true,
+  "files": {
+    "docs/development/2026-09-25-preprod-mvp-002-report.md": {
+      "bytes": 7037,
+      "sha256": "3ff0b494534ed2ca6d6cc1d755b808819b44a64856e9f25c7202dc6deb49f0ed"
+    },
+    "docs/development/2026-09-25-preprod-mvp-002-guide.md": {
+      "bytes": 2795,
+      "sha256": "330bced5aa14371e398284f693b2c80e6f0e8b5eca557ce0cc170547a7151525"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-002/binding-gate.json": {
+      "bytes": 11133,
+      "sha256": "eef1227c83eb6873ae9d68eb306247e782c94c4c8cb56f36be76c27c900b6283"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-002/installed-tx-id-query.graphql": {
+      "bytes": 693,
+      "sha256": "5a4eaab419307a94305e73598ba48f024fe5068f6bf45eeaf906363d1d9660d2"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-002/preservation-before.json": {
+      "bytes": 89655,
+      "sha256": "1b1f72bde706efe1d33764e6ebc08cc21980320fc2be11299319449a6eed9f57"
+    }
+  },
+  "validation": {
+    "json": true,
+    "allTrackedFilesPreserved": 460,
+    "managedArtifactsPreserved": 20,
+    "cacheFilesPreserved": 7,
+    "inspectedDependenciesUnchanged": true,
+    "implementationProceeded": false,
+    "testsOrCompilationRun": false,
+    "diffCheck": true
+  },
+  "finalGitStatusShort": "?? docs/development/2026-09-25-preprod-mvp-002-guide.md\n?? docs/development/2026-09-25-preprod-mvp-002-report.md\n?? docs/development/evidence/2026-09-25-preprod-mvp-002/\n"
+}

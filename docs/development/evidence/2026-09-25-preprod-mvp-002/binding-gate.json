@@ -1,0 +1,276 @@
+{
+  "classification": "BLOCKED_TRANSACTION_NATIVE_ADDRESS_BINDING",
+  "baselineCommit": "2f45d8af0c1cde86ed86cc926b4729904ded980c",
+  "capturedAtUtc": "2026-09-25T20:30:14.553854+00:00",
+  "campaign": "2026-09-25-preprod-mvp-002",
+  "installedVersions": {
+    "dapp-connector-api": "4.0.1",
+    "ledger-v8": "8.1.0",
+    "wallet-sdk-facade": "4.1.0",
+    "wallet-sdk-unshielded-wallet": "3.1.0",
+    "midnight-js-indexer-public-data-provider": "4.1.1",
+    "midnight-js-types": "4.1.1"
+  },
+  "versionsScope": "Pinned installed metadata only; no registry query/update or external retrieval in this static phase.",
+  "sources": {
+    "connector400": {
+      "path": "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/v4.0.0-src-api.ts.txt",
+      "bytes": 15022,
+      "sha256": "11f43b521c1cf8ee63cd88eb654422f68b2b4e7a00e44a3d0d60bd8b5a124e36",
+      "references": [
+        {
+          "symbol": "balanceUnsealedTransaction / balanceSealedTransaction",
+          "startLine": 109,
+          "endLine": 129
+        },
+        {
+          "symbol": "makeTransfer / makeIntent",
+          "startLine": 130,
+          "endLine": 151
+        },
+        {
+          "symbol": "DesiredInput / DesiredOutput",
+          "startLine": 249,
+          "endLine": 276
+        }
+      ]
+    },
+    "spec400": {
+      "path": "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/v4.0.0-SPECIFICATION.md.txt",
+      "bytes": 28196,
+      "sha256": "34a8b5e78900fa544d6df809ca30840c5369922077d1f681158c0ccab1a11d08",
+      "references": [
+        {
+          "symbol": "Connected API design",
+          "startLine": 76,
+          "endLine": 84
+        }
+      ]
+    },
+    "ledger": {
+      "path": "node_modules/@midnight-ntwrk/ledger-v8/ledger-v8.d.ts",
+      "bytes": 93666,
+      "sha256": "4a6eaccd531f0bb711dd8a8926d14beedd2ab8345deff378f86068608d67dc36",
+      "references": [
+        {
+          "symbol": "Intent signatureData / offers / actions",
+          "startLine": 2034,
+          "endLine": 2058
+        },
+        {
+          "symbol": "UnshieldedOffer input authorization",
+          "startLine": 2071,
+          "endLine": 2089
+        },
+        {
+          "symbol": "Transaction identifiers / merge / hash",
+          "startLine": 2399,
+          "endLine": 2419
+        }
+      ]
+    },
+    "indexerTypes": {
+      "path": "node_modules/@midnight-ntwrk/midnight-js-indexer-public-data-provider/dist/index.d.ts",
+      "bytes": 15951,
+      "sha256": "d9f18f4f06d434da3b8bbcce5d72f849f6c5aa28b9470fa7bad8ef999836aacf",
+      "references": [
+        {
+          "symbol": "RegularTransaction",
+          "startLine": 210,
+          "endLine": 246
+        },
+        {
+          "symbol": "UnshieldedUtxo owner",
+          "startLine": 302,
+          "endLine": 321
+        }
+      ]
+    },
+    "indexerImpl": {
+      "path": "node_modules/@midnight-ntwrk/midnight-js-indexer-public-data-provider/dist/index.mjs",
+      "bytes": 79196,
+      "sha256": "23a1883b796fbea037817ae0a7e0f5ed3c072a7d30974154a8de917893cd7f2f",
+      "references": [
+        {
+          "symbol": "TX_ID_QUERY",
+          "startLine": 204,
+          "endLine": 245
+        },
+        {
+          "symbol": "toTxStatus",
+          "startLine": 618,
+          "endLine": 634
+        },
+        {
+          "symbol": "watchForTxData",
+          "startLine": 965,
+          "endLine": 993
+        }
+      ]
+    },
+    "publicProviderContract": {
+      "path": "node_modules/@midnight-ntwrk/midnight-js-types/dist/index.d.ts",
+      "bytes": 44226,
+      "sha256": "c6b9fb7c40e4cbe00a9054ad99026912df4358a3a450a90ede912a87929efb30",
+      "references": [
+        {
+          "symbol": "FinalizedTxData",
+          "startLine": 184,
+          "endLine": 226
+        },
+        {
+          "symbol": "watchForTxData",
+          "startLine": 988,
+          "endLine": 996
+        }
+      ]
+    },
+    "facadeTypes": {
+      "path": "node_modules/@midnight-ntwrk/wallet-sdk-facade/dist/index.d.ts",
+      "bytes": 18621,
+      "sha256": "fa618110738af19e231ebf2093bab50360324b5bfab532306aba03fa02a5ef89",
+      "references": [
+        {
+          "symbol": "initSwap",
+          "startLine": 305,
+          "endLine": 312
+        }
+      ]
+    },
+    "facadeImpl": {
+      "path": "node_modules/@midnight-ntwrk/wallet-sdk-facade/dist/index.js",
+      "bytes": 36376,
+      "sha256": "bb63f609499432f54b7db424d124d7dc80ad7a466af3c39cf7033f52b33f7562",
+      "references": [
+        {
+          "symbol": "initSwap separates unshielded inputs and DUST fees",
+          "startLine": 574,
+          "endLine": 605
+        }
+      ]
+    },
+    "projectBrowserProvider": {
+      "path": "providers/buildBrowserProviders.ts",
+      "bytes": 4446,
+      "sha256": "1e68d685ced18beeba7932fdd1d05d9f55ea644d0b313641724d9571988e936c",
+      "references": []
+    },
+    "previousGate": {
+      "path": "docs/development/evidence/2026-09-25-preprod-mvp-001/address-binding-gate.json",
+      "bytes": 5061,
+      "sha256": "56f459522357c3d1e5268e5ef1ac8ab4b71401df5ea3594aa064638422e9416d",
+      "references": []
+    },
+    "capabilityAdjudication": {
+      "path": "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-authorized-attempt-adjudication.json",
+      "bytes": 7028,
+      "sha256": "b2a4feeb3c9bbfd7a2c7915e62fd0c842cb8c54c8d1c6db4307501094f0403f0",
+      "references": []
+    },
+    "package:dapp-connector-api": {
+      "path": "node_modules/@midnight-ntwrk/dapp-connector-api/package.json",
+      "bytes": 1506,
+      "sha256": "f37e05877495b6bdded73f045b50136b1d25d4998de67a6e1b2b7c437d107ebb"
+    },
+    "package:ledger-v8": {
+      "path": "node_modules/@midnight-ntwrk/ledger-v8/package.json",
+      "bytes": 860,
+      "sha256": "52266d4e4ffa3dcd46faed72c1ffc0c7f4dd08bf01004068f8912d285b6b0536"
+    },
+    "package:wallet-sdk-facade": {
+      "path": "node_modules/@midnight-ntwrk/wallet-sdk-facade/package.json",
+      "bytes": 1757,
+      "sha256": "83180a2e69759e912c899d396efcf736a61315b8edb4ce99b6126c5ff07aaf18"
+    },
+    "package:wallet-sdk-unshielded-wallet": {
+      "path": "node_modules/@midnight-ntwrk/wallet-sdk-unshielded-wallet/package.json",
+      "bytes": 1707,
+      "sha256": "ff6af8e4bb3b610bf6260246643c8cc72f9e417e02d10160d864468af1275c7c"
+    },
+    "package:midnight-js-indexer-public-data-provider": {
+      "path": "node_modules/@midnight-ntwrk/midnight-js-indexer-public-data-provider/package.json",
+      "bytes": 1685,
+      "sha256": "9a3c306c8d9239c454f641e939f570f55f479f1b4a19709fe74293baf581b6b4"
+    },
+    "package:midnight-js-types": {
+      "path": "node_modules/@midnight-ntwrk/midnight-js-types/package.json",
+      "bytes": 1050,
+      "sha256": "a599f54e31f3b68e8e053fe26732df86bf13a8574b4848cd7f6863428a92b9bb"
+    }
+  },
+  "claims": [
+    {
+      "requirement": "Public spent-output owner",
+      "result": "PUBLIC_API_SURFACE_ESTABLISHED; finalized-server semantics not independently established",
+      "evidence": [
+        "indexerTypes",
+        "indexerImpl"
+      ],
+      "finding": "Schema comments identify outputs consumed by the transaction, and executable TX_ID_QUERY requests owner, intentHash, tokenType and value. This is not merely a suggestive field name."
+    },
+    {
+      "requirement": "1AM 4.0.0 construction of required owner spend",
+      "result": "UNRESOLVED",
+      "evidence": [
+        "connector400",
+        "spec400",
+        "facadeImpl"
+      ],
+      "finding": "makeIntent requests unshielded token kind/type/amount; no owner or receipt-action argument. Wallet coin selection is intentionally private. Nonzero requested inputs may produce an unshielded spend but do not guarantee the claimed owner or receipt consent. 1AM implementation is not locally available; public declaration is not vendor support evidence."
+    },
+    {
+      "requirement": "Balancing/fee guarantees",
+      "result": "NO_GENERAL_GUARANTEE",
+      "evidence": [
+        "connector400",
+        "facadeImpl"
+      ],
+      "finding": "Balancing adds necessary inputs/outputs, not an unconditional claimed-owner spend. initSwap separately requests unshielded swaps and optional DUST fee balancing. A fee or created output is not address-control proof."
+    },
+    {
+      "requirement": "Same transaction and cryptographic receipt linkage",
+      "result": "STRUCTURAL_COOCCURRENCE_POSSIBLE; COMPLETE_LINKAGE_UNRESOLVED",
+      "evidence": [
+        "ledger",
+        "indexerTypes"
+      ],
+      "finding": "RegularTransaction groups contractActions and consumed outputs. UnshieldedOffer documents input-authorizing signatures over Intent.signatureData; intents have their own actions and offers. Transaction.merge permits composition, so co-membership alone is not evidence that an input signer authorized an arbitrary subsequently associated receipt. Need a supported construction with the required signed intent/action binding and replay constraints, not just a form address or merged unrelated transfer."
+    },
+    {
+      "requirement": "Address substitution resistance",
+      "result": "UNRESOLVED",
+      "evidence": [
+        "ledger",
+        "indexerTypes",
+        "previousGate"
+      ],
+      "finding": "Public hash of supplied address/campaign/receipt ID is computable by anyone. A verifier must derive canonical owner from authorized consumed input, reject mismatch, and prove signed receipt linkage. No complete constructor/verifier pipeline is established."
+    },
+    {
+      "requirement": "Independent finality query and confirmation depth",
+      "result": "PROVIDER_CONTRACT_IDENTIFIED; DEPLOYED_FINALITY_GUARANTEE_UNRESOLVED",
+      "evidence": [
+        "indexerImpl",
+        "publicProviderContract"
+      ],
+      "finding": "watchForTxData uses transactions(offset:{identifier:txId}), returns first regular result, deserializes raw and maps execution/segment status. Public API promises finalized data. Implementation has no independent finalized-head/depth check; relies on indexer semantics. No numeric confirmation depth established; do not invent N-block finality. Pinned service implementation or authoritative version-matched indexing guarantee and endpoint identity would be required."
+    },
+    {
+      "requirement": "Independent verification and duplicate prevention",
+      "result": "NOT_IMPLEMENTED; BINDING_GATE_BLOCKED",
+      "evidence": [
+        "indexerImpl",
+        "indexerTypes"
+      ],
+      "finding": "Query requires transaction identifier, not private wallet data; public consumed owner and action evidence could support review. Contract receipt schema, signed linkage, finality policy and authoritative duplicate key (canonical address,campaign) remain unestablished. No VERIFIED result can be issued."
+    }
+  ],
+  "hardStops": [
+    "No complete owner-enforced 1AM connector construction for the receipt",
+    "No established signature-to-receipt linkage across possible merged intents",
+    "No independently established version-matched service finality policy/confirmation rule"
+  ],
+  "implementationProceeded": false,
+  "capabilityRetryAuthorized": false,
+  "verifiedParticipants": 0
+}

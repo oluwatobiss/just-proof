@@ -1,0 +1,40 @@
+query TX_ID_QUERY($offset: TransactionOffset!) {
+    transactions(offset: $offset) {
+      id
+      protocolVersion
+      raw
+      hash
+      unshieldedCreatedOutputs {
+        owner
+        intentHash
+        tokenType
+        value
+      }
+      unshieldedSpentOutputs {
+        owner
+        intentHash
+        tokenType
+        value
+      }
+      block {
+        height
+        hash
+        author
+        timestamp
+      }
+      ... on RegularTransaction {
+        identifiers
+        fees {
+          estimatedFees
+          paidFees
+        }
+        transactionResult {
+          status
+          segments {
+            id
+            success
+          }
+        }
+      }
+    }
+  }

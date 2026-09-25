@@ -1,0 +1,60 @@
+{
+  "classification": "LOCAL_VERIFIER_BROWSER_SELFTEST_PASSED_AWAITING_WALLET_RETRY_AUTHORIZATION",
+  "commands": [
+    {
+      "command": "npm run test:frontend",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run typecheck:frontend",
+      "exitCode": 0
+    },
+    {
+      "command": "node_modules/.bin/tsc --ignoreConfig --noEmit --target ES2022 --module ESNext --moduleResolution bundler --strict --skipLibCheck --esModuleInterop --jsx react-jsx --types node,vite/client tools/address-capability/vite.config.ts tools/address-capability/entry.ts tools/address-capability/main.tsx test/frontend/address-capability-probe.test.ts test/frontend/address-capability-compatibility.test.ts",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0
+    },
+    {
+      "command": "node_modules/.bin/eslint tools/address-capability test/frontend/address-capability-probe.test.ts",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run build:frontend",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "frontendTests": {
+    "files": 6,
+    "passed": 147,
+    "failed": 0,
+    "skipped": 0
+  },
+  "manualBrowserSelftest": "User-executed Chrome, accepted; exact result in manual-local-verifier-success-result.json.",
+  "codexBrowserExecuted": false,
+  "serverStartedThisPass": false,
+  "walletInvokedThisPass": false,
+  "walletRetryAuthorized": false,
+  "terminalStateTests": [
+    "PASSED persists through prepare/discover/select/connect/sign",
+    "all rendered controls disabled after PASSED",
+    "no getter/discovery or repeated signing after PASSED",
+    "successful and failed preparation UI",
+    "local preparation and wallet busy messages distinct"
+  ],
+  "preservation": {
+    "snapshotEntries": 417,
+    "managedArtifacts": 20,
+    "cacheFiles": 7,
+    "dependenciesAndConfigurationPreserved": true,
+    "priorFailedManualResultUnchanged": true
+  },
+  "productionProbeExcluded": true,
+  "jsonIntegrityAndPrefixChecksPassed": true
+}

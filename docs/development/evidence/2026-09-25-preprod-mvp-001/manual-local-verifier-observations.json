@@ -1,0 +1,19 @@
+{
+  "source": "User-executed local-only observation",
+  "onlyAction": "Prepare local verification runtime",
+  "walletDiscovery": false,
+  "walletConnection": false,
+  "walletSigning": false,
+  "walletPrompt": false,
+  "walletApi": false,
+  "preprod": false,
+  "proof": false,
+  "transaction": false,
+  "midnightService": false,
+  "docker": false,
+  "rawSensitiveMaterialRetained": false,
+  "exceptionRetained": false,
+  "screenshotRetained": false,
+  "viteStoppedAfterward": true,
+  "earlierConnectionFailureCauseEstablished": false
+}

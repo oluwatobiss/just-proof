@@ -1,0 +1,25 @@
+{
+  "localVerifier": "LOCAL_VERIFIER_READY",
+  "signingBlocked": true,
+  "selected": {
+    "entry": "1am",
+    "name": "1AM",
+    "rdns": "com.midnight.1am",
+    "apiVersion": "4.0.0",
+    "duplicate": false,
+    "canConnect": true,
+    "connectShape": "OWN_DATA_FUNCTION",
+    "compatibilityReason": "READY_FOR_EXPLICIT_CONNECT"
+  },
+  "apiVersionAccepted": true,
+  "preprodConfirmed": true,
+  "signDataCallable": true,
+  "signingCompleted": false,
+  "signedDataMatched": false,
+  "signatureVerified": false,
+  "derivedAddressMatched": false,
+  "unexpired": false,
+  "encodings": null,
+  "overall": "FAILED",
+  "errorCategory": "CONNECTION_STATUS_REQUEST_FAILED"
+}

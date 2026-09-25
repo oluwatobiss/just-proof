@@ -1,0 +1,154 @@
+{
+  "classification": "MANUAL_1AM_CAPABILITY_ATTEMPT_AUTHORIZED_AWAITING_USER_RESULT",
+  "authorized": true,
+  "authorizationSource": "Explicit user instruction in this conversation",
+  "authorizedExecutor": "User only; Codex must not start Vite, open a browser, discover/connect a wallet or sign",
+  "recordedAtUtc": "2026-09-25T15:32:03.564112+00:00",
+  "baselineCommit": "f6f9692af1616065a688c95983329d266e0ea466",
+  "proposalPath": "docs/development/evidence/2026-09-25-preprod-mvp-001/proposed-manual-1am-retry.json",
+  "proposalSha256": "cbda06a4f06e17ea15bfe6599f9fbbe3546f124270b1be15e91d19e094072494",
+  "proposalRemainsDisabledAndUnchanged": true,
+  "priorIntegrity": {
+    "bytes": 16097,
+    "sha256": "59e30b93702f5343452b4e2d5b940e3f1321b5aff2659d3152b735d14916f98e"
+  },
+  "reportGuidePrefixes": {
+    "docs/development/2026-09-25-preprod-mvp-001-guide.md": {
+      "bytes": 27083,
+      "sha256": "3ebcc58079fab0d727a9531eee28c7ce6cd2c5a3e4aa4d5979d5d0968c3b8303"
+    },
+    "docs/development/2026-09-25-preprod-mvp-001-report.md": {
+      "bytes": 42533,
+      "sha256": "b1a3ff890019741415e0e6132d54f7af6a95d629da5c54577a1fae97ee4c96b8"
+    }
+  },
+  "acceptedValidation": {
+    "path": "docs/development/evidence/2026-09-25-preprod-mvp-001/browser-selftest-validation.json",
+    "bytes": 2031,
+    "sha256": "88e5fc2fd263f5433a4e18ad2454f597bd95075bbcbd03a1394c0aa115fc61e0"
+  },
+  "reviewedProbeFiles": {
+    "tools/address-capability/Probe.tsx": {
+      "bytes": 5300,
+      "sha256": "1fd9b74b8419b49ab8a48ce07dfafe5cde8bb37d4d3f631b4ba387bf2f200b91"
+    },
+    "tools/address-capability/StartupBoundary.tsx": {
+      "bytes": 474,
+      "sha256": "09ae075f8222b65359a5a7701ba00230b82044a0e0a9f74247bb472b24c93bfd"
+    },
+    "tools/address-capability/bootstrap.ts": {
+      "bytes": 544,
+      "sha256": "3c6ad99d437d6a64e061446b2838ef7dcda93d8b85f5e8008ffad1c334a8e3c7"
+    },
+    "tools/address-capability/check-served-graph.mjs": {
+      "bytes": 3783,
+      "sha256": "34d0a1adbdc6dc5e0f9bf2fcf041c2546d121c139b7571b0609ee1f9d3c8155e"
+    },
+    "tools/address-capability/compatibility.ts": {
+      "bytes": 2719,
+      "sha256": "342e4441ee496cd35802b97b80dfdbea7b689073c446b34f4fa12751320704e1"
+    },
+    "tools/address-capability/controller.ts": {
+      "bytes": 13397,
+      "sha256": "01d2c4829308197d305534ff2a88e305aad0b7a76ef260ede4aa242b893d24d9"
+    },
+    "tools/address-capability/entry.ts": {
+      "bytes": 204,
+      "sha256": "779a31a8c99e2905d99b2541c80631ae18d626c00cc2f7561058853dfb534e39"
+    },
+    "tools/address-capability/index.html": {
+      "bytes": 619,
+      "sha256": "671c1324250190a80034aa8778018e935136b6087bed86afa348e3eab3057c01"
+    },
+    "tools/address-capability/main.tsx": {
+      "bytes": 606,
+      "sha256": "9aec7742847c85618102fb38fea5f41a77fcc157b13a4784ddccc2075b2b2fdb"
+    },
+    "tools/address-capability/primitives.ts": {
+      "bytes": 405,
+      "sha256": "f0a6f7b54baa7261c664c479b920337ea6250e4e525c18f8d204ca4edf515ec0"
+    },
+    "tools/address-capability/probe.css": {
+      "bytes": 449,
+      "sha256": "6d6508e34b1af2ae36240a6d22908b6bcc93a0b44676183f4e06f9eb5f5db8c9"
+    },
+    "tools/address-capability/public-verifier-vector.ts": {
+      "bytes": 542,
+      "sha256": "bd978953857644c16f8448c10b39af43be1db0fa8f47e23a33b61e3f9c19cb88"
+    },
+    "tools/address-capability/verification.ts": {
+      "bytes": 4276,
+      "sha256": "809b746b2535275371f37869b261857ae72aec6d9db44d51f70846ea2e52e8cd"
+    },
+    "tools/address-capability/verifier-selftest.ts": {
+      "bytes": 2202,
+      "sha256": "62d5486ff2e1a78eb8c6317d7fb257d44d144db79a9ced7b3a6bd294ff4e9a62"
+    },
+    "tools/address-capability/vite.config.ts": {
+      "bytes": 2469,
+      "sha256": "87cd03b8a4ea33d4a649ab2d48a6df2ab5fec6d5727391ab932f95b3eb7d6d9c"
+    }
+  },
+  "wallet": {
+    "name": "1AM",
+    "productVersion": "6.3.11",
+    "entry": "1am",
+    "rdns": "com.midnight.1am",
+    "connectorApiVersion": "4.0.0",
+    "networkId": "preprod",
+    "origin": "http://127.0.0.1:5174"
+  },
+  "limits": {
+    "logicalAttempts": 1,
+    "connectInvocations": 1,
+    "connectionRequests": 1,
+    "separateNontransactionalSignDataGestures": 1,
+    "automaticRetries": 0,
+    "manualRetries": 0
+  },
+  "prerequisites": [
+    "Fresh normal-Chrome page using the exact reviewed development probe",
+    "LOCAL_VERIFIER_READY before any connection",
+    "Explicit discovery and selection with exact wallet identifiers and separately confirmed product version",
+    "Both connected status and configuration networkId exactly preprod",
+    "Separate Sign gesture only after overall CONNECTED"
+  ],
+  "consumption": {
+    "trigger": "First Connect invocation, wallet prompt, or terminal failure after discovery, whichever occurs first",
+    "effect": "Authorization is consumed for this single attempt, not reusable. If that connection reaches CONNECTED, the same consumed attempt may proceed to its one separately approved nontransactional signing gesture. No second attempt is authorized.",
+    "executionObservedByCodex": false,
+    "userResult": null,
+    "consumptionStatus": "AWAITING_USER_RESULT; no assertion about future runtime consumption"
+  },
+  "signingScope": {
+    "method": "signData",
+    "encoding": "text",
+    "keyType": "unshielded",
+    "domain": "JUSTPROOF:ADDRESS-CAPABILITY-TEST",
+    "syntheticContractValueOnly": true,
+    "nontransactional": true
+  },
+  "prohibitedOperations": [
+    "transaction",
+    "fee",
+    "transfer",
+    "contract call",
+    "proof",
+    "deployment",
+    "Docker operation",
+    "Midnight service operation",
+    "participant creation",
+    "app-specific Preprod participation receipt",
+    "automatic retry",
+    "manual retry",
+    "secret request"
+  ],
+  "stopRules": [
+    "Stop on any fixed preparation, identity, connection, address, network or signing failure",
+    "Reject any unexpected request or prohibited operation",
+    "PASSED and failure are terminal; no reload/reconnect/sign repetition to bypass the one-attempt limit",
+    "After the result close the page and stop the development server"
+  ],
+  "evidencePolicy": "Report only allowlisted Redacted result and public version identifiers; no address, nonce, challenge, signature, key, raw response, exception or wallet-popup screenshot",
+  "r61RemainsOpen": true
+}

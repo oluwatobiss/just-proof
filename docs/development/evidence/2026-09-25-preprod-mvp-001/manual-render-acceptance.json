@@ -1,0 +1,35 @@
+{
+  "source": "User-reported accepted manual observation, not Codex browser execution",
+  "browser": "normal Chrome",
+  "rendered": [
+    "heading",
+    "disclosures",
+    "discovery button",
+    "wallet selection",
+    "disabled action buttons",
+    "Redacted result"
+  ],
+  "rawWalletValueDisplayedOrRecorded": false,
+  "connectOccurred": false,
+  "signOccurred": false,
+  "signButtonDisabled": true,
+  "wallets": [
+    {
+      "entry": "1am",
+      "rdns": "com.midnight.1am",
+      "productVersion": "6.3.11",
+      "connectorApiVersion": "4.0.0",
+      "observedOutcome": "unsupported",
+      "connectDisabled": true
+    },
+    {
+      "rdns": "io.lace.wallet",
+      "connectorApiVersion": "4.0.1",
+      "observedOutcome": "unsupported",
+      "connectDisabled": true
+    }
+  ],
+  "chromeDevtoolsWarning": "/.well-known/appspecific/com.chrome.devtools.json is an unrelated harmless automatic local-workspace probe; connect-src none retained",
+  "screenshotsSaved": false,
+  "walletRuntimeQualification": null
+}

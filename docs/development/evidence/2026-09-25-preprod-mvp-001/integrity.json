@@ -1,0 +1,341 @@
+{
+  "classification": "BLOCKED_1AM_PRE_SIGN_STATUS_REVALIDATION",
+  "baselineCommit": "f6f9692af1616065a688c95983329d266e0ea466",
+  "previousIntegritySha256": "53b0c433d54925fbbabda383a2bfb9c6e161b7f315e80997bd401b4e871ca113",
+  "selfHashExcluded": true,
+  "files": {
+    "docs/development/2026-09-25-preprod-mvp-001-guide.md": {
+      "bytes": 32906,
+      "sha256": "b7f2475c29881c5f45119cb08f079830f0c019b50af648c0a38b4461fd4171e0"
+    },
+    "docs/development/2026-09-25-preprod-mvp-001-report.md": {
+      "bytes": 48356,
+      "sha256": "669ae247d31e91832cb4579ce2b87a4fbd5d6066faf0fe6e4b2b4de2c07d81ef"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/001a-preservation-before.json": {
+      "bytes": 67538,
+      "sha256": "209a312fcc062f3524c01ea6a77a5d1c2589d5578de9c66f6687bffb830d3f14"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/address-binding-gate.json": {
+      "bytes": 5061,
+      "sha256": "56f459522357c3d1e5268e5ef1ac8ab4b71401df5ea3594aa064638422e9416d"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/browser-selftest-baseline.json": {
+      "bytes": 563,
+      "sha256": "ab9b6e17ed46344c6b4e33204d61f66674dfabe728f421123eb588e7cbf35729"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/browser-selftest-validation.json": {
+      "bytes": 2031,
+      "sha256": "88e5fc2fd263f5433a4e18ad2454f597bd95075bbcbd03a1394c0aa115fc61e0"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/capability-challenge.ts": {
+      "bytes": 2925,
+      "sha256": "e998d0120ab89f84b654b5d60bf6b0d90c2288c8eb42bedaa6c4174ddf74cdba"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/capability-schema.json": {
+      "bytes": 6932,
+      "sha256": "7217891cfebf7da714ee95700955fac1780512c7c6578c011f2da5a3d9431c00"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/compatibility-adjudication.json": {
+      "bytes": 1578,
+      "sha256": "9cba858f595a05dc5a567b8af3bfc8b6d2d606045bdf755f55744b27548c1564"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/compatibility-baseline.json": {
+      "bytes": 573,
+      "sha256": "0ac327fd655d9ae575766417f581d1cfbd34640a4ad69641dcbf636112141d16"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/compatibility-preservation.json": {
+      "bytes": 183,
+      "sha256": "69a432352f2e3fcf8bbd7ac48bfb0c31ae6b6f911440446aaebe59001e9df285"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/compatibility-validation.json": {
+      "bytes": 2829,
+      "sha256": "17fe28043426c2a69686df8c6704622f68bacb2ef0535391ea3fa844c3034f89"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-public-references.json": {
+      "bytes": 16577,
+      "sha256": "36d0d4551cb74946db8086dd82948e22e3657ea226f17db0194e0cfcefdc451d"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/compare-subset.mjs": {
+      "bytes": 4470,
+      "sha256": "d0805545746c284527b53da1fb96b9308eb2eea087271ff8a13472de36e31049"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/compare.json": {
+      "bytes": 66426,
+      "sha256": "5f8e8510edfe9b81539c12e380cada4429fd506739691c72b83ede532148da92"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/comparison-result.json": {
+      "bytes": 4054,
+      "sha256": "f481cb011e5443e4bc12710121ab3856386b603be90a4fc4734e8bb29d6e6d04"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/retrieval.json": {
+      "bytes": 2102,
+      "sha256": "c65b886ce136e7b68e7e6c747e7bbc34f675f017d27cee8a7adca628507ed823"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/v4.0.0-SPECIFICATION.md.txt": {
+      "bytes": 28196,
+      "sha256": "34a8b5e78900fa544d6df809ca30840c5369922077d1f681158c0ccab1a11d08"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/v4.0.0-src-api.ts.txt": {
+      "bytes": 15022,
+      "sha256": "11f43b521c1cf8ee63cd88eb654422f68b2b4e7a00e44a3d0d60bd8b5a124e36"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/v4.0.1-SPECIFICATION.md.txt": {
+      "bytes": 28968,
+      "sha256": "d9c65ea7ef1126a3ae039c2cdd078dc74df279b301315b662e177cf764ad90ae"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/v4.0.1-src-api.ts.txt": {
+      "bytes": 15484,
+      "sha256": "a360583cca814218710bd1f4a5763851e1cd74627b3d24886f01b4371bbcffee"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/local-verifier-baseline.json": {
+      "bytes": 555,
+      "sha256": "6b3ee6c6cc54af4a984fb29e545e00ec2b455edf892048fd4ccfe3d259ee431e"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/local-verifier-diagnosis.json": {
+      "bytes": 3018,
+      "sha256": "2c233d22805c98916ea3a57694e7224495333a3a226c0729cdfaaae7ac01c62b"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/local-verifier-served-graph.json": {
+      "bytes": 3935,
+      "sha256": "53cf6e80dfa725c243aaad72621aacb7ce967eecd2980e84150ba8c75e0412d6"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/local-verifier-validation.json": {
+      "bytes": 3465,
+      "sha256": "b889b4d15cee56e0311cb7aeeee50fb44a54e27a197dff30f1d76690427fd0ee"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-1am-retry-authorization.json": {
+      "bytes": 6332,
+      "sha256": "2b5c1cd333ede54a32d07bb8b7b52e7495f513925cf5f73c5709b2f7f46ae357"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-authorization-validation.json": {
+      "bytes": 1538,
+      "sha256": "f88771ac0a14932b4f75f8758923d3f2a70101895644ff6900ccac1add35db7f"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-authorized-attempt-adjudication.json": {
+      "bytes": 7028,
+      "sha256": "b2a4feeb3c9bbfd7a2c7915e62fd0c842cb8c54c8d1c6db4307501094f0403f0"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-authorized-attempt-pre-sign.json": {
+      "bytes": 640,
+      "sha256": "90dd771a77e7f01f4b8878ff21bac6fe5a60bce0fa313fda57fd4c1d3726e806"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-authorized-attempt-terminal.json": {
+      "bytes": 666,
+      "sha256": "310f12959aabe001a15eb060cf7c0817105becfc9f7fd1fdde34fe8726b92fa7"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-first-connection-observations.json": {
+      "bytes": 636,
+      "sha256": "a9903b5131e36da8d298e404786f858953d32dc879a7e5a0dcb6ab50f3c41977"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-first-connection-result.json": {
+      "bytes": 582,
+      "sha256": "d9b6dce19f14c3abb6095d757a6c665335b365049cfd2c9fdd94ed43d86c6a21"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-local-verifier-observations.json": {
+      "bytes": 535,
+      "sha256": "7cf8289165a933f5d6f5f5798c6790c0672d4206bc9493cffa8cfc14f8559bf8"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-local-verifier-result.json": {
+      "bytes": 429,
+      "sha256": "19831ce26e3f524db4f68901556ec6289145862e4330052839a8700aa58a8b5a"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-local-verifier-success-observations.json": {
+      "bytes": 1004,
+      "sha256": "b4dcce9ac558410fa74f9215aa2eda440f52a5f0e1e9374adf5f1fae3ad82189"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-local-verifier-success-result.json": {
+      "bytes": 400,
+      "sha256": "3a2474737a71942a82df733e0fa349e70d0c96758379456bd4a396888c5e84cc"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-render-acceptance.json": {
+      "bytes": 1018,
+      "sha256": "2c5130abfd119ebcbc408bbf870532fbda7bc05b8f7ef735b0d55b84d5ca637a"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/offline-verification.json": {
+      "bytes": 2191,
+      "sha256": "5cb59509530107a13bf79d25ebeecc4b424907073066f8a77e0bacc2b826a0f2"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/post-connect-baseline.json": {
+      "bytes": 552,
+      "sha256": "05cac1bfc6f582e861c96682086255a44ba18ed53c07e530918b01181c435383"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/post-connect-validation.json": {
+      "bytes": 2088,
+      "sha256": "4636677eddd1222fd4bc49d6532d57546e4a1818952b87ce2bc4d50af435e1e6"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/probe-validation.json": {
+      "bytes": 3482,
+      "sha256": "bf33e52602cea603fa06adf974a1a90de21c042e202e2b9635c85d83591aa119"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/proposed-manual-1am-retry.json": {
+      "bytes": 2450,
+      "sha256": "cbda06a4f06e17ea15bfe6599f9fbbe3546f124270b1be15e91d19e094072494"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/render-baseline.json": {
+      "bytes": 551,
+      "sha256": "4d9f7a2bc13de3d48e46d03624b948a18cc24ea0266d66cd9841dfdc5854449a"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/render-served-modules.json": {
+      "bytes": 3483,
+      "sha256": "547d77f57bdba1563c0f6510b4eb552027fc4bb8af13f319d7f09d31ed9f590c"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/render-validation.json": {
+      "bytes": 3010,
+      "sha256": "7dda7d7f779f8e9b82c010746c8fa20073388d81a641d18e6f9fc75557d4b2b2"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/security-findings.json": {
+      "bytes": 3205,
+      "sha256": "37cfca20ba48a920ad7cd938d1399288a664b0cabaffa5511026873e8bab8fca"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/strict-probe-baseline.json": {
+      "bytes": 563,
+      "sha256": "50490c0a4805c1a3ff4e5496e512bf8bfcfd04e4bf6a2dd8bf19614978b8033b"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/strict-probe-validation.json": {
+      "bytes": 3446,
+      "sha256": "8e85185cd8153b2c802c0524feb35c875c0999fd1f3a875e349d799b0b48efff"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/wallet-capability-requirements.json": {
+      "bytes": 3166,
+      "sha256": "fdd00245a436e1a1bf58f78d6d9715cf4b22249b08d0e977ca7a2afd8c2d20b7"
+    },
+    "providers/walletProviders.ts": {
+      "bytes": 3142,
+      "sha256": "abb5f65fe4ee7801797958128f2a30a7ff8489d51111bc015c00918552ec1c3f"
+    },
+    "test/frontend/address-capability-build.test.ts": {
+      "bytes": 1810,
+      "sha256": "cc410cd90e87fc2fb441d1299732addffb7daf0b684e33decb856a0218fe22c0"
+    },
+    "test/frontend/address-capability-compatibility.test.ts": {
+      "bytes": 5531,
+      "sha256": "461f64dfeddf035e87e1bb9f42b05c1bf1f8b9eadfc039e994d1ff6bff52f328"
+    },
+    "test/frontend/address-capability-offline.test.ts": {
+      "bytes": 7926,
+      "sha256": "452e8d0b66e6aec826ab20b08aab8126d12ff1b85efcb46cf83ea8d3f48b1fa3"
+    },
+    "test/frontend/address-capability-probe.test.ts": {
+      "bytes": 24517,
+      "sha256": "ffd90003a1b1f0b2aa5b078d8dc7860b7a26aae6cd206bf8b858575c44f7b311"
+    },
+    "test/frontend/address-capability-startup.test.ts": {
+      "bytes": 3483,
+      "sha256": "2f9c978e1bc2258d5f0ccda94cf1dc54ed2c9f293c0832176eb930cbf727082a"
+    },
+    "tools/address-capability/Probe.tsx": {
+      "bytes": 5300,
+      "sha256": "1fd9b74b8419b49ab8a48ce07dfafe5cde8bb37d4d3f631b4ba387bf2f200b91"
+    },
+    "tools/address-capability/StartupBoundary.tsx": {
+      "bytes": 474,
+      "sha256": "09ae075f8222b65359a5a7701ba00230b82044a0e0a9f74247bb472b24c93bfd"
+    },
+    "tools/address-capability/bootstrap.ts": {
+      "bytes": 544,
+      "sha256": "3c6ad99d437d6a64e061446b2838ef7dcda93d8b85f5e8008ffad1c334a8e3c7"
+    },
+    "tools/address-capability/check-served-graph.mjs": {
+      "bytes": 3783,
+      "sha256": "34d0a1adbdc6dc5e0f9bf2fcf041c2546d121c139b7571b0609ee1f9d3c8155e"
+    },
+    "tools/address-capability/compatibility.ts": {
+      "bytes": 2719,
+      "sha256": "342e4441ee496cd35802b97b80dfdbea7b689073c446b34f4fa12751320704e1"
+    },
+    "tools/address-capability/controller.ts": {
+      "bytes": 13397,
+      "sha256": "01d2c4829308197d305534ff2a88e305aad0b7a76ef260ede4aa242b893d24d9"
+    },
+    "tools/address-capability/entry.ts": {
+      "bytes": 204,
+      "sha256": "779a31a8c99e2905d99b2541c80631ae18d626c00cc2f7561058853dfb534e39"
+    },
+    "tools/address-capability/index.html": {
+      "bytes": 619,
+      "sha256": "671c1324250190a80034aa8778018e935136b6087bed86afa348e3eab3057c01"
+    },
+    "tools/address-capability/main.tsx": {
+      "bytes": 606,
+      "sha256": "9aec7742847c85618102fb38fea5f41a77fcc157b13a4784ddccc2075b2b2fdb"
+    },
+    "tools/address-capability/primitives.ts": {
+      "bytes": 405,
+      "sha256": "f0a6f7b54baa7261c664c479b920337ea6250e4e525c18f8d204ca4edf515ec0"
+    },
+    "tools/address-capability/probe.css": {
+      "bytes": 449,
+      "sha256": "6d6508e34b1af2ae36240a6d22908b6bcc93a0b44676183f4e06f9eb5f5db8c9"
+    },
+    "tools/address-capability/public-verifier-vector.ts": {
+      "bytes": 542,
+      "sha256": "bd978953857644c16f8448c10b39af43be1db0fa8f47e23a33b61e3f9c19cb88"
+    },
+    "tools/address-capability/verification.ts": {
+      "bytes": 4276,
+      "sha256": "809b746b2535275371f37869b261857ae72aec6d9db44d51f70846ea2e52e8cd"
+    },
+    "tools/address-capability/verifier-selftest.ts": {
+      "bytes": 2202,
+      "sha256": "62d5486ff2e1a78eb8c6317d7fb257d44d144db79a9ced7b3a6bd294ff4e9a62"
+    },
+    "tools/address-capability/vite.config.ts": {
+      "bytes": 2469,
+      "sha256": "87cd03b8a4ea33d4a649ab2d48a6df2ab5fec6d5727391ab932f95b3eb7d6d9c"
+    }
+  },
+  "changedOrCreatedThisPass": {
+    "docs/development/2026-09-25-preprod-mvp-001-guide.md": {
+      "bytes": 32906,
+      "sha256": "b7f2475c29881c5f45119cb08f079830f0c019b50af648c0a38b4461fd4171e0"
+    },
+    "docs/development/2026-09-25-preprod-mvp-001-report.md": {
+      "bytes": 48356,
+      "sha256": "669ae247d31e91832cb4579ce2b87a4fbd5d6066faf0fe6e4b2b4de2c07d81ef"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-authorized-attempt-adjudication.json": {
+      "bytes": 7028,
+      "sha256": "b2a4feeb3c9bbfd7a2c7915e62fd0c842cb8c54c8d1c6db4307501094f0403f0"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-authorized-attempt-pre-sign.json": {
+      "bytes": 640,
+      "sha256": "90dd771a77e7f01f4b8878ff21bac6fe5a60bce0fa313fda57fd4c1d3726e806"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-authorized-attempt-terminal.json": {
+      "bytes": 666,
+      "sha256": "310f12959aabe001a15eb060cf7c0817105becfc9f7fd1fdde34fe8726b92fa7"
+    }
+  },
+  "prefixes": {
+    "docs/development/2026-09-25-preprod-mvp-001-guide.md": {
+      "bytes": 29074,
+      "sha256": "11a4f04415f04b89c0126587610a27ff24c20839a0f56e2ec684d51ce08d6e05"
+    },
+    "docs/development/2026-09-25-preprod-mvp-001-report.md": {
+      "bytes": 44524,
+      "sha256": "0f07a79273231fee6311aa3ae8b105ad761bb397ae350e85d0fb8b1ea27b2e1d"
+    }
+  },
+  "authorizationConsumed": true,
+  "retryAuthorized": false,
+  "testsRerun": false,
+  "validation": {
+    "json": true,
+    "identities": true,
+    "prefixes": true,
+    "protectedSnapshotEntries": 417,
+    "managedFiles": 20,
+    "cacheFiles": 7,
+    "unchanged": true
+  },
+  "finalGitStatusShort": " M providers/walletProviders.ts\n?? docs/development/2026-09-25-preprod-mvp-001-guide.md\n?? docs/development/2026-09-25-preprod-mvp-001-report.md\n?? docs/development/evidence/2026-09-25-preprod-mvp-001/\n?? test/frontend/address-capability-build.test.ts\n?? test/frontend/address-capability-compatibility.test.ts\n?? test/frontend/address-capability-offline.test.ts\n?? test/frontend/address-capability-probe.test.ts\n?? test/frontend/address-capability-startup.test.ts\n?? tools/\n",
+  "indexEmpty": true,
+  "shutdown": {
+    "observedAtUtc": "2026-09-25T16:02:07.511887+00:00",
+    "probeProcessAbsentInWSL": true,
+    "port5174NotListeningInWSL": true,
+    "browserPageClosedIndependentlyVerified": false,
+    "scope": "Read-only WSL /proc observation only; browser page closure and other-host processes cannot be verified. Page closure and server shutdown remain user-instructed; current WSL server absence is independently observed."
+  }
+}

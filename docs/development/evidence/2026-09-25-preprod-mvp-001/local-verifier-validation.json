@@ -1,0 +1,96 @@
+{
+  "classification": "LOCAL_VERIFIER_BROWSER_SELFTEST_PASSED_AWAITING_WALLET_RETRY_AUTHORIZATION",
+  "commands": [
+    {
+      "command": "npm run test:frontend",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run typecheck:frontend",
+      "exitCode": 0
+    },
+    {
+      "command": "node_modules/.bin/tsc --ignoreConfig --noEmit --target ES2022 --module ESNext --moduleResolution bundler --strict --skipLibCheck --esModuleInterop --jsx react-jsx --types node,vite/client tools/address-capability/vite.config.ts tools/address-capability/entry.ts tools/address-capability/main.tsx test/frontend/address-capability-probe.test.ts test/frontend/address-capability-compatibility.test.ts",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0
+    },
+    {
+      "command": "node_modules/.bin/eslint tools/address-capability test/frontend/address-capability-probe.test.ts test/frontend/address-capability-compatibility.test.ts test/frontend/address-capability-build.test.ts",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run build:frontend",
+      "exitCode": 0
+    },
+    {
+      "command": "node --experimental-vm-modules tools/address-capability/check-served-graph.mjs --public-loopback-module-check",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "frontendTests": {
+    "files": 6,
+    "passed": 141,
+    "failed": 0,
+    "skipped": 0,
+    "invocationsThisPass": 2
+  },
+  "browserRunnerAvailable": false,
+  "browserExecuted": false,
+  "manualSelftestOutstanding": false,
+  "causeEstablished": false,
+  "vmServedGraphEvidence": "local-verifier-served-graph.json",
+  "priorGraphCheckerFailure": "Regex import scanner included dependency documentation; corrected to installed es-module-lexer; retry was public module inspection only.",
+  "developmentBuild": "Deployable probe builds still refused. Served module graph and public VM evaluation used instead.",
+  "productionProbeExcluded": true,
+  "localServerStopped": true,
+  "walletRetry": false,
+  "preprodAccess": false,
+  "preservation": {
+    "protectedSnapshotEntries": 417,
+    "managedArtifacts": 20,
+    "cacheFiles": 7,
+    "inspectedDependencyAndSourceFiles": 16,
+    "matched": true
+  },
+  "vector": {
+    "bytes": 542,
+    "sha256": "bd978953857644c16f8448c10b39af43be1db0fa8f47e23a33b61e3f9c19cb88"
+  },
+  "selftest": {
+    "bytes": 2202,
+    "sha256": "62d5486ff2e1a78eb8c6317d7fb257d44d144db79a9ced7b3a6bd294ff4e9a62"
+  },
+  "productionInventory": {
+    "assets/index-ChVfbNrA.js": {
+      "bytes": 207601,
+      "sha256": "2f88d1e7ef56fbc02c590b50fcf0b8d5c9bd32e697952b6e18a9ea1f96e2fb4e"
+    },
+    "assets/index-D_0nuauR.css": {
+      "bytes": 15213,
+      "sha256": "1e21a5ec1e121715312b3e544c3051c42457af96034e77f437bb64d91cdc9e84"
+    },
+    "favicon.svg": {
+      "bytes": 9522,
+      "sha256": "61bc9a161de58248288e6905425d7180f0624c2865007b97d763fdac12043a66"
+    },
+    "hero-just-proof.png": {
+      "bytes": 130267,
+      "sha256": "20896239cdb816357640360739a5c46e806bcfe9de3de102f32cd9f65bec11c4"
+    },
+    "index.html": {
+      "bytes": 459,
+      "sha256": "3c0e2ba35649a6e94d3a8485fc4bac6793ea64448d2cd4265700468f2bd9b9d2"
+    }
+  },
+  "jsonIntegrityAndDiffPassed": true,
+  "historicalClassification": "BLOCKED_LOCAL_VERIFIER_IMPORT",
+  "acceptedManualBrowserSelftest": "manual-local-verifier-success-result.json",
+  "followupValidation": "browser-selftest-validation.json"
+}

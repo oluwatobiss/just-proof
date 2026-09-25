@@ -1,0 +1,136 @@
+{
+  "moduleCount": 25,
+  "modules": [
+    {
+      "name": "primitives.ts",
+      "bytes": 1385,
+      "sha256": "0476c525e33a6e7588be800e72710bf3d782378b6edfd9284b4ad58bb3539022"
+    },
+    {
+      "name": "verification.ts",
+      "bytes": 13409,
+      "sha256": "b03a4feeba802c578dce195a24a3ef583538da3787b4a3cdb9087ae506adf11c"
+    },
+    {
+      "name": "midnight_ledger_wasm.js",
+      "bytes": 2469,
+      "sha256": "4e19b507f03b30ac118e3e977e67947336f6f5d0b721f5883d050658980cbe93"
+    },
+    {
+      "name": "@scure_base.js",
+      "bytes": 118098,
+      "sha256": "25dc0be4ce46155239cfc85b1f1a7b6cfe10341183ed07e11edd3c9e58612301"
+    },
+    {
+      "name": "midnight_ledger_wasm_bg.wasm",
+      "bytes": 34433588,
+      "sha256": "7f31606204e886dd6f7b35b6e9ef4d37828d2c77c599835a424667e37ac39c4f"
+    },
+    {
+      "name": "midnight_ledger_wasm_bg.js",
+      "bytes": 1730882,
+      "sha256": "ce4fdb1910e813ece7c46b0ac80d972c6091816cd9c8e2155c5eacc262550603"
+    },
+    {
+      "name": "inline0.js",
+      "bytes": 1151,
+      "sha256": "0562a8fd91fe039332ced13e3928ce4918a288417d4bfca705c7bf0e6aebb35d"
+    },
+    {
+      "name": "inline1.js",
+      "bytes": 1163,
+      "sha256": "9521dbe996c2fa451143be8cd3b2595c5d9bc525b2423cf5a37e12e601d7614c"
+    },
+    {
+      "name": "inline2.js",
+      "bytes": 1137,
+      "sha256": "491f34aac91705f0bd67f1b6b3f01478b460ac2078b1279a969f9467a0e3e9c7"
+    },
+    {
+      "name": "inline4.js",
+      "bytes": 1137,
+      "sha256": "0df913f95d9d4b2da31e1d3d91cc1d17077670f359ab73e6ac6b6fc0cd1355c0"
+    },
+    {
+      "name": "inline5.js",
+      "bytes": 1143,
+      "sha256": "fddf323f1cf2fb798b0371572b6c821f3c86a929a968c9fc1376080fc085a377"
+    },
+    {
+      "name": "inline3.js",
+      "bytes": 1157,
+      "sha256": "c0add6348d4e577eeb43e72debb4ea3d1cb1004635b3e433f94eac0dc713ad54"
+    },
+    {
+      "name": "inline6.js",
+      "bytes": 1209,
+      "sha256": "6fdfa8b0c9f578610d239a9424727fac5f1259f51d20d1c0f5323b1fc1a4ae9a"
+    },
+    {
+      "name": "inline7.js",
+      "bytes": 1131,
+      "sha256": "76194c9a34cf3d5040f556e49b2f10f59d2a8c02b43d52ed3d158dfb9dfa9004"
+    },
+    {
+      "name": "inline8.js",
+      "bytes": 1143,
+      "sha256": "b35adb8a98fdbdc97de8f5f327fbae0c48a41351731425509940631bb6d440b1"
+    },
+    {
+      "name": "inline9.js",
+      "bytes": 1169,
+      "sha256": "a4638cefd9bb9992a2d96efe1fb4cc568e4871b13cbd900e316e75e2f5b558b6"
+    },
+    {
+      "name": "inline11.js",
+      "bytes": 1163,
+      "sha256": "ecd45c93676d4a9f5dd152f0ed392af2afb227509d50d3dc650f4a5ed5a80409"
+    },
+    {
+      "name": "inline13.js",
+      "bytes": 1173,
+      "sha256": "f7dcd5aeee4b77de49bce6c2d9335ec6c8aa436b504f37c2a99c30a4c5a90da1"
+    },
+    {
+      "name": "inline17.js",
+      "bytes": 1121,
+      "sha256": "a0d2e121876120ea6ce76b25dc05d49011fc2e50925d5021a598f8493c9472b5"
+    },
+    {
+      "name": "inline18.js",
+      "bytes": 1149,
+      "sha256": "10f94ed163479e565a9bd7fc5a85793ca0ec741441ab1bc953e199e9aee061d8"
+    },
+    {
+      "name": "inline23.js",
+      "bytes": 1157,
+      "sha256": "0ad06cc3d808e69eda0689352b0bb7b494195591a38b8d5a801e7aef171005e5"
+    },
+    {
+      "name": "inline19.js",
+      "bytes": 1173,
+      "sha256": "837f3695b25d0a57ca15227a13d0f2831fe477e91437f5f1fccc68d4d3f066c4"
+    },
+    {
+      "name": "inline20.js",
+      "bytes": 1175,
+      "sha256": "8f8b40b966d4a3ff5e777512b66c27fb97f4b73945103d3d735c331a8f137bd0"
+    },
+    {
+      "name": "inline21.js",
+      "bytes": 1175,
+      "sha256": "f2fc315b8afe054a2f336e2ae5eff80885773665312a8ee0c4e89325bdf15bbd"
+    },
+    {
+      "name": "inline22.js",
+      "bytes": 1175,
+      "sha256": "40b2c7b1fa1b9359cd4d8a0f3e94b5a531eb73f19c905aef0d6818f0dd46b08e"
+    }
+  ],
+  "browserExecuted": false,
+  "evaluation": "PASS",
+  "verifySignatureCallable": true,
+  "addressFromKeyCallable": true,
+  "publicSignatureSelftest": true,
+  "publicAddressSelftest": true
+}

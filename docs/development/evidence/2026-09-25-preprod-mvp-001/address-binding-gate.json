@@ -1,0 +1,108 @@
+{
+  "classification": "BLOCKED_ADDRESS_TRANSACTION_BINDING",
+  "baselineCommit": "f6f9692af1616065a688c95983329d266e0ea466",
+  "capturedAtUtc": "2026-09-24T18:50:10.339758+00:00",
+  "installedVersions": {
+    "dapp-connector-api": "4.0.1",
+    "ledger-v8": "8.1.0",
+    "wallet-sdk-address-format": "3.1.2",
+    "wallet-sdk-unshielded-wallet": "3.1.0",
+    "midnight-js-indexer-public-data-provider": "4.1.1"
+  },
+  "versionScope": "Installed package metadata; not a claim about latest registry versions. No dependency update or registry request.",
+  "inspectedFiles": {
+    "utils/wallet.ts": {
+      "bytes": 5586,
+      "sha256": "b615589a7bb8768ab3256be3cd16ae71e176beac19cf50c3b0676b988291486d"
+    },
+    "utils/config.ts": {
+      "bytes": 2766,
+      "sha256": "87e85624ef5761f86c2b1a7449b6c2f7c11b6150f097a95c9e7bf5a820c05c1a"
+    },
+    "providers/buildBrowserProviders.ts": {
+      "bytes": 4446,
+      "sha256": "1e68d685ced18beeba7932fdd1d05d9f55ea644d0b313641724d9571988e936c"
+    },
+    "package-lock.json": {
+      "bytes": 282941,
+      "sha256": "65d7f4cc11e26abee13c3a2dda0f8c1d6c299489dc3e2c54ac706cd3d80209cf"
+    },
+    "node_modules/@midnight-ntwrk/dapp-connector-api/dist/api.d.ts": {
+      "bytes": 15205,
+      "sha256": "298eb426b5d2ae9dee808222fa9b9585bd007d8a9e1e09e45521a0a0f3824fae"
+    },
+    "node_modules/@midnight-ntwrk/dapp-connector-api/README.md": {
+      "bytes": 13283,
+      "sha256": "216ce96ce059c18b77403ed16715344b9d920446e67f07354055f16ce68d4ab2"
+    },
+    "node_modules/@midnight-ntwrk/ledger-v8/ledger-v8.d.ts": {
+      "bytes": 93666,
+      "sha256": "4a6eaccd531f0bb711dd8a8926d14beedd2ab8345deff378f86068608d67dc36"
+    },
+    "node_modules/@midnight-ntwrk/wallet-sdk-address-format/dist/index.d.ts": {
+      "bytes": 4285,
+      "sha256": "aa813ca3fd8f9083c0fae66f33b830cf66ca85dacabfb33a1e18ebe795c48468"
+    },
+    "node_modules/@midnight-ntwrk/wallet-sdk-unshielded-wallet/dist/KeyStore.d.ts": {
+      "bytes": 838,
+      "sha256": "6865173aeacb5f6c01117d0ba9be01966bf27c494e59d989d6a96a6fac0d2042"
+    },
+    "node_modules/@midnight-ntwrk/wallet-sdk-unshielded-wallet/dist/KeyStore.js": {
+      "bytes": 1761,
+      "sha256": "57fa43ea0e9d3db76ad7a89552687452bcf304fb6d696f554557528b835158fb"
+    },
+    "node_modules/@midnight-ntwrk/midnight-js-indexer-public-data-provider/dist/index.d.ts": {
+      "bytes": 15951,
+      "sha256": "d9f18f4f06d434da3b8bbcce5d72f849f6c5aa28b9470fa7bad8ef999836aacf"
+    },
+    "node_modules/@midnight-ntwrk/dapp-connector-api/package.json": {
+      "bytes": 1506,
+      "sha256": "f37e05877495b6bdded73f045b50136b1d25d4998de67a6e1b2b7c437d107ebb"
+    },
+    "node_modules/@midnight-ntwrk/ledger-v8/package.json": {
+      "bytes": 860,
+      "sha256": "52266d4e4ffa3dcd46faed72c1ffc0c7f4dd08bf01004068f8912d285b6b0536"
+    },
+    "node_modules/@midnight-ntwrk/wallet-sdk-address-format/package.json": {
+      "bytes": 1215,
+      "sha256": "a176faaf101ac74f4ea6ee1918e4631c4cd7e8835d1f30159c03a8ce92c23c31"
+    },
+    "node_modules/@midnight-ntwrk/wallet-sdk-unshielded-wallet/package.json": {
+      "bytes": 1707,
+      "sha256": "ff6af8e4bb3b610bf6260246643c8cc72f9e417e02d10160d864468af1275c7c"
+    },
+    "node_modules/@midnight-ntwrk/midnight-js-indexer-public-data-provider/package.json": {
+      "bytes": 1685,
+      "sha256": "9a3c306c8d9239c454f641e939f570f55f479f1b4a19709fe74293baf581b6b4"
+    }
+  },
+  "findings": {
+    "connector": "4.0.1 declares signData with unshielded key, but wallet implementation, prefix encoding and supported vendor/version matrix remain unestablished.",
+    "ledger": "8.1.0 declares verifySignature and addressFromKey; unshielded-wallet KeyStore uses matching ledger primitives. This establishes a candidate primitive chain, not connector interoperability.",
+    "indexer": "RegularTransaction exposes contractActions and unshieldedSpentOutputs/CreatedOutputs; UnshieldedUtxo.owner is a Bech32m address. A receipt operation is not guaranteed to spend an unshielded UTXO.",
+    "network": "Project config uses preprod; InitialAPI.connect accepts a string and status returns networkId. Wallet-specific supported Preprod IDs are not established.",
+    "history": "Connector getTxHistory describes relevance to wallet, not independently authenticated submission by an address.",
+    "receipt": "Hashing a supplied public address plus public campaign and nonce cannot authenticate control of that address."
+  },
+  "gatePassed": false,
+  "implemented": false,
+  "proofOperations": false,
+  "networkOperations": false,
+  "verifiedUsers": 0,
+  "preservation": {
+    "historicalBaselineFilesChecked": 267,
+    "historicalBaselineUnchanged": true,
+    "managedArtifacts": 20,
+    "managedInventoryMatchesPromotion": true,
+    "cacheFiles": 7,
+    "cacheMatchesCommittedBeforeInventory": true,
+    "trackedFilesUnchanged": true
+  },
+  "priorLocalValidation": {
+    "source": "committed 2026-09-25-demo validation evidence, user-executed",
+    "testFilesPassed": 17,
+    "testsPassed": 489,
+    "skipped": 0,
+    "rerunThisTask": false
+  }
+}

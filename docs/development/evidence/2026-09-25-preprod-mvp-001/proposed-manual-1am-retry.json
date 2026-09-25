@@ -1,0 +1,30 @@
+{
+  "authorized": false,
+  "validForExecution": false,
+  "purpose": "One-shot capability retry proposal for user review only",
+  "classification": "LOCAL_VERIFIER_BROWSER_SELFTEST_PASSED_AWAITING_WALLET_RETRY_AUTHORIZATION",
+  "wallet": {
+    "productVersion": "6.3.11",
+    "entry": "1am",
+    "rdns": "com.midnight.1am",
+    "apiVersion": "4.0.0"
+  },
+  "maximumConnectionRequests": 1,
+  "maximumSigningGestures": 1,
+  "automaticRetries": 0,
+  "steps": [
+    "After separate authorization only, start the development-only server from the repository root with node_modules/.bin/vite --config tools/address-capability/vite.config.ts --mode capability-probe. Open a fresh normal-Chrome page at http://127.0.0.1:5174/. Do not reuse a completed or failed page.",
+    "Click Prepare local verification runtime once. Require LOCAL_VERIFIER_READY; otherwise stop and report only the fixed result.",
+    "Click Discover injected wallets once and explicitly select the intended 1AM entry. Do not select another wallet or the first entry by default.",
+    "Check product version 6.3.11 in extension management separately. Require entry 1am, rdns com.midnight.1am and connector API 4.0.0. Identifiers alone do not prove authenticity. Stop on any mismatch.",
+    "Click Connect selected wallet to Preprod once and approve only the single expected connection request from http://127.0.0.1:5174. Both connected status and configuration must say preprod.",
+    "Immediately stop on any fixed connection, address, method or network failure. Do not reconnect, reload to retry, switch wallets, or bypass an error.",
+    "Only if overall is CONNECTED, read the nontransactional capability disclosure and use the separate Sign click once. This is the public capability-test domain with a synthetic contract value, never participation evidence.",
+    "Reject and stop on any transaction, fee, transfer, contract-call, secret or unexpected request. No automatic or overall retry is permitted.",
+    "Report only the allowlisted Redacted result and separately observed product version. Never retain an address, challenge, nonce, signature, key, raw response, exception or wallet-popup screenshot.",
+    "After the result, close the page and stop the server. PASSED is terminal, as is failure. A further attempt requires a fresh page and separate authorization."
+  ],
+  "transactionPermission": false,
+  "proofPermission": false,
+  "participantCreationPermission": false
+}

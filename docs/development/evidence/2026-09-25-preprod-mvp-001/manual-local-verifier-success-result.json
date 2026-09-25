@@ -1,0 +1,16 @@
+{
+  "localVerifier": "LOCAL_VERIFIER_READY",
+  "signingBlocked": false,
+  "selected": null,
+  "apiVersionAccepted": false,
+  "preprodConfirmed": false,
+  "signDataCallable": false,
+  "signingCompleted": false,
+  "signedDataMatched": false,
+  "signatureVerified": false,
+  "derivedAddressMatched": false,
+  "unexpired": false,
+  "encodings": null,
+  "overall": "NOT_TESTED",
+  "errorCategory": null
+}

@@ -1,0 +1,67 @@
+{
+  "candidate": "1AM",
+  "approvedWalletImplementations": [],
+  "installedConnectorApi": "4.0.1",
+  "runtimeQualification": null,
+  "requirements": [
+    "Enumerate window.midnight entries only on explicit discovery action; render names/identifiers/API versions as text, never HTML. Do not fetch untrusted icon URLs automatically.",
+    "Explicit selection; never select the first injected wallet by default.",
+    "Connect initiated synchronously by user click; sign initiated only by a second consent click.",
+    "getConnectionStatus().networkId and getConfiguration().networkId must both be exactly preprod; recheck before and after signing.",
+    "Feature-detect connect, getConnectionStatus, getConfiguration, getUnshieldedAddress and signData; method presence alone never qualifies.",
+    "Require exact approved framing/encoding profile for wallet implementation and version, canonical returned bytes, signature verification, verifying-key-derived payload equality and expiry checks.",
+    "Respect wallet service configuration; this probe requires no indexer, prover, wallet balance or transaction service call.",
+    "Any failure is a fixed redacted category. Keep payloads in memory only; no storage, URLs, analytics, telemetry, console or evidence.",
+    "Unsupported wallets retain simulation access only. No signing result establishes a submitted receipt or verified participant."
+  ],
+  "missingEvidence": [
+    "Manual runtime result for exact 1AM extension and connector API version"
+  ],
+  "redactedResultFields": [
+    "walletName",
+    "walletImplementationVersion",
+    "walletApiVersion",
+    "apiVersionAccepted",
+    "preprodConfirmed",
+    "signDataCallable",
+    "signingCompleted",
+    "returnedDataMatched",
+    "signatureVerified",
+    "derivedAddressMatched",
+    "overallResult",
+    "errorCategory"
+  ],
+  "historicalMissingEvidence": [
+    "Exact 1AM extension implementation/version and version-matched public signing specification",
+    "Exact added signing prefix and returned data/signature/key encodings",
+    "Manual result from the exact qualified implementation"
+  ],
+  "connectorStandardFrameEstablished": true,
+  "implementation": "tools/address-capability/controller.ts",
+  "reviewedApiVersions": [
+    "4.0.0",
+    "4.0.1"
+  ],
+  "compatibilityAdjudication": "compatibility-adjudication.json",
+  "postConnectReadinessGate": {
+    "explicitPreparationRequired": true,
+    "walletRetryAuthorized": false,
+    "currentEvidence": "post-connect-validation.json",
+    "classification": "LOCAL_VERIFIER_PREFLIGHT_READY_AWAITING_MANUAL_RESULT"
+  },
+  "localVerifierFollowup": {
+    "classification": "BLOCKED_LOCAL_VERIFIER_IMPORT",
+    "publicSelftestRequired": true,
+    "browserResult": null,
+    "evidence": "local-verifier-validation.json",
+    "walletRetryAuthorized": false
+  },
+  "browserSelftest": {
+    "accepted": true,
+    "source": "User-executed Chrome",
+    "evidence": "manual-local-verifier-success-result.json",
+    "classification": "LOCAL_VERIFIER_BROWSER_SELFTEST_PASSED_AWAITING_WALLET_RETRY_AUTHORIZATION"
+  },
+  "walletRetryProposal": "proposed-manual-1am-retry.json",
+  "walletRetryAuthorized": false
+}

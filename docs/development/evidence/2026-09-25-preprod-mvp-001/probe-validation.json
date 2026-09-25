@@ -1,0 +1,68 @@
+{
+  "classification": "LOCAL_VERIFIER_BROWSER_SELFTEST_PASSED_AWAITING_WALLET_RETRY_AUTHORIZATION",
+  "historicalRevision": {
+    "classification": "COULD_NOT_VERIFY",
+    "offlinePrimitivesPassed": true,
+    "walletFramingEstablished": false,
+    "browserProbeCreated": false,
+    "route": null,
+    "enablement": null,
+    "publicProductionProbeDisabled": true,
+    "reason": "Cannot safely validate exact wallet-returned signed bytes against an unknown prefix/encoding profile. No guessed profile or diagnostic signing endpoint is exposed.",
+    "manual1AMExecuted": false,
+    "manual1AMResult": null,
+    "walletRuntimeSupportClaimed": false,
+    "proofOperations": false,
+    "transactionOperations": false,
+    "preprodAccess": false,
+    "verifiedUsers": 0,
+    "inertImport": "Pure encoder imported under mocked window.midnight/fetch with zero calls/logs",
+    "render": "No new probe component; existing simulation rendering tests pass",
+    "compiledProduction": "27 modules; no capability route or signing module in public frontend graph"
+  },
+  "browserProbeCreated": true,
+  "runtimeInvoked": false,
+  "manual1AMResult": "manual-first-connection-result.json",
+  "qualifiedWallets": [],
+  "route": "http://127.0.0.1:5174/ (separate development server only)",
+  "enablement": "node_modules/.bin/vite --config tools/address-capability/vite.config.ts --mode capability-probe",
+  "serverExecuted": true,
+  "publicProductionProbeExcluded": true,
+  "contractValueIsSynthetic": true,
+  "campaign": "2026-09-25-preprod-mvp-001",
+  "proofGeneration": false,
+  "transactionSubmission": false,
+  "participantCreated": false,
+  "approvedPublicReferenceRetrievalOnly": true,
+  "runtimePrivacy": "Payloads retained in controller/local function memory only. Redacted booleans, identifier strings, encoding categories and fixed errors alone reach React. No icons, persistence, clipboard, downloads or service requests. CSP connect-src none; ledger WASM inlined locally.",
+  "publicReferences": {
+    "bytes": 16577,
+    "sha256": "36d0d4551cb74946db8086dd82948e22e3657ea226f17db0194e0cfcefdc451d"
+  },
+  "validation": {
+    "bytes": 3446,
+    "sha256": "8e85185cd8153b2c802c0524feb35c875c0999fd1f3a875e349d799b0b48efff"
+  },
+  "historicalClassificationBeforeManualRendering": "ADDRESS_BINDING_PROBE_READY_AWAITING_MANUAL_1AM_RESULT",
+  "serverPurpose": "Loopback public-module diagnostics only; stopped afterward",
+  "servedBrowserRenderingConfirmed": true,
+  "renderCorrectionEvidence": "render-validation.json",
+  "publicReferencesOnlyNetworkRetrieval": false,
+  "permittedNetworkRequests": "Earlier approved public references and loopback diagnosis; this pass retrieved official tagged connector sources only.",
+  "runtimeInvokedScope": "Wallet runtime, not Vite serving",
+  "renderValidation": {
+    "bytes": 3010,
+    "sha256": "7dda7d7f779f8e9b82c010746c8fa20073388d81a641d18e6f9fc75557d4b2b2"
+  },
+  "previousRenderClassification": "BLOCKED_MANUAL_PROBE_RENDER",
+  "renderingConfirmationSource": "manual-render-acceptance.json",
+  "compatibilityAdjudication": "compatibility-adjudication.json",
+  "currentValidation": {
+    "bytes": 2031,
+    "sha256": "88e5fc2fd263f5433a4e18ad2454f597bd95075bbcbd03a1394c0aa115fc61e0"
+  },
+  "previousClassification": "BLOCKED_LOCAL_VERIFIER_IMPORT",
+  "retryAuthorized": false,
+  "currentManualLocalReadinessResult": "manual-local-verifier-success-result.json",
+  "currentBrowserSelftestResult": "manual-local-verifier-success-result.json"
+}

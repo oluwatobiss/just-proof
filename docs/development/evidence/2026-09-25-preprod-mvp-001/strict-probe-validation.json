@@ -1,0 +1,105 @@
+{
+  "classification": "BLOCKED_MANUAL_PROBE_RENDER",
+  "frontendTests": {
+    "command": "npm run test:frontend",
+    "filesPassed": 4,
+    "testsPassed": 86,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "focusedMockTests": {
+    "finalCount": 45,
+    "includedInFrontendTotal": true,
+    "priorFocusedRuns": [
+      {
+        "testsPassed": 39,
+        "exitCode": 0
+      },
+      {
+        "testsPassed": 43,
+        "exitCode": 0
+      }
+    ]
+  },
+  "offlineSignatureTests": {
+    "testsPassed": 20,
+    "includedInFrontendTotal": true
+  },
+  "configurationTests": {
+    "testsPassed": 2,
+    "includedInFrontendTotal": true
+  },
+  "existingDemoTests": {
+    "testsPassed": 19,
+    "includedInFrontendTotal": true
+  },
+  "commands": [
+    {
+      "command": "npm run typecheck:frontend",
+      "exitCode": 0
+    },
+    {
+      "command": "node_modules/.bin/tsc --ignoreConfig --noEmit --target ES2022 --module ESNext --moduleResolution bundler --strict --skipLibCheck --esModuleInterop --jsx react-jsx --types node,vite/client tools/address-capability/vite.config.ts tools/address-capability/main.tsx",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0
+    },
+    {
+      "command": "node_modules/.bin/eslint tools/address-capability test/frontend/address-capability-probe.test.ts test/frontend/address-capability-build.test.ts",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run build:frontend",
+      "exitCode": 0,
+      "modules": 27
+    }
+  ],
+  "diagnosticHistory": [
+    "Initial typecheck found widened challenge literal types; corrected with explicit Challenge annotation; final checks pass.",
+    "First public-output inventory assertion incorrectly assumed three files; existing favicon and hero assets make five. Corrected validation expectation; no production files removed."
+  ],
+  "productionInventory": {
+    "assets/index-ChVfbNrA.js": {
+      "bytes": 207601,
+      "sha256": "2f88d1e7ef56fbc02c590b50fcf0b8d5c9bd32e697952b6e18a9ea1f96e2fb4e"
+    },
+    "assets/index-D_0nuauR.css": {
+      "bytes": 15213,
+      "sha256": "1e21a5ec1e121715312b3e544c3051c42457af96034e77f437bb64d91cdc9e84"
+    },
+    "favicon.svg": {
+      "bytes": 9522,
+      "sha256": "61bc9a161de58248288e6905425d7180f0624c2865007b97d763fdac12043a66"
+    },
+    "hero-just-proof.png": {
+      "bytes": 130267,
+      "sha256": "20896239cdb816357640360739a5c46e806bcfe9de3de102f32cd9f65bec11c4"
+    },
+    "index.html": {
+      "bytes": 459,
+      "sha256": "3c0e2ba35649a6e94d3a8485fc4bac6793ea64448d2cd4265700468f2bd9b9d2"
+    }
+  },
+  "probeAbsentFromProduction": true,
+  "devServerStarted": true,
+  "walletConnected": false,
+  "realWalletSigned": false,
+  "preprodAccessed": false,
+  "transactionSubmitted": false,
+  "proofOperation": false,
+  "manualRuntimeResult": null,
+  "publicReferencesOnlyNetworkRetrieval": true,
+  "historicalClassificationBeforeManualRendering": "ADDRESS_BINDING_PROBE_READY_AWAITING_MANUAL_1AM_RESULT",
+  "followup": "render-validation.json",
+  "historicalDevServerStarted": false,
+  "devServerStoppedAfterRenderingDiagnosis": true,
+  "currentCompatibilityFollowup": {
+    "classification": "ADDRESS_BINDING_PROBE_READY_AWAITING_MANUAL_1AM_RESULT",
+    "evidence": "compatibility-validation.json",
+    "manualRenderingAccepted": true,
+    "walletRuntimeQualified": false
+  },
+  "recordScope": "Historical validation retained; current result is in currentCompatibilityFollowup."
+}

@@ -1,0 +1,78 @@
+{
+  "classification": "ADDRESS_BINDING_PROBE_READY_AWAITING_MANUAL_1AM_RESULT",
+  "commands": [
+    {
+      "command": "npm run test:frontend",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run typecheck:frontend",
+      "exitCode": 0
+    },
+    {
+      "command": "node_modules/.bin/tsc --ignoreConfig --noEmit --target ES2022 --module ESNext --moduleResolution bundler --strict --skipLibCheck --esModuleInterop --jsx react-jsx --types node,vite/client tools/address-capability/vite.config.ts tools/address-capability/entry.ts tools/address-capability/main.tsx test/frontend/address-capability-compatibility.test.ts test/frontend/address-capability-probe.test.ts",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0
+    },
+    {
+      "command": "node_modules/.bin/eslint tools/address-capability test/frontend/address-capability-compatibility.test.ts test/frontend/address-capability-probe.test.ts",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run build:frontend",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/compare-subset.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "tests": {
+    "files": 6,
+    "passed": 117,
+    "skipped": 0,
+    "failed": 0,
+    "invocationsThisPass": 2
+  },
+  "diagnosticHistory": [
+    "Explicit proposal/test lint initially rejected three this aliases in receiver tests. Replaced aliases with direct receiver assertions; final explicit lint and full frontend tests passed."
+  ],
+  "manualRendering": "User accepted normal Chrome rendering; no Codex browser execution this pass.",
+  "probeServerRunning": false,
+  "realWalletInvoked": false,
+  "gettersInvoked": "Mock-only getters in explicit-click tests; no real wallet getter invoked.",
+  "network": "Only official public tagged source retrieval; no Preprod or service request.",
+  "productionInventory": {
+    "assets/index-ChVfbNrA.js": {
+      "bytes": 207601,
+      "sha256": "2f88d1e7ef56fbc02c590b50fcf0b8d5c9bd32e697952b6e18a9ea1f96e2fb4e"
+    },
+    "assets/index-D_0nuauR.css": {
+      "bytes": 15213,
+      "sha256": "1e21a5ec1e121715312b3e544c3051c42457af96034e77f437bb64d91cdc9e84"
+    },
+    "favicon.svg": {
+      "bytes": 9522,
+      "sha256": "61bc9a161de58248288e6905425d7180f0624c2865007b97d763fdac12043a66"
+    },
+    "hero-just-proof.png": {
+      "bytes": 130267,
+      "sha256": "20896239cdb816357640360739a5c46e806bcfe9de3de102f32cd9f65bec11c4"
+    },
+    "index.html": {
+      "bytes": 459,
+      "sha256": "3c0e2ba35649a6e94d3a8485fc4bac6793ea64448d2cd4265700468f2bd9b9d2"
+    }
+  },
+  "productionProbeExcluded": true,
+  "preservation": "compatibility-preservation.json",
+  "jsonParsed": true,
+  "prefixesPreserved": true
+}

@@ -1,0 +1,65 @@
+{
+  "classification": "COULD_NOT_VERIFY",
+  "focusedOffline": {
+    "command": "node_modules/.bin/vitest run --config vitest.frontend.config.ts test/frontend/address-capability-offline.test.ts",
+    "filesPassed": 1,
+    "testsPassed": 20,
+    "exitCode": 0
+  },
+  "frontend": {
+    "command": "npm run test:frontend",
+    "filesPassed": 2,
+    "testsPassed": 39,
+    "summaryPassed": true
+  },
+  "checks": [
+    {
+      "command": "npm run typecheck:frontend",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "scope": "app"
+    },
+    {
+      "command": "npm run build:frontend",
+      "exitCode": 0,
+      "modules": 27
+    },
+    {
+      "command": "node_modules/.bin/tsc --noEmit --target ES2022 --module ESNext --moduleResolution bundler --strict --skipLibCheck --esModuleInterop --types node providers/walletProviders.ts",
+      "exitCode": 1,
+      "category": "TS5112_REQUIRES_IGNORE_CONFIG"
+    },
+    {
+      "command": "node_modules/.bin/tsc --ignoreConfig --noEmit --target ES2022 --module ESNext --moduleResolution bundler --strict --skipLibCheck --esModuleInterop --types node providers/walletProviders.ts",
+      "exitCode": 0
+    }
+  ],
+  "walletRuntimeProbeExecuted": false,
+  "offlineFramingFixtureIsWalletFraming": false,
+  "publicBuildIncludesProbe": false,
+  "signatureVerificationOnly": true,
+  "proofGeneration": false,
+  "proofVerification": false,
+  "networkOperations": false,
+  "strictProbeFollowup": {
+    "classification": "ADDRESS_BINDING_PROBE_READY_AWAITING_MANUAL_1AM_RESULT",
+    "validationRecord": "strict-probe-validation.json",
+    "manualRuntimeResult": null,
+    "standardFramingNowEstablished": true
+  },
+  "renderingFollowup": {
+    "classification": "BLOCKED_MANUAL_PROBE_RENDER",
+    "record": "render-validation.json",
+    "browserConfirmed": false
+  },
+  "currentCompatibilityFollowup": {
+    "classification": "ADDRESS_BINDING_PROBE_READY_AWAITING_MANUAL_1AM_RESULT",
+    "evidence": "compatibility-validation.json",
+    "manualRenderingAccepted": true,
+    "walletRuntimeQualified": false
+  },
+  "recordScope": "Historical validation retained; current result is in currentCompatibilityFollowup."
+}

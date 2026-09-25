@@ -1,0 +1,90 @@
+{
+  "classification": "BLOCKED_MANUAL_PROBE_RENDER",
+  "userObservation": {
+    "documentTitleVisible": true,
+    "bodyBlank": true,
+    "browser": "Chrome Incognito",
+    "walletProduct": "1AM",
+    "productVersion": "6.3.11",
+    "connectorApiVersion": null,
+    "walletOperationOccurred": false,
+    "sensitiveValuesRecorded": false
+  },
+  "rootCause": {
+    "servedModuleEvidence": "render-served-modules.json",
+    "finding": "Development JSX compilation requested named jsxDEV from unoptimized CommonJS react/jsx-dev-runtime, which exported no browser ESM binding. Explicit optimization had included only react/jsx-runtime. Empty HTML root made failed module initialization an unexplained blank page.",
+    "browserConsoleObservedByCodex": false
+  },
+  "corrections": [
+    "Explicitly optimize react/jsx-dev-runtime",
+    "Static visible HTML bootstrap fallback",
+    "Dependency-free entry shell catches dynamic module failure",
+    "Constant bootstrap failure text and React render error boundary",
+    "No exception details in DOM or error callbacks",
+    "No eager ledger load or wallet lookup on import/render"
+  ],
+  "browserInventory": {
+    "installedBrowserExecutableFound": false,
+    "installedPlaywrightOrPuppeteerFound": false,
+    "browserToolsAvailable": false,
+    "locationsChecked": [
+      "PATH",
+      "/opt",
+      "/usr/lib",
+      "/home/oluwatobiss/.cache",
+      "/tmp",
+      "node_modules"
+    ],
+    "browserInstalled": false
+  },
+  "servedPageBrowserSmoke": {
+    "executed": false,
+    "screenshot": null,
+    "pageErrors": null,
+    "consoleErrors": null,
+    "renderingConfirmed": false
+  },
+  "publicModuleHttpChecks": {
+    "passed": true,
+    "notBrowserConfirmation": true,
+    "loopbackOnly": true,
+    "cspUnchanged": true
+  },
+  "validation": {
+    "command": "npm run test:frontend",
+    "filesPassed": 5,
+    "testsPassed": 94,
+    "skipped": 0,
+    "exitCode": 0,
+    "newStartupTests": 8,
+    "frontendTypecheckExit": 0,
+    "targetedProbeTypecheckExit": 0,
+    "appAndTargetedLintExit": 0,
+    "productionBuildExit": 0,
+    "productionModules": 27,
+    "probeExcludedFromProduction": true
+  },
+  "serverLifecycle": {
+    "sandboxAttempt": "EPERM before listening",
+    "baselineInspectionSessionExit": 130,
+    "correctedInspectionSessionExit": 130,
+    "stoppedAfterInspection": true,
+    "noProbeServerInVisibleProc": true
+  },
+  "walletDiscovered": false,
+  "walletConnected": false,
+  "realSignatureRequested": false,
+  "preprodAccessed": false,
+  "dockerOperation": false,
+  "midnightServiceStarted": false,
+  "proofOperation": false,
+  "transactionSubmitted": false,
+  "manualRenderingOutstanding": true,
+  "currentCompatibilityFollowup": {
+    "classification": "ADDRESS_BINDING_PROBE_READY_AWAITING_MANUAL_1AM_RESULT",
+    "evidence": "compatibility-validation.json",
+    "manualRenderingAccepted": true,
+    "walletRuntimeQualified": false
+  },
+  "recordScope": "Historical validation retained; current result is in currentCompatibilityFollowup."
+}

@@ -1,0 +1,77 @@
+{
+  "capturedAtUtc": "2026-09-25T04:28:24.793772+00:00",
+  "loopbackOnly": true,
+  "browserExecuted": false,
+  "requests": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 623,
+      "sha256": "ef80571b16f2d4e956261190439b9cc1b7928b19199347a0c2326143fb1d0b84",
+      "contentType": "text/html",
+      "csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; connect-src 'none'; img-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'"
+    },
+    {
+      "path": "/entry.ts",
+      "status": 200,
+      "bytes": 847,
+      "sha256": "1da5ae6a7f48a0df690a88eb26c91fc5a50b19f4a329e087497172628b34af82",
+      "contentType": "text/javascript",
+      "csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; connect-src 'none'; img-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'"
+    },
+    {
+      "path": "/bootstrap.ts",
+      "status": 200,
+      "bytes": 1551,
+      "sha256": "e84bfc1780d9478d00e7e5b33e597d58b2482d81b31bfcfb2e561f23db837d23",
+      "contentType": "text/javascript",
+      "csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; connect-src 'none'; img-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'"
+    },
+    {
+      "path": "/main.tsx",
+      "status": 200,
+      "bytes": 2921,
+      "sha256": "a933650a3a03a14fe22445b7e39c2b163f5b8341d1e79043941dddff8a65b7f0",
+      "contentType": "text/javascript",
+      "csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; connect-src 'none'; img-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'"
+    },
+    {
+      "path": "/Probe.tsx",
+      "status": 200,
+      "bytes": 14564,
+      "sha256": "60ac36a7831f3fb956fdf80576167604a853dca1af006bc6a2317743979bead0",
+      "contentType": "text/javascript",
+      "csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; connect-src 'none'; img-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'"
+    },
+    {
+      "path": "/probe.css",
+      "status": 200,
+      "bytes": 950,
+      "sha256": "58ed85ac7a6156a55b4825660cda73356089402b35b446a3a7ce4fde4d2c005d",
+      "contentType": "text/javascript",
+      "csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; connect-src 'none'; img-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'"
+    },
+    {
+      "path": "/@fs/tmp/justproof-capability-vite-cache/deps/react_jsx-dev-runtime.js?v=2b87499c",
+      "status": 200,
+      "bytes": 34939,
+      "sha256": "fcc4ce7415a4bb9158f0b832d72c4458af2242a5752604ec60531bdc3f1a012f",
+      "contentType": "text/javascript",
+      "csp": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; connect-src 'none'; img-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'"
+    }
+  ],
+  "beforeCorrection": {
+    "rootWasEmpty": true,
+    "mainImportedUnoptimizedJsxDevRuntime": true,
+    "jsxDevRuntimeWasCommonJsWithoutNamedEsmExport": true,
+    "browserConsoleCaptured": false
+  },
+  "afterCorrection": {
+    "visibleStaticFallback": true,
+    "dependencyFreeEntryAndBootstrap": true,
+    "optimizedJsxDevRuntime": true,
+    "cspUnchanged": true,
+    "noViteClientInHtml": true,
+    "ledgerNotEagerlyImportedByStartup": true
+  }
+}

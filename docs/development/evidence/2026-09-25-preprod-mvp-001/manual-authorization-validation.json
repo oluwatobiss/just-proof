@@ -1,0 +1,44 @@
+{
+  "classification": "MANUAL_1AM_CAPABILITY_ATTEMPT_AUTHORIZED_AWAITING_USER_RESULT",
+  "baselineCommit": "f6f9692af1616065a688c95983329d266e0ea466",
+  "baselineGatePassed": true,
+  "authorization": {
+    "path": "docs/development/evidence/2026-09-25-preprod-mvp-001/manual-1am-retry-authorization.json",
+    "bytes": 6332,
+    "sha256": "2b5c1cd333ede54a32d07bb8b7b52e7495f513925cf5f73c5709b2f7f46ae357"
+  },
+  "disabledProposalUnchanged": {
+    "bytes": 2450,
+    "sha256": "cbda06a4f06e17ea15bfe6599f9fbbe3546f124270b1be15e91d19e094072494"
+  },
+  "acceptedBrowserSelftestValidationUnchanged": {
+    "bytes": 2031,
+    "sha256": "88e5fc2fd263f5433a4e18ad2454f597bd95075bbcbd03a1394c0aa115fc61e0"
+  },
+  "reportGuidePrefixes": {
+    "docs/development/2026-09-25-preprod-mvp-001-guide.md": {
+      "bytes": 27083,
+      "sha256": "3ebcc58079fab0d727a9531eee28c7ce6cd2c5a3e4aa4d5979d5d0968c3b8303"
+    },
+    "docs/development/2026-09-25-preprod-mvp-001-report.md": {
+      "bytes": 42533,
+      "sha256": "b1a3ff890019741415e0e6132d54f7af6a95d629da5c54577a1fae97ee4c96b8"
+    }
+  },
+  "checks": [
+    "JSON parsing",
+    "every integrity file size/SHA-256 recomputed",
+    "report/guide prefixes",
+    "417 protected snapshot entries",
+    "20 managed artifact identities",
+    "seven cache identities",
+    "inspected dependency identities",
+    "empty index",
+    "git diff --check"
+  ],
+  "testSuitesRerun": false,
+  "codexStartedVite": false,
+  "codexOpenedBrowser": false,
+  "codexInvokedWallet": false,
+  "executionResult": null
+}

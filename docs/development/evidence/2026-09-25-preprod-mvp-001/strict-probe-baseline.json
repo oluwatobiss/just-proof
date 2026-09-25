@@ -1,0 +1,15 @@
+{
+  "head": "f6f9692af1616065a688c95983329d266e0ea466",
+  "priorIntegritySha256": "eae90d2ae18b55b1ab4a630a891a67094e2f348d7d3ccaedbfb1798bd75c3c81",
+  "reportAndGuidePrefixes": {
+    "docs/development/2026-09-25-preprod-mvp-001-guide.md": {
+      "bytes": 4212,
+      "sha256": "f178b01fb5e3294bbe335096bc089868bc81ad5f5ab05d9353a80656d4beda86"
+    },
+    "docs/development/2026-09-25-preprod-mvp-001-report.md": {
+      "bytes": 12773,
+      "sha256": "f7654d1f6e298fcc7bb9076349a1db69d5b5165ff129d8d5b16d7dd75638dcd0"
+    }
+  },
+  "baselineGatePassed": true
+}

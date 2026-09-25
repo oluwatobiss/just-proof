@@ -1,0 +1,33 @@
+{
+  "source": "User-executed Chrome retest",
+  "onlyAction": "Prepare local verification runtime",
+  "browserConfirmation": [
+    "asynchronous ledger/WASM initialization",
+    "reviewed verifier interface",
+    "valid fixed public signature accepted",
+    "altered public message rejected",
+    "altered public signature rejected",
+    "expected public address payload derived"
+  ],
+  "walletDiscovery": false,
+  "walletConnection": false,
+  "walletSigning": false,
+  "walletPrompt": false,
+  "walletApi": false,
+  "preprod": false,
+  "proof": false,
+  "transaction": false,
+  "docker": false,
+  "midnightService": false,
+  "rawSensitiveMaterialRetained": false,
+  "exceptionRetained": false,
+  "walletScreenshotRetained": false,
+  "serverStoppedAfterward": true,
+  "walletQualified": false,
+  "participantCreated": false,
+  "seventyUserRequirementSatisfied": false,
+  "earlierFailurePreserved": {
+    "bytes": 429,
+    "sha256": "19831ce26e3f524db4f68901556ec6289145862e4330052839a8700aa58a8b5a"
+  }
+}

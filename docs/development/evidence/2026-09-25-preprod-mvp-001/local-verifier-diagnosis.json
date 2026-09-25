@@ -1,0 +1,54 @@
+{
+  "classification": "BLOCKED_LOCAL_VERIFIER_IMPORT",
+  "installedPackageVersion": "8.1.0",
+  "packageIdentities": {
+    "node_modules/@midnight-ntwrk/ledger-v8/package.json": {
+      "bytes": 860,
+      "sha256": "52266d4e4ffa3dcd46faed72c1ffc0c7f4dd08bf01004068f8912d285b6b0536"
+    },
+    "node_modules/@midnight-ntwrk/ledger-v8/midnight_ledger_wasm.js": {
+      "bytes": 212,
+      "sha256": "170b0a69313a7b4170540ff1072acc37e3aea04fcd9215d2b9197679aa91a06f"
+    },
+    "node_modules/@midnight-ntwrk/ledger-v8/midnight_ledger_wasm_bg.js": {
+      "bytes": 318367,
+      "sha256": "0fcb6f30ec4c0f894917d516db627d78de5630377bf7918bac08466b894cb716"
+    },
+    "node_modules/@midnight-ntwrk/ledger-v8/midnight_ledger_wasm_bg.wasm": {
+      "bytes": 10143782,
+      "sha256": "88ff7c7c47c30138ee8f3a0c8bcbf12dbdcdeba591edebfb955c30d732ea7638"
+    },
+    "node_modules/@midnight-ntwrk/ledger-v8/ledger-v8.d.ts": {
+      "bytes": 93666,
+      "sha256": "4a6eaccd531f0bb711dd8a8926d14beedd2ab8345deff378f86068608d67dc36"
+    }
+  },
+  "publicGraph": "Dynamic local loader -> browser export midnight_ledger_wasm.js -> WASM and generated glue -> local #self snippets. All observed module responses were JavaScript; no external request or WASM fetch.",
+  "wasmBytes": 10143782,
+  "before": "Inline transform covered the dynamic graph. It emitted synchronous WebAssembly.Module/Instance constructors in browser code. Served graph evaluated and exported expected functions in isolated Node VM.",
+  "correction": "Browser code now uses await WebAssembly.instantiate on inline bytes; server-side Module inspection remains for import/export enumeration. No streaming/fetch loader.",
+  "causeStatus": "BROWSER_FAILURE_NOT_REPRODUCED",
+  "uncertainty": "Synchronous large-module compilation is a browser compatibility concern, not an established explanation of the manual failure. Node VM does not enforce Chrome main-thread behavior or CSP. No installed browser runner was available.",
+  "after": "Served dynamic graph initializes and passes fixed public signature/address checks in isolated VM. Browser manual self-test remains outstanding; no wallet retry authorized.",
+  "cspUnchanged": true,
+  "connectSrcNone": true,
+  "publicVector": "public-verifier-vector.ts contains only message, verifying key, signature and expected address payload. Derived offline from existing deterministic test-only fixture; no private key embedded in browser or evidence.",
+  "diagnosticInvocations": [
+    {
+      "kind": "pre-change module graph VM",
+      "result": "PASS"
+    },
+    {
+      "kind": "post-change graph checker",
+      "result": "PUBLIC_MODULE_CHECK_FAILED",
+      "reason": "Regex import scanner incorrectly followed a documentation-example import in optimized dependency. Replaced with installed es-module-lexer."
+    },
+    {
+      "kind": "post-change graph checker with lexer",
+      "result": "PASS",
+      "evidence": "local-verifier-served-graph.json"
+    }
+  ],
+  "rawErrorsRetained": false,
+  "serverStopped": true
+}

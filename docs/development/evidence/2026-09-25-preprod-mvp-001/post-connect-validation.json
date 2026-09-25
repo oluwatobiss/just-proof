@@ -1,0 +1,64 @@
+{
+  "classification": "LOCAL_VERIFIER_PREFLIGHT_READY_AWAITING_MANUAL_RESULT",
+  "commands": [
+    {
+      "command": "npm run test:frontend",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run typecheck:frontend",
+      "exitCode": 0
+    },
+    {
+      "command": "node_modules/.bin/tsc --ignoreConfig --noEmit --target ES2022 --module ESNext --moduleResolution bundler --strict --skipLibCheck --esModuleInterop --jsx react-jsx --types node,vite/client tools/address-capability/vite.config.ts tools/address-capability/entry.ts tools/address-capability/main.tsx test/frontend/address-capability-probe.test.ts test/frontend/address-capability-compatibility.test.ts",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0
+    },
+    {
+      "command": "node_modules/.bin/eslint tools/address-capability test/frontend/address-capability-probe.test.ts test/frontend/address-capability-compatibility.test.ts",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run build:frontend",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "frontendTests": {
+    "files": 6,
+    "passed": 135,
+    "failed": 0,
+    "skipped": 0,
+    "priorRunsThisPass": [
+      117,
+      133
+    ]
+  },
+  "localPreparation": "Explicit click only; callable interface shape inspection, no primitive invocation; repeated prepared/failed clicks inert.",
+  "connectFailurePolicy": "Permanent page-state block; private API/address/verifier/method references cleared; no retry.",
+  "reviewedProfiles": [
+    "4.0.0",
+    "4.0.1"
+  ],
+  "manualWalletResult": "manual-first-connection-result.json",
+  "currentManualReadinessResult": null,
+  "walletRetryAuthorized": false,
+  "walletInvokedByCodex": false,
+  "serverStartedThisPass": false,
+  "browserSmokeThisPass": false,
+  "productionProbeExcluded": true,
+  "preservation": {
+    "snapshotEntries": 417,
+    "managedArtifacts": 20,
+    "cacheFiles": 7,
+    "unchanged": true,
+    "priorSeedLoggingCorrectionPreserved": true
+  },
+  "jsonIntegrityAndPrefixChecksPassed": true
+}

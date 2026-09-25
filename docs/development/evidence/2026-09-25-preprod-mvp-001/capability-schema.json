@@ -1,0 +1,132 @@
+{
+  "status": "CONNECTOR_4_0_0_AND_4_0_1_STANDARD_FRAME_ESTABLISHED_RUNTIME_UNQUALIFIED",
+  "schemaVersion": "1",
+  "encoding": "UTF-8, restricted ASCII values; literal ordered key=value lines separated by LF with terminal LF; no BOM, CR, spaces or JSON serialization",
+  "fieldOrder": [
+    "domain",
+    "schema",
+    "network",
+    "campaign",
+    "contract",
+    "address",
+    "nonce",
+    "issuedAt",
+    "expiresAt",
+    "commitmentInputs"
+  ],
+  "capabilityDomain": "JUSTPROOF:ADDRESS-CAPABILITY-TEST",
+  "participationDomain": "JUSTPROOF:PARTICIPATION",
+  "network": "preprod",
+  "campaign": "2026-09-25-preprod-mvp-001",
+  "contract": "Final approved companion contract address as exactly 64 lowercase hex characters, nonzero. Offline tests use a synthetic value; no deployed contract exists.",
+  "address": "SDK Bech32m.parse then decode(UnshieldedAddress, preprod), re-encode and require exact lowercase canonical string; compare decoded payload to addressFromKey output",
+  "nonce": "32 bytes; lowercase 64-character hex, nonzero; future browser crypto.getRandomValues only after explicit approval; no nonce generation during import",
+  "timestamps": "Nonnegative safe integer Unix seconds in decimal, no signs, leading zeros, fractional seconds or exponent; expiresAt > issuedAt; issuedAt <= now < expiresAt",
+  "maximumValiditySeconds": 300,
+  "commitmentInputs": "Literal campaign,contract,address,nonce; those exact fields are signed",
+  "receiptHashProposal": {
+    "algorithm": "SHA-256",
+    "input": "UTF-8 LF-separated domain, campaign, contract, canonical address, lowercase nonce, terminal LF",
+    "capabilityDomain": "JUSTPROOF:CAPABILITY-RECEIPT-TEST:1",
+    "participationDomain": "JUSTPROOF:PARTICIPATION-RECEIPT:1",
+    "contractCompatibilityEstablished": false
+  },
+  "hex": "Lowercase, even length, no 0x or whitespace; fixed lengths where defined",
+  "base64": "Canonical RFC4648 standard alphabet with required padding; decode and re-encode must equal the original. No whitespace, URL alphabet or omitted padding.",
+  "connectorSigningOptions": {
+    "encoding": "text",
+    "keyType": "unshielded"
+  },
+  "walletAddedPrefix": "UTF-8 midnight_signed_message:<data_size>: immediately followed by canonical application bytes; data_size is canonical decimal unprefixed UTF-8 byte count",
+  "returnedDataEncoding": [
+    "exact UTF-8 text",
+    "strict lowercase hex",
+    "canonical RFC4648 base64"
+  ],
+  "returnedSignatureEncoding": [
+    "strict lowercase hex decoding to exactly 64 bytes",
+    "canonical RFC4648 base64 decoding to exactly 64 bytes"
+  ],
+  "returnedVerifyingKeyEncoding": [
+    "strict lowercase hex decoding to exactly 32 bytes",
+    "canonical RFC4648 base64 decoding to exactly 32 bytes"
+  ],
+  "framingRule": "Expected frame is computed locally from the canonical challenge. Reject every response not exactly equal after canonical decoding. Reject zero or multiple candidate decodings at the required length; never infer framing from returned data.",
+  "offlineSyntheticFrame": "OFFLINE-FIXTURE-ONLY followed by LF, lowercase hex challenge bytes, LF. Test-only; not a wallet framing specification.",
+  "code": {
+    "bytes": 2925,
+    "sha256": "e998d0120ab89f84b654b5d60bf6b0d90c2288c8eb42bedaa6c4174ddf74cdba"
+  },
+  "historicalRevision": {
+    "status": "PROPOSED_APPLICATION_BYTES_ONLY_WALLET_FRAMING_UNRESOLVED",
+    "schemaVersion": "1",
+    "encoding": "UTF-8, restricted ASCII values; literal ordered key=value lines separated by LF with terminal LF; no BOM, CR, spaces or JSON serialization",
+    "fieldOrder": [
+      "domain",
+      "schema",
+      "network",
+      "campaign",
+      "contract",
+      "address",
+      "nonce",
+      "issuedAt",
+      "expiresAt",
+      "commitmentInputs"
+    ],
+    "capabilityDomain": "JUSTPROOF:ADDRESS-CAPABILITY-TEST",
+    "participationDomain": "JUSTPROOF:PARTICIPATION",
+    "network": "preprod",
+    "campaign": "2026-09-25-preprod-mvp-001",
+    "contract": "Final approved companion contract address as exactly 64 lowercase hex characters, nonzero. Offline tests use a synthetic value; no deployed contract exists.",
+    "address": "SDK Bech32m.parse then decode(UnshieldedAddress, preprod), re-encode and require exact lowercase canonical string; compare decoded payload to addressFromKey output",
+    "nonce": "32 bytes; lowercase 64-character hex, nonzero; future browser crypto.getRandomValues only after explicit approval; no nonce generation during import",
+    "timestamps": "Nonnegative safe integer Unix seconds in decimal, no signs, leading zeros, fractional seconds or exponent; expiresAt > issuedAt; issuedAt <= now < expiresAt",
+    "maximumValiditySeconds": 300,
+    "commitmentInputs": "Literal campaign,contract,address,nonce; those exact fields are signed",
+    "receiptHashProposal": {
+      "algorithm": "SHA-256",
+      "input": "UTF-8 LF-separated domain, campaign, contract, canonical address, lowercase nonce, terminal LF",
+      "capabilityDomain": "JUSTPROOF:CAPABILITY-RECEIPT-TEST:1",
+      "participationDomain": "JUSTPROOF:PARTICIPATION-RECEIPT:1",
+      "contractCompatibilityEstablished": false
+    },
+    "hex": "Lowercase, even length, no 0x or whitespace; fixed lengths where defined",
+    "base64": "Not accepted by this proposal; no padding ambiguity",
+    "connectorSigningOptions": {
+      "encoding": "hex",
+      "keyType": "unshielded"
+    },
+    "walletAddedPrefix": null,
+    "returnedDataEncoding": null,
+    "returnedSignatureEncoding": null,
+    "returnedVerifyingKeyEncoding": null,
+    "framingRule": "No accepted wallet framing profile exists. Never strip a guessed prefix, accept a returned suffix match, or trust returned data merely because its signature verifies.",
+    "offlineSyntheticFrame": "OFFLINE-FIXTURE-ONLY followed by LF, lowercase hex challenge bytes, LF. Test-only; not a wallet framing specification.",
+    "code": {
+      "bytes": 2925,
+      "sha256": "e998d0120ab89f84b654b5d60bf6b0d90c2288c8eb42bedaa6c4174ddf74cdba"
+    }
+  },
+  "probeDomain": "JUSTPROOF:ADDRESS-CAPABILITY-TEST",
+  "probeSyntheticContract": "1111111111111111111111111111111111111111111111111111111111111111",
+  "oneAMConformanceEstablished": false,
+  "authoritativeSpecification": "https://github.com/midnightntwrk/midnight-dapp-connector-api/blob/v4.0.1/SPECIFICATION.md",
+  "reviewedApiVersions": [
+    "4.0.0",
+    "4.0.1"
+  ],
+  "compatibilityAdjudication": "compatibility-adjudication.json",
+  "postConnectReadinessGate": {
+    "explicitPreparationRequired": true,
+    "walletRetryAuthorized": false,
+    "currentEvidence": "post-connect-validation.json",
+    "classification": "LOCAL_VERIFIER_PREFLIGHT_READY_AWAITING_MANUAL_RESULT"
+  },
+  "localVerifierFollowup": {
+    "classification": "BLOCKED_LOCAL_VERIFIER_IMPORT",
+    "publicSelftestRequired": true,
+    "browserResult": null,
+    "evidence": "local-verifier-validation.json",
+    "walletRetryAuthorized": false
+  }
+}

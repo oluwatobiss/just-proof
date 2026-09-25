@@ -106,9 +106,7 @@ export class MidnightWalletProvider
       keystore: UnshieldedKeystore;
     };
 
-    logger.info(
-      `Wallet built from ${secret.kind}; master seed: ${seeds.masterSeed.slice(0, 8)}...`,
-    );
+    logger.info("Wallet built");
 
     return new MidnightWalletProvider(
       logger,

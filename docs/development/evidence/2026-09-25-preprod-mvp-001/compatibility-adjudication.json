@@ -1,0 +1,25 @@
+{
+  "classification": "ADDRESS_BINDING_PROBE_READY_AWAITING_MANUAL_1AM_RESULT",
+  "comparison": "connector-tags/comparison-result.json",
+  "retrieval": "connector-tags/retrieval.json",
+  "reviewedApiVersions": [
+    "4.0.0",
+    "4.0.1"
+  ],
+  "oneAmPriorRejection": "Exact 4.0.1-only version filter rejected 4.0.0. Product version is distinct.",
+  "lacePriorRejection": "Reported 4.0.1 is reviewed; prior own-data-function-only discovery could reject own accessor, inherited data, inherited accessor, absent or noncallable connect. Actual descriptor was not supplied and remains UNKNOWN. Duplicate identifiers could also block; no raw objects inspected.",
+  "connectDecision": "Callable structural property has no own-data restriction. Descriptor-only traversal (bounded 16 levels) does not call getters. Only explicit selection and dedicated Connect click resolve once with Reflect.get and synchronously invoke with original receiver. Changed descriptors, absent, noncallable, unreadable, unreviewed or duplicate entries fail closed.",
+  "proxyLimit": "No speculative Proxy get fallback. Reflection on hostile Proxy objects can itself run traps; this is not a sandbox or authenticity guarantee. Tests cover ordinary descriptors and rejecting undiscoverable proxies.",
+  "unchangedSecurity": [
+    "CSP connect-src none",
+    "exact frame",
+    "strict canonical decoding",
+    "preprod before/after",
+    "signature verification",
+    "derived address equality",
+    "expiry",
+    "no transaction methods"
+  ],
+  "qualifiedWallets": [],
+  "manualSigningStillRequired": true
+}

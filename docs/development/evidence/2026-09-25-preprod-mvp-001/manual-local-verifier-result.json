@@ -1,0 +1,16 @@
+{
+  "localVerifier": "LOCAL_VERIFIER_IMPORT_FAILED",
+  "signingBlocked": true,
+  "selected": null,
+  "apiVersionAccepted": false,
+  "preprodConfirmed": false,
+  "signDataCallable": false,
+  "signingCompleted": false,
+  "signedDataMatched": false,
+  "signatureVerified": false,
+  "derivedAddressMatched": false,
+  "unexpired": false,
+  "encodings": null,
+  "overall": "FAILED",
+  "errorCategory": "LOCAL_VERIFIER_IMPORT_FAILED"
+}

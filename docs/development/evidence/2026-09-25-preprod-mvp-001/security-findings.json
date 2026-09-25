@@ -1,0 +1,73 @@
+{
+  "files": {
+    "node_modules/@midnight-ntwrk/dapp-connector-api/dist/api.d.ts": {
+      "bytes": 15205,
+      "sha256": "298eb426b5d2ae9dee808222fa9b9585bd007d8a9e1e09e45521a0a0f3824fae"
+    },
+    "node_modules/@midnight-ntwrk/wallet-sdk-unshielded-wallet/dist/KeyStore.js": {
+      "bytes": 1761,
+      "sha256": "57fa43ea0e9d3db76ad7a89552687452bcf304fb6d696f554557528b835158fb"
+    },
+    "node_modules/@midnight-ntwrk/ledger-v8/ledger-v8.d.ts": {
+      "bytes": 93666,
+      "sha256": "4a6eaccd531f0bb711dd8a8926d14beedd2ab8345deff378f86068608d67dc36"
+    },
+    "node_modules/@midnight-ntwrk/wallet-sdk-address-format/dist/index.js": {
+      "bytes": 9092,
+      "sha256": "20c1669c47d99200ccd981508dee9dd9b99fb0ded3217232dded468482de81cd"
+    },
+    "providers/inMemoryPrivateStateProvider.ts": {
+      "bytes": 9080,
+      "sha256": "2e11d336919c22c61b789bceab526a79acb0ccfbf9324edb673730e389a532d3"
+    },
+    "utils/wallet.ts": {
+      "bytes": 5586,
+      "sha256": "b615589a7bb8768ab3256be3cd16ae71e176beac19cf50c3b0676b988291486d"
+    }
+  },
+  "correction": {
+    "file": "providers/walletProviders.ts",
+    "change": "Replace interpolated master-seed-prefix log with constant Wallet built; no construction, signing or deployment control flow changed"
+  },
+  "unchangedRisks": [
+    "Existing inMemoryPrivateStateProvider exposes plaintext export/import; not imported by the pure capability proposal.",
+    "Existing first-wallet selection/address logging and provider monkey-patching are not reused.",
+    "Existing helper/dependency logging is not comprehensively certified safe; future capability path must remain isolated."
+  ],
+  "browserProbeCreated": true,
+  "noWalletInstantiation": true,
+  "noDeployWorkflowChange": true,
+  "historicalBrowserProbeCreated": false,
+  "strictProbe": {
+    "privateStateProviderUsed": false,
+    "firstWalletSelectionUsed": false,
+    "iconsFetched": false,
+    "sharedDeployHelperImported": false,
+    "rawExceptionLogging": false,
+    "apiVersion": "4.0.1",
+    "manualWalletConformance": null,
+    "keyAndAddressComparison": "Schnorr 64-byte signature, 32-byte verifying key, ledger.addressFromKey equality with canonical Preprod Bech32m payload",
+    "noMainBranchSignatureSchemeAdopted": true,
+    "runtimeCodeIdentities": {
+      "node_modules/@midnight-ntwrk/ledger-v8/midnight_ledger_wasm_bg.wasm": {
+        "bytes": 10143782,
+        "sha256": "88ff7c7c47c30138ee8f3a0c8bcbf12dbdcdeba591edebfb955c30d732ea7638"
+      },
+      "node_modules/@midnight-ntwrk/ledger-v8/midnight_ledger_wasm_bg.js": {
+        "bytes": 318367,
+        "sha256": "0fcb6f30ec4c0f894917d516db627d78de5630377bf7918bac08466b894cb716"
+      },
+      "node_modules/@scure/base/package.json": {
+        "bytes": 1505,
+        "sha256": "b65b97dfc3f3ec6f03e63463b1ec4cc717a619d6b76b99e786996f2040509cb2"
+      }
+    }
+  },
+  "currentCompatibilityFollowup": {
+    "classification": "ADDRESS_BINDING_PROBE_READY_AWAITING_MANUAL_1AM_RESULT",
+    "evidence": "compatibility-validation.json",
+    "manualRenderingAccepted": true,
+    "walletRuntimeQualified": false
+  },
+  "recordScope": "Historical validation retained; current result is in currentCompatibilityFollowup."
+}

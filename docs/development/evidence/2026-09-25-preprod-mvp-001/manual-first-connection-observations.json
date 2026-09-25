@@ -1,0 +1,22 @@
+{
+  "source": "User-executed manual attempt; no Codex wallet operation",
+  "approvedConnectionRequests": 1,
+  "origin": "http://127.0.0.1:5174",
+  "walletDisplayed": [
+    "Preprod",
+    "synced"
+  ],
+  "signActionAvailable": false,
+  "signPrompt": false,
+  "signDataCalled": false,
+  "transaction": false,
+  "proof": false,
+  "fee": false,
+  "transfer": false,
+  "contractCall": false,
+  "submission": false,
+  "rawPayloadRetained": false,
+  "screenshotSaved": false,
+  "cause": "Unknown: generic CAPABILITY_FAILED cannot distinguish wallet address request/processing from local verifier initialization.",
+  "retryAuthorized": false
+}

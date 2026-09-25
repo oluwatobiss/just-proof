@@ -1,0 +1,15 @@
+{
+  "baselineCommit": "f6f9692af1616065a688c95983329d266e0ea466",
+  "previousIntegritySha256": "c9cf6d27fde1bf83e8ef6b17e75e52ec17bbd7cf9245ac24e28c3210f6b8709f",
+  "reportGuidePrefixes": {
+    "docs/development/2026-09-25-preprod-mvp-001-guide.md": {
+      "bytes": 9975,
+      "sha256": "1590cd304ddd376a048826f0623b899355aee65d4512cfb2944ae02c79fb0e78"
+    },
+    "docs/development/2026-09-25-preprod-mvp-001-report.md": {
+      "bytes": 25425,
+      "sha256": "5c532f12e9b42e13b10286844a17631e24bc45043fb7ba8b285b4156a2698a92"
+    }
+  },
+  "baselineGatePassed": true
+}

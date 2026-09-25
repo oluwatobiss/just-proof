@@ -1,0 +1,100 @@
+{
+  "classification": "BLOCKED_1AM_PRE_SIGN_STATUS_REVALIDATION",
+  "source": "User-reported one authorized manual attempt plus static review; no Codex wallet invocation",
+  "authorizationConsumed": true,
+  "retryAuthorized": false,
+  "authorizationIdentity": {
+    "bytes": 6332,
+    "sha256": "2b5c1cd333ede54a32d07bb8b7b52e7495f513925cf5f73c5709b2f7f46ae357"
+  },
+  "disabledProposalIdentity": {
+    "bytes": 2450,
+    "sha256": "cbda06a4f06e17ea15bfe6599f9fbbe3546f124270b1be15e91d19e094072494"
+  },
+  "wallet": {
+    "productVersion": "6.3.11",
+    "connectorApiVersion": "4.0.0",
+    "origin": "http://127.0.0.1:5174"
+  },
+  "callOrder": [
+    "Sign click -> Probe.run(sign) -> controller.sign",
+    "check busy/terminal/private references/CONNECTED",
+    "generate nonce privately; construct and encode capability challenge; construct standard signing frame",
+    "preprod: check status/configuration method identities",
+    "request(() => connected.getConnectionStatus(), CONNECTION_STATUS_REQUEST_FAILED) -> timeout wrapper",
+    "ONLY on success: configuration request and fresh Preprod validation",
+    "ONLY thereafter: challenge validity, signData identity check, connected.signData",
+    "ONLY after response: signingCompleted=true; verify returned bytes/signature/address; second preprod; fresh address and expiry"
+  ],
+  "failureBoundary": "First pre-sign getConnectionStatus request boundary (second status call overall on this connected instance), before configuration recheck and before signData. signingCompleted=false excludes the later post-sign status call on this reviewed path.",
+  "signDataReached": false,
+  "walletSignatureRequestedByProbe": false,
+  "walletSignatureReturnedToProbe": false,
+  "signingPromptObserved": null,
+  "promptObservationNote": "Not explicitly reported; do not infer popup behavior from static call order.",
+  "timeoutVersusRejection": "request catches synchronous invocation/thenable errors, immediate or later promise rejection, and its 120000ms timeout; all map to the same fixed category. No elapsed time or private exception retained; cause cannot be distinguished.",
+  "preprodConfirmedMeaning": "Retained successful connection-stage observation, not proof that the failed fresh status call confirmed current network.",
+  "repeatedStatus": "Tagged API describes checking whether an existing connection remains valid; no one-call/dispose restriction. Intended reuse is consistent with the contract, but repeated-call success of 1AM 6.3.11 is not established.",
+  "receiver": "connected.getConnectionStatus() inside an arrow retains original connected receiver; method is not detached. Initial connect uses Reflect.apply with original InitialAPI.",
+  "lifetime": "Same ConnectedAPI retained in closure from CONNECTED until failure; no disconnect, cleanup or disposal before this check. Wallet-side lifetime/permission/bridge behavior is unavailable.",
+  "identity": "Identity mismatch before invocation has CONNECTED_API_METHOD_CHANGED, not observed. Nonstable accessors/proxies are possible extension behavior but not a demonstrated deterministic client defect.",
+  "implementationLimit": "Installed connector runtime supplies shared exports/error definitions; it is not the installed 1AM extension RPC implementation. Project utils/wallet.ts also calls status on the returned receiver but does not prove repeat behavior.",
+  "deterministicClientDefectEstablished": false,
+  "codeChanged": false,
+  "transactionAlternative": "A finalized app-specific transaction can establish on-chain participation, but a supplied public-address hash or DUST fee is not independent address-control evidence. A separately reviewed route that enforces an authorized unshielded spend owned by the claimed address in the same finalized receipt transaction may provide a transaction-native binding; ownership, required input, receipt/campaign linkage, finality and indexer evidence must first be established. Created outputs alone do not prove recipient control. Current pinned indexer types expose unshieldedSpentOutputs.owner and contractActions, but the existing call path does not guarantee such a spend. Neither sufficiency nor a ready implementation is established.",
+  "nextBoundary": "Stop repeated capability retries as critical path. Seek a separate design review of transaction-native address binding or version-matched wallet diagnosis; no implementation or new retry authorized.",
+  "shutdown": {
+    "observedAtUtc": "2026-09-25T16:02:07.511887+00:00",
+    "probeProcessAbsentInWSL": true,
+    "port5174NotListeningInWSL": true,
+    "browserPageClosedIndependentlyVerified": false,
+    "scope": "Read-only WSL /proc observation only; browser page closure and other-host processes cannot be verified. Page closure and server shutdown remain user-instructed; current WSL server absence is independently observed."
+  },
+  "sources": {
+    "tools/address-capability/controller.ts": {
+      "bytes": 13397,
+      "sha256": "01d2c4829308197d305534ff2a88e305aad0b7a76ef260ede4aa242b893d24d9"
+    },
+    "tools/address-capability/Probe.tsx": {
+      "bytes": 5300,
+      "sha256": "1fd9b74b8419b49ab8a48ce07dfafe5cde8bb37d4d3f631b4ba387bf2f200b91"
+    },
+    "utils/wallet.ts": {
+      "bytes": 5586,
+      "sha256": "b615589a7bb8768ab3256be3cd16ae71e176beac19cf50c3b0676b988291486d"
+    },
+    "node_modules/@midnight-ntwrk/dapp-connector-api/dist/api.d.ts": {
+      "bytes": 15205,
+      "sha256": "298eb426b5d2ae9dee808222fa9b9585bd007d8a9e1e09e45521a0a0f3824fae"
+    },
+    "node_modules/@midnight-ntwrk/dapp-connector-api/dist/index.mjs": {
+      "bytes": 1306,
+      "sha256": "0dc27e7cc70e765d525736779514eddf823cf354ad4a5e0c10fab3e980704f95"
+    },
+    "node_modules/@midnight-ntwrk/midnight-js-indexer-public-data-provider/dist/index.d.ts": {
+      "bytes": 15951,
+      "sha256": "d9f18f4f06d434da3b8bbcce5d72f849f6c5aa28b9470fa7bad8ef999836aacf"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/v4.0.0-SPECIFICATION.md.txt": {
+      "bytes": 28196,
+      "sha256": "34a8b5e78900fa544d6df809ca30840c5369922077d1f681158c0ccab1a11d08"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/v4.0.1-SPECIFICATION.md.txt": {
+      "bytes": 28968,
+      "sha256": "d9c65ea7ef1126a3ae039c2cdd078dc74df279b301315b662e177cf764ad90ae"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/v4.0.0-src-api.ts.txt": {
+      "bytes": 15022,
+      "sha256": "11f43b521c1cf8ee63cd88eb654422f68b2b4e7a00e44a3d0d60bd8b5a124e36"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/v4.0.1-src-api.ts.txt": {
+      "bytes": 15484,
+      "sha256": "a360583cca814218710bd1f4a5763851e1cd74627b3d24886f01b4371bbcffee"
+    },
+    "docs/development/evidence/2026-09-25-preprod-mvp-001/connector-tags/comparison-result.json": {
+      "bytes": 4054,
+      "sha256": "f481cb011e5443e4bc12710121ab3856386b603be90a4fc4734e8bb29d6e6d04"
+    }
+  },
+  "rawWalletPayloadOrScreenshotRetained": false
+}

@@ -1,0 +1,37 @@
+{
+  "compare.json": {
+    "url": "https://api.github.com/repos/midnightntwrk/midnight-dapp-connector-api/compare/v4.0.0...v4.0.1",
+    "finalUrl": "https://api.github.com/repos/midnightntwrk/midnight-dapp-connector-api/compare/v4.0.0...v4.0.1",
+    "retrievedAtUtc": "2026-09-25T05:08:01.832385+00:00",
+    "bytes": 66426,
+    "sha256": "5f8e8510edfe9b81539c12e380cada4429fd506739691c72b83ede532148da92"
+  },
+  "v4.0.0-SPECIFICATION.md.txt": {
+    "url": "https://raw.githubusercontent.com/midnightntwrk/midnight-dapp-connector-api/v4.0.0/SPECIFICATION.md",
+    "finalUrl": "https://raw.githubusercontent.com/midnightntwrk/midnight-dapp-connector-api/v4.0.0/SPECIFICATION.md",
+    "retrievedAtUtc": "2026-09-25T05:08:03.345620+00:00",
+    "bytes": 28196,
+    "sha256": "34a8b5e78900fa544d6df809ca30840c5369922077d1f681158c0ccab1a11d08"
+  },
+  "v4.0.0-src-api.ts.txt": {
+    "url": "https://raw.githubusercontent.com/midnightntwrk/midnight-dapp-connector-api/v4.0.0/src/api.ts",
+    "finalUrl": "https://raw.githubusercontent.com/midnightntwrk/midnight-dapp-connector-api/v4.0.0/src/api.ts",
+    "retrievedAtUtc": "2026-09-25T05:08:04.769787+00:00",
+    "bytes": 15022,
+    "sha256": "11f43b521c1cf8ee63cd88eb654422f68b2b4e7a00e44a3d0d60bd8b5a124e36"
+  },
+  "v4.0.1-SPECIFICATION.md.txt": {
+    "url": "https://raw.githubusercontent.com/midnightntwrk/midnight-dapp-connector-api/v4.0.1/SPECIFICATION.md",
+    "finalUrl": "https://raw.githubusercontent.com/midnightntwrk/midnight-dapp-connector-api/v4.0.1/SPECIFICATION.md",
+    "retrievedAtUtc": "2026-09-25T05:08:06.277633+00:00",
+    "bytes": 28968,
+    "sha256": "d9c65ea7ef1126a3ae039c2cdd078dc74df279b301315b662e177cf764ad90ae"
+  },
+  "v4.0.1-src-api.ts.txt": {
+    "url": "https://raw.githubusercontent.com/midnightntwrk/midnight-dapp-connector-api/v4.0.1/src/api.ts",
+    "finalUrl": "https://raw.githubusercontent.com/midnightntwrk/midnight-dapp-connector-api/v4.0.1/src/api.ts",
+    "retrievedAtUtc": "2026-09-25T05:08:07.719064+00:00",
+    "bytes": 15484,
+    "sha256": "a360583cca814218710bd1f4a5763851e1cd74627b3d24886f01b4371bbcffee"
+  }
+}

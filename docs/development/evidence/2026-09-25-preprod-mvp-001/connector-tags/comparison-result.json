@@ -1,0 +1,79 @@
+{
+  "usedSubsetIdentical": true,
+  "installed401DeclarationSubsetMatches": true,
+  "profiles": [
+    "4.0.0",
+    "4.0.1"
+  ],
+  "tags": {
+    "v4.0.0": "91044d7ba8e50bb1f2d67f95c8c3d1f8642727b8",
+    "v4.0.1": "e1ac4e746ced0b60d26ef23e379476c5db9ea2bc"
+  },
+  "usedDeclarations": {
+    "InitialAPI": "export type InitialAPI = {\n    rdns: string;\n    name: string;\n    icon: string;\n    apiVersion: string;\n    connect: (networkId: string) => Promise<ConnectedAPI>;\n};",
+    "Configuration": "export type Configuration = {\n    indexerUri: string;\n    indexerWsUri: string;\n    proverServerUri?: string | undefined;\n    substrateNodeUri: string;\n    networkId: string;\n};",
+    "ConnectionStatus": "export type ConnectionStatus = {\n    status: 'connected';\n    networkId: string;\n} | {\n    status: 'disconnected';\n};",
+    "SignDataOptions": "export type SignDataOptions = {\n    encoding: 'hex' | 'base64' | 'text';\n    keyType: 'unshielded';\n};",
+    "Signature": "export type Signature = {\n    data: string;\n    signature: string;\n    verifyingKey: string;\n};",
+    "getConnectionStatus": "getConnectionStatus(): Promise<ConnectionStatus>;",
+    "getConfiguration": "getConfiguration(): Promise<Configuration>;",
+    "getUnshieldedAddress": "getUnshieldedAddress(): Promise<{\n    unshieldedAddress: string;\n}>;",
+    "signData": "signData(data: string, options: SignDataOptions): Promise<Signature>;"
+  },
+  "usedDeclarationHashes": {
+    "InitialAPI": "f4d5b696ea3f14537e7fb70745588988bf54d61192a9ce44c4d0579d410b84b6",
+    "Configuration": "ca40252d73af785d6056e8dab7de78375f591f1958053bcce5eb36f0ecb85bd3",
+    "ConnectionStatus": "a2f7c24a79ccb6ca059100d20b69edef4cb2760e810ec8e5a7fe0a08f990996f",
+    "SignDataOptions": "fd285091bedd26dc20ad7b7eed07c3b395ece2645bae1e25fb0fe89d32c153fe",
+    "Signature": "12ab12772d7b7043c6a8d82069520600c90e043c805d72e78d3c9c1f0868e293",
+    "getConnectionStatus": "1fe1db98de5304741d01d071dee4c18f0cafec991c80e5eb9a7061671b61030a",
+    "getConfiguration": "8fe7c3ee3d4e05ebbeca6f1a726915f5502569aaf91d1463c9063be818983762",
+    "getUnshieldedAddress": "a6cffd0d9c422a009005f9aba553ef36b6564b569fa2213684a41c4f9cee77cc",
+    "signData": "089a03de5b63004ab78082e0e70621a218d5374b4a641432e12a019789ca7cec"
+  },
+  "changedApiMethods": [
+    "balanceUnsealedTransaction",
+    "balanceSealedTransaction",
+    "makeTransfer"
+  ],
+  "specChecks": [
+    {
+      "start": "### Initial API",
+      "end": "### Connected API",
+      "identical": true,
+      "sha256": "b31dea9fe88933bf0840e28c6aa00baff6af9edada599b43afc32161db473185"
+    },
+    {
+      "start": "type UnshieldedAddress",
+      "end": "type DustAddress",
+      "identical": true,
+      "sha256": "a4aa023061e98e26664604332d4a3cdb45d3a92f2d41b6cba3375bab2dc1e881"
+    },
+    {
+      "start": "  signData(data:",
+      "end": "type DelegateProving",
+      "identical": true,
+      "sha256": "606284f405f2015e05e3918d1ba7a9e78155bc05978fdb9152e84b23275ac326"
+    },
+    {
+      "start": "type SignDataOptions",
+      "end": "export type KeyMaterialProvider",
+      "identical": true,
+      "sha256": "4d414bd40ec29267eff30ad1bd620a7e04f0ddebc86b4eea8a51dc772e61c99b"
+    },
+    {
+      "start": "#### Permissions",
+      "end": "#### Preparing and handling transactions",
+      "identical": true,
+      "sha256": "aa8e3cba34d4272e14c35b00b9f5ecdbebddba991bc98f1d07c295f1cb3589db"
+    },
+    {
+      "start": "#### Signing",
+      "end": "#### Proving",
+      "identical": true,
+      "sha256": "27145f75313791433eda01710f53d1547a66bc24be8e7086a8f941f49f5f78d5"
+    }
+  ],
+  "qualification": "Only functional API changes are optional payFees additions to three transaction methods. Ancillary version/generated-doc/grammar/newline updates also exist; not every byte outside payFees is unchanged.",
+  "connectShape": "InitialAPI defines a callable property without an own-data-descriptor constraint. Initial object freezing does not forbid inherited methods or get-only accessors. Runtime callability remains a dedicated-click check."
+}
